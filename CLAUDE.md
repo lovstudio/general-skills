@@ -48,7 +48,9 @@ python skills/lovstudio-any2docx/scripts/md2docx.py --input foo.md --output foo.
 
 1. Create `skills/lovstudio-<name>/` with a `SKILL.md` (follow existing frontmatter format: name, description, license, compatibility, metadata)
 2. Add scripts in `skills/lovstudio-<name>/scripts/`
-3. Update `README.md` table
+3. **Create `skills/lovstudio-<name>/README.md`** — 给人类在 GitHub 上阅读的文档（安装命令、用法示例、参数表、ASCII 图示）。注意：官方 skill-creator 说不要建 README，但本 repo 发布到 GitHub，必须有。参照 any2docx/fill-form 的 README 格式。
+4. Update root `README.md` skills table
+5. Update this文件的 Skills table
 
 ## Key Conventions
 
