@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.0
+
+- **skill-creator**: New skill to scaffold lovstudio skills with proper structure (SKILL.md + README.md + scripts/)
+- **any2deck**: Fork of baoyu-slide-deck — content → slide deck images with 16 styles, PPTX/PDF export, branding overlay
+
 ## 1.0.1
 
 - Add README.md for fill-form skill
