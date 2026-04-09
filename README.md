@@ -42,6 +42,7 @@ npx skills add lovstudio/skills --skill lovstudio:any2pdf
 | [image-gen](skills/lovstudio-image-gen/) | Generate images using Gemini via ZenMux. Supports ASCII art output. |
 | [png2svg](skills/lovstudio-png2svg/) | PNG → high-quality SVG conversion with background removal and spline curves. |
 | [project-port](skills/lovstudio-project-port/) | Generate stable unique dev port (3000–8999) from project name. |
+| [deploy-vercel](skills/lovstudio-deploy-vercel/) | Deploy frontend to Vercel with auto Cloudflare DNS + custom domain setup. |
 | [skill-creator](skills/lovstudio-skill-creator/) | Scaffold new lovstudio skills with proper structure, SKILL.md + README.md. |
 
 ## Theme Gallery
