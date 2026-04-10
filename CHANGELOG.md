@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.0
+
+- **anti-wechat-ai-check**: New skill — analyze text for WeChat AI detection vulnerability, provides rewrite suggestions
+- **xbti-creator**: New skill — create XBTI format images with structured data
+- **image-creator**: Renamed from image-gen for clarity
+- Updated CLAUDE.md skills table and root README
+
 ## 0.2.0
 
 - **skill-creator**: New skill to scaffold lovstudio skills with proper structure (SKILL.md + README.md + scripts/)
