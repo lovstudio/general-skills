@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.1
+
+- **xbti-gallery**: New skill — browse all community-created BTI personality tests at xbti.lovstudio.ai
+
 ## 0.3.0
 
 - **anti-wechat-ai-check**: New skill — analyze text for WeChat AI detection vulnerability, provides rewrite suggestions
