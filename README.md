@@ -45,6 +45,7 @@ npx skills add lovstudio/skills --skill lovstudio:any2pdf
 | [png2svg](skills/lovstudio-png2svg/) | PNG → high-quality SVG conversion with background removal and spline curves. |
 | [project-port](skills/lovstudio-project-port/) | Generate stable unique dev port (3000–8999) from project name. |
 | [skill-creator](skills/lovstudio-skill-creator/) | Scaffold new lovstudio skills with proper structure, SKILL.md + README.md. |
+| [skill-optimizer](skills/lovstudio-skill-optimizer/) | Audit + auto-fix an existing skill, bump semver, and append a CHANGELOG entry. |
 | [xbti-creator](skills/lovstudio-xbti-creator/) | Create custom BTI personality tests (LBTI, FBTI, etc.) with AI-generated content + avatars. |
 | [xbti-gallery](skills/lovstudio-xbti-gallery/) | Browse all community-created BTI personality tests at xbti.lovstudio.ai. |
 

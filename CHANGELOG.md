@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.0
+
+- **skill-optimizer**: New meta skill — audits an existing skill against repo conventions + official skill-creator best practices, applies fixes, bumps semver version, and prepends a per-skill `CHANGELOG.md` entry. Fully automatic, context-driven (prioritizes issues raised in the current conversation). Ships `lint_skill.py` + `bump_version.py` (stdlib only).
+
 ## 0.3.2
 
 - **xbti-creator**: Fix step numbering (duplicate Step 2), fix Gallery PR submission (wrong gh fork syntax, missing index.js/case.json/registry updates, image→images dir), add Gallery opt-in to initial questionnaire
