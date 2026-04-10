@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.2
+
+- **xbti-creator**: Fix step numbering (duplicate Step 2), fix Gallery PR submission (wrong gh fork syntax, missing index.js/case.json/registry updates, image→images dir), add Gallery opt-in to initial questionnaire
+
 ## 0.3.1
 
 - **xbti-gallery**: New skill — browse all community-created BTI personality tests at xbti.lovstudio.ai

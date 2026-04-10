@@ -41,6 +41,7 @@ Based on the proven XBTI architecture (React + Vite), with AI-generated content.
 | 人格数量 | 16-25（默认20） | No |
 | 特殊彩蛋人格 | 有/无（默认有） | No |
 | 项目目录 | 默认 ~/projects/{NAME} | No |
+| 提交到 Gallery | 是/否（默认否）— 提交到 xbti.lovstudio.ai 供他人体验 | No |
 
 ### Step 2: Environment Setup
 
@@ -87,7 +88,7 @@ python3 -c "import google.genai; from PIL import Image" 2>/dev/null && echo "OK"
 
 **Do NOT proceed to Step 3 until environment is fully ready.**
 
-### Step 2: Design Dimension System
+### Step 3: Design Dimension System
 
 Based on the theme, design **5 维度模型**, each with **3 子维度** = 15 dimensions total.
 
@@ -99,7 +100,7 @@ Based on the theme, design **5 维度模型**, each with **3 子维度** = 15 di
 
 Output: `src/data/dimensions.js` — see `references/xbti-data-format.md` for exact format.
 
-### Step 3: Generate Questions
+### Step 4: Generate Questions
 
 Generate **30 questions** (2 per dimension), each with **3 options** (value 1, 2, 3).
 
@@ -112,7 +113,7 @@ Generate **30 questions** (2 per dimension), each with **3 options** (value 1, 2
 
 Output: `src/data/questions.js`
 
-### Step 4: Design Personality Types
+### Step 5: Design Personality Types
 
 Generate **16-25 personality types**, each with:
 
@@ -132,7 +133,7 @@ Generate **16-25 personality types**, each with:
 
 Output: `src/data/types.js`
 
-### Step 5: Scaffold the Project
+### Step 6: Scaffold the Project
 
 Clone the XBTI template from GitHub and clean up:
 
@@ -169,7 +170,7 @@ Update branding in:
 
 **Keep `src/logic/scoring.js` as-is** — the algorithm is universal. Only update import paths if dimension IDs changed.
 
-### Step 6: Generate Avatar Images
+### Step 7: Generate Avatar Images
 
 For each personality type, programmatically generate an avatar image using the `lovstudio:image-creator` skill.
 
@@ -217,7 +218,7 @@ Examples:
 
 **IMPORTANT:** All image generation is fully automated via CLI — do NOT ask user to manually download or operate any web UI.
 
-### Step 7: Install & Launch
+### Step 8: Install & Launch
 
 ```bash
 cd {TARGET_DIR}
@@ -232,43 +233,56 @@ cd {TARGET_DIR}
 
 Tell the user the dev server URL (usually http://localhost:5173) and invite them to test the full flow.
 
-### Step 8: Submit to XBTI Gallery (Optional)
+### Step 9: Submit to XBTI Gallery (Optional)
 
-Ask user: "是否将你的 BTI 提交到 XBTI Gallery（xbti.lovstudio.ai）供其他人体验？"
+**Skip this step if user chose NOT to submit in Step 1.**
 
-If yes, create a PR to `lovstudio/XBTI` repo:
+If user chose to submit, create a PR to `lovstudio/XBTI` repo:
 
 ```bash
-# 1. Fork & clone the XBTI repo (or use gh to create PR directly)
+# 1. Fork & clone the XBTI repo
 cd /tmp
-gh repo fork lovstudio/XBTI --clone -- xbti-gallery-pr
-cd xbti-gallery-pr
+gh repo fork lovstudio/XBTI --clone
+cd XBTI
 
-# 2. Create case directory
+# 2. Create case directory (follow existing structure: cases/sbti/, cases/cbti/)
 CASE_NAME=$(echo "{BTI_NAME}" | tr '[:upper:]' '[:lower:]')
-mkdir -p cases/${CASE_NAME}
+mkdir -p cases/${CASE_NAME}/images
 
 # 3. Copy data files + images
 cp {TARGET_DIR}/src/data/dimensions.js cases/${CASE_NAME}/
 cp {TARGET_DIR}/src/data/questions.js cases/${CASE_NAME}/
 cp {TARGET_DIR}/src/data/types.js cases/${CASE_NAME}/
-cp -r {TARGET_DIR}/image/ cases/${CASE_NAME}/image/
+cp {TARGET_DIR}/image/*.png cases/${CASE_NAME}/images/
 
-# 4. Create metadata
-cat > cases/${CASE_NAME}/meta.json << EOF
-{
-  "name": "{BTI_NAME}",
-  "theme": "{THEME}",
-  "author": "$(git config user.name)",
-  "createdAt": "$(date +%Y-%m-%d)",
-  "types": {TYPE_COUNT},
-  "style": "{STYLE}"
-}
+# 4. Create index.js (re-export entry point, required by registry)
+cat > cases/${CASE_NAME}/index.js << EOF
+export const meta = { id: '${CASE_NAME}', name: '${BTI_NAME}', desc: '${THEME}', author: '$(git config user.name)', authorUrl: '' };
+export { dimensionMeta, dimensionOrder, DIM_EXPLANATIONS } from './dimensions.js';
+export { questions } from './questions.js';
+export { TYPE_LIBRARY, TYPE_IMAGES, NORMAL_TYPES } from './types.js';
 EOF
 
-# 5. Create PR
+# 5. Create case.json (combined metadata + data for static access)
+#    Use Node.js to merge all data into a single JSON file:
+node -e "
+const dim = require('./cases/${CASE_NAME}/dimensions.js');
+const q = require('./cases/${CASE_NAME}/questions.js');
+const t = require('./cases/${CASE_NAME}/types.js');
+const data = {
+  meta: { id: '${CASE_NAME}', name: '${BTI_NAME}', desc: '${THEME}', author: '$(git config user.name)', authorUrl: '' },
+  ...dim, ...q, ...t
+};
+require('fs').writeFileSync('./cases/${CASE_NAME}/case.json', JSON.stringify(data, null, 2));
+"
+
+# 6. Update cases/registry.js — add import and entry
+#    Read current registry, add new import and array entry
+# 7. Update cases/index.json — add new case metadata entry
+
+# 8. Create PR
 git checkout -b add-case/${CASE_NAME}
-git add cases/${CASE_NAME}
+git add cases/${CASE_NAME} cases/registry.js cases/index.json
 git commit -m "feat: add ${BTI_NAME} case (${THEME})"
 git push origin add-case/${CASE_NAME}
 gh pr create \
@@ -287,11 +301,15 @@ PREOF
 )"
 ```
 
+**Update `cases/registry.js`:** Add `import * as {CASE_NAME} from './{CASE_NAME}';` and append to the CASES array.
+
+**Update `cases/index.json`:** Append `{"id":"{CASE_NAME}","name":"{BTI_NAME}","desc":"{THEME}","author":"...","authorUrl":"..."}` to the array.
+
 Tell user the PR URL and that it will appear on xbti.lovstudio.ai after merge.
 
 ```bash
 # Clean up
-rm -rf /tmp/xbti-gallery-pr
+rm -rf /tmp/XBTI
 ```
 
 ## Reference Files
