@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.1
+
+- **README**: Categorize skills table (Document Conversion / Content Creation / Content Processing / Dev Tools), add missing `document-illustrator` skill, scope Theme Gallery to any2pdf & any2docx only, fix top nav link
+
 ## 0.5.0
 
 - **document-illustrator**: New skill (migrated from op7418/Document-illustrator-skill). Redesigned workflow: backup → global insertion planning → parallel image generation → async insert-in-place → cleanup. Uses anchor-text positioning instead of line numbers to handle offset drift. All images generated concurrently via Agent tool. SKILL.md trimmed from 480 to ~120 lines.
