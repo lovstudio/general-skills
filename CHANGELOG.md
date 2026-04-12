@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.0
+
+- **document-illustrator**: New skill (migrated from op7418/Document-illustrator-skill). Redesigned workflow: backup → global insertion planning → parallel image generation → async insert-in-place → cleanup. Uses anchor-text positioning instead of line numbers to handle offset drift. All images generated concurrently via Agent tool. SKILL.md trimmed from 480 to ~120 lines.
+
 ## 0.4.1
 
 - **any2pdf**: Fix silent image drops. Relative `![alt](path)` references are now resolved against the input markdown's directory (not cwd), missing images emit a `WARN: image not found` to stderr instead of being silently dropped, and multi-line image refs (caused by pandoc's default `--wrap=auto`) are collapsed during preprocessing. SKILL.md gains an "Input Format" section clarifying markdown-only input and a pandoc `--wrap=none` pipeline tip. Bumps skill version 1.0.0 → 1.0.1.
