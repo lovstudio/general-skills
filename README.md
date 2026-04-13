@@ -88,6 +88,7 @@ npx skills add lovstudio/skills --skill lovstudio:any2pdf
 | Skill | Description |
 |-------|-------------|
 | [auto-context](skills/lovstudio-auto-context/) | Context hygiene checker. Suggests /fork or /btw when context is polluted. |
+| [gh-tidy](skills/lovstudio-gh-tidy/) | Interactive GitHub repo triage — clean up issues, PRs, stale branches, and labels in one pass. |
 | [deploy-to-vercel](skills/lovstudio-deploy-to-vercel/) | Deploy frontend to Vercel with auto Cloudflare DNS + custom domain setup. |
 | [finder-action](skills/lovstudio-finder-action/) | Generate Mac Finder right-click menu actions. Quick Action or Finder Sync Extension. |
 | [project-port](skills/lovstudio-project-port/) | Generate stable unique dev port (3000–8999) from project name. |
