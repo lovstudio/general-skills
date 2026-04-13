@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.7.0
+
+- **skill-optimizer**: Add Step 7 — auto commit & push after optimization (no more manual git push)
+- **finder-action**: Fix sandbox entitlements — use `temporary-exception.files.absolute-path.read-write` instead of `files.user-selected.read-write`, document sandbox-must-be-on requirement
+
 ## 0.6.0
 
 - **proposal**: New skill — generate complete business proposals from client requirements (architecture, budget, timeline, risk analysis)
