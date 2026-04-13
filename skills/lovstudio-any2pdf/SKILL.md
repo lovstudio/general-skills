@@ -16,7 +16,7 @@ compatibility: >
   Linux: uses Carlito, Liberation Serif, Droid Sans Fallback, DejaVu Sans Mono.
 metadata:
   author: lovstudio
-  version: "1.1.0"
+  version: "1.1.1"
   tags: markdown pdf cjk reportlab typesetting
 ---
 
@@ -264,15 +264,41 @@ with proper table handling.
     \SetWatermarkColor[gray]{0.9}
     '
 
-### Link color by theme
+### Pandoc theme presets
 
-| Theme | `-V linkcolor=` | Notes |
-|-------|-----------------|-------|
-| chinese-red | `red` | 朱红配暖纸 |
-| warm-academic | `brown` | 陶土色调 |
-| classic-thesis | `brown` | LaTeX classicthesis 风格 |
-| ieee-journal | `blue` | 藏蓝严谨 |
-| github-light | `blue` | 极简蓝白 |
+Each preset defines a complete set of pandoc `-V` flags. Use the full command from
+"Adding watermark + headers/footers" above, replacing the color/link flags per preset.
+
+| Theme | linkcolor | toccolor | urlcolor | Watermark color | Notes |
+|-------|-----------|----------|----------|-----------------|-------|
+| chinese-red | `red` | `red` | `red` | `[gray]{0.9}` | 朱红正式，适合政企报告、白皮书 |
+| warm-academic | `brown` | `brown` | `brown` | `[gray]{0.9}` | 陶土色调，温润学术风 |
+| classic-thesis | `brown` | `brown` | `brown` | `[gray]{0.85}` | LaTeX classicthesis 灵感 |
+| ieee-journal | `blue` | `blue` | `blue` | `[gray]{0.9}` | 藏蓝严谨，期刊风格 |
+| github-light | `blue` | `blue` | `blue` | `[gray]{0.92}` | 极简蓝白，程序员友好 |
+| ink-wash | `black` | `black` | `black` | `[gray]{0.92}` | 水墨素雅，文学/设计类 |
+| nord-frost | `teal` | `teal` | `teal` | `[gray]{0.9}` | 北欧冰霜蓝灰 |
+
+#### chinese-red 完整示例（本次一滕项目实际使用）
+
+    pandoc input.md -o output.pdf \
+      --pdf-engine=xelatex \
+      -V CJKmainfont="Songti SC" -V mainfont="Palatino" -V monofont="Menlo" \
+      -V geometry:margin=2.5cm -V fontsize=11pt \
+      -V colorlinks=true -V linkcolor=red -V toccolor=red -V urlcolor=red \
+      --toc -V toc-title="目录" -V documentclass=article \
+      -V header-includes='
+    \usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \fancyhf{}
+    \fancyhead[L]{\small 报告标题 | 品牌名}
+    \fancyhead[R]{\small 商业机密}
+    \fancyfoot[C]{\thepage}
+    \usepackage{draftwatermark}
+    \SetWatermarkText{商业机密}
+    \SetWatermarkScale{0.5}
+    \SetWatermarkColor[gray]{0.9}
+    '
 
 ### Known limitations (pandoc fallback)
 

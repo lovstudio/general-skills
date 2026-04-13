@@ -3,6 +3,14 @@
 All notable changes to this skill are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) · Versioning: [SemVer](https://semver.org/)
 
+## [1.1.1] - 2026-04-13
+
+### Fixed
+
+- Expand pandoc theme presets from link-color-only to full parameter sets
+- Add complete pandoc -V flags table for 7 themes (linkcolor, toccolor, urlcolor, watermark)
+- Add chinese-red full working example from 一滕 project
+
 ## [1.1.0] - 2026-04-13
 
 ### Added
