@@ -1,6 +1,8 @@
 # lovstudio:any2docx
 
-Markdown to professionally styled DOCX (Word) with [python-docx](https://python-docx.readthedocs.io/). CJK/Latin mixed text, code blocks, tables, cover pages, TOC, watermarks, and 14 color themes. Same theme palette as any2pdf, editable output.
+![Version](https://img.shields.io/badge/version-0.3.0-CC785C)
+
+Markdown to professionally styled DOCX (Word) with [python-docx](https://python-docx.readthedocs.io/). CJK/Latin mixed text, code blocks, tables, **images** (local + remote), cover pages, auto-refresh TOC, watermarks, and 11 color themes. Same theme palette as any2pdf, editable output.
 
 Part of [lovstudio/skills](https://github.com/lovstudio/skills) &mdash; by [lovstudio.ai](https://lovstudio.ai)
 

@@ -1,7 +1,5 @@
 ---
 name: lovstudio:any2docx
-category: Document Conversion
-tagline: "Markdown → professionally styled DOCX (Word). Same [14 themes](docs/THEME-GALLERY.md) as any2pdf, editable output."
 description: >
   Convert Markdown documents to professionally styled DOCX (Word) files with python-docx.
   Handles CJK/Latin mixed text, fenced code blocks, tables, blockquotes, cover pages,
@@ -20,7 +18,7 @@ compatibility: >
   CJK fonts: macOS uses Songti SC, Windows uses SimSun, Linux uses Noto Serif CJK SC.
 metadata:
   author: lovstudio
-  version: "1.0.0"
+  version: "0.3.0"
   tags: markdown docx word cjk python-docx typesetting
 ---
 
@@ -109,16 +107,19 @@ Use `AskUserQuestion` with the following template:
 ## Architecture
 
 ```
-Markdown → Preprocess (split merged headings) → Parse (code-fence-aware) → python-docx Document → .docx
+Markdown → Strip frontmatter → Preprocess (split merged headings) → Parse (code-fence-aware) → python-docx Document → .docx
 ```
 
 Key components:
 1. **CJK font switching**: `_split_mixed()` detects CJK runs and assigns Songti SC / SimSun / Noto CJK
 2. **Inline markdown**: `_parse_inline()` handles **bold**, *italic*, `code`, [links](url)
-3. **Code blocks**: Shaded paragraph with monospace font and border
-4. **Tables**: Header row with accent background, alternating row shading
-5. **Watermark**: VML-based diagonal watermark in header (Word-native)
-6. **TOC**: Field code that Word/WPS updates on open
+3. **Images**: Local paths (relative to .md) and remote URLs — auto-downloaded and embedded via `add_picture()`
+4. **Code blocks**: Shaded paragraph with monospace font and border
+5. **Tables**: Header row with accent background, alternating row shading
+6. **Watermark**: VML-based diagonal watermark in header (Word-native)
+7. **TOC**: Field code with static fallback entries; `updateFields=true` triggers auto-refresh on open
+8. **YAML frontmatter**: Automatically stripped (won't leak `status: draft` etc. into output)
+9. **Adaptive cover title**: Font size scales down for long titles (36pt → 22pt)
 
 ## Configuration Reference
 

@@ -18,8 +18,9 @@ Dependencies:
   pip install python-docx --break-system-packages
 """
 
-import re, os, sys, argparse
+import re, os, sys, argparse, tempfile, urllib.request
 from datetime import date
+from pathlib import Path
 from docx import Document
 from docx.shared import Pt, Mm, Inches, RGBColor, Emu
 from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_LINE_SPACING
@@ -313,11 +314,21 @@ class DocxBuilder:
         for _ in range(6):
             self.doc.add_paragraph()
 
-        # Title
+        # Title — adaptive font size based on length
         title = self.cfg.get("title", "Document")
+        # CJK chars are ~2x width of Latin chars for layout estimation
+        visual_len = sum(2 if _is_cjk(ch) else 1 for ch in title)
+        if visual_len <= 16:
+            title_size = 36
+        elif visual_len <= 24:
+            title_size = 30
+        elif visual_len <= 32:
+            title_size = 26
+        else:
+            title_size = 22
         p = self.doc.add_paragraph()
         p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        _add_mixed_run(p, title, T["heading_font"], Pt(36), T["ink"], bold=True)
+        _add_mixed_run(p, title, T["heading_font"], Pt(title_size), T["ink"], bold=True)
 
         # Subtitle
         sub = self.cfg.get("subtitle", "")
@@ -372,15 +383,16 @@ class DocxBuilder:
         # Page break after cover
         self.doc.add_page_break()
 
-    def _add_toc(self):
-        """Add a Table of Contents field."""
+    def _add_toc(self, md_text=""):
+        """Add TOC using field code + static fallback entries."""
+        T = self.T
         p = self.doc.add_paragraph()
         p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        _add_mixed_run(p, "目    录", self.T["heading_font"], Pt(26), self.T["ink"], bold=True)
+        _add_mixed_run(p, "目    录", T["heading_font"], Pt(26), T["ink"], bold=True)
 
         self.doc.add_paragraph()  # spacing
 
-        # Insert TOC field code — Word/WPS will update it on open
+        # Insert TOC field code — auto-updated via updateFields setting
         p = self.doc.add_paragraph()
         run = p.add_run()
         fld_char_begin = parse_xml(f'<w:fldChar {nsdecls("w")} w:fldCharType="begin"/>')
@@ -391,14 +403,43 @@ class DocxBuilder:
         run3 = p.add_run()
         fld_char_sep = parse_xml(f'<w:fldChar {nsdecls("w")} w:fldCharType="separate"/>')
         run3._element.append(fld_char_sep)
-        run4 = p.add_run("(右键更新目录 / Right-click to update TOC)")
-        run4.font.color.rgb = self.T["ink_faded"]
-        run4.font.size = Pt(10)
+
+        # Static fallback: parse headings so TOC is visible even before refresh
+        in_code = False
+        for line in md_text.split('\n'):
+            stripped = line.strip()
+            if stripped.startswith('```'):
+                in_code = not in_code
+                continue
+            if in_code:
+                continue
+            m = re.match(r'^(#{1,3})\s+(.+)$', stripped)
+            if m:
+                level = len(m.group(1))
+                title = re.sub(r'\*\*(.+?)\*\*', r'\1', m.group(2).strip())
+                title = re.sub(r'`(.+?)`', r'\1', title)
+                prefix = "    " * (level - 1)
+                run_entry = p.add_run(f"\n{prefix}{title}")
+                run_entry.font.size = Pt(10.5 if level == 1 else 9.5)
+                run_entry.font.color.rgb = T["ink"]
+                run_entry.font.bold = (level <= 1)
+
         run5 = p.add_run()
         fld_char_end = parse_xml(f'<w:fldChar {nsdecls("w")} w:fldCharType="end"/>')
         run5._element.append(fld_char_end)
 
         self.doc.add_page_break()
+
+    def _enable_auto_update_fields(self):
+        """Set updateFields=true so Word auto-refreshes TOC on open."""
+        from lxml import etree
+        settings = self.doc.settings.element
+        ns = 'http://schemas.openxmlformats.org/wordprocessingml/2006/main'
+        # Remove existing updateFields if any
+        for el in settings.findall(f'{{{ns}}}updateFields'):
+            settings.remove(el)
+        uf = etree.SubElement(settings, f'{{{ns}}}updateFields')
+        uf.set(f'{{{ns}}}val', 'true')
 
     def _add_header_footer(self):
         """Add running header and footer with page numbers."""
@@ -567,6 +608,46 @@ class DocxBuilder:
                     shading = parse_xml(f'<w:shd {nsdecls("w")} w:fill="{shd_hex}" w:val="clear"/>')
                     cell._element.get_or_add_tcPr().append(shading)
 
+    def _add_image(self, src, alt=""):
+        """Add image to document. Supports local paths and remote URLs."""
+        img_path = None
+        tmp_file = None
+        try:
+            if src.startswith(('http://', 'https://')):
+                # Strip image processing query params for cleaner download
+                clean_url = src.split('?')[0]
+                suffix = Path(clean_url).suffix or '.jpg'
+                tmp_file = tempfile.NamedTemporaryFile(suffix=suffix, delete=False)
+                tmp_file.close()
+                urllib.request.urlretrieve(clean_url, tmp_file.name)
+                img_path = tmp_file.name
+            else:
+                # Resolve relative to input file directory
+                base_dir = self.cfg.get("_input_dir", ".")
+                candidate = os.path.join(base_dir, src)
+                if os.path.isfile(candidate):
+                    img_path = candidate
+                elif os.path.isfile(src):
+                    img_path = src
+
+            if img_path and os.path.isfile(img_path):
+                p = self.doc.add_paragraph()
+                p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                run = p.add_run()
+                run.add_picture(img_path, width=Inches(5.0))
+                if alt:
+                    cap = self.doc.add_paragraph()
+                    cap.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                    _add_mixed_run(cap, alt, self.T["body_font"], Pt(9), self.T["ink_faded"], italic=True)
+            else:
+                self._add_paragraph(f"[Image: {alt or src}]")
+        except Exception as e:
+            print(f"Warning: Could not embed image '{src}': {e}", file=sys.stderr)
+            self._add_paragraph(f"[Image: {alt or src}]")
+        finally:
+            if tmp_file and os.path.exists(tmp_file.name):
+                os.unlink(tmp_file.name)
+
     def _add_blockquote(self, text):
         """Add blockquote with left border."""
         T = self.T
@@ -585,7 +666,13 @@ class DocxBuilder:
 
     @staticmethod
     def _preprocess_md(md):
-        """Normalize markdown: split merged headings."""
+        """Normalize markdown: strip YAML frontmatter, split merged headings."""
+        # Strip YAML frontmatter
+        if md.startswith('---'):
+            end = md.find('\n---', 3)
+            if end != -1:
+                md = md[end + 4:]
+
         lines = md.split('\n')
         out = []
         in_code = False
@@ -684,6 +771,14 @@ class DocxBuilder:
                 i += 1
                 continue
 
+            # Images: ![alt](src)
+            img_match = re.match(r'^!\[([^\]]*)\]\(([^)]+)\)\s*$', stripped)
+            if img_match:
+                alt, src = img_match.group(1), img_match.group(2)
+                self._add_image(src, alt)
+                i += 1
+                continue
+
             # Blockquote
             if stripped.startswith('> '):
                 self._add_blockquote(stripped[2:].strip())
@@ -720,7 +815,7 @@ class DocxBuilder:
 
         # TOC
         if self.cfg.get("toc", True):
-            self._add_toc()
+            self._add_toc(md_text)
 
         # Watermark
         wm = self.cfg.get("watermark", "")
@@ -732,6 +827,9 @@ class DocxBuilder:
 
         # Parse and add content
         self.parse_md(md_text)
+
+        # Auto-update fields (TOC) on open
+        self._enable_auto_update_fields()
 
         # Save
         self.doc.save(output_path)
@@ -788,6 +886,7 @@ def main():
         "stats_line2": args.stats_line2,
         "edition_line": args.edition_line,
         "code_max_lines": args.code_max_lines,
+        "_input_dir": os.path.dirname(os.path.abspath(args.input)),
     }
 
     builder = DocxBuilder(config)
