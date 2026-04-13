@@ -1,16 +1,16 @@
 ---
 name: lovstudio:any2pdf
+category: Document Conversion
+tagline: "Markdown → professionally typeset PDF. CJK/Latin mixed text, code blocks, tables, [14 themes](docs/THEME-GALLERY.md)."
 description: >
-  Convert Markdown documents to professionally typeset PDF files with reportlab.
-  Handles CJK/Latin mixed text, fenced code blocks, tables, blockquotes, cover pages,
-  clickable TOC, PDF bookmarks, watermarks, and page numbers. Supports multiple
-  color themes (Warm Academic, Nord, GitHub Light, Solarized, etc.) and is
-  battle-tested for Chinese technical reports. Use this skill whenever the user
-  wants to turn a .md file into a styled PDF, generate a report PDF from markdown,
-  or create a print-ready document from markdown content — especially if CJK
-  characters, code blocks, or tables are involved. Also trigger when the user
-  mentions "markdown to PDF", "md2pdf", "any2pdf", "md转pdf", "报告生成", or asks for a "typeset" or
-  "professionally formatted" PDF from markdown source.
+  Convert Markdown documents to professionally typeset PDF files. Primary engine:
+  reportlab (cover pages, frontispiece, back cover, bookmarks). Fallback engine:
+  pandoc + XeLaTeX (better table handling, LaTeX-quality typesetting). Handles
+  CJK/Latin mixed text, fenced code blocks, tables, blockquotes, clickable TOC,
+  watermarks, headers/footers, and page numbers. Supports multiple color themes
+  and is battle-tested for Chinese technical reports. Trigger when user mentions
+  "markdown to PDF", "md2pdf", "any2pdf", "md转pdf", "报告生成", "导出pdf",
+  or wants a professionally formatted PDF from markdown.
 license: MIT
 compatibility: >
   Requires Python 3.8+ and reportlab (`pip install reportlab`).
@@ -18,7 +18,7 @@ compatibility: >
   Linux: uses Carlito, Liberation Serif, Droid Sans Fallback, DejaVu Sans Mono.
 metadata:
   author: lovstudio
-  version: "1.0.0"
+  version: "1.2.0"
   tags: markdown pdf cjk reportlab typesetting
 ---
 
@@ -73,6 +73,7 @@ concise — like a design assistant, not a config form:
  h) GitHub    — 蓝白极简，程序员熟悉的风格
  i) Nord 冰霜 — 蓝灰北欧风，清爽现代
  j) 海洋      — 青绿色调，清新自然
+ k) LaTeX 清爽 — pandoc+XeLaTeX 原生排版，无封面无装饰，干净学术风（需装 pandoc+texlive）
 
 ━━━ 🖼 扉页图片（封面之后的全页插图） ━━━
  1) 跳过
@@ -97,7 +98,7 @@ concise — like a design assistant, not a config form:
 
 | Choice | CLI arg |
 |--------|---------|
-| Design style a-j | `--theme` with value from table below |
+| Design style a-k | `--theme` with value from table below (k uses pandoc engine) |
 | Frontispiece local | `--frontispiece <path>` |
 | Frontispiece AI | Generate image first, then `--frontispiece /tmp/frontispiece.png` |
 | Watermark text | `--watermark "文字"` |
@@ -120,6 +121,7 @@ concise — like a design assistant, not a config form:
 | h) GitHub | `github-light` | GitHub Markdown style |
 | i) Nord | `nord-frost` | Nord color scheme |
 | j) 海洋 | `ocean-breeze` | — |
+| k) LaTeX 清爽 | `latex-clean` | pandoc+XeLaTeX 原生排版，无封面 |
 
 ### Handling AI-Generated Frontispiece
 
@@ -165,6 +167,34 @@ Default reportlab breaks lines only at spaces, causing ugly splits like "Claude\
 `drawString()` / `drawCentredString()` with a Latin font can't render 年/月/日 etc.
 **Fix**: Use `_draw_mixed()` for ALL user-content canvas text (dates, stats, disclaimers).
 
+### Images Silently Dropped (Relative Paths)
+
+`![alt](charts/chart_01.png)` in a markdown file used to get skipped without warning
+because the image path was resolved against the current working directory, not the
+markdown's directory. **Fix**: `main()` now passes `input_dir` (the .md's directory)
+into the builder, and the image handler resolves relative paths against it. Missing
+images now also emit a `WARN: image not found: ...` to stderr instead of silently
+dropping.
+
+### Multi-Line Image References (pandoc `--wrap=auto`)
+
+When feeding pandoc's output into md2pdf, pandoc's default `--wrap=auto` (72 cols)
+wraps long `![alt text very long](path.png)` across multiple lines, which defeated
+the single-line image regex. **Fix**: `_preprocess_md()` now collapses multi-line
+image references into one line (outside code fences) before parsing.
+
+**Pipeline tip:** If you're piping HTML → markdown via pandoc, use
+`pandoc --wrap=none input.html -o output.md` to avoid wrap-related parsing issues
+for images and tables alike.
+
+## Input Format
+
+This skill takes **Markdown files only** as input. If you have HTML, DOCX, or
+other formats, convert them to markdown first (e.g. `pandoc --wrap=none`).
+Embedded HTML blocks in markdown are passed through as text — pre-process any
+visual content (charts, complex tables) into plain markdown tables or image
+references before invoking md2pdf.
+
 ## Configuration Reference
 
 | Argument | Default | Description |
@@ -206,6 +236,112 @@ Available: `warm-academic`, `nord-frost`, `github-light`, `solarized-light`,
 `paper-classic`, `ocean-breeze`.
 
 Each theme defines: page background, ink color, accent color, faded text, border, code background, watermark tint.
+
+## Fallback: pandoc + XeLaTeX
+
+When reportlab fails (e.g. wide/complex tables cause infinite loops in table width
+calculation), fall back to pandoc with XeLaTeX. This produces high-quality CJK PDFs
+with proper table handling.
+
+### When to use pandoc engine
+
+- User chose `latex-clean` theme (k) — pandoc is the primary engine, not a fallback
+- Document has many wide multi-column tables (reportlab's table layout may hang)
+- Document needs LaTeX-quality typesetting (justified text, hyphenation)
+- reportlab md2pdf.py hangs or crashes on the input
+
+### Basic command
+
+    pandoc input.md -o output.pdf \
+      --pdf-engine=xelatex \
+      -V CJKmainfont="Songti SC" -V mainfont="Palatino" -V monofont="Menlo" \
+      -V geometry:margin=2.5cm -V fontsize=11pt \
+      --toc -V toc-title="目录" -V documentclass=article
+
+### Adding watermark + headers/footers
+
+    pandoc input.md -o output.pdf \
+      --pdf-engine=xelatex \
+      -V CJKmainfont="Songti SC" -V mainfont="Palatino" -V monofont="Menlo" \
+      -V geometry:margin=2.5cm -V fontsize=11pt \
+      -V colorlinks=true -V linkcolor=red -V toccolor=red -V urlcolor=red \
+      --toc -V toc-title="目录" -V documentclass=article \
+      -V header-includes='
+    \usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \fancyhf{}
+    \fancyhead[L]{\small 页眉左侧文字}
+    \fancyhead[R]{\small 页眉右侧文字}
+    \fancyfoot[C]{\thepage}
+    \usepackage{draftwatermark}
+    \SetWatermarkText{水印文字}
+    \SetWatermarkScale{0.5}
+    \SetWatermarkColor[gray]{0.9}
+    '
+
+### Pandoc theme presets
+
+Each preset defines a complete set of pandoc `-V` flags. Use the full command from
+"Adding watermark + headers/footers" above, replacing the color/link flags per preset.
+
+| Theme | linkcolor | toccolor | urlcolor | Watermark color | Notes |
+|-------|-----------|----------|----------|-----------------|-------|
+| chinese-red | `red` | `red` | `red` | `[gray]{0.9}` | 朱红正式，适合政企报告、白皮书 |
+| warm-academic | `brown` | `brown` | `brown` | `[gray]{0.9}` | 陶土色调，温润学术风 |
+| classic-thesis | `brown` | `brown` | `brown` | `[gray]{0.85}` | LaTeX classicthesis 灵感 |
+| ieee-journal | `blue` | `blue` | `blue` | `[gray]{0.9}` | 藏蓝严谨，期刊风格 |
+| github-light | `blue` | `blue` | `blue` | `[gray]{0.92}` | 极简蓝白，程序员友好 |
+| ink-wash | `black` | `black` | `black` | `[gray]{0.92}` | 水墨素雅，文学/设计类 |
+| nord-frost | `teal` | `teal` | `teal` | `[gray]{0.9}` | 北欧冰霜蓝灰 |
+
+#### chinese-red 完整示例（本次一滕项目实际使用）
+
+    pandoc input.md -o output.pdf \
+      --pdf-engine=xelatex \
+      -V CJKmainfont="Songti SC" -V mainfont="Palatino" -V monofont="Menlo" \
+      -V geometry:margin=2.5cm -V fontsize=11pt \
+      -V colorlinks=true -V linkcolor=red -V toccolor=red -V urlcolor=red \
+      --toc -V toc-title="目录" -V documentclass=article \
+      -V header-includes='
+    \usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \fancyhf{}
+    \fancyhead[L]{\small 报告标题 | 品牌名}
+    \fancyhead[R]{\small 商业机密}
+    \fancyfoot[C]{\thepage}
+    \usepackage{draftwatermark}
+    \SetWatermarkText{商业机密}
+    \SetWatermarkScale{0.5}
+    \SetWatermarkColor[gray]{0.9}
+    '
+
+#### latex-clean 完整示例（最简洁的 LaTeX 学术风格）
+
+选择 `latex-clean` 时，**跳过 reportlab**，直接使用 pandoc 生成。特点：无封面、无扉页、
+无装饰色块，纯 LaTeX 排版 + 点线 TOC 引导符，适合内容为王的学术/技术文档。
+
+    pandoc input.md -o output.pdf \
+      --pdf-engine=xelatex \
+      -V CJKmainfont="Songti SC" -V mainfont="Palatino" -V monofont="Menlo" \
+      -V geometry:margin=2.5cm -V fontsize=11pt \
+      -V colorlinks=true -V linkcolor=brown -V toccolor=brown -V urlcolor=brown \
+      --toc -V toc-title="目录" -V documentclass=article
+
+如需添加页眉页脚或水印，参考上方 "Adding watermark + headers/footers" 追加 `-V header-includes`。
+
+### Known limitations (pandoc fallback)
+
+- No cover page (pandoc article class has no built-in cover — use `--include-before-body` with a LaTeX snippet if needed)
+- Frontispiece/back cover not supported (use md2pdf.py for these)
+- `→` `★` `☆` symbols may warn in Palatino — they render via CJK font fallback, safe to ignore
+- ASCII art diagrams render as code blocks (same as md2pdf.py)
+
+### Dependencies (pandoc fallback)
+
+Requires `pandoc` and a TeX distribution with XeLaTeX:
+
+    brew install pandoc
+    brew install --cask mactex-no-gui   # or basictex
 
 ## Dependencies
 

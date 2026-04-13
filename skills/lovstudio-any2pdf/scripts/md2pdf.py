@@ -29,7 +29,7 @@ from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_JUSTIFY
 from reportlab.platypus import (
     BaseDocTemplate, PageTemplate, Frame, Paragraph, Spacer, PageBreak,
-    Table, TableStyle, NextPageTemplate, Flowable
+    Table, TableStyle, NextPageTemplate, Flowable, Image as RLImage
 )
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
@@ -559,6 +559,9 @@ class PDFBuilder:
         self.body_w = self.page_w - self.lm - self.rm
         self.body_h = self.page_h - self.tm - self.bm
         self.accent_hex = config.get("accent_hex", "#CC785C")
+        # Base directory used to resolve relative image paths in the markdown.
+        # Defaults to the directory of the input .md file (set by main()).
+        self.input_dir = config.get("input_dir", "")
         self.ST = self._build_styles()
 
     def _build_styles(self):
@@ -874,19 +877,31 @@ class PDFBuilder:
         # Watermark
         wm = self.cfg.get("watermark", "")
         if wm:
-            wm_size = self.cfg.get("wm_size", 52)
             wm_angle = self.cfg.get("wm_angle", 35)
-            wm_sx = self.cfg.get("wm_spacing_x", 220)
-            wm_sy = self.cfg.get("wm_spacing_y", 160)
             wm_opacity = self.cfg.get("wm_opacity")
             if wm_opacity is not None:
                 wm_color = Color(T["wm_color"].red, T["wm_color"].green, T["wm_color"].blue, wm_opacity)
             else:
                 wm_color = T["wm_color"]
-            c.setFont("CJK", wm_size); c.setFillColor(wm_color)
+            c.setFillColor(wm_color)
             c.translate(self.page_w/2, self.page_h/2); c.rotate(wm_angle)
-            for dy in range(-300, 400, int(wm_sy)):
-                for dx in range(-400, 500, int(wm_sx)):
+            # Use explicit params if provided, otherwise auto-size by text length
+            wm_size = self.cfg.get("wm_size")
+            wm_sx = self.cfg.get("wm_spacing_x")
+            wm_sy = self.cfg.get("wm_spacing_y")
+            if wm_size and wm_sx and wm_sy:
+                wm_font_sz, dx_step, dy_step = int(wm_size), int(wm_sx), int(wm_sy)
+            else:
+                wm_len = len(wm)
+                if wm_len <= 5:
+                    wm_font_sz, dx_step, dy_step = 52, 220, 160
+                elif wm_len <= 10:
+                    wm_font_sz, dx_step, dy_step = 40, 320, 200
+                else:
+                    wm_font_sz, dx_step, dy_step = 32, 400, 220
+            c.setFont("CJK", wm_font_sz)
+            for dy in range(-400, 500, dy_step):
+                for dx in range(-500, 600, dx_step):
                     c.drawCentredString(dx, dy, wm)
             c.rotate(-wm_angle); c.translate(-self.page_w/2, -self.page_h/2)
 
@@ -1004,7 +1019,40 @@ class PDFBuilder:
     # ── Markdown → Story ──
     @staticmethod
     def _preprocess_md(md):
-        """Normalize markdown: split merged headings like '# Part## Chapter'."""
+        """Normalize markdown:
+        1. Collapse multi-line image refs (pandoc's default --wrap=auto breaks
+           `![alt](path)` across lines when alt text is long).
+        2. Split merged headings like '# Part## Chapter'.
+        """
+        # Pass 1: collapse any `![...](...)` that spans multiple lines into one.
+        # Matches a `![` opening whose matching `)` is on a later line, outside code fences.
+        def _collapse_images(text):
+            result = []
+            in_code = False
+            buf = text.split('\n')
+            i = 0
+            while i < len(buf):
+                line = buf[i]
+                if line.strip().startswith('```'):
+                    in_code = not in_code
+                    result.append(line); i += 1; continue
+                if in_code:
+                    result.append(line); i += 1; continue
+                # Find unclosed `![` on this line
+                if '![' in line and line.count('(') > line.count(')'):
+                    merged = line
+                    j = i + 1
+                    while j < len(buf) and merged.count('(') > merged.count(')'):
+                        merged += ' ' + buf[j].strip()
+                        j += 1
+                    result.append(merged)
+                    i = j
+                else:
+                    result.append(line); i += 1
+            return '\n'.join(result)
+
+        md = _collapse_images(md)
+
         lines = md.split('\n')
         out = []
         in_code = False
@@ -1070,8 +1118,8 @@ class PDFBuilder:
                     story.append(PageBreak())
                     cm = ChapterMark(title, level=0); story.append(cm)
                     hdeco = self.L["heading_decoration"]
-                    hts = self.cfg.get("heading_top_spacer", 5)
-                    story.append(Spacer(1, hts*mm))
+                    hts = self.cfg.get("heading_top_spacer")
+                    story.append(Spacer(1, hts*mm if hts else self.body_h * 0.35))
                     if hdeco == "rules":
                         story.append(HRuleCentered(self.body_w, 40*mm, 0.8, self.T["accent"]))
                         story.append(Spacer(1, 8*mm))
@@ -1095,8 +1143,8 @@ class PDFBuilder:
                 story.append(PageBreak())
                 cm = ChapterMark(title, level=1); story.append(cm)
                 hdeco = self.L["heading_decoration"]
-                hts = self.cfg.get("heading_top_spacer", 5)
-                story.append(Spacer(1, hts*mm))
+                hts = self.cfg.get("heading_top_spacer")
+                story.append(Spacer(1, hts*mm if hts else 12*mm))
                 story.append(Paragraph(md_inline(title, ah), ST['chapter']))
                 if hdeco == "rules":
                     story.append(Spacer(1, 5*mm))
@@ -1110,11 +1158,18 @@ class PDFBuilder:
                 toc.append(('chapter', title, cm.key))
                 i += 1; continue
 
-            # H3+ = Section (also handles ####, #####, etc.)
-            if re.match(r'^#{3,}\s', stripped):
-                title_text = stripped.lstrip('#').strip()
+            # H3 = Section
+            if stripped.startswith('### ') and not stripped.startswith('#### '):
                 story.append(Spacer(1, 3*mm))
-                story.append(Paragraph(md_inline(title_text, ah), ST['h3']))
+                story.append(Paragraph(md_inline(stripped[4:].strip(), ah), ST['h3']))
+                story.append(Spacer(1, 1*mm))
+                i += 1; continue
+
+            # H4+ = render as bold paragraph (no special layout)
+            if stripped.startswith('#### '):
+                title = stripped.lstrip('#').strip()
+                story.append(Spacer(1, 2*mm))
+                story.append(Paragraph(f"<b>{md_inline(title, ah)}</b>", ST['body']))
                 story.append(Spacer(1, 1*mm))
                 i += 1; continue
 
@@ -1143,6 +1198,31 @@ class PDFBuilder:
                 story.append(Paragraph(md_inline(stripped[2:].strip(), ah), ST['body_indent']))
                 i += 1; continue
 
+            # Images: ![alt](path)
+            img_m = re.match(r'^!\[.*?\]\((.+?)\)\s*$', stripped)
+            if img_m:
+                img_path = img_m.group(1).strip()
+                # Resolve relative paths against the input markdown's directory
+                if not os.path.isabs(img_path) and self.input_dir:
+                    resolved = os.path.join(self.input_dir, img_path)
+                else:
+                    resolved = img_path
+                if os.path.isfile(resolved):
+                    from PIL import Image as PILImage
+                    with PILImage.open(resolved) as pimg:
+                        iw, ih = pimg.size
+                    max_w = self.body_w
+                    max_h = self.body_h * 0.55
+                    scale = min(max_w / iw, max_h / ih, 1.0)
+                    story.append(Spacer(1, 3*mm))
+                    story.append(RLImage(resolved, width=iw*scale, height=ih*scale))
+                    story.append(Spacer(1, 3*mm))
+                else:
+                    print(f"WARN: image not found: {img_path}"
+                          + (f" (resolved: {resolved})" if resolved != img_path else ""),
+                          file=sys.stderr)
+                i += 1; continue
+
             # Paragraph — join consecutive lines; skip space between CJK characters
             plines = []
             while i < len(lines):
@@ -1161,6 +1241,9 @@ class PDFBuilder:
                     else:
                         merged += ' ' + pl
                 story.append(Paragraph(md_inline(merged, ah), ST['body']))
+            else:
+                # Safety: skip unrecognized lines to prevent infinite loop
+                i += 1
             continue
 
         return story, toc
@@ -1357,6 +1440,8 @@ def main():
         "wm_spacing_x": args.wm_spacing_x,
         "wm_spacing_y": args.wm_spacing_y,
         "heading_top_spacer": args.heading_top_spacer,
+        # Resolve relative image paths in the markdown against its directory
+        "input_dir": os.path.dirname(os.path.abspath(args.input)),
     }
 
     builder = PDFBuilder(config)

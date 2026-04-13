@@ -1,5 +1,7 @@
 ---
 name: lovstudio:any2docx
+category: Document Conversion
+tagline: "Markdown → professionally styled DOCX (Word). Same [14 themes](docs/THEME-GALLERY.md) as any2pdf, editable output."
 description: >
   Convert Markdown documents to professionally styled DOCX (Word) files with python-docx.
   Handles CJK/Latin mixed text, fenced code blocks, tables, blockquotes, cover pages,

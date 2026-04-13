@@ -5,7 +5,7 @@
 <h1 align="center">lovstudio/skills</h1>
 
 <p align="center">
-  <strong>Agent skills for AI coding assistants — Markdown to PDF/DOCX with 14 themes</strong><br>
+  <strong>Agent skills for AI coding assistants — document conversion, form filling, and more</strong><br>
   <sub>Works with Claude Code, Cursor, Copilot, Gemini CLI, and more</sub>
 </p>
 
@@ -13,7 +13,7 @@
   <a href="https://agentskills.io">agentskills.io</a> &middot;
   <a href="https://lovstudio.ai">lovstudio.ai</a> &middot;
   <a href="#install">Install</a> &middot;
-  <a href="#theme-gallery">Theme Gallery</a>
+  <a href="#available-skills">Skills</a>
 </p>
 
 ---
@@ -32,34 +32,71 @@ npx skills add lovstudio/skills --skill lovstudio:any2pdf
 
 ## Available Skills
 
+> Auto-generated from `skills/*/SKILL.md` — do not edit manually. Run `python scripts/generate-skills-table.py` or push to trigger CI.
+
+<!-- SKILLS:BEGIN -->
+
+### Meta Skills
+
 | Skill | Description |
 |-------|-------------|
-| [any2pdf](skills/lovstudio-any2pdf/) | Markdown → professionally typeset PDF. CJK/Latin mixed text, code blocks, tables, 14 themes. |
-| [any2docx](skills/lovstudio-any2docx/) | Markdown → professionally styled DOCX (Word). Same themes as any2pdf, editable output. |
+| [skill-creator](skills/lovstudio-skill-creator/) | Scaffold new lovstudio skills with proper structure, SKILL.md + README.md. |
+| [skill-optimizer](skills/lovstudio-skill-optimizer/) | Audit + auto-fix an existing skill, bump semver, and append a CHANGELOG entry. |
 
-## Theme Gallery
+### Document Conversion
 
-Both skills share the same set of 14 color themes. Here's how they look:
+| Skill | Description |
+|-------|-------------|
+| [any2deck](skills/lovstudio-any2deck/) | Content → slide deck images with 16 visual styles, PPTX/PDF export, branding overlay. |
+| [any2docx](skills/lovstudio-any2docx/) | Markdown → professionally styled DOCX (Word). Same [14 themes](docs/THEME-GALLERY.md) as any2pdf, editable output. |
+| [any2pdf](skills/lovstudio-any2pdf/) | Markdown → professionally typeset PDF. CJK/Latin mixed text, code blocks, tables, [14 themes](docs/THEME-GALLERY.md). |
+| [md2pdf](skills/lovstudio-md2pdf/) | Markdown → PDF via pandoc + xelatex. CJK support, quick & simple. |
+| [pdf2png](skills/lovstudio-pdf2png/) | PDF → single vertically concatenated PNG. Uses macOS CoreGraphics, ~20x faster than pdftoppm. |
+| [png2svg](skills/lovstudio-png2svg/) | PNG → high-quality SVG conversion with background removal and spline curves. |
 
-### Light Themes
+### Content Processing
 
-| warm-academic | nord-frost | github-light | solarized-light |
-|:---:|:---:|:---:|:---:|
-| ![warm-academic](docs/previews/warm-academic.png) | ![nord-frost](docs/previews/nord-frost.png) | ![github-light](docs/previews/github-light.png) | ![solarized-light](docs/previews/solarized-light.png) |
+| Skill | Description |
+|-------|-------------|
+| [anti-wechat-ai-check](skills/lovstudio-anti-wechat-ai-check/) | 检测文章 AI 痕迹 + 人性化润色，通过微信 3.27 条款检测。 |
+| [document-illustrator](skills/document-illustrator/) | 为文档原地插入 AI 配图。全局规划插入点，并行生成，异步插回原文。 |
+| [fill-form](skills/lovstudio-fill-form/) | Fill Word form templates (.docx). Auto-detects table fields, CJK font support. |
+| [thesis-polish](skills/lovstudio-thesis-polish/) | MBA 论文全面润色，对标全国优秀论文标准。语言+结构+论证+创新四维提升。 |
+| [translation-review](skills/lovstudio-translation-review/) | Chinese-to-English translation review. Compares source & translation across 6 dimensions. |
 
-| paper-classic | ocean-breeze | tufte | classic-thesis |
-|:---:|:---:|:---:|:---:|
-| ![paper-classic](docs/previews/paper-classic.png) | ![ocean-breeze](docs/previews/ocean-breeze.png) | ![tufte](docs/previews/tufte.png) | ![classic-thesis](docs/previews/classic-thesis.png) |
+### Content Creation
 
-| ieee-journal | elegant-book | chinese-red | ink-wash |
-|:---:|:---:|:---:|:---:|
-| ![ieee-journal](docs/previews/ieee-journal.png) | ![elegant-book](docs/previews/elegant-book.png) | ![chinese-red](docs/previews/chinese-red.png) | ![ink-wash](docs/previews/ink-wash.png) |
+| Skill | Description |
+|-------|-------------|
+| [image-creator](skills/lovstudio-image-creator/) | Generate images using Gemini via ZenMux. Supports ASCII art output. |
 
-### Dark Themes
+### Business
 
-| monokai-warm | dracula-soft |
-|:---:|:---:|
-| ![monokai-warm](docs/previews/monokai-warm.png) | ![dracula-soft](docs/previews/dracula-soft.png) |
+| Skill | Description |
+|-------|-------------|
+| [proposal](skills/lovstudio-proposal/) | 从客户需求文档生成完整商务方案，含技术架构、预算、时间线、风险分析。 |
+
+### xBTI
+
+| Skill | Description |
+|-------|-------------|
+| [xbti-creator](skills/lovstudio-xbti-creator/) | Create custom BTI personality tests (LBTI, FBTI, etc.) with AI-generated content + avatars. |
+| [xbti-gallery](skills/lovstudio-xbti-gallery/) | Browse all community-created BTI personality tests at xbti.lovstudio.ai. |
+
+### Dev Tools
+
+| Skill | Description |
+|-------|-------------|
+| [auto-context](skills/lovstudio-auto-context/) | Context hygiene checker. Suggests /fork or /btw when context is polluted. |
+| [deploy-to-vercel](skills/lovstudio-deploy-to-vercel/) | Deploy frontend to Vercel with auto Cloudflare DNS + custom domain setup. |
+| [finder-action](skills/lovstudio-finder-action/) | Generate Mac Finder right-click menu actions. Quick Action or Finder Sync Extension. |
+| [project-port](skills/lovstudio-project-port/) | Generate stable unique dev port (3000–8999) from project name. |
+
+<!-- SKILLS:END -->
+
+## Related
+
+**[lovstudio/claude-code-plugin](https://github.com/lovstudio/claude-code-plugin)** — Official Lovstudio plugin for Claude Code with hooks, commands, and auto-trigger support for skills like `auto-context`.
 
 ## Star History
 
