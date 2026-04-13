@@ -11,7 +11,7 @@
 
 <p align="center">
   <!-- BADGES:BEGIN -->
-  <img src="https://img.shields.io/badge/skills-22-CC785C?style=flat-square" alt="22 skills">
+  <img src="https://img.shields.io/badge/skills-23-CC785C?style=flat-square" alt="23 skills">
   <img src="https://img.shields.io/badge/categories-8-181818?style=flat-square" alt="8 categories">
   <!-- BADGES:END -->
   <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="MIT License">
@@ -98,6 +98,7 @@ npx skills add lovstudio/skills --skill lovstudio:any2pdf
 | [auto-context](skills/lovstudio-auto-context/) | Context hygiene checker. Suggests /fork or /btw when context is polluted. |
 | [deploy-to-vercel](skills/lovstudio-deploy-to-vercel/) | Deploy frontend to Vercel with auto Cloudflare DNS + custom domain setup. |
 | [finder-action](skills/lovstudio-finder-action/) | Generate Mac Finder right-click menu actions. Quick Action or Finder Sync Extension. |
+| [obsidian-reset-cache](skills/lovstudio-obsidian-reset-cache/) | 重置 Obsidian 缓存，解决卡在 Loading cache 的问题。 |
 | [project-port](skills/lovstudio-project-port/) | Generate stable unique dev port (3000–8999) from project name. |
 
 ### Developer Tools

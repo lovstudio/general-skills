@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.6.0
+
+- **proposal**: New skill — generate complete business proposals from client requirements (architecture, budget, timeline, risk analysis)
+- **thesis-polish**: New skill — MBA thesis polishing to national outstanding thesis standards
+- **finder-action**: New skill — generate Mac Finder right-click menu actions (Quick Action or Finder Sync Extension)
+- **pdf2png**: New skill — PDF → single concatenated PNG via macOS CoreGraphics
+- **md2pdf**: New skill — Markdown → PDF via pandoc + xelatex with CJK support
+- **gh-tidy**: New skill — interactive GitHub repo triage (issues, PRs, stale branches, labels)
+- **obsidian-reset-cache**: New skill — reset Obsidian cache to fix "Loading cache..." hang
+- **any2pdf**: Add pandoc + XeLaTeX fallback engine, latex-clean theme, watermark params, image-cover mode
+- **README**: Auto-generate skills table from SKILL.md frontmatter via CI, shield badges for stats
+- **CI**: Add `sync-readme.yml` workflow to keep skills table in sync on push
+
+## 0.5.2
+
 ## 0.5.1
 
 - **README**: Reorganize skills into 6 categories (Meta Skills / Document Conversion / Content Processing / Content Creation / xBTI / Dev Tools), add missing `document-illustrator` skill, extract Theme Gallery to `docs/THEME-GALLERY.md` with external links from skill descriptions
