@@ -1131,9 +1131,17 @@ class PDFBuilder:
                 i += 1; continue
 
             # H3 = Section
-            if stripped.startswith('### '):
+            if stripped.startswith('### ') and not stripped.startswith('#### '):
                 story.append(Spacer(1, 3*mm))
                 story.append(Paragraph(md_inline(stripped[4:].strip(), ah), ST['h3']))
+                story.append(Spacer(1, 1*mm))
+                i += 1; continue
+
+            # H4+ = render as bold paragraph (no special layout)
+            if stripped.startswith('#### '):
+                title = stripped.lstrip('#').strip()
+                story.append(Spacer(1, 2*mm))
+                story.append(Paragraph(f"<b>{md_inline(title, ah)}</b>", ST['body']))
                 story.append(Spacer(1, 1*mm))
                 i += 1; continue
 
@@ -1204,6 +1212,9 @@ class PDFBuilder:
                     else:
                         merged += ' ' + pl
                 story.append(Paragraph(md_inline(merged, ah), ST['body']))
+            else:
+                # Safety: skip unrecognized lines to prevent infinite loop
+                i += 1
             continue
 
         return story, toc

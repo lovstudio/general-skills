@@ -16,7 +16,7 @@ compatibility: >
   Linux: uses Carlito, Liberation Serif, Droid Sans Fallback, DejaVu Sans Mono.
 metadata:
   author: lovstudio
-  version: "1.1.1"
+  version: "1.2.0"
   tags: markdown pdf cjk reportlab typesetting
 ---
 
@@ -71,6 +71,7 @@ concise — like a design assistant, not a config form:
  h) GitHub    — 蓝白极简，程序员熟悉的风格
  i) Nord 冰霜 — 蓝灰北欧风，清爽现代
  j) 海洋      — 青绿色调，清新自然
+ k) LaTeX 清爽 — pandoc+XeLaTeX 原生排版，无封面无装饰，干净学术风（需装 pandoc+texlive）
 
 ━━━ 🖼 扉页图片（封面之后的全页插图） ━━━
  1) 跳过
@@ -94,7 +95,7 @@ concise — like a design assistant, not a config form:
 
 | Choice | CLI arg |
 |--------|---------|
-| Design style a-j | `--theme` with value from table below |
+| Design style a-k | `--theme` with value from table below (k uses pandoc engine) |
 | Frontispiece local | `--frontispiece <path>` |
 | Frontispiece AI | Generate image first, then `--frontispiece /tmp/frontispiece.png` |
 | Watermark text | `--watermark "文字"` |
@@ -115,6 +116,7 @@ concise — like a design assistant, not a config form:
 | h) GitHub | `github-light` | GitHub Markdown style |
 | i) Nord | `nord-frost` | Nord color scheme |
 | j) 海洋 | `ocean-breeze` | — |
+| k) LaTeX 清爽 | `latex-clean` | pandoc+XeLaTeX 原生排版，无封面 |
 
 ### Handling AI-Generated Frontispiece
 
@@ -229,8 +231,9 @@ When reportlab fails (e.g. wide/complex tables cause infinite loops in table wid
 calculation), fall back to pandoc with XeLaTeX. This produces high-quality CJK PDFs
 with proper table handling.
 
-### When to use pandoc fallback
+### When to use pandoc engine
 
+- User chose `latex-clean` theme (k) — pandoc is the primary engine, not a fallback
 - Document has many wide multi-column tables (reportlab's table layout may hang)
 - Document needs LaTeX-quality typesetting (justified text, hyphenation)
 - reportlab md2pdf.py hangs or crashes on the input
@@ -299,6 +302,20 @@ Each preset defines a complete set of pandoc `-V` flags. Use the full command fr
     \SetWatermarkScale{0.5}
     \SetWatermarkColor[gray]{0.9}
     '
+
+#### latex-clean 完整示例（最简洁的 LaTeX 学术风格）
+
+选择 `latex-clean` 时，**跳过 reportlab**，直接使用 pandoc 生成。特点：无封面、无扉页、
+无装饰色块，纯 LaTeX 排版 + 点线 TOC 引导符，适合内容为王的学术/技术文档。
+
+    pandoc input.md -o output.pdf \
+      --pdf-engine=xelatex \
+      -V CJKmainfont="Songti SC" -V mainfont="Palatino" -V monofont="Menlo" \
+      -V geometry:margin=2.5cm -V fontsize=11pt \
+      -V colorlinks=true -V linkcolor=brown -V toccolor=brown -V urlcolor=brown \
+      --toc -V toc-title="目录" -V documentclass=article
+
+如需添加页眉页脚或水印，参考上方 "Adding watermark + headers/footers" 追加 `-V header-includes`。
 
 ### Known limitations (pandoc fallback)
 

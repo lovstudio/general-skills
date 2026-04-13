@@ -3,6 +3,14 @@
 All notable changes to this skill are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) · Versioning: [SemVer](https://semver.org/)
 
+## [1.2.0] - 2026-04-13
+
+### Added
+
+- Add latex-clean as official theme option (k) using pandoc+XeLaTeX engine
+- New theme: latex-clean — pure LaTeX typography, no cover/decoration, clean academic style
+- Pandoc is now a first-class engine choice, not just a fallback
+
 ## [1.1.1] - 2026-04-13
 
 ### Fixed
