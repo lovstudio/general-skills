@@ -10,6 +10,14 @@
 </p>
 
 <p align="center">
+  <!-- BADGES:BEGIN -->
+  <img src="https://img.shields.io/badge/skills-22-CC785C?style=flat-square" alt="22 skills">
+  <img src="https://img.shields.io/badge/categories-8-181818?style=flat-square" alt="8 categories">
+  <!-- BADGES:END -->
+  <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="MIT License">
+</p>
+
+<p align="center">
   <a href="https://agentskills.io">agentskills.io</a> &middot;
   <a href="https://lovstudio.ai">lovstudio.ai</a> &middot;
   <a href="#install">Install</a> &middot;
@@ -35,11 +43,6 @@ npx skills add lovstudio/skills --skill lovstudio:any2pdf
 > Auto-generated from `skills/*/SKILL.md` — do not edit manually. Run `python scripts/generate-skills-table.py` or push to trigger CI.
 
 <!-- SKILLS:BEGIN -->
-
-<p align="center">
-  <img src="https://img.shields.io/badge/skills-22-CC785C?style=for-the-badge" alt="22 skills">
-  <img src="https://img.shields.io/badge/categories-8-181818?style=for-the-badge" alt="8 categories">
-</p>
 
 ### Meta Skills
 

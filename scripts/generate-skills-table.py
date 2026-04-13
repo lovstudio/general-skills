@@ -30,6 +30,8 @@ CATEGORY_ORDER = [
 
 BEGIN_MARKER = "<!-- SKILLS:BEGIN -->"
 END_MARKER = "<!-- SKILLS:END -->"
+BADGES_BEGIN = "<!-- BADGES:BEGIN -->"
+BADGES_END = "<!-- BADGES:END -->"
 
 
 def parse_frontmatter(path: str) -> dict | None:
@@ -73,12 +75,7 @@ def generate_table() -> str:
     total_skills = sum(len(v) for v in skills.values())
     total_categories = len(skills)
 
-    lines = [
-        f'<p align="center">',
-        f'  <img src="https://img.shields.io/badge/skills-{total_skills}-CC785C?style=for-the-badge" alt="{total_skills} skills">',
-        f'  <img src="https://img.shields.io/badge/categories-{total_categories}-181818?style=for-the-badge" alt="{total_categories} categories">',
-        f'</p>\n',
-    ]
+    lines = []
 
     for cat in CATEGORY_ORDER:
         entries = skills.pop(cat, [])
@@ -101,11 +98,11 @@ def generate_table() -> str:
             lines.append(f"| [{display}](skills/{dirname}/) | {tagline} |")
         lines.append("")
 
-    return "\n".join(lines)
+    return total_skills, total_categories, "\n".join(lines)
 
 
 def main():
-    table = generate_table()
+    total_skills, total_categories, table = generate_table()
 
     with open(README_PATH, "r", encoding="utf-8") as f:
         readme = f.read()
@@ -114,11 +111,26 @@ def main():
         print(f"ERROR: markers {BEGIN_MARKER} / {END_MARKER} not found in README.md", file=sys.stderr)
         sys.exit(1)
 
+    # Update skills table
     pattern = re.compile(
         re.escape(BEGIN_MARKER) + r".*?" + re.escape(END_MARKER),
         re.DOTALL,
     )
     new_readme = pattern.sub(f"{BEGIN_MARKER}\n\n{table}\n{END_MARKER}", readme)
+
+    # Update badges in header
+    if BADGES_BEGIN in new_readme and BADGES_END in new_readme:
+        badges = (
+            f'{BADGES_BEGIN}\n'
+            f'  <img src="https://img.shields.io/badge/skills-{total_skills}-CC785C?style=flat-square" alt="{total_skills} skills">\n'
+            f'  <img src="https://img.shields.io/badge/categories-{total_categories}-181818?style=flat-square" alt="{total_categories} categories">\n'
+            f'  {BADGES_END}'
+        )
+        badges_pattern = re.compile(
+            re.escape(BADGES_BEGIN) + r".*?" + re.escape(BADGES_END),
+            re.DOTALL,
+        )
+        new_readme = badges_pattern.sub(badges, new_readme)
 
     if new_readme == readme:
         print("README.md is already up to date.")
