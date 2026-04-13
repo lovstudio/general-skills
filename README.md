@@ -69,7 +69,6 @@ npx skills add lovstudio/skills --skill lovstudio:any2pdf
 | [anti-wechat-ai-check](skills/lovstudio-anti-wechat-ai-check/) | 检测文章 AI 痕迹 + 人性化润色，通过微信 3.27 条款检测。 |
 | [document-illustrator](skills/lovstudio-document-illustrator/) | 为文档原地插入 AI 配图。全局规划插入点，并行生成，异步插回原文。 |
 | [fill-form](skills/lovstudio-fill-form/) | Fill Word form templates (.docx). Auto-detects table fields, CJK font support. |
-| [fill-web-form](skills/lovstudio-fill-web-form/) | Fill web forms from local knowledge base. Fetch URL → deep-search KB → generate markdown doc. |
 | [thesis-polish](skills/lovstudio-thesis-polish/) | MBA 论文全面润色，对标全国优秀论文标准。语言+结构+论证+创新四维提升。 |
 | [translation-review](skills/lovstudio-translation-review/) | Chinese-to-English translation review. Compares source & translation across 6 dimensions. |
 
