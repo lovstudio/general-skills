@@ -1,5 +1,7 @@
 ---
 name: lovstudio:translation-review
+category: Content Processing
+tagline: "Chinese-to-English translation review. Compares source & translation across 6 dimensions."
 description: >
   Review Chinese-to-English translations for accuracy, grammar, terminology,
   and consistency. Produces a structured review report with prioritized issues.

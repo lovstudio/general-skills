@@ -1,5 +1,7 @@
 ---
 name: lovstudio:finder-action
+category: Dev Tools
+tagline: "Generate Mac Finder right-click menu actions. Quick Action or Finder Sync Extension."
 description: >
   Generate Mac Finder right-click menu actions. Two modes: (A) Automator Quick Action
   for file/folder context menus, (B) Finder Sync Extension (Swift + xcodegen) for

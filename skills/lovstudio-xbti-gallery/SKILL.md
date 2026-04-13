@@ -1,5 +1,7 @@
 ---
 name: lovstudio:xbti-gallery
+category: xBTI
+tagline: "Browse all community-created BTI personality tests at xbti.lovstudio.ai."
 description: >
   Browse the XBTI Gallery — all community-created BTI personality tests at xbti.lovstudio.ai.
   Trigger when user says "XBTI Gallery", "xbti-gallery", "BTI列表", "浏览人格测试",

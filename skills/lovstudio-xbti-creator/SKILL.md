@@ -1,5 +1,7 @@
 ---
 name: lovstudio:xbti-creator
+category: xBTI
+tagline: "Create custom BTI personality tests (LBTI, FBTI, etc.) with AI-generated content + avatars."
 description: >
   Create a complete custom BTI personality test (like LBTI, FBTI, etc.) based on the XBTI architecture.
   User provides a theme name and preferences, AI generates all content: dimensions, questions,

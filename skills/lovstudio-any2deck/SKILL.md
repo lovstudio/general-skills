@@ -1,5 +1,7 @@
 ---
 name: lovstudio:any2deck
+category: Document Conversion
+tagline: "Content → slide deck images with 16 visual styles, PPTX/PDF export, branding overlay."
 description: >
   Generate professional slide deck images from content (Markdown, text, URLs).
   Creates outlines with style instructions, then generates individual slide images.

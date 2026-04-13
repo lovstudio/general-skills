@@ -1,5 +1,7 @@
 ---
 name: lovstudio:pdf2png
+category: Document Conversion
+tagline: "PDF → single vertically concatenated PNG. Uses macOS CoreGraphics, ~20x faster than pdftoppm."
 description: >
   Convert PDF files to a single vertically concatenated PNG image using macOS
   native CoreGraphics. Each page is rendered at 2x scale and stitched top-to-bottom.

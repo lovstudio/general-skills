@@ -1,5 +1,7 @@
 ---
 name: document-illustrator
+category: Content Processing
+tagline: "为文档原地插入 AI 配图。全局规划插入点，并行生成，异步插回原文。"
 description: >
   为文档原地插入 AI 配图。读取文档后全局规划插入点，并行生成所有图片，
   异步插回原文。支持封面图、自定义比例和三种风格。

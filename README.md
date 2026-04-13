@@ -32,6 +32,10 @@ npx skills add lovstudio/skills --skill lovstudio:any2pdf
 
 ## Available Skills
 
+> Auto-generated from `skills/*/SKILL.md` — do not edit manually. Run `python scripts/generate-skills-table.py` or push to trigger CI.
+
+<!-- SKILLS:BEGIN -->
+
 ### Meta Skills
 
 | Skill | Description |
@@ -43,34 +47,34 @@ npx skills add lovstudio/skills --skill lovstudio:any2pdf
 
 | Skill | Description |
 |-------|-------------|
-| [any2pdf](skills/lovstudio-any2pdf/) | Markdown → professionally typeset PDF. CJK/Latin mixed text, code blocks, tables, [14 themes](docs/THEME-GALLERY.md). |
-| [any2docx](skills/lovstudio-any2docx/) | Markdown → professionally styled DOCX (Word). Same [14 themes](docs/THEME-GALLERY.md) as any2pdf, editable output. |
 | [any2deck](skills/lovstudio-any2deck/) | Content → slide deck images with 16 visual styles, PPTX/PDF export, branding overlay. |
-| [png2svg](skills/lovstudio-png2svg/) | PNG → high-quality SVG conversion with background removal and spline curves. |
-| [pdf2png](skills/lovstudio-pdf2png/) | PDF → single vertically concatenated PNG. Uses macOS CoreGraphics, ~20x faster than pdftoppm. |
+| [any2docx](skills/lovstudio-any2docx/) | Markdown → professionally styled DOCX (Word). Same [14 themes](docs/THEME-GALLERY.md) as any2pdf, editable output. |
+| [any2pdf](skills/lovstudio-any2pdf/) | Markdown → professionally typeset PDF. CJK/Latin mixed text, code blocks, tables, [14 themes](docs/THEME-GALLERY.md). |
 | [md2pdf](skills/lovstudio-md2pdf/) | Markdown → PDF via pandoc + xelatex. CJK support, quick & simple. |
+| [pdf2png](skills/lovstudio-pdf2png/) | PDF → single vertically concatenated PNG. Uses macOS CoreGraphics, ~20x faster than pdftoppm. |
+| [png2svg](skills/lovstudio-png2svg/) | PNG → high-quality SVG conversion with background removal and spline curves. |
 
 ### Content Processing
 
 | Skill | Description |
 |-------|-------------|
-| [fill-form](skills/lovstudio-fill-form/) | Fill Word form templates (.docx). Auto-detects table fields, CJK font support. |
-| [document-illustrator](skills/document-illustrator/) | 为文档原地插入 AI 配图。全局规划插入点，并行生成，异步插回原文。 |
-| [translation-review](skills/lovstudio-translation-review/) | Chinese-to-English translation review. Compares source & translation across 6 dimensions, outputs prioritized report. |
 | [anti-wechat-ai-check](skills/lovstudio-anti-wechat-ai-check/) | 检测文章 AI 痕迹 + 人性化润色，通过微信 3.27 条款检测。 |
+| [document-illustrator](skills/document-illustrator/) | 为文档原地插入 AI 配图。全局规划插入点，并行生成，异步插回原文。 |
+| [fill-form](skills/lovstudio-fill-form/) | Fill Word form templates (.docx). Auto-detects table fields, CJK font support. |
 | [thesis-polish](skills/lovstudio-thesis-polish/) | MBA 论文全面润色，对标全国优秀论文标准。语言+结构+论证+创新四维提升。 |
-
-### Business
-
-| Skill | Description |
-|-------|-------------|
-| [proposal](skills/lovstudio-proposal/) | Client requirements → complete business proposal PDF. Auto-generates architecture, budget, timeline, illustrations, and branded PDF. |
+| [translation-review](skills/lovstudio-translation-review/) | Chinese-to-English translation review. Compares source & translation across 6 dimensions. |
 
 ### Content Creation
 
 | Skill | Description |
 |-------|-------------|
 | [image-creator](skills/lovstudio-image-creator/) | Generate images using Gemini via ZenMux. Supports ASCII art output. |
+
+### Business
+
+| Skill | Description |
+|-------|-------------|
+| [proposal](skills/lovstudio-proposal/) | 从客户需求文档生成完整商务方案，含技术架构、预算、时间线、风险分析。 |
 
 ### xBTI
 
@@ -83,10 +87,12 @@ npx skills add lovstudio/skills --skill lovstudio:any2pdf
 
 | Skill | Description |
 |-------|-------------|
-| [auto-context](skills/lovstudio-auto-context/) | Context hygiene checker. Suggests /fork or /btw when context is polluted. Best with [lovstudio plugin](https://github.com/lovstudio/claude-code-plugin) for auto-trigger. |
+| [auto-context](skills/lovstudio-auto-context/) | Context hygiene checker. Suggests /fork or /btw when context is polluted. |
 | [deploy-to-vercel](skills/lovstudio-deploy-to-vercel/) | Deploy frontend to Vercel with auto Cloudflare DNS + custom domain setup. |
-| [finder-action](skills/lovstudio-finder-action/) | Generate Mac Finder right-click menu actions. Quick Action (files) or Finder Sync Extension (blank space). |
+| [finder-action](skills/lovstudio-finder-action/) | Generate Mac Finder right-click menu actions. Quick Action or Finder Sync Extension. |
 | [project-port](skills/lovstudio-project-port/) | Generate stable unique dev port (3000–8999) from project name. |
+
+<!-- SKILLS:END -->
 
 ## Related
 

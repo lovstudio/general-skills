@@ -1,5 +1,7 @@
 ---
 name: lovstudio:anti-wechat-ai-check
+category: Content Processing
+tagline: "检测文章 AI 痕迹 + 人性化润色，通过微信 3.27 条款检测。"
 description: >
   Analyze articles for AI-generated content indicators and rewrite to pass
   WeChat's 3.27 non-human automated content creation detection. Checks for

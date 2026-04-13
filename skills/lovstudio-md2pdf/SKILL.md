@@ -1,5 +1,7 @@
 ---
 name: lovstudio:md2pdf
+category: Document Conversion
+tagline: "Markdown → PDF via pandoc + xelatex. CJK support, quick & simple."
 description: >
   Convert Markdown files to PDF using pandoc + xelatex with CJK support
   (PingFang SC). Simple, fast, no Python dependencies — just pandoc and

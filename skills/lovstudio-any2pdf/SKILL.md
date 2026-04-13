@@ -1,5 +1,7 @@
 ---
 name: lovstudio:any2pdf
+category: Document Conversion
+tagline: "Markdown → professionally typeset PDF. CJK/Latin mixed text, code blocks, tables, [14 themes](docs/THEME-GALLERY.md)."
 description: >
   Convert Markdown documents to professionally typeset PDF files. Primary engine:
   reportlab (cover pages, frontispiece, back cover, bookmarks). Fallback engine:

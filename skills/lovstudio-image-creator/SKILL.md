@@ -1,5 +1,7 @@
 ---
 name: lovstudio:image-creator
+category: Content Creation
+tagline: "Generate images using Gemini via ZenMux. Supports ASCII art output."
 description: Generate images using Gemini via ZenMux
 allowed-tools: [Bash, Read]
 ---

@@ -1,5 +1,7 @@
 ---
 name: lovstudio:auto-context
+category: Dev Tools
+tagline: "Context hygiene checker. Suggests /fork or /btw when context is polluted."
 description: >
   Manual context hygiene check. Analyzes current session for context pollution
   (long conversations, topic drift, stale noise) and recommends: continue,

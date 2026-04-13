@@ -1,5 +1,7 @@
 ---
 name: lovstudio:proposal
+category: Business
+tagline: "从客户需求文档生成完整商务方案，含技术架构、预算、时间线、风险分析。"
 description: >
   Generate complete business proposals for client projects. Takes client
   requirement documents (docx/pdf/md) or verbal descriptions as input,

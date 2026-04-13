@@ -1,5 +1,7 @@
 ---
 name: lovstudio:skill-optimizer
+category: Meta Skills
+tagline: "Audit + auto-fix an existing skill, bump semver, and append a CHANGELOG entry."
 description: >
   Audit and automatically optimize a lovstudio skill against repo conventions
   and official Anthropic skill-creator best practices, then bump the semver

@@ -1,5 +1,7 @@
 ---
 name: lovstudio:skill-creator
+category: Meta Skills
+tagline: "Scaffold new lovstudio skills with proper structure, SKILL.md + README.md."
 description: >
   Create new skills for the lovstudio/skills repo. Fork of the official
   skill-creator with lovstudio conventions: lovstudio: name prefix,
