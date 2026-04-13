@@ -1,6 +1,6 @@
 # lovstudio:skill-optimizer
 
-![Version](https://img.shields.io/badge/version-0.1.0-CC785C)
+![Version](https://img.shields.io/badge/version-0.2.0-CC785C)
 
 自动优化 lovstudio skill — 审计规范、应用修复、bump 版本、追加 changelog。
 
@@ -17,15 +17,16 @@ Requires: Python 3.8+ (stdlib only, no `pip install`)
 ## What It Does
 
 ```
-┌──────────────────────────────────────────────┐
-│            skill-optimizer pipeline          │
-├──────────────────────────────────────────────┤
-│  1. lint      审计 SKILL.md / scripts / README │
-│  2. apply     优先修复对话中提到的问题         │
-│  3. bump      patch / minor / major            │
-│  4. changelog 追加 Keep a Changelog 条目       │
-│  5. re-lint   验证 + 输出简报                  │
-└──────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────┐
+│             skill-optimizer pipeline             │
+├──────────────────────────────────────────────────┤
+│  1. lint       审计 SKILL.md / scripts / README  │
+│  2. apply      优先修复对话中提到的问题          │
+│  3. bump       patch / minor / major             │
+│  4. changelog  追加 Keep a Changelog 条目        │
+│  5. re-lint    验证 + 输出简报                   │
+│  6. commit     git add + commit + push           │
+└──────────────────────────────────────────────────┘
 ```
 
 Fully automatic — no interactive prompts. Optimizations are driven by issues
@@ -48,6 +49,7 @@ Claude will:
 3. Edit `SKILL.md` / `README.md` / scripts to fix prioritized issues.
 4. Run `bump_version.py` to bump the version and prepend a `CHANGELOG.md` entry.
 5. Report what changed.
+6. Commit and push to GitHub.
 
 ### CLI
 

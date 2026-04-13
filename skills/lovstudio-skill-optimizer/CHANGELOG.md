@@ -3,6 +3,13 @@
 All notable changes to this skill are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) · Versioning: [SemVer](https://semver.org/)
 
+## [0.2.0] - 2026-04-14
+
+### Added
+
+- Add Step 7: auto commit & push after optimization
+- Update README pipeline diagram to include git push step
+
 ## [0.1.0] - 2026-04-10
 
 ### Added

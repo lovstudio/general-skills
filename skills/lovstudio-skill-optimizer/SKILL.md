@@ -19,7 +19,7 @@ compatibility: >
   Must be run inside the lovstudio-skills repo (auto-detects repo root).
 metadata:
   author: lovstudio
-  version: "0.1.0"
+  version: "0.2.0"
   tags: meta skill-maintenance versioning changelog lint
 ---
 
@@ -132,6 +132,20 @@ remaining lint warnings: <count>  (or "none")
 
 **Do not** print a trailing summary, self-congratulation, or next-step suggestions.
 The diff speaks for itself.
+
+### Step 7: Commit & push
+
+After reporting, always commit and push the changes:
+
+```bash
+git add skills/lovstudio-<name>/
+git commit -m "fix(<name>): <one-line summary>"
+git push
+```
+
+- Commit message follows repo convention: `fix|feat|docs(<skill-name>): <summary>`
+- Use `fix` for patch, `feat` for minor, `feat!` for major
+- Push to current branch (typically `main`)
 
 ## CLI Reference
 
