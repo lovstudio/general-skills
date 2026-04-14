@@ -3,6 +3,12 @@
 All notable changes to this skill are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) · Versioning: [SemVer](https://semver.org/)
 
+## [1.1.1] - 2026-04-14
+
+### Fixed
+
+- Add publish workflow: symlink chain + git push to Step 5
+
 ## [1.1.0] - 2026-04-14
 
 ### Added

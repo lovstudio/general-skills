@@ -16,7 +16,7 @@ compatibility: >
   Works within the lovstudio/skills repo. Requires Python 3.8+.
 metadata:
   author: lovstudio
-  version: "1.1.0"
+  version: "1.1.1"
   tags: skill-creator scaffold generator lovstudio
 ---
 
@@ -102,26 +102,53 @@ The script auto-generates:
 
 See `references/templates.md` for SKILL.md and README.md templates.
 
-### Step 5: Register
+### Step 5: Register & Publish
 
-After the skill is complete, update these files:
+After the skill is complete, do ALL of the following:
+
+#### 5a. Update repo indexes
 
 1. **`CLAUDE.md`** — add row to Skills table:
    ```
    | `<name>` | `skills/lovstudio-<name>/scripts/<script>.py` (<lib>) | `pip install <lib>` |
    ```
+   For pure-instruction skills (no script): `(pure instructions, no script)`
 
 2. **Root `README.md`** — add row to Available Skills table:
    ```
    | [<name>](skills/lovstudio-<name>/) | One-line description. |
    ```
 
+#### 5b. Symlink for local availability
+
+Create the symlink chain so the skill is immediately usable in Claude Code:
+
+```bash
+# 1. Link from skills repo into .agents
+ln -s /Users/mark/projects/lovstudio-skills/skills/lovstudio-<name> \
+      /Users/mark/.agents/skills/lovstudio-<name>
+
+# 2. Link from .agents into .claude/skills (where Claude Code reads)
+ln -s ../../.agents/skills/lovstudio-<name> \
+      /Users/mark/.claude/skills/lovstudio-<name>
+```
+
+Verify: `ls ~/.claude/skills/lovstudio-<name>/SKILL.md` should resolve.
+
+#### 5c. Commit & push to GitHub
+
+```bash
+cd /Users/mark/projects/lovstudio-skills
+git add skills/lovstudio-<name>/ CLAUDE.md README.md
+git commit -m "feat: add <name> skill — <one-line description>"
+git push
+```
+
 ### Step 6: Test & Iterate
 
-1. Symlink for live testing: `bash dev.sh lovstudio-<name>`
-2. Use the skill in a real conversation
-3. Notice struggles → fix SKILL.md or scripts
-4. Repeat
+1. Verify local availability: try invoking `/lovstudio:<name>` in a new conversation
+2. Notice struggles → fix SKILL.md or scripts
+3. Repeat
 
 ## Design Patterns
 
