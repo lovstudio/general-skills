@@ -16,7 +16,7 @@ compatibility: >
   Works within the lovstudio/skills repo. Requires Python 3.8+.
 metadata:
   author: lovstudio
-  version: "1.1.1"
+  version: "1.2.0"
   tags: skill-creator scaffold generator lovstudio
 ---
 
@@ -38,6 +38,22 @@ These OVERRIDE the official skill-creator defaults:
 | Packaging with .skill | Publishing via `npx skills add lovstudio/skills` |
 
 ## Skill Creation Process
+
+### Step 0: Choose Target Repo
+
+**IMPORTANT: Use `AskUserQuestion` to ask BEFORE doing anything else.**
+
+Ask which repo the skill should live in:
+
+- **lovstudio/skills** (public) — open source skills, MIT licensed
+- **lovstudio/pro-skills** (private) — proprietary/internal skills
+
+This determines:
+- Working directory: `~/projects/lovstudio-skills/` vs `~/projects/lovstudio-pro-skills/`
+- Install command in README: `npx skills add lovstudio/skills` vs `npx skills add lovstudio/pro-skills`
+- PR target repo in Step 5c
+
+Store the choice — it affects Steps 3, 5a, 5b, and 5c.
 
 ### Step 1: Understand the Skill
 
@@ -135,14 +151,37 @@ ln -s ../../.agents/skills/lovstudio-<name> \
 
 Verify: `ls ~/.claude/skills/lovstudio-<name>/SKILL.md` should resolve.
 
-#### 5c. Commit & push to GitHub
+#### 5c. Commit & create PR
+
+Based on the repo chosen in Step 0:
 
 ```bash
+# For lovstudio/skills (public):
 cd /Users/mark/projects/lovstudio-skills
+
+# For lovstudio/pro-skills (private):
+cd /Users/mark/projects/lovstudio-pro-skills
+```
+
+Then:
+
+```bash
+git checkout -b feat/add-<name>
 git add skills/lovstudio-<name>/ CLAUDE.md README.md
 git commit -m "feat: add <name> skill — <one-line description>"
-git push
+git push -u origin HEAD
+gh pr create \
+  --title "feat: add lovstudio:<name> skill" \
+  --body "## Summary
+- <what the skill does>
+- <key implementation detail>
+
+## Test plan
+- [ ] Symlinked and tested in conversation
+- [ ] Script runs without errors"
 ```
+
+If the user declines PR creation, just commit and push to main directly.
 
 ### Step 6: Test & Iterate
 
