@@ -12,7 +12,7 @@
 <p align="center">
   <!-- BADGES:BEGIN -->
   <img src="https://img.shields.io/badge/skills-23-CC785C?style=flat-square" alt="23 skills">
-  <img src="https://img.shields.io/badge/categories-8-181818?style=flat-square" alt="8 categories">
+  <img src="https://img.shields.io/badge/categories-9-181818?style=flat-square" alt="9 categories">
   <!-- BADGES:END -->
   <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="MIT License">
 </p>
@@ -85,10 +85,25 @@ npx skills add lovstudio/skills --skill lovstudio:any2pdf
 |-------|-------------|
 | [anti-wechat-ai-check](skills/lovstudio-anti-wechat-ai-check/) | 检测文章 AI 痕迹 + 人性化润色，通过微信 3.27 条款检测。 |
 | [document-illustrator](skills/lovstudio-document-illustrator/) | 为文档原地插入 AI 配图。全局规划插入点，并行生成，异步插回原文。 |
+| [translation-review](skills/lovstudio-translation-review/) | Chinese-to-English translation review. Compares source & translation across 6 dimensions. |
+
+### Office Automation
+
+| Skill | Description |
+|-------|-------------|
 | [fill-form](skills/lovstudio-fill-form/) | Fill Word form templates (.docx). Auto-detects table fields, CJK font support. |
 | [fill-web-form](skills/lovstudio-fill-web-form/) | Fill web forms from local knowledge base. Fetch URL → deep-search KB → generate markdown doc. |
+
+### Academic
+
+| Skill | Description |
+|-------|-------------|
 | [thesis-polish](skills/lovstudio-thesis-polish/) | MBA 论文全面润色，对标全国优秀论文标准。语言+结构+论证+创新四维提升。 |
-| [translation-review](skills/lovstudio-translation-review/) | Chinese-to-English translation review. Compares source & translation across 6 dimensions. |
+
+### Design
+
+| Skill | Description |
+|-------|-------------|
 | [visual-clone](skills/lovstudio-visual-clone/) | Extract design DNA from reference images. Outputs reusable replication prompts across 8 dimensions. |
 
 ### Content Creation
@@ -111,21 +126,16 @@ npx skills add lovstudio/skills --skill lovstudio:any2pdf
 | [xbti-creator](skills/lovstudio-xbti-creator/) | Create custom BTI personality tests (LBTI, FBTI, etc.) with AI-generated content + avatars. |
 | [xbti-gallery](skills/lovstudio-xbti-gallery/) | Browse all community-created BTI personality tests at xbti.lovstudio.ai. |
 
-### Dev Tools
+### Developer Tools
 
 | Skill | Description |
 |-------|-------------|
 | [auto-context](skills/lovstudio-auto-context/) | Context hygiene checker. Suggests /fork or /btw when context is polluted. |
 | [deploy-to-vercel](skills/lovstudio-deploy-to-vercel/) | Deploy frontend to Vercel with auto Cloudflare DNS + custom domain setup. |
 | [finder-action](skills/lovstudio-finder-action/) | Generate Mac Finder right-click menu actions. Quick Action or Finder Sync Extension. |
+| [gh-tidy](skills/lovstudio-gh-tidy/) | Triage & clean up GitHub issues, PRs, branches, and labels in one pass. |
 | [obsidian-reset-cache](skills/lovstudio-obsidian-reset-cache/) | 重置 Obsidian 缓存，解决卡在 Loading cache 的问题。 |
 | [project-port](skills/lovstudio-project-port/) | Generate stable unique dev port (3000–8999) from project name. |
-
-### Developer Tools
-
-| Skill | Description |
-|-------|-------------|
-| [gh-tidy](skills/lovstudio-gh-tidy/) | Triage & clean up GitHub issues, PRs, branches, and labels in one pass. |
 
 <!-- SKILLS:END -->
 
