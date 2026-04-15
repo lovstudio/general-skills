@@ -100,12 +100,6 @@ npx skills add lovstudio/skills --skill lovstudio:any2pdf
 |-------|-------------|
 | [thesis-polish](skills/lovstudio-thesis-polish/) | MBA 论文全面润色，对标全国优秀论文标准。语言+结构+论证+创新四维提升。 |
 
-### Design
-
-| Skill | Description |
-|-------|-------------|
-| [visual-clone](skills/lovstudio-visual-clone/) | Extract design DNA from reference images. Outputs reusable replication prompts across 8 dimensions. |
-
 ### Content Creation
 
 | Skill | Description |
