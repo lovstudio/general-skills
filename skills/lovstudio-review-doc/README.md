@@ -1,23 +1,25 @@
-# lovstudio:review-docx
+# lovstudio:review-doc
 
-审阅并批注 Word 文档 — 在原 docx 上添加批注或修订，输出带标注的 docx。
+![Version](https://img.shields.io/badge/version-0.2.0-CC785C)
+
+批阅文档与合同 — 审阅文档并以批注或修订模式输出带标注的 docx。
 
 Part of [lovstudio/skills](https://github.com/lovstudio/skills) — by [lovstudio.ai](https://lovstudio.ai)
 
 ## Install
 
 ```bash
-npx skills add lovstudio/skills --skill lovstudio:review-docx
+npx skills add lovstudio/skills --skill lovstudio:review-doc
 pip install python-docx --break-system-packages
 ```
 
 ## Usage
 
 ```
-/review-docx @合同.docx
+/review-doc @合同.docx
 ```
 
-AI 提取段落 → 确认审阅模式 → 逐条分析 → 输出带批注的 docx。
+AI 提取段落 -> 确认审阅模式 -> 逐条分析 -> 输出带批注的 docx。
 
 ## CLI
 

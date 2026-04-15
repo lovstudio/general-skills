@@ -1,31 +1,33 @@
 ---
-name: lovstudio:review-docx
+name: lovstudio:review-doc
 description: >
-  Review and annotate Word documents (.docx) with comments and/or tracked changes.
-  Primary use case: contract and agreement review — identifying risks, imbalanced
-  clauses, vague terms, and missing provisions. Also supports general document review.
-  Trigger when: user asks to "审阅", "批注", "review", "annotate" a .docx file,
-  or asks to review a contract/agreement/合同/协议 that is in Word format.
+  批阅文档/合同 — 审阅任意文档并以批注或修订模式输出带标注的 docx。
+  核心场景：合同/协议审查（风险条款、权利义务、模糊表述、缺失条款），
+  也支持通用文档审阅（语法、逻辑、格式）。
+  Trigger when: user asks to "审阅", "批阅", "批注", "review", "审查合同",
+  "review contract", "review agreement", or provides a document for review.
+  Supports .docx input; other formats should be converted to docx first.
 license: MIT
 compatibility: >
   Requires Python 3.8+ and python-docx (`pip install python-docx`).
   Cross-platform: macOS, Windows, Linux.
 metadata:
   author: lovstudio
-  version: "0.1.0"
-  tags: docx, review, annotate, contract, legal
+  version: "0.2.0"
+  tags: review, annotate, contract, legal, document
 ---
 
-# review-docx — 审阅并批注 Word 文档
+# review-doc — 批阅文档与合同
 
-读取 Word 文档，AI 进行审查分析，将审查意见以批注（comment）或修订模式
-（track changes）写回原文档，输出带批注的 docx。
+审阅文档或合同，AI 进行审查分析，将审查意见以批注（comment）或修订模式
+（track changes）写回文档，输出带批注的 docx。
 
 ## When to Use
 
-- 用户提供 .docx 文件要求审阅、审查、批注
+- 用户提供文档要求审阅、审查、批注、批阅
 - 合同/协议审查：识别风险条款、权利义务失衡、模糊表述、缺失条款
 - 通用文档审阅：语法、逻辑、格式、内容完整性
+- 当前支持 .docx 格式输入
 
 ## Workflow
 
@@ -33,7 +35,7 @@ metadata:
 
 用脚本提取段落文本和索引：
 
-    python3 lovstudio-review-docx/scripts/annotate_docx.py extract --input <path.docx>
+    python3 lovstudio-review-doc/scripts/annotate_docx.py extract --input <path.docx>
 
 输出 JSON 数组，每项含 `index`（段落序号）和 `text`（段落文本）。
 
@@ -95,7 +97,7 @@ metadata:
 
 将 JSON 写入临时文件，调用脚本：
 
-    python3 lovstudio-review-docx/scripts/annotate_docx.py annotate \
+    python3 lovstudio-review-doc/scripts/annotate_docx.py annotate \
       --input <原文.docx> \
       --annotations <annotations.json> \
       --output <输出路径.docx>
