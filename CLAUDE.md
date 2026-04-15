@@ -34,6 +34,7 @@ dev.sh                # Symlinks source skills into ~/.claude/skills/ for live d
 | `xbti-gallery` | (pure instructions, no script) | `gh` CLI |
 | `skill-optimizer` | `skills/lovstudio-skill-optimizer/scripts/{lint_skill,bump_version}.py` | — (stdlib only) |
 | `translation-review` | (pure instructions, no script) | `pandoc` (for .docx) |
+| `review-doc` | `skills/lovstudio-review-doc/scripts/annotate_docx.py` (python-docx) | `pip install python-docx` |
 | `thesis-polish` | (pure instructions, no script) | — |
 | `visual-clone` | (pure instructions, no script) | — |
 | `gh-tidy` | (pure instructions, no script) | `gh` CLI |

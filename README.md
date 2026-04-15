@@ -93,6 +93,7 @@ npx skills add lovstudio/skills --skill lovstudio:any2pdf
 |-------|-------------|
 | [fill-form](skills/lovstudio-fill-form/) | Fill Word form templates (.docx). Auto-detects table fields, CJK font support. |
 | [fill-web-form](skills/lovstudio-fill-web-form/) | Fill web forms from local knowledge base. Fetch URL → deep-search KB → generate markdown doc. |
+| [review-doc](skills/lovstudio-review-doc/) | 审阅并批注 Word 文档。合同/协议审查，添加批注或修订模式标注。 |
 
 ### Academic
 
