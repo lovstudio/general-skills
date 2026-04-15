@@ -14,8 +14,12 @@ compatibility: >
   (`brew install xcodegen`). Ad-hoc signed — works locally, not distributable.
 metadata:
   author: lovstudio
-  version: "0.2.1"
+  version: "0.3.0"
   tags: macos finder context-menu quick-action finder-sync-extension swift
+examples:
+  - name: OpenClaudeCode
+    url: https://github.com/MarkShawn2020/OpenClaudeCode
+    description: Right-click to open Claude Code in iTerm2
 ---
 
 # finder-action — Mac Finder 右键菜单动作生成器
@@ -159,8 +163,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 常见 action 模式：
 - **创建文件**：`FileManager.default.createFile` + 自动递增文件名
-- **打开终端**：`NSWorkspace.shared.open` Terminal at target
+- **打开终端**：AppleScript 控制 iTerm2/Terminal（见 `references/applescript-iterm.swift`）
 - **执行脚本**：`Process()` 启动 shell 命令
+
+**AppleScript 自动化**需要在 entitlements 中添加：
+```yaml
+com.apple.security.automation.apple-events: true
+```
 
 ### Step 6: 构建安装
 

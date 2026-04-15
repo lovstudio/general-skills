@@ -11,7 +11,10 @@ class FinderSync: FIFinderSync {
     override func menu(for menuKind: FIMenuKind) -> NSMenu? {
         // .contextualMenuForContainer = blank-space right-click
         // .contextualMenuForItems    = file/folder right-click
-        guard menuKind == .contextualMenuForContainer else { return nil }
+        // Support both modes for maximum flexibility
+        guard menuKind == .contextualMenuForContainer || menuKind == .contextualMenuForItems else {
+            return nil
+        }
 
         let menu = NSMenu(title: "")
         let item = NSMenuItem(
@@ -25,7 +28,26 @@ class FinderSync: FIFinderSync {
     }
 
     @objc func menuAction(_ sender: AnyObject?) {
-        guard let target = FIFinderSyncController.default().targetedURL() else { return }
+        var targetPath: String
+
+        // Priority: selected folder > current directory
+        if let selectedItems = FIFinderSyncController.default().selectedItemURLs(),
+           let firstItem = selectedItems.first {
+            var isDir: ObjCBool = false
+            if FileManager.default.fileExists(atPath: firstItem.path, isDirectory: &isDir), isDir.boolValue {
+                targetPath = firstItem.path
+            } else {
+                targetPath = firstItem.deletingLastPathComponent().path
+            }
+        } else if let target = FIFinderSyncController.default().targetedURL() {
+            targetPath = target.path
+        } else {
+            return
+        }
+
         // ACTION_IMPLEMENTATION
+        // Example: Open terminal at targetPath
+        // Example: Create file at targetPath
+        // Example: Run AppleScript
     }
 }
