@@ -52,11 +52,8 @@ def qn(tag: str) -> str:
 
 def _ensure_comments_part(doc: Document):
     """Ensure the document has a comments.xml part; create if missing."""
-    from docx.opc.part import Part
     from docx.opc.packuri import PackURI
 
-    COMMENTS_URI = "/word/comments.xml"
-    COMMENTS_CT = "application/vnd.openxmlformats-officedocument.wordprocessingml.comments+xml"
     COMMENTS_REL = "http://schemas.openxmlformats.org/officeDocument/2006/relationships/comments"
 
     # Check if comments part already exists
@@ -65,26 +62,35 @@ def _ensure_comments_part(doc: Document):
         if rel.reltype == COMMENTS_REL:
             return rel.target_part
 
-    # Create minimal comments.xml
-    comments_xml = (
-        '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
-        '<w:comments xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"'
-        ' xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">'
-        "</w:comments>"
-    )
-    comments_part = Part(
-        PackURI(COMMENTS_URI),
-        COMMENTS_CT,
-        comments_xml.encode("utf-8"),
-        doc_part.package,
-    )
+    # Create via python-docx's CommentsPart if available, else raw Part
+    try:
+        from docx.parts.comments import CommentsPart
+        comments_part = CommentsPart.default(doc_part.package)
+    except (ImportError, AttributeError):
+        from docx.opc.part import Part
+        COMMENTS_URI = "/word/comments.xml"
+        COMMENTS_CT = "application/vnd.openxmlformats-officedocument.wordprocessingml.comments+xml"
+        comments_xml = (
+            '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+            '<w:comments xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"'
+            ' xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">'
+            "</w:comments>"
+        )
+        comments_part = Part(
+            PackURI(COMMENTS_URI),
+            COMMENTS_CT,
+            comments_xml.encode("utf-8"),
+            doc_part.package,
+        )
     doc_part.relate_to(comments_part, COMMENTS_REL)
     return comments_part
 
 
 def _add_comment_to_part(comments_part, comment_id: int, author: str, text: str, date: str):
     """Append a <w:comment> element to the comments.xml part."""
-    root = etree.fromstring(comments_part.blob)
+    # For CommentsPart (XmlPart subclass), modify _element directly.
+    # XmlPart.blob serializes from _element, so _blob assignment is ignored.
+    root = comments_part._element
     comment_el = etree.SubElement(root, qn("w:comment"))
     comment_el.set(qn("w:id"), str(comment_id))
     comment_el.set(qn("w:author"), author)
@@ -95,8 +101,6 @@ def _add_comment_to_part(comments_part, comment_id: int, author: str, text: str,
     t_el = etree.SubElement(r_el, qn("w:t"))
     t_el.text = text
     t_el.set("{http://www.w3.org/XML/1998/namespace}space", "preserve")
-
-    comments_part._blob = etree.tostring(root, xml_declaration=True, encoding="UTF-8", standalone=True)
 
 
 def _wrap_paragraph_with_comment(paragraph, comment_id: int, start: int = None, end: int = None):
@@ -121,10 +125,26 @@ def _wrap_paragraph_with_comment(paragraph, comment_id: int, start: int = None, 
         # Wrap specific character range — we need to split runs
         _insert_markers_at_offsets(p_elem, comment_id, start, end, range_start, range_end, ref_run)
     else:
-        # Wrap entire paragraph
-        p_elem.insert(0, range_start)
-        p_elem.append(range_end)
-        p_elem.append(ref_run)
+        # Wrap entire paragraph.
+        # If all text lives inside <w:ins> elements (tracked changes), place
+        # markers *inside* those elements so Word can anchor the comment to
+        # visible text.
+        ins_elems = p_elem.findall(qn("w:ins"))
+        has_regular_runs = any(
+            r.find(qn("w:t")) is not None
+            for r in p_elem.findall(qn("w:r"))
+        )
+        if ins_elems and not has_regular_runs:
+            # All text is in <w:ins> — anchor inside first/last ins
+            first_ins = ins_elems[0]
+            last_ins = ins_elems[-1]
+            first_ins.insert(0, range_start)
+            last_ins.append(range_end)
+            last_ins.append(ref_run)
+        else:
+            p_elem.insert(0, range_start)
+            p_elem.append(range_end)
+            p_elem.append(ref_run)
 
 
 def _insert_markers_at_offsets(p_elem, comment_id, start, end, range_start, range_end, ref_run):
@@ -239,21 +259,45 @@ def annotate(input_path: str, annotations_path: str, output_path: str):
     comments = data.get("comments", [])
     if comments:
         comments_part = _ensure_comments_part(doc)
+
+        # Find max existing comment ID to avoid collisions
+        existing_root = comments_part._element
+        existing_comments = existing_root.findall(qn("w:comment"))
+        if existing_comments:
+            next_comment_id = max(int(c.get(qn("w:id")) or "0") for c in existing_comments) + 1
+        else:
+            next_comment_id = 0
+
+        # Also check body for commentRangeStart/End IDs
+        body = doc.element.body
+        for tag in ("w:commentRangeStart", "w:commentRangeEnd"):
+            for elem in body.iter(qn(tag)):
+                eid = int(elem.get(qn("w:id")) or "0")
+                if eid >= next_comment_id:
+                    next_comment_id = eid + 1
+
         for i, c in enumerate(comments):
             para_idx = c["paragraph"]
             if para_idx >= len(paragraphs):
                 print(f"WARN: paragraph index {para_idx} out of range ({len(paragraphs)} total), skipping", file=sys.stderr)
                 continue
+            comment_id = next_comment_id + i
             author = c.get("author", "Reviewer")
-            _add_comment_to_part(comments_part, i, author, c["text"], now)
+            _add_comment_to_part(comments_part, comment_id, author, c["text"], now)
             _wrap_paragraph_with_comment(
-                paragraphs[para_idx], i,
+                paragraphs[para_idx], comment_id,
                 start=c.get("start"), end=c.get("end"),
             )
 
     # Process revisions (tracked changes)
     revisions = data.get("revisions", [])
-    rev_id = 1000  # Start high to avoid collision with comment IDs
+    # Find max ID used in the document to avoid collision
+    rev_id = next_comment_id + len(comments) + 100 if comments else 1000
+    for tag in ("w:ins", "w:del"):
+        for elem in doc.element.body.iter(qn(tag)):
+            eid = int(elem.get(qn("w:id")) or "0")
+            if eid >= rev_id:
+                rev_id = eid + 1
     for r in revisions:
         para_idx = r["paragraph"]
         if para_idx >= len(paragraphs):
