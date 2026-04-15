@@ -40,9 +40,7 @@
 <p align="center">
 <a href="https://lovstudio.ai/skills"><strong>Browse Pro Skills →</strong></a>
 &nbsp;&middot;&nbsp;
-<a href="mailto:mark@lovstudio.ai">Email us</a>
-&nbsp;&middot;&nbsp;
-WeChat: <code>nanchuan</code>
+WeChat: <code>YouShouldSpeakHow</code>
 </p>
 
 ---
