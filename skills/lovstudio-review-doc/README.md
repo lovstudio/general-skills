@@ -1,6 +1,6 @@
 # lovstudio:review-doc
 
-![Version](https://img.shields.io/badge/version-0.3.0-CC785C) ![Category](https://img.shields.io/badge/category-business-blue)
+![Version](https://img.shields.io/badge/version-0.3.1-CC785C) ![Category](https://img.shields.io/badge/category-business-blue)
 
 Review & annotate documents/contracts — output annotated docx with comments or tracked changes.
 

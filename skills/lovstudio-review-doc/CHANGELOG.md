@@ -3,6 +3,16 @@
 All notable changes to this skill are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) · Versioning: [SemVer](https://semver.org/)
 
+## [0.3.1] - 2026-04-16
+
+### Fixed
+
+- Fix comment ID collision and tracked-changes text extraction
+- extract: include text inside <w:ins> (tracked changes) — SCHEDULE A etc. now visible
+- annotate: auto-detect max comment ID to avoid overwriting pre-existing comments
+- annotate: anchor comments inside <w:ins> for tracked-changes paragraphs
+- annotate: use CommentsPart._element instead of _blob for reliable persistence
+
 ## [0.3.0] - 2026-04-16
 
 ### Added

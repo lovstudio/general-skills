@@ -17,7 +17,7 @@ compatibility: >
   Cross-platform: macOS, Windows, Linux.
 metadata:
   author: lovstudio
-  version: "0.3.0"
+  version: "0.3.1"
   category: business
   tags: review, annotate, contract, legal, document, business, 商务, 合同
 ---
@@ -44,11 +44,20 @@ and/or tracked changes.
 
 ### Step 1: Extract text
 
-用脚本提取段落文本和索引：
+Extract paragraph text and indices / 用脚本提取段落文本和索引：
 
     python3 lovstudio-review-doc/scripts/annotate_docx.py extract --input <path.docx>
 
-输出 JSON 数组，每项含 `index`（段落序号）和 `text`（段落文本）。
+Outputs JSON array, each item has `index` (paragraph number) and `text`.
+Includes text inside tracked changes (`<w:ins>`) — e.g. counterparty revisions
+visible in Track Changes mode.
+输出 JSON 数组，每项含 `index`（段落序号）和 `text`（含修订追踪内容）。
+
+**Important:** If the document has tracked changes (e.g. Schedule A added via
+Track Changes), these paragraphs are now included in extraction. Always review
+the full extracted output before generating annotations.
+如果文档包含修订追踪内容（如对方以 Track Changes 添加的附件），这些段落
+现已包含在提取结果中。
 
 ### Step 2: Ask the user
 
@@ -157,6 +166,19 @@ Annotation text format / 批注文本格式规范：
 | `old` | Yes | 要替换的原文 |
 | `new` | Yes | 修改后的文本 |
 | `author` | No | 修订者署名 |
+
+## Caveats
+
+- **Revisions match per-run**: `old` text in revisions must match a single
+  `<w:r>` (run) in the paragraph. If the target text is split across multiple
+  runs (common with smart quotes, spell-check, or mixed formatting), the
+  revision will be skipped. Workaround: match a substring within one run, or
+  use a comment instead.
+  修订的 `old` 文本必须完整匹配段落中的单个 run。如果目标文本跨 run，修订会
+  被跳过。可改用批注替代。
+- **Pre-existing comments**: the script auto-detects max existing comment ID
+  and starts new IDs after it. No manual ID management needed.
+  脚本自动检测已有批注的最大 ID，新批注从其后开始编号。
 
 ## Dependencies
 

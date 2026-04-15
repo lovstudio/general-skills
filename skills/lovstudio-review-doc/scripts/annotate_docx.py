@@ -315,12 +315,26 @@ def annotate(input_path: str, annotations_path: str, output_path: str):
     return total
 
 
+def _get_full_paragraph_text(p_elem) -> str:
+    """Get all text from a paragraph, including text inside <w:ins> tracked changes."""
+    texts = []
+    for elem in p_elem.iter(qn("w:t")):
+        if elem.text:
+            texts.append(elem.text)
+    return "".join(texts).strip()
+
+
 def extract_text(input_path: str):
-    """Extract paragraph text with indices for AI review reference."""
+    """Extract paragraph text with indices for AI review reference.
+
+    Includes text inside <w:ins> (tracked changes) which python-docx's
+    paragraph.text does not return.
+    """
     doc = Document(input_path)
     result = []
     for i, p in enumerate(doc.paragraphs):
-        text = p.text.strip()
+        # Try full text first (includes tracked changes), fall back to .text
+        text = _get_full_paragraph_text(p._element)
         if text:
             result.append({"index": i, "text": text})
     json.dump(result, sys.stdout, ensure_ascii=False, indent=2)
