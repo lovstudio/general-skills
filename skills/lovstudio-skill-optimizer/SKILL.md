@@ -157,14 +157,18 @@ git push
 
 **7b. Sync to pro-skills distribution repo:**
 
+The two repos have independent git histories (not forkable), so sync via
+file copy:
+
 ```bash
+SRC=~/projects/lovstudio-skills/skills/lovstudio-<name>
+DST=~/projects/lovstudio-pro-skills/skills/lovstudio-<name>
+rsync -av --delete "$SRC/" "$DST/"
 cd ~/projects/lovstudio-pro-skills
-git pull skills-upstream main
+git add skills/lovstudio-<name>/
+git commit -m "sync(<name>): <version> from lovstudio/skills"
 git push origin main
 ```
-
-This pulls from `lovstudio/skills` (configured as `skills-upstream` remote)
-and pushes to `lovstudio/pro-skills`. Both GitHub repos are now in sync.
 
 `~/.claude/skills/` is already up-to-date via symlinks — no action needed.
 
