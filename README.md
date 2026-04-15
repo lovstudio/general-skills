@@ -77,7 +77,7 @@ npx skills add lovstudio/skills --skill lovstudio:any2pdf
 | Skill | Description |
 |-------|-------------|
 | [image-creator](skills/lovstudio-image-creator/) | Generate images using Gemini via ZenMux. Supports ASCII art output. |
-| write-book | Write multi-chapter books (technical, tutorial, monograph) with compressed summary strategy. — **[Pro](https://lovstudio.ai/skills/write-book)** |
+| 🔒 write-book | Write multi-chapter books (technical, tutorial, monograph) with compressed summary strategy. — **[Pro →](https://lovstudio.ai/skills/write-book)** |
 
 ### Business
 
@@ -110,13 +110,37 @@ npx skills add lovstudio/skills --skill lovstudio:any2pdf
 
 <!-- SKILLS:END -->
 
-## Pro Skills
+## ⭐ Pro Skills
 
-Some skills are available exclusively to **Pro** members. Pro skills include full source code access, priority support, and all future updates.
+<table>
+<tr>
+<td>
 
-👉 **[Browse Pro Skills →](https://lovstudio.ai/skills)**
+### Unlock Commercial-Grade Skills
 
-Interested? Add us on WeChat or email [mark@lovstudio.ai](mailto:mark@lovstudio.ai) to join.
+Pro members get access to powerful skills not available in the open-source collection:
+
+| Pro Skill | What it does |
+|-----------|-------------|
+| **write-book** | Write full-length books (tech tutorials, monographs) — compressed summary strategy breaks through LLM context limits |
+| *more coming soon…* | |
+
+**What's included:**
+- 🔓 Full source code access via private repo invite
+- 🚀 All future Pro skills & updates
+- 💬 Priority support & community
+
+<p align="center">
+<a href="https://lovstudio.ai/skills"><strong>Browse Pro Skills →</strong></a>
+&nbsp;&middot;&nbsp;
+<a href="mailto:mark@lovstudio.ai">Email us</a>
+&nbsp;&middot;&nbsp;
+WeChat: <code>nanchuan</code>
+</p>
+
+</td>
+</tr>
+</table>
 
 ## Related
 
