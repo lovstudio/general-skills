@@ -17,9 +17,9 @@ metadata:
   version: "0.3.0"
   tags: macos finder context-menu quick-action finder-sync-extension swift
 examples:
-  - name: OpenClaudeCode
-    url: https://github.com/MarkShawn2020/OpenClaudeCode
-    description: Right-click to open Claude Code in iTerm2
+  - name: OpenCC
+    url: https://github.com/MarkShawn2020/mac_open-claude-code
+    description: Right-click to open Claude Code in iTerm2 (with helper app)
 ---
 
 # finder-action — Mac Finder 右键菜单动作生成器
@@ -189,11 +189,69 @@ pluginkit -m -i BUNDLE_ID.FinderExtension
 
 不出现时指引：**系统设置 → 通用 → 登录项与扩展 → 已添加的扩展** → 勾选。
 
-## 已知限制
+## 沙盒限制与 Helper App 方案
 
+Finder Sync Extension 的沙盒限制非常严格：
+
+| 操作 | 是否允许 | 说明 |
+|------|----------|------|
+| 写入 /tmp | ❌ | 即使添加 temporary-exception 也被阻止 |
+| Process() 子进程 | ❌ | 无法启动外部命令 |
+| NSAppleScript | ❌ | 无法控制其他应用 |
+| NSWorkspace.open(file) | ❌ | 无法打开文件/目录 |
+| NSWorkspace.open(app) | ✅ | 可以打开应用 |
+| NSPasteboard | ✅ | 可以读写剪贴板 |
+
+**推荐方案**：创建一个非沙盒的 Helper App，Extension 把命令放入剪贴板后打开 Helper App，由 Helper App 执行实际操作。
+
+### Helper App 示例
+
+```bash
+mkdir -p "/Applications/OpenCCHelper.app/Contents/MacOS"
+cat > "/Applications/OpenCCHelper.app/Contents/Info.plist" << 'EOF'
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleExecutable</key><string>run.sh</string>
+    <key>CFBundleIdentifier</key><string>com.lovstudio.OpenCCHelper</string>
+    <key>LSUIElement</key><true/>
+</dict>
+</plist>
+EOF
+
+cat > "/Applications/OpenCCHelper.app/Contents/MacOS/run.sh" << 'EOF'
+#!/bin/bash
+CMD=$(pbpaste)
+osascript << APPLESCRIPT
+tell application "iTerm"
+    activate
+    tell current window
+        create tab with default profile
+        tell current session
+            write text "$CMD"
+        end tell
+    end tell
+end tell
+APPLESCRIPT
+EOF
+chmod +x "/Applications/OpenCCHelper.app/Contents/MacOS/run.sh"
+```
+
+Extension 中调用：
+```swift
+let command = "cd '\(targetPath)' && claude"
+NSPasteboard.general.clearContents()
+NSPasteboard.general.setString(command, forType: .string)
+NSWorkspace.shared.open(URL(fileURLWithPath: "/Applications/OpenCCHelper.app"))
+```
+
+## 其他已知限制
+
+- **Bundle ID 不能含下划线**：使用连字符或驼峰命名（`OpenCC` 而非 `open_cc`）
+- **NSHomeDirectory() 返回容器路径**：沙盒中返回 `~/Library/Containers/<bundle-id>/Data/`，监控目录需硬编码真实路径
+- **NSMenuItem 必须设置 target**：`item.target = self`，否则 action 不会触发
 - Finder Extension 菜单项位置由系统决定，无法排在「新建文件夹」之前
 - Quick Action 环境没有 `$PATH`，工具路径必须用绝对路径
 - Automator workflow 需在 Automator 中打开保存才能注册
 - Extension 使用 ad-hoc 签名，仅限本机使用
-- Finder Sync Extension **必须启用 App Sandbox**，关闭沙盒会导致扩展无法注册（`pluginkit -m` 无输出）
-- 沙盒内 `files.user-selected.read-write` 仅对用户手动选择的文件有效，程序在任意目录创建文件需用 `temporary-exception.files.absolute-path.read-write`

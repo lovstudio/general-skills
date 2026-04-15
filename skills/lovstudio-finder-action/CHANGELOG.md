@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.3.0] - 2026-04-15
+
+### Added
+
+- Add helper app pattern to bypass sandbox restrictions
+- Document NSMenuItem.target requirement
+- Document NSHomeDirectory() sandbox behavior
+- Document Bundle ID naming restrictions
+- Update example to OpenCC with helper app
+
 ## [0.2.1] - 2026-04-14
 
 ### Fixed
