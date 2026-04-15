@@ -1,15 +1,16 @@
 ---
-name: lovstudio:tech-book
+name: lovstudio:write-book
 category: Content Creation
-tagline: "O'Reilly 风格技术书逐章写作，压缩摘要策略突破上下文窗口限制"
+tagline: "逐章写书，压缩摘要策略突破上下文窗口限制，支持多种技术书风格"
 description: >
-  Write O'Reilly-style technical books chapter by chapter using a GitHub repo
-  as the single source of truth. Solves LLM context window limitations through
-  a compressed book summary strategy (OUTLINE + BOOK_SUMMARY ≈ 9KB overhead).
-  5-phase workflow: Plan → Research → Write → Review → Build. Outputs mdBook
-  HTML (GitHub Pages) and pandoc PDF (CJK-ready). Trigger when user mentions
-  "写书", "技术书", "tech book", "O'Reilly", "写一本书", "book writing",
-  "mdbook", "逐章写作", or wants to create a multi-chapter technical book.
+  Write multi-chapter books using a GitHub repo as the single source of truth.
+  Solves LLM context window limitations through a compressed book summary
+  strategy (OUTLINE + BOOK_SUMMARY ≈ 9KB overhead). 5-phase workflow: Plan →
+  Research → Write → Review → Build. Supports multiple styles: O'Reilly
+  practical, academic monograph, tutorial series, etc. Outputs mdBook HTML
+  (GitHub Pages) and pandoc PDF (CJK-ready). Trigger when user mentions
+  "写书", "写一本书", "book writing", "出书", "技术书", "O'Reilly",
+  "mdbook", "逐章写作", or wants to create a multi-chapter book.
 license: Commercial
 compatibility: >
   Requires mdbook (cargo install mdbook or brew install mdbook),
@@ -17,19 +18,19 @@ compatibility: >
   gh CLI (brew install gh). Optional: context7 MCP for live docs.
 metadata:
   author: lovstudio
-  version: "0.2.0"
+  version: "0.3.0"
   tags: book writing cjk mdbook pandoc
 ---
 
-# tech-book — O'Reilly 风格技术书写作
+# write-book — 逐章写书，突破上下文窗口限制
 
-以 GitHub repo 为单一数据源，逐章写作专业技术书籍。通过「全书压缩摘要 + 当前章全文」策略解决上下文窗口限制。
+以 GitHub repo 为单一数据源，逐章写作完整书籍。通过「全书压缩摘要 + 当前章全文」策略解决上下文窗口限制。
 
 ## When to Use
 
-- 用户想写一本完整的技术书籍（非单篇文章）
-- 用户提到 O'Reilly、技术书、写书、出书
-- 用户想把系列技术内容组织成书
+- 用户想写一本完整的书籍（技术书、教程、专著等）
+- 用户提到写书、出书、O'Reilly、技术书
+- 用户想把系列内容组织成书
 
 ## Repo Structure
 
@@ -85,7 +86,7 @@ Read [references/workflow.md](references/workflow.md) for the complete 5-phase w
 ## Writing Style
 
 - 语言：中文正文，代码/术语保留英文原文
-- 风格：O'Reilly 实战派 — 概念解释 → 代码示例 → 最佳实践 → 常见陷阱
+- 风格：默认 O'Reilly 实战派（概念 → 代码 → 最佳实践 → 陷阱），可按用户要求调整
 - 每章开头用一个实际问题或场景引入
 - 每章末尾加 "本章小结" + "延伸阅读"
 - 完成后更新 BOOK_SUMMARY.md（≤500 字）+ glossary.md
