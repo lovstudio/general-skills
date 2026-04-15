@@ -49,7 +49,7 @@ Ask which repo the skill should live in:
 - **lovstudio/pro-skills** (private) — proprietary/internal skills
 
 This determines:
-- Working directory: `~/projects/lovstudio-skills/` vs `~/projects/lovstudio-pro-skills/`
+- Working directory: `~/projects/lovstudio-skills/` vs `~/projects/lovstudio-skills-pro/`
 - Install command in README: `npx skills add lovstudio/skills` vs `npx skills add lovstudio/pro-skills`
 - PR target repo in Step 5c
 
@@ -160,7 +160,7 @@ Based on the repo chosen in Step 0:
 cd /Users/mark/projects/lovstudio-skills
 
 # For lovstudio/pro-skills (private):
-cd /Users/mark/projects/lovstudio-pro-skills
+cd /Users/mark/projects/lovstudio-skills-pro
 ```
 
 Then:
