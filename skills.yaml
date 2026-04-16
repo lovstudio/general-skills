@@ -131,7 +131,7 @@ skills:
     paid: false
     category: "Image & Design"
     description: "Extract design DNA from reference images / 提取设计要素生成复刻指令"
-  - name: write-book
+  - name: write-professional-book
     repo: lovstudio/write-book-skill
     paid: true
     category: "Authoring"
