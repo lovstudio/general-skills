@@ -53,8 +53,9 @@ Skills marked ![Free](https://img.shields.io/badge/Free-green) are open source (
 | **xBTI / 人格测试** | | |
 | ![Free](https://img.shields.io/badge/Free-green) | [`xbti-creator`](https://github.com/lovstudio/xbti-creator-skill) | Create custom BTI personality tests (LBTI, FBTI, etc.) with AI-generated content + avatars. |
 | ![Free](https://img.shields.io/badge/Free-green) | [`xbti-gallery`](https://github.com/lovstudio/xbti-gallery-skill) | Browse all community-created BTI personality tests at xbti.lovstudio.ai. |
-| **Office Automation / 办公自动化** | | |
+| **Finance / 财务** | | |
 | ![Free](https://img.shields.io/badge/Free-green) | [`expense-report`](https://github.com/lovstudio/expense-report-skill) | 发票图片/文字 → 分类报销 Excel。自动归类：业务招待、差旅、办公用品等。 |
+| **Office Automation / 办公自动化** | | |
 | ![Free](https://img.shields.io/badge/Free-green) | [`fill-form`](https://github.com/lovstudio/fill-form-skill) | Fill Word form templates (.docx). Auto-detects table fields, CJK font support. |
 | ![Free](https://img.shields.io/badge/Free-green) | [`fill-web-form`](https://github.com/lovstudio/fill-web-form-skill) | Fill web forms from local knowledge base. Fetch URL → deep-search KB → generate markdown. |
 | **Authoring / 创作** | | |

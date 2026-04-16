@@ -64,10 +64,11 @@ skills:
     paid: true
     category: "Office Automation"
     description: "Business proposal with architecture, budget & PDF / 完整商业提案"
+  # ── Finance ──
   - name: expense-report
     repo: lovstudio/expense-report-skill
     paid: false
-    category: "Office Automation"
+    category: "Finance"
     description: "发票图片/文字 → 分类报销 Excel。自动归类：业务招待、差旅、办公用品等。"
   - name: review-doc
     repo: lovstudio/review-doc-skill
