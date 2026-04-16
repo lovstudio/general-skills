@@ -4,7 +4,7 @@ Guidance for Claude Code when working in this repo.
 
 ## What This Is
 
-The **central index** for Lovstudio skills. **No skill code lives here** — each skill is its own repo at `github.com/lovstudio/{name}-skill`. Locally, skills are developed under `~/lovstudio/coding/skills/{name}-skill/`.
+The **central index** for Lovstudio skills. **No skill code lives here** — each skill is its own repo at `github.com/lovstudio/{name}-skill`. Locally, skills are developed under `~/lovstudio/skills/{name}-skill/`.
 
 ## Repo Layout
 
@@ -34,12 +34,12 @@ skills:
 
 - **`paid` field is only here**, not in individual SKILL.md files. It's business classification, not skill metadata.
 - **24 Free + 3 Paid = 27 skills total**. Paid: `event-poster`, `proposal`, `write-book`.
-- **Naming**: GitHub repo = `lovstudio/{name}-skill`; local path = `~/lovstudio/coding/skills/{name}-skill/`. No `lovstudio-` prefix in the name.
+- **Naming**: GitHub repo = `lovstudio/{name}-skill`; local path = `~/lovstudio/skills/{name}-skill/`. No `lovstudio-` prefix in the name.
 - Skill short name (`any2pdf`) is what users invoke via `lovstudio:any2pdf` in Claude Code.
 
 ## Adding a New Skill
 
-1. In `~/lovstudio/coding/skills/`: run the [`skill-creator`](https://github.com/lovstudio/skill-creator-skill) skill to scaffold `{name}-skill/`.
+1. In `~/lovstudio/skills/`: run the [`skill-creator`](https://github.com/lovstudio/skill-creator-skill) skill to scaffold `{name}-skill/`.
 2. `cd {name}-skill && git init && git add -A && git commit && gh repo create lovstudio/{name}-skill --public --source=. --push`
 3. Open a PR against this repo appending an entry to `skills.yaml` and a row to `README.md`.
 

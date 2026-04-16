@@ -8,7 +8,7 @@
 - **Merged**: unified `lovstudio/skills` (free) and `lovstudio/pro-skills` (paid). Old `pro-skills` repo archived.
 - **`paid` field**: introduced in `skills.yaml` to distinguish 24 free (public) and 3 paid (private) skills. Paid: `event-poster`, `proposal`, `write-book`.
 - **Removed from this repo**: `skills/` (→ individual repos), `docs/` (→ per-skill repos), `scripts/`, `dev.sh`, `tests/`, `examples/`, `upstream/`, and workflows `release.yml` / `sync-cases-to-pro.yml` / `sync-readme.yml`.
-- **Local dev path** changed: skills now live at `~/lovstudio/coding/skills/<name>-skill/`.
+- **Local dev path** changed: skills + index all live under `~/lovstudio/skills/` (index at `~/lovstudio/skills/index/`, each skill at `~/lovstudio/skills/<name>-skill/`).
 
 ## 0.7.1
 
