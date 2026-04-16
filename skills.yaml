@@ -59,6 +59,11 @@ skills:
     paid: false
     category: "Dev Tools"
     description: "Generate Mac Finder right-click menu actions. Quick Action or Finder Sync Extension."
+  - name: gh-access
+    repo: lovstudio/gh-access-skill
+    paid: false
+    category: "Developer Tools"
+    description: "Grant / revoke / list collaborator access on private GitHub repos by username or email. Read-only by default."
   - name: gh-tidy
     repo: lovstudio/gh-tidy-skill
     paid: false
