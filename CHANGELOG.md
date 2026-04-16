@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.8.0 — 2026-04-16
+
+**Major refactor: monorepo → central index + 27 independent skill repos.**
+
+- **Architecture**: split `skills/lovstudio-<name>/` into individual repos at `lovstudio/<name>-skill`. This repo now holds only the manifest (`skills.yaml`) and README.
+- **Merged**: unified `lovstudio/skills` (free) and `lovstudio/pro-skills` (paid). Old `pro-skills` repo archived.
+- **`paid` field**: introduced in `skills.yaml` to distinguish 24 free (public) and 3 paid (private) skills. Paid: `event-poster`, `proposal`, `write-book`.
+- **Removed from this repo**: `skills/` (→ individual repos), `docs/` (→ per-skill repos), `scripts/`, `dev.sh`, `tests/`, `examples/`, `upstream/`, and workflows `release.yml` / `sync-cases-to-pro.yml` / `sync-readme.yml`.
+- **Local dev path** changed: skills now live at `~/lovstudio/coding/skills/<name>-skill/`.
+
 ## 0.7.1
 
 - **tech-book**: New skill — generate complete technical books with mdbook/pandoc, deploy to GitHub Pages

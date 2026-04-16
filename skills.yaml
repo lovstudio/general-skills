@@ -1,0 +1,141 @@
+# Lovstudio Skills — Central Index
+# Each skill lives in its own repo at github.com/lovstudio/{name}-skill
+# paid: true  -> private repo, purchase required
+# paid: false -> public repo, free to use
+version: 1
+skills:
+  - name: anti-wechat-ai-check
+    repo: lovstudio/anti-wechat-ai-check-skill
+    paid: false
+    category: "Content Processing"
+    description: "检测文章 AI 痕迹 + 人性化润色，通过微信 3.27 条款检测。"
+  - name: any2deck
+    repo: lovstudio/any2deck-skill
+    paid: false
+    category: "Document Conversion"
+    description: "Content → slide deck images with 16 visual styles, PPTX/PDF export, branding overlay."
+  - name: any2docx
+    repo: lovstudio/any2docx-skill
+    paid: false
+    description: "Convert Markdown documents to professionally styled DOCX (Word) files with python-docx."
+  - name: any2pdf
+    repo: lovstudio/any2pdf-skill
+    paid: false
+    category: "Document Conversion"
+    description: "Markdown → professionally typeset PDF. CJK/Latin mixed text, code blocks, tables, 14 themes."
+  - name: auto-context
+    repo: lovstudio/auto-context-skill
+    paid: false
+    category: "Dev Tools"
+    description: "Context hygiene checker. Suggests /fork or /btw when context is polluted."
+  - name: deploy-to-vercel
+    repo: lovstudio/deploy-to-vercel-skill
+    paid: false
+    category: "Dev Tools"
+    description: "Deploy frontend to Vercel with auto Cloudflare DNS + custom domain setup."
+  - name: document-illustrator
+    repo: lovstudio/document-illustrator-skill
+    paid: false
+    category: "Content Processing"
+    description: "为文档原地插入 AI 配图。全局规划插入点，并行生成，异步插回原文。"
+  - name: event-poster
+    repo: lovstudio/event-poster-skill
+    paid: true
+    category: "Image & Design"
+    version: "0.3.0"
+    description: "Generate event posters via HTML + Playwright / 活动海报生成"
+  - name: fill-form
+    repo: lovstudio/fill-form-skill
+    paid: false
+    category: "Office Automation"
+    description: "Fill Word form templates (.docx). Auto-detects table fields, CJK font support."
+  - name: fill-web-form
+    repo: lovstudio/fill-web-form-skill
+    paid: false
+    category: "Office Automation"
+    description: "Fill web forms from local knowledge base. Fetch URL → deep-search KB → generate markdown doc."
+  - name: finder-action
+    repo: lovstudio/finder-action-skill
+    paid: false
+    category: "Dev Tools"
+    description: "Generate Mac Finder right-click menu actions. Quick Action or Finder Sync Extension."
+  - name: gh-tidy
+    repo: lovstudio/gh-tidy-skill
+    paid: false
+    category: "Developer Tools"
+    description: "Triage & clean up GitHub issues, PRs, branches, and labels in one pass."
+  - name: image-creator
+    repo: lovstudio/image-creator-skill
+    paid: false
+    category: "Image & Design"
+    version: "0.2.0"
+    description: "Multi-mechanism image generation: end-to-end AI, code rendering, or prompt engineering"
+  - name: obsidian-reset-cache
+    repo: lovstudio/obsidian-reset-cache-skill
+    paid: false
+    category: "Dev Tools"
+    description: "重置 Obsidian 缓存，解决卡在 Loading cache 的问题。"
+  - name: pdf2png
+    repo: lovstudio/pdf2png-skill
+    paid: false
+    category: "Document Conversion"
+    description: "PDF → single vertically concatenated PNG. Uses macOS CoreGraphics, ~20x faster than pdftoppm."
+  - name: png2svg
+    repo: lovstudio/png2svg-skill
+    paid: false
+    category: "Document Conversion"
+    description: "PNG → high-quality SVG conversion with background removal and spline curves."
+  - name: project-port
+    repo: lovstudio/project-port-skill
+    paid: false
+    category: "Dev Tools"
+    description: "Generate stable unique dev port (3000–8999) from project name."
+  - name: proposal
+    repo: lovstudio/proposal-skill
+    paid: true
+    category: "Business"
+    description: "Business proposal with architecture, budget & PDF / 完整商业提案"
+  - name: review-doc
+    repo: lovstudio/review-doc-skill
+    paid: false
+    description: "Review and annotate documents/contracts — output annotated docx with comments"
+  - name: skill-creator
+    repo: lovstudio/skill-creator-skill
+    paid: false
+    category: "Meta Skills"
+    description: "Scaffold new lovstudio skills with proper structure, SKILL.md + README.md."
+  - name: skill-optimizer
+    repo: lovstudio/skill-optimizer-skill
+    paid: false
+    category: "Meta Skills"
+    description: "Audit + auto-fix an existing skill, bump semver, and append a CHANGELOG entry."
+  - name: thesis-polish
+    repo: lovstudio/thesis-polish-skill
+    paid: false
+    category: "Content Processing"
+    description: "MBA 论文全面润色，对标全国优秀论文标准。语言+结构+论证+创新四维提升。"
+  - name: translation-review
+    repo: lovstudio/translation-review-skill
+    paid: false
+    category: "Content Processing"
+    description: "Chinese-to-English translation review. Compares source & translation across 6 dimensions."
+  - name: visual-clone
+    repo: lovstudio/visual-clone-skill
+    paid: false
+    category: "Image & Design"
+    description: "Extract design DNA from reference images / 提取设计要素生成复刻指令"
+  - name: write-book
+    repo: lovstudio/write-book-skill
+    paid: true
+    category: "Authoring"
+    description: "Write multi-chapter books (technical, tutorial, monograph) / 逐章写书，支持多种风格"
+  - name: xbti-creator
+    repo: lovstudio/xbti-creator-skill
+    paid: false
+    category: "xBTI"
+    description: "Create custom BTI personality tests (LBTI, FBTI, etc.) with AI-generated content + avatars."
+  - name: xbti-gallery
+    repo: lovstudio/xbti-gallery-skill
+    paid: false
+    category: "xBTI"
+    description: "Browse all community-created BTI personality tests at xbti.lovstudio.ai."

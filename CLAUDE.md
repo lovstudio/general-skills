@@ -1,75 +1,50 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Guidance for Claude Code when working in this repo.
 
 ## What This Is
 
-A multi-skill repo publishing AI coding assistant skills via [agentskills.io](https://agentskills.io). Each skill lives in `skills/lovstudio-<name>/` with a `SKILL.md` (frontmatter + usage docs) and a `scripts/` folder containing the Python implementation.
+The **central index** for Lovstudio skills. **No skill code lives here** — each skill is its own repo at `github.com/lovstudio/{name}-skill`. Locally, skills are developed under `~/lovstudio/coding/skills/{name}-skill/`.
 
 ## Repo Layout
 
 ```
-skills/
-  lovstudio-<name>/
-    SKILL.md          # Skill definition (frontmatter + instructions for AI assistants)
-    scripts/          # Python scripts that do the actual work
-    references/       # Optional theme/config docs
-    examples/         # Optional example files
-scripts/              # Repo-level tooling (preview generation, etc.)
-dev.sh                # Symlinks source skills into ~/.claude/skills/ for live development
+.
+├── README.md          # Human-readable skill catalog
+├── skills.yaml        # Machine-readable manifest (source of truth for `paid` field)
+├── CHANGELOG.md       # Index repo history (not per-skill)
+├── LICENSE            # MIT (for this index; each skill has its own LICENSE)
+└── .github/           # CI workflows (e.g. sync manifest from skill repos)
 ```
 
-## Skills
+## skills.yaml Schema
 
-| Skill | Script | Deps |
-|-------|--------|------|
-| `any2pdf` | `skills/lovstudio-any2pdf/scripts/md2pdf.py` (reportlab) | `pip install reportlab` |
-| `any2docx` | `skills/lovstudio-any2docx/scripts/md2docx.py` (python-docx) | `pip install python-docx` |
-| `fill-form` | `skills/lovstudio-fill-form/scripts/fill_form.py` (python-docx) | `pip install python-docx` |
-| `any2deck` | `skills/lovstudio-any2deck/` (image-gen + pptxgenjs + pdf-lib) | Node.js, Python 3.8+ |
-| `skill-creator` | `skills/lovstudio-skill-creator/scripts/init_skill.py` | — |
-| `auto-context` | (pure instructions, no script) | — |
-| `xbti-creator` | (pure instructions, depends on `image-creator`) | `lovstudio:image-creator`, Node.js 18+ |
-| `anti-wechat-ai-check` | `skills/lovstudio-anti-wechat-ai-check/scripts/analyze.py` | — (stdlib only) |
-| `xbti-gallery` | (pure instructions, no script) | `gh` CLI |
-| `skill-optimizer` | `skills/lovstudio-skill-optimizer/scripts/{lint_skill,bump_version}.py` | — (stdlib only) |
-| `translation-review` | (pure instructions, no script) | `pandoc` (for .docx) |
-| `review-doc` | `skills/lovstudio-review-doc/scripts/annotate_docx.py` (python-docx) | `pip install python-docx` |
-| `thesis-polish` | (pure instructions, no script) | — |
-| `visual-clone` | (pure instructions, no script) | — |
-| `gh-tidy` | (pure instructions, no script) | `gh` CLI |
-| `pdf2png` | `skills/lovstudio-pdf2png/scripts/pdf2png.sh` (CoreGraphics) | `pip install pyobjc-framework-Quartz` (macOS only) |
-
-`any2pdf`/`any2docx` convert Markdown → styled output with CJK/Latin mixed text support, themes, cover pages, TOC, watermarks.
-`fill-form` fills Word form templates (.docx with table-based fields) with user-provided data.
-
-## Development
-
-```bash
-# Live-link all skills for testing in Claude Code sessions
-bash dev.sh
-
-# Link a single skill
-bash dev.sh lovstudio-any2pdf
-
-# Run a conversion directly
-python skills/lovstudio-any2pdf/scripts/md2pdf.py --input foo.md --output foo.pdf --theme warm-academic
-python skills/lovstudio-any2docx/scripts/md2docx.py --input foo.md --output foo.docx --theme warm-academic
+```yaml
+version: 1
+skills:
+  - name: any2pdf                       # skill short name (no prefix)
+    repo: lovstudio/any2pdf-skill       # GitHub repo (always lovstudio/{name}-skill)
+    paid: false                         # true = private repo + purchase required
+    category: "Document Conversion"     # display category
+    version: "0.7.1"                    # from SKILL.md (optional, CI-synced)
+    description: "Markdown → …"         # from SKILL.md tagline
 ```
-
-## Adding a New Skill
-
-1. Create `skills/lovstudio-<name>/` with a `SKILL.md` (follow existing frontmatter format: name, description, license, compatibility, metadata)
-2. Add scripts in `skills/lovstudio-<name>/scripts/`
-3. **Create `skills/lovstudio-<name>/README.md`** — 给人类在 GitHub 上阅读的文档（安装命令、用法示例、参数表、ASCII 图示）。注意：官方 skill-creator 说不要建 README，但本 repo 发布到 GitHub，必须有。参照 any2docx/fill-form 的 README 格式。
-4. Update root `README.md` skills table
-5. Update this文件的 Skills table
 
 ## Key Conventions
 
-- Skill names use prefix `lovstudio:` (e.g. `lovstudio:any2pdf`)
-- Directory names use prefix `lovstudio-` (e.g. `lovstudio-any2pdf`), all under `skills/`
-- Both skills share the same set of 14 color themes (warm-academic, nord-frost, github-light, etc.)
-- SKILL.md files must use `AskUserQuestion` to prompt users for options before running conversion — never skip this interactive step
-- Python scripts are standalone single-file CLIs with `argparse`; no package structure
-- CJK text handling is a core concern — font switching, mixed-text rendering, and line wrapping must work correctly
+- **`paid` field is only here**, not in individual SKILL.md files. It's business classification, not skill metadata.
+- **24 Free + 3 Paid = 27 skills total**. Paid: `event-poster`, `proposal`, `write-book`.
+- **Naming**: GitHub repo = `lovstudio/{name}-skill`; local path = `~/lovstudio/coding/skills/{name}-skill/`. No `lovstudio-` prefix in the name.
+- Skill short name (`any2pdf`) is what users invoke via `lovstudio:any2pdf` in Claude Code.
+
+## Adding a New Skill
+
+1. In `~/lovstudio/coding/skills/`: run the [`skill-creator`](https://github.com/lovstudio/skill-creator-skill) skill to scaffold `{name}-skill/`.
+2. `cd {name}-skill && git init && git add -A && git commit && gh repo create lovstudio/{name}-skill --public --source=. --push`
+3. Open a PR against this repo appending an entry to `skills.yaml` and a row to `README.md`.
+
+For **paid** skills: pass `--private` to `gh repo create` and set `paid: true`.
+
+## Historical Context
+
+This repo used to be a monorepo containing all skills under `skills/lovstudio-<name>/`. In 2026-04-16 it was refactored into a pure index + 27 independent skill repos. The old `lovstudio/pro-skills` repo (which mirrored free + added 3 paid skills) was archived at the same time. See the 0.8.0 CHANGELOG entry.
