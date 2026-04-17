@@ -130,7 +130,7 @@ skills:
     repo: lovstudio/cc-migrate-session
     paid: false
     category: "Dev Tools"
-    version: "0.1.0"
+    version: "0.1.1"
     description: "Migrate Claude Code session history when a project folder moves. Rewrites ~/.claude/projects/<slug>/*.jsonl cwd fields so `claude --resume` keeps working."
   - name: deploy-to-vercel
     repo: lovstudio/deploy-to-vercel-skill
