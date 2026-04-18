@@ -113,7 +113,7 @@
       "name": "any2pdf",
       "source": "./skills/any2pdf",
       "description": "Markdown → professionally typeset PDF. CJK/Latin mixed text, code blocks, tables, 14 themes.",
-      "category": "Document Conversion",
+      "category": "Office Automation",
       "skills": [
         "./"
       ],
@@ -123,7 +123,7 @@
       "name": "any2docx",
       "source": "./skills/any2docx",
       "description": "Convert Markdown documents to professionally styled DOCX (Word) files with python-docx.",
-      "category": "Document Conversion",
+      "category": "Office Automation",
       "skills": [
         "./"
       ],
@@ -133,7 +133,7 @@
       "name": "any2deck",
       "source": "./skills/any2deck",
       "description": "Content → slide deck images with 16 visual styles, PPTX/PDF export, branding overlay.",
-      "category": "Document Conversion",
+      "category": "Office Automation",
       "skills": [
         "./"
       ],
@@ -143,7 +143,7 @@
       "name": "pdf2png",
       "source": "./skills/pdf2png",
       "description": "PDF → single vertically concatenated PNG. Uses macOS CoreGraphics, ~20x faster than pdftoppm.",
-      "category": "Document Conversion",
+      "category": "Office Automation",
       "skills": [
         "./"
       ],
@@ -153,7 +153,7 @@
       "name": "png2svg",
       "source": "./skills/png2svg",
       "description": "PNG → high-quality SVG conversion with background removal and spline curves.",
-      "category": "Document Conversion",
+      "category": "Office Automation",
       "skills": [
         "./"
       ],
