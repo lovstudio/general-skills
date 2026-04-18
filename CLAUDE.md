@@ -30,8 +30,22 @@ skills:
     paid: false                         # true = private repo + purchase required
     category: "Document Conversion"     # display category
     version: "0.7.1"                    # from SKILL.md (optional, CI-synced)
-    description: "Markdown → …"         # from SKILL.md tagline
+    description: "Markdown → …"         # Agent-facing trigger copy (English, terse). CI-synced from GitHub repo description.
+    tagline_en: "Typeset Markdown …"    # Human-facing English one-liner for README. Hand-maintained.
+    tagline_zh: "把 Markdown 排成 …"    # Human-facing Chinese one-liner for README. Hand-maintained.
 ```
+
+### Field responsibilities
+
+- **`description`** — read by Claude Code / Agents to decide when to trigger the skill.
+  Keep it professional, English, and terse (Agents have a skills-token budget).
+  CI pulls this from each skill's GitHub repo description nightly (`GH_SYNC=1`) — so the repo
+  description on GitHub is the source of truth; don't hand-edit this field as marketing copy.
+- **`tagline_en` / `tagline_zh`** — shown to humans in README.md / README.zh-CN.md and on
+  agentskills.io. Value-oriented ("what the user gets"), NOT implementation details.
+  Hand-maintained — CI never overwrites them.
+- **Paid skills**: `tagline_*` must not leak implementation specifics (no library names,
+  no auth/token mechanics, no internal endpoints) — they sit in a public index.
 
 ## Key Conventions
 

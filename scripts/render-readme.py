@@ -66,7 +66,8 @@ def load_skills() -> list[dict]:
 
 
 def gh_sync(skills: list[dict]) -> None:
-    """Refresh `description` from each skill's GitHub repo description (best-effort)."""
+    """Refresh `description` (Agent-facing trigger copy) from each skill's GitHub
+    repo description. Never touches tagline_en / tagline_zh — those are human-maintained."""
     for s in skills:
         repo = s["repo"]
         try:
@@ -81,6 +82,18 @@ def gh_sync(skills: list[dict]) -> None:
         except subprocess.CalledProcessError:
             # Private repo, missing perms, or network issue — keep existing value.
             pass
+
+
+def pick_tagline(skill: dict, lang: str) -> str:
+    """Pick the human-facing tagline for the given language, falling back to the
+    other language's tagline, then to `description`. README always shows something."""
+    key = "tagline_zh" if lang == "zh" else "tagline_en"
+    fallback_key = "tagline_en" if lang == "zh" else "tagline_zh"
+    return (
+        (skill.get(key) or "").strip()
+        or (skill.get(fallback_key) or "").strip()
+        or (skill.get("description") or "").strip()
+    )
 
 
 def render_table(skills: list[dict], lang: str) -> str:
@@ -108,8 +121,7 @@ def render_table(skills: list[dict], lang: str) -> str:
         for s in sorted(grouped[key], key=lambda x: x["name"]):
             badge = PAID_BADGE if s.get("paid") else FREE_BADGE
             link = f"https://github.com/{s['repo']}"
-            desc = s.get("description", "").strip()
-            rows.append(f"| {badge} | [`{s['name']}`]({link}) | {desc} |")
+            rows.append(f"| {badge} | [`{s['name']}`]({link}) | {pick_tagline(s, lang)} |")
     return "\n".join(rows)
 
 
