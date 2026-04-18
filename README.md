@@ -27,7 +27,11 @@
 - [`README.md`](README.md) / [`README.en.md`](README.en.md) — 由清单自动渲染生成。
 - 不含代码。技能代码和历史均在各自独立仓库中。
 
-标记为 ![Free](https://img.shields.io/badge/Free-green) 的技能是开源免费的（MIT 协议）。标记为 ![Paid](https://img.shields.io/badge/Paid-blueviolet) 的技能是商业版——私有仓库，需购买后使用。
+标记为 ![Free](https://img.shields.io/badge/Free-green) 的技能是开源免费的（MIT 协议）。标记为 ![Paid](https://img.shields.io/badge/Paid-blueviolet) 的技能是商业版——私有仓库，需购买后使用。购买或咨询请扫码关注公众号 **手工川**：
+
+<p align="center">
+  <img src="assets/shougongchuan-banner.jpg" alt="关注公众号「手工川」获取付费技能" width="720">
+</p>
 
 ## 技能列表
 

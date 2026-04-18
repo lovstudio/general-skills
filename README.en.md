@@ -27,7 +27,11 @@ This repo is the **central index** for Lovstudio skills. Each skill lives in its
 - [`README.md`](README.md) / [`README.en.md`](README.en.md) — auto-rendered from the manifest.
 - No code. Skill code and history live in their individual repos.
 
-Skills marked ![Free](https://img.shields.io/badge/Free-green) are open source (MIT). Skills marked ![Paid](https://img.shields.io/badge/Paid-blueviolet) are commercial — private repo, purchase required.
+Skills marked ![Free](https://img.shields.io/badge/Free-green) are open source (MIT). Skills marked ![Paid](https://img.shields.io/badge/Paid-blueviolet) are commercial — private repo, purchase required. To purchase or ask questions, scan the QR code to follow the **手工川 (ShougongChuan)** WeChat official account:
+
+<p align="center">
+  <img src="assets/shougongchuan-banner.jpg" alt="Follow 手工川 on WeChat for paid skills" width="720">
+</p>
 
 ## Skills
 
