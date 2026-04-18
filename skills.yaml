@@ -44,6 +44,16 @@ skills:
     description: "Multi-mechanism image generation: end-to-end AI, code rendering, or prompt engineering"
     tagline_en: "Generate images through the right mechanism — AI, code rendering, or prompt tuning."
     tagline_zh: "按需选择最合适的出图方式：端到端 AI、代码渲染或提示词精修。"
+  - name: paid-add
+    repo: lovstudio/paid-add-skill
+    name_zh: "加法 (测试付费)"
+    paid: true
+    encrypted_bundle: true
+    category: "General"
+    version: "0.1.0"
+    description: "A paid-skill end-to-end test skill. Given numbers, returns their sum. Used to verify encryption + activation works."
+    tagline_en: "Trivial addition skill — the PoC proving end-to-end paid-skill encryption."
+    tagline_zh: "付费加密分发机制的联调测试 skill，输入数字返回求和。"
 
   # ── Design ──
   - name: event-poster

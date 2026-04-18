@@ -1,0 +1,16 @@
+{
+  "skill_name": "paid-add",
+  "skill_version": "0.1.0",
+  "skill_id": 1,
+  "skill_version_id": 1,
+  "format_version": 2,
+  "cipher": "aes-256-gcm",
+  "files": {
+    "SKILL.md": {
+      "iv": "5d8UYbpYHAsAgVlQ",
+      "tag": "LIs4RcJTOHSPBTFooThxAA==",
+      "original_checksum": "73555bdef9ba8299c4ab47c1171884ea5251f8d3c1ecebfe5e5df275f8ca19ee",
+      "original_size": 897
+    }
+  }
+}

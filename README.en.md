@@ -36,7 +36,7 @@ Skills marked ![Free](https://img.shields.io/badge/Free-green) are open source (
 ## Skills
 
 <!-- COUNT:START -->
-> **32 skills** — 27 Free + 5 Paid.
+> **33 skills** — 27 Free + 6 Paid.
 <!-- COUNT:END -->
 
 <!-- SKILLS:START -->
@@ -44,6 +44,7 @@ Skills marked ![Free](https://img.shields.io/badge/Free-green) are open source (
 |---|---|---|
 | **General** | | |
 | ![Free](https://img.shields.io/badge/Free-green) | [`image-creator`](https://github.com/lovstudio/image-creator-skill) | Generate images through the right mechanism — AI, code rendering, or prompt tuning. |
+| ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [`paid-add`](https://github.com/lovstudio/paid-add-skill) | Trivial addition skill — the PoC proving end-to-end paid-skill encryption. |
 | ![Free](https://img.shields.io/badge/Free-green) | [`skill-creator`](https://github.com/lovstudio/skill-creator-skill) | Scaffold a new Claude Code skill with the right structure in seconds. |
 | ![Free](https://img.shields.io/badge/Free-green) | [`skill-optimizer`](https://github.com/lovstudio/skill-optimizer-skill) | Audit an existing skill, auto-fix issues, and bump its version in one pass. |
 | **Business** | | |

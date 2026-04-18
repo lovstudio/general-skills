@@ -38,10 +38,14 @@ MARKETPLACE_NAME = "lovstudio"
 OWNER = {"name": "Lovstudio", "email": "shawninjuly@gmail.com"}
 
 
-def load_free_skills() -> list[dict]:
+def load_installable_skills() -> list[dict]:
+    """Free skills + paid skills that ship an encrypted bundle (./skills/<name>/)."""
     with YAML_PATH.open() as f:
         data = yaml.safe_load(f)
-    return [s for s in data["skills"] if not s.get("paid")]
+    return [
+        s for s in data["skills"]
+        if not s.get("paid") or s.get("encrypted_bundle")
+    ]
 
 
 def slug(text: str) -> str:
@@ -61,11 +65,16 @@ def group_by_category(skills: list[dict]) -> "OrderedDict[str, list[dict]]":
 
 def category_to_plugin(category: str, skills: list[dict]) -> dict:
     names = [s["name"] for s in skills]
-    desc_count = len(names)
+    n_free = sum(1 for s in skills if not s.get("paid"))
+    n_paid = sum(1 for s in skills if s.get("paid"))
+    if n_paid:
+        desc = f"{category} — {n_free} free + {n_paid} paid (activation required)."
+    else:
+        desc = f"{category} — {n_free} free skill{'s' if n_free != 1 else ''} bundled together."
     return {
         "name": slug(category),
         "source": "./",
-        "description": f"{category} — {desc_count} free skill{'s' if desc_count != 1 else ''} bundled together.",
+        "description": desc,
         "category": category,
         "skills": [f"./skills/{n}" for n in names],
         "strict": False,
@@ -73,7 +82,7 @@ def category_to_plugin(category: str, skills: list[dict]) -> dict:
 
 
 def render() -> dict:
-    skills = load_free_skills()
+    skills = load_installable_skills()
     grouped = group_by_category(skills)
     plugins = [category_to_plugin(cat, items) for cat, items in grouped.items()]
     return {

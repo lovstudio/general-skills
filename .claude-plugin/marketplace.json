@@ -11,12 +11,13 @@
     {
       "name": "general",
       "source": "./",
-      "description": "General — 3 free skills bundled together.",
+      "description": "General — 3 free + 1 paid (activation required).",
       "category": "General",
       "skills": [
         "./skills/skill-creator",
         "./skills/skill-optimizer",
-        "./skills/image-creator"
+        "./skills/image-creator",
+        "./skills/paid-add"
       ],
       "strict": false
     },
