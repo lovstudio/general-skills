@@ -100,16 +100,6 @@
       "strict": false
     },
     {
-      "name": "review-doc",
-      "source": "./skills/review-doc",
-      "description": "Review and annotate documents/contracts — output annotated docx with comments",
-      "category": "Office Automation",
-      "skills": [
-        "./"
-      ],
-      "strict": false
-    },
-    {
       "name": "any2pdf",
       "source": "./skills/any2pdf",
       "description": "Markdown → professionally typeset PDF. CJK/Latin mixed text, code blocks, tables, 14 themes.",
