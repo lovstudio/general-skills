@@ -111,39 +111,38 @@ skills:
     tagline_en: "Review a document or contract and return it with inline comments."
     tagline_zh: "审阅文档或合同，输出带批注的 docx，直接拿给同事或客户。"
 
-  # ── Document Conversion ──
   - name: any2pdf
     repo: lovstudio/any2pdf-skill
     paid: false
-    category: "Document Conversion"
+    category: "Office Automation"
     description: "Markdown → professionally typeset PDF. CJK/Latin mixed text, code blocks, tables, 14 themes."
     tagline_en: "Typeset Markdown into a publication-quality PDF with 14 built-in themes."
     tagline_zh: "把 Markdown 排成出版级 PDF，中英混排、代码块、表格全支持，内置 14 套主题。"
   - name: any2docx
     repo: lovstudio/any2docx-skill
     paid: false
-    category: "Document Conversion"
+    category: "Office Automation"
     description: "Convert Markdown documents to professionally styled DOCX (Word) files with python-docx."
     tagline_en: "Convert Markdown into a clean, professionally styled Word document."
     tagline_zh: "把 Markdown 转成排版规范的 Word 文档，可以直接发给甲方。"
   - name: any2deck
     repo: lovstudio/any2deck-skill
     paid: false
-    category: "Document Conversion"
+    category: "Office Automation"
     description: "Content → slide deck images with 16 visual styles, PPTX/PDF export, branding overlay."
     tagline_en: "Turn any content into a styled slide deck — 16 looks, export to PPTX or PDF."
     tagline_zh: "把任意内容变成带设计感的幻灯片，16 种风格可选，导出 PPTX / PDF。"
   - name: pdf2png
     repo: lovstudio/pdf2png-skill
     paid: false
-    category: "Document Conversion"
+    category: "Office Automation"
     description: "PDF → single vertically concatenated PNG. Uses macOS CoreGraphics, ~20x faster than pdftoppm."
     tagline_en: "Convert a PDF to a single long PNG — fast enough to feel instant on macOS."
     tagline_zh: "把 PDF 拼成一张长图 PNG，在 macOS 上快到几乎瞬间出图。"
   - name: png2svg
     repo: lovstudio/png2svg-skill
     paid: false
-    category: "Document Conversion"
+    category: "Office Automation"
     description: "PNG → high-quality SVG conversion with background removal and spline curves."
     tagline_en: "Convert a PNG to a crisp SVG, with background removed and curves smoothed."
     tagline_zh: "把 PNG 矢量化为高质量 SVG，自动抠背景、曲线平滑。"
