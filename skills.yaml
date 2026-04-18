@@ -16,31 +16,31 @@
 # (no library names, no auth/token mechanics, no internal endpoints).
 version: 1
 skills:
-  # ── Meta Skills ──
+  # ── General ──
   - name: skill-creator
     repo: lovstudio/skill-creator-skill
     paid: false
-    category: "Meta Skills"
+    category: "General"
     description: "Scaffold new lovstudio skills with proper structure, SKILL.md + README.md."
     tagline_en: "Scaffold a new Claude Code skill with the right structure in seconds."
     tagline_zh: "一条命令生成规范的 Claude Code 技能骨架，结构即对即用。"
   - name: skill-optimizer
     repo: lovstudio/skill-optimizer-skill
     paid: false
-    category: "Meta Skills"
+    category: "General"
     description: "Audit + auto-fix an existing skill, bump semver, and append a CHANGELOG entry."
     tagline_en: "Audit an existing skill, auto-fix issues, and bump its version in one pass."
     tagline_zh: "一键体检并修复现有技能，自动升版本号并追加 CHANGELOG。"
-
-  # ── Image & Design ──
   - name: image-creator
     repo: lovstudio/image-creator-skill
     paid: false
-    category: "Design"
+    category: "General"
     version: "0.2.0"
     description: "Multi-mechanism image generation: end-to-end AI, code rendering, or prompt engineering"
     tagline_en: "Generate images through the right mechanism — AI, code rendering, or prompt tuning."
     tagline_zh: "按需选择最合适的出图方式：端到端 AI、代码渲染或提示词精修。"
+
+  # ── Design ──
   - name: event-poster
     repo: lovstudio/event-poster-skill
     paid: true
@@ -192,6 +192,7 @@ skills:
     paid: false
     category: "Dev Tools"
     version: "0.1.1"
+    skill_path: skill/lovstudio-cc-migrate-session   # SKILL.md lives in a subdir, not repo root
     description: "Migrate Claude Code sessions when a project folder moves"
     tagline_en: "Keep your Claude Code session history working after you move a project folder."
     tagline_zh: "项目目录搬家后，让 Claude Code 的历史会话还能正常 `--resume`。"
