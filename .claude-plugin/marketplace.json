@@ -59,6 +59,16 @@
       "strict": false
     },
     {
+      "name": "business",
+      "source": "./",
+      "description": "Business — 0 free + 1 paid (activation required).",
+      "category": "Business",
+      "skills": [
+        "./skills/proposal"
+      ],
+      "strict": false
+    },
+    {
       "name": "finance",
       "source": "./",
       "description": "Finance — 1 free skill bundled together.",

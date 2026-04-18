@@ -1,309 +1,308 @@
-# Lovstudio Skills — Central Index
-# Each skill lives in its own repo at github.com/lovstudio/{name}-skill
-# paid: true  -> private repo, purchase required
-# paid: false -> public repo, free to use
-# Order matters: categories appear on the website in the order they first occur here.
-#
-# Field semantics:
-#   name_zh     : Human-facing Chinese display name. Hand-maintained. Shown on the zh
-#                 website and in the Chinese README. English locales keep the slug id.
-#   description : Agent-facing English trigger copy (terse, professional). Synced from
-#                 each skill's GitHub repo description by CI (gh_sync). DO NOT hand-edit
-#                 to add marketing language — the Agent reads this to decide when to fire.
-#   tagline_en  : Human-facing English one-liner for README / agentskills.io. Value-oriented
-#                 (what the user gets), avoids leaking implementation details. Hand-maintained.
-#   tagline_zh  : Same as tagline_en, in Simplified Chinese.
-#
-# Rule for paid skills: tagline_* must not expose implementation specifics
-# (no library names, no auth/token mechanics, no internal endpoints).
 version: 1
 skills:
-  # ── General ──
-  - name: skill-creator
-    repo: lovstudio/skill-creator-skill
-    name_zh: "技能脚手架"
-    paid: false
-    category: "General"
-    description: "Scaffold new lovstudio skills with proper structure, SKILL.md + README.md."
-    tagline_en: "Scaffold a new Claude Code skill with the right structure in seconds."
-    tagline_zh: "一条命令生成规范的 Claude Code 技能骨架，结构即对即用。"
-  - name: skill-optimizer
-    repo: lovstudio/skill-optimizer-skill
-    name_zh: "技能优化器"
-    paid: false
-    category: "General"
-    description: "Audit + auto-fix an existing skill, bump semver, and append a CHANGELOG entry."
-    tagline_en: "Audit an existing skill, auto-fix issues, and bump its version in one pass."
-    tagline_zh: "一键体检并修复现有技能，自动升版本号并追加 CHANGELOG。"
-  - name: image-creator
-    repo: lovstudio/image-creator-skill
-    name_zh: "图片生成"
-    paid: false
-    category: "General"
-    version: "0.2.0"
-    description: "Multi-mechanism image generation: end-to-end AI, code rendering, or prompt engineering"
-    tagline_en: "Generate images through the right mechanism — AI, code rendering, or prompt tuning."
-    tagline_zh: "按需选择最合适的出图方式：端到端 AI、代码渲染或提示词精修。"
-  - name: paid-add
-    repo: lovstudio/paid-add-skill
-    name_zh: "加法 (测试付费)"
-    paid: true
-    encrypted_bundle: true
-    category: "General"
-    version: "0.1.0"
-    description: "A paid-skill end-to-end test skill. Given numbers, returns their sum. Used to verify encryption + activation works."
-    tagline_en: "Trivial addition skill — the PoC proving end-to-end paid-skill encryption."
-    tagline_zh: "付费加密分发机制的联调测试 skill，输入数字返回求和。"
-
-  # ── Design ──
-  - name: event-poster
-    repo: lovstudio/event-poster-skill
-    name_zh: "活动海报"
-    paid: true
-    category: "Design"
-    version: "0.3.0"
-    description: "Generate event posters via HTML + Playwright / 活动海报生成"
-    tagline_en: "Turn an event brief into a polished poster, ready to share."
-    tagline_zh: "把活动信息一键变成高质感海报，直接拿去发。"
-  - name: visual-clone
-    repo: lovstudio/visual-clone-skill
-    name_zh: "视觉复刻"
-    paid: false
-    category: "Design"
-    description: "Extract design DNA from reference images / 提取设计要素生成复刻指令"
-    tagline_en: "Extract the design DNA of a reference image so you can recreate the look."
-    tagline_zh: "从参考图中提取设计要素，生成可复刻同款风格的指令。"
-
-  # ── Academic ──
-  - name: thesis-polish
-    repo: lovstudio/thesis-polish-skill
-    name_zh: "论文润色"
-    paid: false
-    category: "Academic"
-    description: "MBA 论文全面润色，对标全国优秀论文标准。语言+结构+论证+创新四维提升。"
-    tagline_en: "Polish an MBA thesis across language, structure, argument, and originality."
-    tagline_zh: "MBA 论文全维度润色，对标国优标准，打磨语言、结构、论证与创新四个面。"
-  - name: translation-review
-    repo: lovstudio/translation-review-skill
-    name_zh: "译文审阅"
-    paid: false
-    category: "Academic"
-    description: "Chinese-to-English translation review. Compares source & translation across 6 dimensions."
-    tagline_en: "Review a Chinese→English translation against the original across six quality dimensions."
-    tagline_zh: "中译英译文审阅，从六个维度逐条对照原文，找出问题并给出改写建议。"
-
-  # ── Office Automation ──
-  - name: fill-form
-    repo: lovstudio/fill-form-skill
-    name_zh: "Word 表单填写"
-    paid: false
-    category: "Office Automation"
-    description: "Fill Word form templates (.docx). Auto-detects table fields, CJK font support."
-    tagline_en: "Fill Word (.docx) form templates automatically, with clean CJK typography."
-    tagline_zh: "自动填写 Word 表单模板，字段识别 + 中英文排版一气呵成。"
-  - name: fill-web-form
-    repo: lovstudio/fill-web-form-skill
-    name_zh: "网页表单填写"
-    paid: false
-    category: "Office Automation"
-    description: "Fill web forms from local knowledge base. Fetch URL → deep-search KB → generate markdown doc."
-    tagline_en: "Answer online forms using your own knowledge base as the source of truth."
-    tagline_zh: "用你本地的知识库来应答网页表单，一轮检索一轮生成，草稿即交付。"
-  # ── Business ──
-  - name: proposal
-    repo: lovstudio/proposal-skill
-    name_zh: "商业提案"
-    paid: true
-    category: "Business"
-    description: "Business proposal with architecture, budget & PDF / 完整商业提案"
-    tagline_en: "Turn a project brief into a complete, client-ready business proposal."
-    tagline_zh: "把项目简述一键变成可交付的商业提案，方案、报价、排版全配齐。"
-  - name: review-doc
-    repo: lovstudio/review-doc-skill
-    name_zh: "文档审阅"
-    paid: true
-    category: "Business"
-    description: "Review and annotate documents/contracts — output annotated docx with comments"
-    tagline_en: "Review a document or contract and return it with inline comments."
-    tagline_zh: "审阅文档或合同，输出带批注的 docx，直接拿给同事或客户。"
-
-  # ── Finance ──
-  - name: expense-report
-    repo: lovstudio/expense-report-skill
-    name_zh: "报销单整理"
-    paid: false
-    category: "Finance"
-    description: "Invoice images/text → categorized Excel expense report"
-    tagline_en: "Turn a pile of invoices into a categorized Excel expense report."
-    tagline_zh: "发票图片或文字一键整理成分类报销 Excel，业务招待、差旅、办公自动归类。"
-
-  - name: any2pdf
-    repo: lovstudio/any2pdf-skill
-    name_zh: "转 PDF"
-    paid: false
-    category: "Office Automation"
-    description: "Markdown → professionally typeset PDF. CJK/Latin mixed text, code blocks, tables, 14 themes."
-    tagline_en: "Typeset Markdown into a publication-quality PDF with 14 built-in themes."
-    tagline_zh: "把 Markdown 排成出版级 PDF，中英混排、代码块、表格全支持，内置 14 套主题。"
-  - name: any2docx
-    repo: lovstudio/any2docx-skill
-    name_zh: "转 Word"
-    paid: false
-    category: "Office Automation"
-    description: "Convert Markdown documents to professionally styled DOCX (Word) files with python-docx."
-    tagline_en: "Convert Markdown into a clean, professionally styled Word document."
-    tagline_zh: "把 Markdown 转成排版规范的 Word 文档，可以直接发给甲方。"
-  - name: any2deck
-    repo: lovstudio/any2deck-skill
-    name_zh: "转幻灯片"
-    paid: false
-    category: "Office Automation"
-    description: "Content → slide deck images with 16 visual styles, PPTX/PDF export, branding overlay."
-    tagline_en: "Turn any content into a styled slide deck — 16 looks, export to PPTX or PDF."
-    tagline_zh: "把任意内容变成带设计感的幻灯片，16 种风格可选，导出 PPTX / PDF。"
-  - name: pdf2png
-    repo: lovstudio/pdf2png-skill
-    name_zh: "PDF 转长图"
-    paid: false
-    category: "Office Automation"
-    description: "PDF → single vertically concatenated PNG. Uses macOS CoreGraphics, ~20x faster than pdftoppm."
-    tagline_en: "Convert a PDF to a single long PNG — fast enough to feel instant on macOS."
-    tagline_zh: "把 PDF 拼成一张长图 PNG，在 macOS 上快到几乎瞬间出图。"
-  - name: png2svg
-    repo: lovstudio/png2svg-skill
-    name_zh: "PNG 转 SVG"
-    paid: false
-    category: "Office Automation"
-    description: "PNG → high-quality SVG conversion with background removal and spline curves."
-    tagline_en: "Convert a PNG to a crisp SVG, with background removed and curves smoothed."
-    tagline_zh: "把 PNG 矢量化为高质量 SVG，自动抠背景、曲线平滑。"
-
-  # ── Content Creation ──
-  - name: anti-wechat-ai-check
-    repo: lovstudio/anti-wechat-ai-check-skill
-    name_zh: "微信 AI 味降检"
-    paid: false
-    category: "Content Creation"
-    description: "检测文章 AI 痕迹 + 人性化润色，通过微信 3.27 条款检测。"
-    tagline_en: "Detect AI fingerprints in an article and rewrite it to read like a human."
-    tagline_zh: "检测文章的 AI 味并做人性化润色，帮助稳过微信 3.27 条款的机器判定。"
-  - name: document-illustrator
-    repo: lovstudio/document-illustrator-skill
-    name_zh: "文档配图"
-    paid: false
-    category: "Content Creation"
-    description: "为文档原地插入 AI 配图。全局规划插入点，并行生成，异步插回原文。"
-    tagline_en: "Illustrate a long document in place — plan, generate, and insert images automatically."
-    tagline_zh: "给长文原地配图，先规划插入点再并行出图，最后自动插回原文。"
-  - name: write-professional-book
-    repo: lovstudio/write-professional-book-skill
-    name_zh: "多章节写书"
-    paid: true
-    category: "Content Creation"
-    description: "Write multi-chapter books (technical, tutorial, monograph) / 逐章写书，支持多种风格"
-    tagline_en: "Write a full multi-chapter book — technical, tutorial, or monograph — from an outline."
-    tagline_zh: "从大纲开始，逐章写出一本完整的书，技术、教程、专著多种风格。"
-  - name: wxmp-cracker
-    repo: lovstudio/wxmp-cracker-skill
-    name_zh: "公众号抓取"
-    paid: true
-    category: "Content Creation"
-    version: "0.1.0"
-    description: "微信公众号文章抓取"
-    tagline_en: "Archive WeChat Official Account articles into clean, reusable text."
-    tagline_zh: "把微信公众号的文章批量归档成可再利用的整洁文本。"
-
-  # ── Dev Tools ──
-  - name: auto-context
-    repo: lovstudio/auto-context-skill
-    name_zh: "上下文体检"
-    paid: false
-    category: "Dev Tools"
-    description: "Context hygiene checker. Suggests /fork or /btw when context is polluted."
-    tagline_en: "Watch your Claude Code context for pollution and suggest when to fork or reset."
-    tagline_zh: "监测 Claude Code 上下文是否被污染，适时提示你 /fork 或 /btw。"
-  - name: cc-migrate-session
-    repo: lovstudio/cc-migrate-session
-    name_zh: "会话迁移"
-    paid: false
-    category: "Dev Tools"
-    version: "0.1.1"
-    skill_path: skill/lovstudio-cc-migrate-session   # SKILL.md lives in a subdir, not repo root
-    description: "Migrate Claude Code sessions when a project folder moves"
-    tagline_en: "Keep your Claude Code session history working after you move a project folder."
-    tagline_zh: "项目目录搬家后，让 Claude Code 的历史会话还能正常 `--resume`。"
-  - name: deploy-to-vercel
-    repo: lovstudio/deploy-to-vercel-skill
-    name_zh: "部署到 Vercel"
-    paid: false
-    category: "Dev Tools"
-    description: "Deploy frontend to Vercel with auto Cloudflare DNS + custom domain setup."
-    tagline_en: "Ship a frontend to Vercel with custom domain and Cloudflare DNS wired up automatically."
-    tagline_zh: "一键把前端部署到 Vercel，自动配好 Cloudflare DNS 和自定义域名。"
-  - name: finder-action
-    repo: lovstudio/finder-action-skill
-    name_zh: "访达右键动作"
-    paid: false
-    category: "Dev Tools"
-    description: "Generate Mac Finder right-click menu actions. Quick Action or Finder Sync Extension."
-    tagline_en: "Add a custom right-click action to macOS Finder in minutes."
-    tagline_zh: "几分钟给 macOS 访达右键菜单加一个你自己的动作。"
-  - name: gh-access
-    repo: lovstudio/gh-access-skill
-    name_zh: "GitHub 协作者管理"
-    paid: false
-    category: "Dev Tools"
-    description: "Grant / revoke / list collaborator access on private GitHub repos by username or email. Read-only by default."
-    tagline_en: "Grant, revoke, or audit collaborator access on private GitHub repos in one command."
-    tagline_zh: "一条命令给私有 GitHub 仓库加减协作者权限，或盘点现有访问清单。"
-  - name: gh-contribute
-    repo: lovstudio/gh-contribute-skill
-    name_zh: "GitHub 投稿 PR"
-    paid: false
-    category: "Dev Tools"
-    version: "0.1.0"
-    description: "Contribute clean, professional PRs to upstream GitHub repos — fork, branch, commit, push, open PR, with smart splitting."
-    tagline_en: "Ship a clean PR to any upstream GitHub repo — fork, branch, push, and open PR for you."
-    tagline_zh: "给任意上游 GitHub 仓库提一份干净的 PR——fork、分支、推送、开 PR 一站搞定。"
-  - name: gh-tidy
-    repo: lovstudio/gh-tidy-skill
-    name_zh: "GitHub 仓库整理"
-    paid: false
-    category: "Dev Tools"
-    description: "Triage & clean up GitHub issues, PRs, branches, and labels in one pass."
-    tagline_en: "Triage and clean up GitHub issues, PRs, branches, and labels in a single pass."
-    tagline_zh: "一次过清理 GitHub 上的 issue、PR、分支和标签，让仓库重新整洁。"
-  - name: obsidian-reset-cache
-    repo: lovstudio/obsidian-reset-cache-skill
-    name_zh: "重置 Obsidian 缓存"
-    paid: false
-    category: "Dev Tools"
-    description: "重置 Obsidian 缓存，解决卡在 Loading cache 的问题。"
-    tagline_en: "Reset Obsidian's cache when it gets stuck on \"Loading cache\"."
-    tagline_zh: "Obsidian 卡在 Loading cache 时，一键重置缓存救场。"
-  - name: project-port
-    repo: lovstudio/project-port-skill
-    name_zh: "项目端口分配"
-    paid: false
-    category: "Dev Tools"
-    description: "Generate stable unique dev port (3000–8999) from project name."
-    tagline_en: "Assign each project a stable, unique dev port so services stop colliding."
-    tagline_zh: "给每个项目分配一个稳定且唯一的开发端口，彻底告别端口撞车。"
-
-  # ── xBTI ──
-  - name: xbti-creator
-    repo: lovstudio/xbti-creator-skill
-    name_zh: "xBTI 测试定制"
-    paid: false
-    category: "xBTI"
-    description: "Create custom BTI personality tests (LBTI, FBTI, etc.) with AI-generated content + avatars."
-    tagline_en: "Build your own BTI-style personality test — questions, results, and avatars generated for you."
-    tagline_zh: "定制属于你自己的 BTI 人格测试（LBTI、FBTI 等），题目、结果、头像全自动生成。"
-  - name: xbti-gallery
-    repo: lovstudio/xbti-gallery-skill
-    name_zh: "xBTI 画廊"
-    paid: false
-    category: "xBTI"
-    description: "Browse all community-created BTI personality tests at xbti.lovstudio.ai."
-    tagline_en: "Browse every community-made BTI personality test on xbti.lovstudio.ai."
-    tagline_zh: "浏览社区在 xbti.lovstudio.ai 上发布的所有 BTI 人格测试。"
+- name: skill-creator
+  repo: lovstudio/skill-creator-skill
+  name_zh: 技能脚手架
+  paid: false
+  category: General
+  description: Scaffold new lovstudio skills with proper structure, SKILL.md + README.md.
+  tagline_en: Scaffold a new Claude Code skill with the right structure in seconds.
+  tagline_zh: 一条命令生成规范的 Claude Code 技能骨架，结构即对即用。
+- name: skill-optimizer
+  repo: lovstudio/skill-optimizer-skill
+  name_zh: 技能优化器
+  paid: false
+  category: General
+  description: Audit + auto-fix an existing skill, bump semver, and append a CHANGELOG
+    entry.
+  tagline_en: Audit an existing skill, auto-fix issues, and bump its version in one
+    pass.
+  tagline_zh: 一键体检并修复现有技能，自动升版本号并追加 CHANGELOG。
+- name: image-creator
+  repo: lovstudio/image-creator-skill
+  name_zh: 图片生成
+  paid: false
+  category: General
+  version: 0.2.0
+  description: 'Multi-mechanism image generation: end-to-end AI, code rendering, or
+    prompt engineering'
+  tagline_en: Generate images through the right mechanism — AI, code rendering, or
+    prompt tuning.
+  tagline_zh: 按需选择最合适的出图方式：端到端 AI、代码渲染或提示词精修。
+- name: paid-add
+  repo: lovstudio/paid-add-skill
+  name_zh: 加法 (测试付费)
+  paid: true
+  encrypted_bundle: true
+  category: General
+  version: 0.1.0
+  description: A paid-skill end-to-end test skill. Given numbers, returns their sum.
+    Used to verify encryption + activation works.
+  tagline_en: Trivial addition skill — the PoC proving end-to-end paid-skill encryption.
+  tagline_zh: 付费加密分发机制的联调测试 skill，输入数字返回求和。
+- name: event-poster
+  repo: lovstudio/event-poster-skill
+  name_zh: 活动海报
+  paid: true
+  category: Design
+  version: 0.3.0
+  description: Generate event posters via HTML + Playwright / 活动海报生成
+  tagline_en: Turn an event brief into a polished poster, ready to share.
+  tagline_zh: 把活动信息一键变成高质感海报，直接拿去发。
+- name: visual-clone
+  repo: lovstudio/visual-clone-skill
+  name_zh: 视觉复刻
+  paid: false
+  category: Design
+  description: Extract design DNA from reference images / 提取设计要素生成复刻指令
+  tagline_en: Extract the design DNA of a reference image so you can recreate the
+    look.
+  tagline_zh: 从参考图中提取设计要素，生成可复刻同款风格的指令。
+- name: thesis-polish
+  repo: lovstudio/thesis-polish-skill
+  name_zh: 论文润色
+  paid: false
+  category: Academic
+  description: MBA 论文全面润色，对标全国优秀论文标准。语言+结构+论证+创新四维提升。
+  tagline_en: Polish an MBA thesis across language, structure, argument, and originality.
+  tagline_zh: MBA 论文全维度润色，对标国优标准，打磨语言、结构、论证与创新四个面。
+- name: translation-review
+  repo: lovstudio/translation-review-skill
+  name_zh: 译文审阅
+  paid: false
+  category: Academic
+  description: Chinese-to-English translation review. Compares source & translation
+    across 6 dimensions.
+  tagline_en: Review a Chinese→English translation against the original across six
+    quality dimensions.
+  tagline_zh: 中译英译文审阅，从六个维度逐条对照原文，找出问题并给出改写建议。
+- name: fill-form
+  repo: lovstudio/fill-form-skill
+  name_zh: Word 表单填写
+  paid: false
+  category: Office Automation
+  description: Fill Word form templates (.docx). Auto-detects table fields, CJK font
+    support.
+  tagline_en: Fill Word (.docx) form templates automatically, with clean CJK typography.
+  tagline_zh: 自动填写 Word 表单模板，字段识别 + 中英文排版一气呵成。
+- name: fill-web-form
+  repo: lovstudio/fill-web-form-skill
+  name_zh: 网页表单填写
+  paid: false
+  category: Office Automation
+  description: Fill web forms from local knowledge base. Fetch URL → deep-search KB
+    → generate markdown doc.
+  tagline_en: Answer online forms using your own knowledge base as the source of truth.
+  tagline_zh: 用你本地的知识库来应答网页表单，一轮检索一轮生成，草稿即交付。
+- name: proposal
+  repo: lovstudio/proposal-skill
+  name_zh: 商业提案
+  paid: true
+  category: Business
+  description: Business proposal with architecture, budget & PDF / 完整商业提案
+  tagline_en: Turn a project brief into a complete, client-ready business proposal.
+  tagline_zh: 把项目简述一键变成可交付的商业提案，方案、报价、排版全配齐。
+  encrypted_bundle: true
+  version: 0.1.0
+- name: review-doc
+  repo: lovstudio/review-doc-skill
+  name_zh: 文档审阅
+  paid: true
+  category: Business
+  description: Review and annotate documents/contracts — output annotated docx with
+    comments
+  tagline_en: Review a document or contract and return it with inline comments.
+  tagline_zh: 审阅文档或合同，输出带批注的 docx，直接拿给同事或客户。
+- name: expense-report
+  repo: lovstudio/expense-report-skill
+  name_zh: 报销单整理
+  paid: false
+  category: Finance
+  description: Invoice images/text → categorized Excel expense report
+  tagline_en: Turn a pile of invoices into a categorized Excel expense report.
+  tagline_zh: 发票图片或文字一键整理成分类报销 Excel，业务招待、差旅、办公自动归类。
+- name: any2pdf
+  repo: lovstudio/any2pdf-skill
+  name_zh: 转 PDF
+  paid: false
+  category: Office Automation
+  description: Markdown → professionally typeset PDF. CJK/Latin mixed text, code blocks,
+    tables, 14 themes.
+  tagline_en: Typeset Markdown into a publication-quality PDF with 14 built-in themes.
+  tagline_zh: 把 Markdown 排成出版级 PDF，中英混排、代码块、表格全支持，内置 14 套主题。
+- name: any2docx
+  repo: lovstudio/any2docx-skill
+  name_zh: 转 Word
+  paid: false
+  category: Office Automation
+  description: Convert Markdown documents to professionally styled DOCX (Word) files
+    with python-docx.
+  tagline_en: Convert Markdown into a clean, professionally styled Word document.
+  tagline_zh: 把 Markdown 转成排版规范的 Word 文档，可以直接发给甲方。
+- name: any2deck
+  repo: lovstudio/any2deck-skill
+  name_zh: 转幻灯片
+  paid: false
+  category: Office Automation
+  description: Content → slide deck images with 16 visual styles, PPTX/PDF export,
+    branding overlay.
+  tagline_en: Turn any content into a styled slide deck — 16 looks, export to PPTX
+    or PDF.
+  tagline_zh: 把任意内容变成带设计感的幻灯片，16 种风格可选，导出 PPTX / PDF。
+- name: pdf2png
+  repo: lovstudio/pdf2png-skill
+  name_zh: PDF 转长图
+  paid: false
+  category: Office Automation
+  description: PDF → single vertically concatenated PNG. Uses macOS CoreGraphics,
+    ~20x faster than pdftoppm.
+  tagline_en: Convert a PDF to a single long PNG — fast enough to feel instant on
+    macOS.
+  tagline_zh: 把 PDF 拼成一张长图 PNG，在 macOS 上快到几乎瞬间出图。
+- name: png2svg
+  repo: lovstudio/png2svg-skill
+  name_zh: PNG 转 SVG
+  paid: false
+  category: Office Automation
+  description: PNG → high-quality SVG conversion with background removal and spline
+    curves.
+  tagline_en: Convert a PNG to a crisp SVG, with background removed and curves smoothed.
+  tagline_zh: 把 PNG 矢量化为高质量 SVG，自动抠背景、曲线平滑。
+- name: anti-wechat-ai-check
+  repo: lovstudio/anti-wechat-ai-check-skill
+  name_zh: 微信 AI 味降检
+  paid: false
+  category: Content Creation
+  description: 检测文章 AI 痕迹 + 人性化润色，通过微信 3.27 条款检测。
+  tagline_en: Detect AI fingerprints in an article and rewrite it to read like a human.
+  tagline_zh: 检测文章的 AI 味并做人性化润色，帮助稳过微信 3.27 条款的机器判定。
+- name: document-illustrator
+  repo: lovstudio/document-illustrator-skill
+  name_zh: 文档配图
+  paid: false
+  category: Content Creation
+  description: 为文档原地插入 AI 配图。全局规划插入点，并行生成，异步插回原文。
+  tagline_en: Illustrate a long document in place — plan, generate, and insert images
+    automatically.
+  tagline_zh: 给长文原地配图，先规划插入点再并行出图，最后自动插回原文。
+- name: write-professional-book
+  repo: lovstudio/write-professional-book-skill
+  name_zh: 多章节写书
+  paid: true
+  category: Content Creation
+  description: Write multi-chapter books (technical, tutorial, monograph) / 逐章写书，支持多种风格
+  tagline_en: Write a full multi-chapter book — technical, tutorial, or monograph
+    — from an outline.
+  tagline_zh: 从大纲开始，逐章写出一本完整的书，技术、教程、专著多种风格。
+- name: wxmp-cracker
+  repo: lovstudio/wxmp-cracker-skill
+  name_zh: 公众号抓取
+  paid: true
+  category: Content Creation
+  version: 0.1.0
+  description: 微信公众号文章抓取
+  tagline_en: Archive WeChat Official Account articles into clean, reusable text.
+  tagline_zh: 把微信公众号的文章批量归档成可再利用的整洁文本。
+- name: auto-context
+  repo: lovstudio/auto-context-skill
+  name_zh: 上下文体检
+  paid: false
+  category: Dev Tools
+  description: Context hygiene checker. Suggests /fork or /btw when context is polluted.
+  tagline_en: Watch your Claude Code context for pollution and suggest when to fork
+    or reset.
+  tagline_zh: 监测 Claude Code 上下文是否被污染，适时提示你 /fork 或 /btw。
+- name: cc-migrate-session
+  repo: lovstudio/cc-migrate-session
+  name_zh: 会话迁移
+  paid: false
+  category: Dev Tools
+  version: 0.1.1
+  skill_path: skill/lovstudio-cc-migrate-session
+  description: Migrate Claude Code sessions when a project folder moves
+  tagline_en: Keep your Claude Code session history working after you move a project
+    folder.
+  tagline_zh: 项目目录搬家后，让 Claude Code 的历史会话还能正常 `--resume`。
+- name: deploy-to-vercel
+  repo: lovstudio/deploy-to-vercel-skill
+  name_zh: 部署到 Vercel
+  paid: false
+  category: Dev Tools
+  description: Deploy frontend to Vercel with auto Cloudflare DNS + custom domain
+    setup.
+  tagline_en: Ship a frontend to Vercel with custom domain and Cloudflare DNS wired
+    up automatically.
+  tagline_zh: 一键把前端部署到 Vercel，自动配好 Cloudflare DNS 和自定义域名。
+- name: finder-action
+  repo: lovstudio/finder-action-skill
+  name_zh: 访达右键动作
+  paid: false
+  category: Dev Tools
+  description: Generate Mac Finder right-click menu actions. Quick Action or Finder
+    Sync Extension.
+  tagline_en: Add a custom right-click action to macOS Finder in minutes.
+  tagline_zh: 几分钟给 macOS 访达右键菜单加一个你自己的动作。
+- name: gh-access
+  repo: lovstudio/gh-access-skill
+  name_zh: GitHub 协作者管理
+  paid: false
+  category: Dev Tools
+  description: Grant / revoke / list collaborator access on private GitHub repos by
+    username or email. Read-only by default.
+  tagline_en: Grant, revoke, or audit collaborator access on private GitHub repos
+    in one command.
+  tagline_zh: 一条命令给私有 GitHub 仓库加减协作者权限，或盘点现有访问清单。
+- name: gh-contribute
+  repo: lovstudio/gh-contribute-skill
+  name_zh: GitHub 投稿 PR
+  paid: false
+  category: Dev Tools
+  version: 0.1.0
+  description: Contribute clean, professional PRs to upstream GitHub repos — fork,
+    branch, commit, push, open PR, with smart splitting.
+  tagline_en: Ship a clean PR to any upstream GitHub repo — fork, branch, push, and
+    open PR for you.
+  tagline_zh: 给任意上游 GitHub 仓库提一份干净的 PR——fork、分支、推送、开 PR 一站搞定。
+- name: gh-tidy
+  repo: lovstudio/gh-tidy-skill
+  name_zh: GitHub 仓库整理
+  paid: false
+  category: Dev Tools
+  description: Triage & clean up GitHub issues, PRs, branches, and labels in one pass.
+  tagline_en: Triage and clean up GitHub issues, PRs, branches, and labels in a single
+    pass.
+  tagline_zh: 一次过清理 GitHub 上的 issue、PR、分支和标签，让仓库重新整洁。
+- name: obsidian-reset-cache
+  repo: lovstudio/obsidian-reset-cache-skill
+  name_zh: 重置 Obsidian 缓存
+  paid: false
+  category: Dev Tools
+  description: 重置 Obsidian 缓存，解决卡在 Loading cache 的问题。
+  tagline_en: Reset Obsidian's cache when it gets stuck on "Loading cache".
+  tagline_zh: Obsidian 卡在 Loading cache 时，一键重置缓存救场。
+- name: project-port
+  repo: lovstudio/project-port-skill
+  name_zh: 项目端口分配
+  paid: false
+  category: Dev Tools
+  description: Generate stable unique dev port (3000–8999) from project name.
+  tagline_en: Assign each project a stable, unique dev port so services stop colliding.
+  tagline_zh: 给每个项目分配一个稳定且唯一的开发端口，彻底告别端口撞车。
+- name: xbti-creator
+  repo: lovstudio/xbti-creator-skill
+  name_zh: xBTI 测试定制
+  paid: false
+  category: xBTI
+  description: Create custom BTI personality tests (LBTI, FBTI, etc.) with AI-generated
+    content + avatars.
+  tagline_en: Build your own BTI-style personality test — questions, results, and
+    avatars generated for you.
+  tagline_zh: 定制属于你自己的 BTI 人格测试（LBTI、FBTI 等），题目、结果、头像全自动生成。
+- name: xbti-gallery
+  repo: lovstudio/xbti-gallery-skill
+  name_zh: xBTI 画廊
+  paid: false
+  category: xBTI
+  description: Browse all community-created BTI personality tests at xbti.lovstudio.ai.
+  tagline_en: Browse every community-made BTI personality test on xbti.lovstudio.ai.
+  tagline_zh: 浏览社区在 xbti.lovstudio.ai 上发布的所有 BTI 人格测试。
