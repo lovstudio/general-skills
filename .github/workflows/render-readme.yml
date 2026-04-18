@@ -6,6 +6,8 @@ on:
     paths:
       - "skills.yaml"
       - "scripts/render-readme.py"
+      - "README.md"
+      - "README.zh-CN.md"
       - ".github/workflows/render-readme.yml"
   schedule:
     # Nightly: pull fresh descriptions from each skill repo's GitHub description.
@@ -47,12 +49,12 @@ jobs:
 
       - name: Commit changes
         run: |
-          if git diff --quiet README.md; then
+          if git diff --quiet README.md README.zh-CN.md; then
             echo "No changes."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add README.md
-          git commit -m "docs: auto-render README from skills.yaml"
+          git add README.md README.zh-CN.md
+          git commit -m "docs: auto-render READMEs from skills.yaml"
           git push

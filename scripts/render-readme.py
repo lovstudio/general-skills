@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Render README.md skill list from skills.yaml.
+"""Render README.md and README.zh-CN.md from skills.yaml.
 
 Replaces the block between <!-- SKILLS:START --> and <!-- SKILLS:END -->
-and updates the count line between <!-- COUNT:START --> and <!-- COUNT:END -->.
+and updates the count line between <!-- COUNT:START --> and <!-- COUNT:END -->
+in BOTH language README files.
 
 Usage:
     python3 scripts/render-readme.py              # render from skills.yaml
@@ -21,39 +22,40 @@ import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
 YAML_PATH = ROOT / "skills.yaml"
-README_PATH = ROOT / "README.md"
+README_EN = ROOT / "README.md"
+README_ZH = ROOT / "README.zh-CN.md"
 
 FREE_BADGE = "![Free](https://img.shields.io/badge/Free-green)"
 PAID_BADGE = "![Paid](https://img.shields.io/badge/Paid-blueviolet)"
 
-# Display category -> (English title, Chinese title) shown as table section header.
+# Display category -> (English label, Chinese label)
 CATEGORY_LABELS = {
-    "Document Conversion": "Document Conversion / 格式转换",
-    "Content Creation": "Content Processing / 内容处理",
-    "Content Processing": "Content Processing / 内容处理",
-    "Design": "Image & Design / 图像与设计",
-    "Image & Design": "Image & Design / 图像与设计",
-    "Academic": "Academic / 学术",
-    "xBTI": "xBTI / 人格测试",
-    "Finance": "Finance / 财务",
-    "Office Automation": "Office Automation / 办公自动化",
-    "Authoring": "Authoring / 创作",
-    "Meta Skills": "Meta Skills / 元技能",
-    "Dev Tools": "Dev Tools / 开发工具",
+    "Document Conversion": ("Document Conversion", "格式转换"),
+    "Content Creation": ("Content Processing", "内容处理"),
+    "Content Processing": ("Content Processing", "内容处理"),
+    "Design": ("Image & Design", "图像与设计"),
+    "Image & Design": ("Image & Design", "图像与设计"),
+    "Academic": ("Academic", "学术"),
+    "xBTI": ("xBTI", "人格测试"),
+    "Finance": ("Finance", "财务"),
+    "Office Automation": ("Office Automation", "办公自动化"),
+    "Authoring": ("Authoring", "创作"),
+    "Meta Skills": ("Meta Skills", "元技能"),
+    "Dev Tools": ("Dev Tools", "开发工具"),
 }
 
-# Category display order (matches CATEGORY_LABELS keys, but via normalized labels).
-CATEGORY_ORDER = [
-    "Document Conversion / 格式转换",
-    "Content Processing / 内容处理",
-    "Image & Design / 图像与设计",
-    "Academic / 学术",
-    "xBTI / 人格测试",
-    "Finance / 财务",
-    "Office Automation / 办公自动化",
-    "Authoring / 创作",
-    "Meta Skills / 元技能",
-    "Dev Tools / 开发工具",
+# Category display order (by canonical English label).
+CATEGORY_ORDER_EN = [
+    "Document Conversion",
+    "Content Processing",
+    "Image & Design",
+    "Academic",
+    "xBTI",
+    "Finance",
+    "Office Automation",
+    "Authoring",
+    "Meta Skills",
+    "Dev Tools",
 ]
 
 
@@ -81,19 +83,29 @@ def gh_sync(skills: list[dict]) -> None:
             pass
 
 
-def render_table(skills: list[dict]) -> str:
+def render_table(skills: list[dict], lang: str) -> str:
+    """Render skill table. lang='en' or 'zh'."""
     grouped: dict[str, list[dict]] = {}
     for s in skills:
-        label = CATEGORY_LABELS.get(s.get("category", ""), s.get("category", "Misc"))
-        grouped.setdefault(label, []).append(s)
+        cat = s.get("category", "Misc")
+        labels = CATEGORY_LABELS.get(cat)
+        key = labels[0] if labels else cat
+        grouped.setdefault(key, []).append(s)
 
-    ordered_labels = [c for c in CATEGORY_ORDER if c in grouped]
-    ordered_labels += [c for c in grouped if c not in CATEGORY_ORDER]
+    ordered_keys = [c for c in CATEGORY_ORDER_EN if c in grouped]
+    ordered_keys += [c for c in grouped if c not in CATEGORY_ORDER_EN]
 
-    rows = ["| | Skill | Description |", "|---|---|---|"]
-    for label in ordered_labels:
-        rows.append(f"| **{label}** | | |")
-        for s in sorted(grouped[label], key=lambda x: x["name"]):
+    header = {
+        "en": "| | Skill | Description |",
+        "zh": "| | 技能 | 描述 |",
+    }[lang]
+    rows = [header, "|---|---|---|"]
+
+    for key in ordered_keys:
+        labels = CATEGORY_LABELS.get(key, (key, key))
+        display = labels[0] if lang == "en" else labels[1]
+        rows.append(f"| **{display}** | | |")
+        for s in sorted(grouped[key], key=lambda x: x["name"]):
             badge = PAID_BADGE if s.get("paid") else FREE_BADGE
             link = f"https://github.com/{s['repo']}"
             desc = s.get("description", "").strip()
@@ -101,11 +113,13 @@ def render_table(skills: list[dict]) -> str:
     return "\n".join(rows)
 
 
-def render_count(skills: list[dict]) -> str:
+def render_count(skills: list[dict], lang: str) -> str:
     total = len(skills)
     paid = sum(1 for s in skills if s.get("paid"))
     free = total - paid
-    return f"> **{total} skills** — {free} Free + {paid} Paid."
+    if lang == "en":
+        return f"> **{total} skills** — {free} Free + {paid} Paid."
+    return f"> **{total} 个技能** — {free} 个免费 + {paid} 个付费。"
 
 
 def replace_block(text: str, marker: str, new_body: str) -> str:
@@ -117,8 +131,16 @@ def replace_block(text: str, marker: str, new_body: str) -> str:
     )
     replacement = f"{start}\n{new_body}\n{end}"
     if not pattern.search(text):
-        raise SystemExit(f"Marker pair {start} ... {end} not found in README.md")
+        raise SystemExit(f"Marker pair {start} ... {end} not found")
     return pattern.sub(replacement, text)
+
+
+def render_file(path: Path, skills: list[dict], lang: str) -> None:
+    text = path.read_text()
+    text = replace_block(text, "COUNT", render_count(skills, lang))
+    text = replace_block(text, "SKILLS", render_table(skills, lang))
+    path.write_text(text)
+    print(f"Rendered {path.name} ({lang}) with {len(skills)} skills.")
 
 
 def main() -> int:
@@ -126,11 +148,9 @@ def main() -> int:
     if os.environ.get("GH_SYNC") == "1":
         gh_sync(skills)
 
-    readme = README_PATH.read_text()
-    readme = replace_block(readme, "COUNT", render_count(skills))
-    readme = replace_block(readme, "SKILLS", render_table(skills))
-    README_PATH.write_text(readme)
-    print(f"Rendered README.md with {len(skills)} skills.")
+    render_file(README_EN, skills, "en")
+    if README_ZH.exists():
+        render_file(README_ZH, skills, "zh")
     return 0
 
 

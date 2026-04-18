@@ -10,3 +10,5 @@ url-to-markdown/
 
 # Deliverables produced by /output should stay out of git
 手工川-*
+articles/
+output/
