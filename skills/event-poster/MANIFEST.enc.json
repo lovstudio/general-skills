@@ -1,16 +1,16 @@
 {
   "skill_name": "event-poster",
-  "skill_version": "0.3.0",
-  "skill_id": 1,
-  "skill_version_id": 3,
+  "skill_version": "0.3.1",
+  "skill_id": 2,
+  "skill_version_id": 9,
   "format_version": 2,
   "cipher": "aes-256-gcm",
   "files": {
     "SKILL.md": {
-      "iv": "m9on1GWRA3HErqOd",
-      "tag": "6qcM7jWtE9zlTxRD2KCXNQ==",
-      "original_checksum": "0c293f02b8d19ef1d822cb6fbd7771fd30279ac40497468b0832370a4f4ca24d",
-      "original_size": 5391
+      "iv": "JVTbcO3TfHMl7uQa",
+      "tag": "EMhU4OpglUp+XAjgyDFwAw==",
+      "original_checksum": "099860cdb5e599c958936e4e0d3f5ea561816b85e8fa838ed6ce76cae54ea5f4",
+      "original_size": 5296
     }
   }
 }

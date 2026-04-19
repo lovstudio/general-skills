@@ -1,7 +1,7 @@
 ---
-name: event-poster
-description: Create event posters and promotional graphics. Generates a single-file plain HTML/CSS page (no JS framework dependencies), then renders to PNG via Playwright. The HTML is mobile-first (max-width 480px) so it previews correctly in browsers and renders cleanly at high DPI via the headless renderer. Trigger words: 海报, poster, event poster, 活动海报, 宣传图, promotional, banner, flyer
-version: 0.3.0
+name: lovstudio:event-poster
+description: 'Create event posters and promotional graphics from a brief. Outputs print-ready high-resolution PNG. Trigger words: 海报, poster, event poster, 活动海报, 宣传图, promotional, banner, flyer'
+version: 0.3.1
 ---
 
 # event-poster (encrypted)
@@ -21,8 +21,16 @@ lovstudio-activate decrypt event-poster
    > ```
    > lovstudio-activate activate <your-license-key>
    > ```
-   > If you don't have a license key, follow the 手工川 (ShougongChuan) WeChat official account to purchase one.
-4. If the command prints `error: skill 'event-poster' not installed`, it means `~/.lovstudio/brand_skills/event-poster/` is empty. Tell the user to re-run `npx skills add lovstudio/skills` or to install the `lovstudio-activate` CLI (`pipx install lovstudio-activate`).
+   > Buy a license key at https://lovstudio.ai (or follow the 手工川 / ShougongChuan WeChat OA).
+4. If the command prints `error: skill 'event-poster' not installed`, the encrypted bundle isn't on disk yet. Tell the user one of:
+   > ```
+   > npx skills add lovstudio/skills              # full marketplace
+   > npx skills add lovstudio/event-poster-skill   # just this one
+   > ```
+   and to install the activate CLI: `pipx install lovstudio-activate`.
 5. Do NOT cache the decrypted output between invocations — always re-decrypt on each use. The decryption is cheap (one HTTP round-trip) and re-running guarantees the user's license is still valid.
 
-The encrypted payload lives in `~/.lovstudio/brand_skills/event-poster/` (or alongside this file, whichever the CLI finds). You don't need to touch it directly — just call `lovstudio-activate decrypt event-poster`.
+The encrypted payload lives in one of:
+- `~/.claude/skills/event-poster/`
+- `~/.claude/skills/lovstudio-event-poster/`
+You don't need to touch it directly — just call `lovstudio-activate decrypt event-poster`.
