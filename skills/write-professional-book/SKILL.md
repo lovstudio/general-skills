@@ -1,7 +1,7 @@
 ---
-name: write-professional-book
-description: Write multi-chapter books using a GitHub repo as the single source of truth. Solves LLM context window limitations through a compressed book summary strategy (OUTLINE + BOOK_SUMMARY ≈ 9KB overhead). 5-phase workflow: Plan → Research → Write → Review → Build. Supports multiple styles: O'Reilly practical, academic monograph, tutorial series, etc. Outputs mdBook HTML (GitHub Pages) and pandoc PDF (CJK-ready). Trigger when user mentions "写书", "写一本书", "book writing", "出书", "技术书", "O'Reilly", "mdbook", "逐章写作", or wants to create a multi-chapter book.
-version: 0.1.0
+name: lovstudio:write-professional-book
+description: Write multi-chapter books (technical, tutorial, monograph, etc.) end-to-end. Handles outline planning, per-chapter drafting that stays coherent across long manuscripts, chapter review, and final HTML/PDF build. Trigger when user mentions "写书", "写一本书", "出书", "技术书", "book writing", "逐章写作", "O'Reilly", "mdbook", or wants to author a multi-chapter book.
+version: 0.1.1
 ---
 
 # write-professional-book (encrypted)
@@ -21,8 +21,16 @@ lovstudio-activate decrypt write-professional-book
    > ```
    > lovstudio-activate activate <your-license-key>
    > ```
-   > If you don't have a license key, follow the 手工川 (ShougongChuan) WeChat official account to purchase one.
-4. If the command prints `error: skill 'write-professional-book' not installed`, it means `~/.lovstudio/brand_skills/write-professional-book/` is empty. Tell the user to re-run `npx skills add lovstudio/skills` or to install the `lovstudio-activate` CLI (`pipx install lovstudio-activate`).
+   > Buy a license key at https://lovstudio.ai (or follow the 手工川 / ShougongChuan WeChat OA).
+4. If the command prints `error: skill 'write-professional-book' not installed`, the encrypted bundle isn't on disk yet. Tell the user one of:
+   > ```
+   > npx skills add lovstudio/skills              # full marketplace
+   > npx skills add lovstudio/write-professional-book-skill   # just this one
+   > ```
+   and to install the activate CLI: `pipx install lovstudio-activate`.
 5. Do NOT cache the decrypted output between invocations — always re-decrypt on each use. The decryption is cheap (one HTTP round-trip) and re-running guarantees the user's license is still valid.
 
-The encrypted payload lives in `~/.lovstudio/brand_skills/write-professional-book/` (or alongside this file, whichever the CLI finds). You don't need to touch it directly — just call `lovstudio-activate decrypt write-professional-book`.
+The encrypted payload lives in one of:
+- `~/.claude/skills/write-professional-book/`
+- `~/.claude/skills/lovstudio-write-professional-book/`
+You don't need to touch it directly — just call `lovstudio-activate decrypt write-professional-book`.
