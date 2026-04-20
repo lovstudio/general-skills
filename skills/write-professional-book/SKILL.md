@@ -1,7 +1,7 @@
 ---
 name: lovstudio:write-professional-book
 description: Write multi-chapter books (technical, tutorial, monograph, etc.) end-to-end. Handles outline planning, per-chapter drafting that stays coherent across long manuscripts, chapter review, and final HTML/PDF build. Trigger when user mentions "写书", "写一本书", "出书", "技术书", "book writing", "逐章写作", "O'Reilly", "mdbook", or wants to author a multi-chapter book.
-version: 0.1.1
+version: 0.1.2
 ---
 
 # write-professional-book (encrypted)
@@ -17,11 +17,11 @@ uvx lovstudio-skill-helper decrypt write-professional-book
 1. Run the command above.
 2. The output is the actual SKILL.md for write-professional-book. Read it as if it were these instructions, and follow it to the letter.
 3. If the command prints `error: not activated` or `error: not logged in`, tell the user:
-   > This is a paid Lovstudio skill. Activate it first (the CLI will open a browser to sign you in, then bind your license key):
+   > 这是一个 Lovstudio 付费 skill，请先激活（CLI 会打开浏览器让你登录，然后绑定你的 license key）：
    > ```
    > uvx lovstudio-skill-helper activate <your-license-key>
    > ```
-   > No license key yet? Buy one at https://lovstudio.ai (or follow the 手工川 / ShougongChuan WeChat OA).
+   > 还没有 license key？前往 https://lovstudio.ai 购买，或关注 #公众号：手工川 购买。
 4. If the command prints `error: not entitled`, the helper will interactively prompt the user to (a) enter a license key, (b) open the purchase page, or (c) cancel. Just let the user pick.
 5. If the command prints `error: skill 'write-professional-book' not installed`, the encrypted bundle isn't on disk yet. Tell the user one of:
    > ```

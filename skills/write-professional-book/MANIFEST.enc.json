@@ -1,15 +1,15 @@
 {
   "skill_name": "write-professional-book",
-  "skill_version": "0.1.1",
+  "skill_version": "0.1.2",
   "skill_id": 21,
-  "skill_version_id": 7,
+  "skill_version_id": 16,
   "format_version": 2,
   "cipher": "aes-256-gcm",
   "files": {
     "SKILL.md": {
-      "iv": "T330m7rrNfXU34Ut",
-      "tag": "MwWs1V3C7Pv5BlsQi5aaeg==",
-      "original_checksum": "89c41e74c5d853066b7d46105c15f497100d3495719fdd6f788844928a88b190",
+      "iv": "gdxxBF9iGxNBo+8x",
+      "tag": "YlM2JRacukJl/58h/5ERTg==",
+      "original_checksum": "21b1643c788ff01e21565c309e91f6ccfe9d3cc03194dc51064f14b265d8caec",
       "original_size": 4046
     }
   }
