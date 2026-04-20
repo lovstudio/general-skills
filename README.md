@@ -36,7 +36,7 @@
 ## 技能列表
 
 <!-- COUNT:START -->
-> **33 个技能** — 27 个免费 + 6 个付费。
+> **34 个技能** — 27 个免费 + 7 个付费。
 <!-- COUNT:END -->
 
 <!-- SKILLS:START -->
@@ -45,6 +45,7 @@
 | **通用** | | |
 | ![Free](https://img.shields.io/badge/Free-green) | [图片生成 · `image-creator`](https://github.com/lovstudio/image-creator-skill) | 按需选择最合适的出图方式：端到端 AI、代码渲染或提示词精修。 |
 | ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [数对判定 (教学 demo) · `numeric-verdict`](https://github.com/lovstudio/numeric-verdict-skill) | 成对数字判定的 cloud-split 教学 demo — 本地只看到 A/B 符号。 |
+| ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [加法 (测试付费) · `paid-add`](https://github.com/lovstudio/paid-add-skill) | 付费加密分发机制的联调测试 skill，输入数字返回求和。 |
 | ![Free](https://img.shields.io/badge/Free-green) | [技能脚手架 · `skill-creator`](https://github.com/lovstudio/skill-creator-skill) | 一条命令生成规范的 Claude Code 技能骨架，结构即对即用。 |
 | ![Free](https://img.shields.io/badge/Free-green) | [技能优化器 · `skill-optimizer`](https://github.com/lovstudio/skill-optimizer-skill) | 一键体检并修复现有技能，自动升版本号并追加 CHANGELOG。 |
 | **商务** | | |
