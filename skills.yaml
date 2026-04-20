@@ -35,7 +35,7 @@ skills:
   paid: true
   encrypted_bundle: true
   category: General
-  version: 0.1.0
+  version: 0.1.1
   description: A paid-skill end-to-end test skill. Given numbers, returns their sum.
     Used to verify encryption + activation works.
   tagline_en: Trivial addition skill — the PoC proving end-to-end paid-skill encryption.
@@ -46,8 +46,8 @@ skills:
   paid: true
   category: General
   version: 0.1.0
-  description: Evaluate a pair of numeric inputs against a server-side rule and
-    return a symbolic verdict. Cloud-split teaching demo — real logic on the server.
+  description: Evaluate a pair of numeric inputs against a server-side rule and return
+    a symbolic verdict. Cloud-split teaching demo — real logic on the server.
   tagline_en: Pairwise numeric verdict — cloud-split demo with symbolic output.
   tagline_zh: 成对数字判定的 cloud-split 教学 demo — 本地只看到 A/B 符号。
 - name: event-poster
