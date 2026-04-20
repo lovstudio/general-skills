@@ -157,6 +157,7 @@ skills:
     tables, 14 themes.
   tagline_en: Typeset Markdown into a publication-quality PDF with 14 built-in themes.
   tagline_zh: 把 Markdown 排成出版级 PDF，中英混排、代码块、表格全支持，内置 14 套主题。
+  related: [any2docx, any2deck]
 - name: any2docx
   repo: lovstudio/any2docx-skill
   name_zh: 转 Word
@@ -166,6 +167,7 @@ skills:
     with python-docx.
   tagline_en: Convert Markdown into a clean, professionally styled Word document.
   tagline_zh: 把 Markdown 转成排版规范的 Word 文档，可以直接发给甲方。
+  related: [any2pdf, any2deck]
 - name: any2deck
   repo: lovstudio/any2deck-skill
   name_zh: 转幻灯片
@@ -176,6 +178,7 @@ skills:
   tagline_en: Turn any content into a styled slide deck — 16 looks, export to PPTX
     or PDF.
   tagline_zh: 把任意内容变成带设计感的幻灯片，16 种风格可选，导出 PPTX / PDF。
+  related: [any2pdf, any2docx]
 - name: pdf2png
   repo: lovstudio/pdf2png-skill
   name_zh: PDF 转长图
@@ -212,6 +215,7 @@ skills:
   tagline_en: Illustrate a long document in place — plan, generate, and insert images
     automatically.
   tagline_zh: 给长文原地配图，先规划插入点再并行出图，最后自动插回原文。
+  depends_on: [image-creator]
 - name: write-professional-book
   repo: lovstudio/write-professional-book-skill
   name_zh: 多章节写书
