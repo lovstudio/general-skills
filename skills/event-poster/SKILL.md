@@ -1,7 +1,7 @@
 ---
 name: lovstudio:event-poster
 description: 'Create event posters and promotional graphics from a brief. Outputs print-ready high-resolution PNG. Trigger words: 海报, poster, event poster, 活动海报, 宣传图, promotional, banner, flyer'
-version: 0.3.1
+version: 0.3.2
 ---
 
 # event-poster (encrypted)
@@ -9,28 +9,28 @@ version: 0.3.1
 This skill's real instructions are encrypted. To use it, decrypt them first:
 
 ```bash
-lovstudio-activate decrypt event-poster
+uvx lovstudio-skill-helper decrypt event-poster
 ```
 
 **What to do:**
 
 1. Run the command above.
 2. The output is the actual SKILL.md for event-poster. Read it as if it were these instructions, and follow it to the letter.
-3. If the command prints `error: not activated`, tell the user:
-   > This is a paid Lovstudio skill. You need to activate it first:
+3. If the command prints `error: not activated` or `error: not logged in`, tell the user:
+   > 这是一个 Lovstudio 付费 skill，请先激活（CLI 会打开浏览器让你登录，然后绑定你的 license key）：
    > ```
-   > lovstudio-activate activate <your-license-key>
+   > uvx lovstudio-skill-helper activate <your-license-key>
    > ```
-   > Buy a license key at https://lovstudio.ai (or follow the 手工川 / ShougongChuan WeChat OA).
-4. If the command prints `error: skill 'event-poster' not installed`, the encrypted bundle isn't on disk yet. Tell the user one of:
+   > 还没有 license key？前往 https://lovstudio.ai 购买，或关注 #公众号：手工川 购买。
+4. If the command prints `error: not entitled`, the helper will interactively prompt the user to (a) enter a license key, (b) open the purchase page, or (c) cancel. Just let the user pick.
+5. If the command prints `error: skill 'event-poster' not installed`, the encrypted bundle isn't on disk yet. Tell the user one of:
    > ```
-   > npx skills add lovstudio/skills              # full marketplace
-   > npx skills add lovstudio/event-poster-skill   # just this one
+   > npx skills add lovstudio/skills --skill event-poster   # just this one
+   > npx skills add lovstudio/skills                 # full marketplace
    > ```
-   and to install the activate CLI: `pipx install lovstudio-activate`.
-5. Do NOT cache the decrypted output between invocations — always re-decrypt on each use. The decryption is cheap (one HTTP round-trip) and re-running guarantees the user's license is still valid.
+6. Do NOT cache the decrypted output between invocations — always re-decrypt on each use. The decryption is cheap (one HTTP round-trip) and re-running guarantees the user's license is still valid.
 
 The encrypted payload lives in one of:
 - `~/.claude/skills/event-poster/`
 - `~/.claude/skills/lovstudio-event-poster/`
-You don't need to touch it directly — just call `lovstudio-activate decrypt event-poster`.
+You don't need to touch it directly — just call `uvx lovstudio-skill-helper decrypt event-poster`.
