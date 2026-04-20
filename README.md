@@ -57,9 +57,9 @@
 | ![Free](https://img.shields.io/badge/Free-green) | [论文润色 · `thesis-polish`](https://github.com/lovstudio/thesis-polish-skill) | MBA 论文全维度润色，对标国优标准，打磨语言、结构、论证与创新四个面。 |
 | ![Free](https://img.shields.io/badge/Free-green) | [译文审阅 · `translation-review`](https://github.com/lovstudio/translation-review-skill) | 中译英译文审阅，从六个维度逐条对照原文，找出问题并给出改写建议。 |
 | **办公** | | |
-| ![Free](https://img.shields.io/badge/Free-green) | [转幻灯片 · `any2deck`](https://github.com/lovstudio/any2deck-skill) | 把任意内容变成带设计感的幻灯片，16 种风格可选，导出 PPTX / PDF。 |
-| ![Free](https://img.shields.io/badge/Free-green) | [转 Word · `any2docx`](https://github.com/lovstudio/any2docx-skill) | 把 Markdown 转成排版规范的 Word 文档，可以直接发给甲方。 |
-| ![Free](https://img.shields.io/badge/Free-green) | [转 PDF · `any2pdf`](https://github.com/lovstudio/any2pdf-skill) | 把 Markdown 排成出版级 PDF，中英混排、代码块、表格全支持，内置 14 套主题。 |
+| ![Free](https://img.shields.io/badge/Free-green) | [转幻灯片 · `any2deck`](https://github.com/lovstudio/any2deck-skill) | 把任意内容变成带设计感的幻灯片，16 种风格可选，导出 PPTX / PDF。 — 相关: `any2pdf`, `any2docx` |
+| ![Free](https://img.shields.io/badge/Free-green) | [转 Word · `any2docx`](https://github.com/lovstudio/any2docx-skill) | 把 Markdown 转成排版规范的 Word 文档，可以直接发给甲方。 — 相关: `any2pdf`, `any2deck` |
+| ![Free](https://img.shields.io/badge/Free-green) | [转 PDF · `any2pdf`](https://github.com/lovstudio/any2pdf-skill) | 把 Markdown 排成出版级 PDF，中英混排、代码块、表格全支持，内置 14 套主题。 — 相关: `any2docx`, `any2deck` |
 | ![Free](https://img.shields.io/badge/Free-green) | [Word 表单填写 · `fill-form`](https://github.com/lovstudio/fill-form-skill) | 自动填写 Word 表单模板，字段识别 + 中英文排版一气呵成。 |
 | ![Free](https://img.shields.io/badge/Free-green) | [网页表单填写 · `fill-web-form`](https://github.com/lovstudio/fill-web-form-skill) | 用你本地的知识库来应答网页表单，一轮检索一轮生成，草稿即交付。 |
 | ![Free](https://img.shields.io/badge/Free-green) | [PDF 转长图 · `pdf2png`](https://github.com/lovstudio/pdf2png-skill) | 把 PDF 拼成一张长图 PNG，在 macOS 上快到几乎瞬间出图。 |
@@ -68,7 +68,7 @@
 | ![Free](https://img.shields.io/badge/Free-green) | [报销单整理 · `expense-report`](https://github.com/lovstudio/expense-report-skill) | 发票图片或文字一键整理成分类报销 Excel，业务招待、差旅、办公自动归类。 |
 | **内容创作** | | |
 | ![Free](https://img.shields.io/badge/Free-green) | [微信 AI 味降检 · `anti-wechat-ai-check`](https://github.com/lovstudio/anti-wechat-ai-check-skill) | 检测文章的 AI 味并做人性化润色，帮助稳过微信 3.27 条款的机器判定。 |
-| ![Free](https://img.shields.io/badge/Free-green) | [文档配图 · `document-illustrator`](https://github.com/lovstudio/document-illustrator-skill) | 给长文原地配图，先规划插入点再并行出图，最后自动插回原文。 |
+| ![Free](https://img.shields.io/badge/Free-green) | [文档配图 · `document-illustrator`](https://github.com/lovstudio/document-illustrator-skill) | 给长文原地配图，先规划插入点再并行出图，最后自动插回原文。 — 依赖: `image-creator` |
 | ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [多章节写书 · `write-professional-book`](https://github.com/lovstudio/write-professional-book-skill) | 从大纲开始，逐章写出一本完整的书，技术、教程、专著多种风格。 |
 | ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [公众号抓取 · `wxmp-cracker`](https://github.com/lovstudio/wxmp-cracker-skill) | 把微信公众号的文章批量归档成可再利用的整洁文本。 |
 | **开发工具** | | |

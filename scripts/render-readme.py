@@ -21,6 +21,9 @@ from pathlib import Path
 
 import yaml
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from validate_deps import validate  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 YAML_PATH = ROOT / "skills.yaml"
 README_ZH = ROOT / "README.md"          # primary, default view on GitHub
@@ -59,7 +62,30 @@ CATEGORY_ORDER_EN = [
 def load_skills() -> list[dict]:
     with YAML_PATH.open() as f:
         data = yaml.safe_load(f)
+    errors = validate(data["skills"])
+    if errors:
+        for e in errors:
+            print(f"  - {e}", file=sys.stderr)
+        raise SystemExit("skills.yaml dependency validation failed")
     return [s for s in data["skills"] if not s.get("test")]
+
+
+def render_deps_suffix(skill: dict, lang: str) -> str:
+    """Append `— 依赖/相关: a, b` or `— requires/related: a, b` to the tagline."""
+    parts = []
+    deps = skill.get("depends_on") or []
+    rels = skill.get("related") or []
+    if lang == "zh":
+        if deps:
+            parts.append("依赖: " + ", ".join(f"`{d}`" for d in deps))
+        if rels:
+            parts.append("相关: " + ", ".join(f"`{r}`" for r in rels))
+    else:
+        if deps:
+            parts.append("requires: " + ", ".join(f"`{d}`" for d in deps))
+        if rels:
+            parts.append("related: " + ", ".join(f"`{r}`" for r in rels))
+    return " — " + "; ".join(parts) if parts else ""
 
 
 def gh_sync(skills: list[dict]) -> None:
@@ -122,7 +148,8 @@ def render_table(skills: list[dict], lang: str) -> str:
                 name_cell = f"[{s['name_zh']} · `{s['name']}`]({link})"
             else:
                 name_cell = f"[`{s['name']}`]({link})"
-            rows.append(f"| {badge} | {name_cell} | {pick_tagline(s, lang)} |")
+            tagline = pick_tagline(s, lang) + render_deps_suffix(s, lang)
+            rows.append(f"| {badge} | {name_cell} | {tagline} |")
     return "\n".join(rows)
 
 

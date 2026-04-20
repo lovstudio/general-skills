@@ -30,6 +30,9 @@ from pathlib import Path
 
 import yaml
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from validate_deps import validate  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 YAML_PATH = ROOT / "skills.yaml"
 OUT_PATH = ROOT / ".claude-plugin" / "marketplace.json"
@@ -38,14 +41,36 @@ MARKETPLACE_NAME = "lovstudio"
 OWNER = {"name": "Lovstudio", "email": "shawninjuly@gmail.com"}
 
 
-def load_installable_skills() -> list[dict]:
-    """Free skills + paid skills that ship an encrypted bundle (./skills/<name>/)."""
+def load_installable_skills() -> tuple[list[dict], list[dict]]:
+    """Return (installable, all). Installable = free + encrypted-paid.
+    All is needed to resolve depends_on targets that may themselves be either class."""
     with YAML_PATH.open() as f:
         data = yaml.safe_load(f)
-    return [
-        s for s in data["skills"]
-        if not s.get("test") and (not s.get("paid") or s.get("encrypted_bundle"))
+    all_skills = [s for s in data["skills"] if not s.get("test")]
+    errors = validate(data["skills"])
+    if errors:
+        for e in errors:
+            print(f"  - {e}", file=sys.stderr)
+        raise SystemExit("skills.yaml dependency validation failed")
+    installable = [
+        s for s in all_skills
+        if not s.get("paid") or s.get("encrypted_bundle")
     ]
+    return installable, all_skills
+
+
+def closure(names: list[str], by_name: dict[str, dict]) -> list[str]:
+    """Expand depends_on transitively; preserve first-seen order, de-dup."""
+    seen: OrderedDict[str, None] = OrderedDict()
+    def walk(n: str) -> None:
+        if n in seen or n not in by_name:
+            return
+        seen[n] = None
+        for dep in by_name[n].get("depends_on") or []:
+            walk(dep)
+    for n in names:
+        walk(n)
+    return list(seen.keys())
 
 
 def slug(text: str) -> str:
@@ -63,8 +88,10 @@ def group_by_category(skills: list[dict]) -> "OrderedDict[str, list[dict]]":
     return grouped
 
 
-def category_to_plugin(category: str, skills: list[dict]) -> dict:
-    names = [s["name"] for s in skills]
+def category_to_plugin(
+    category: str, skills: list[dict], by_name: dict[str, dict]
+) -> dict:
+    names = closure([s["name"] for s in skills], by_name)
     n_free = sum(1 for s in skills if not s.get("paid"))
     n_paid = sum(1 for s in skills if s.get("paid"))
     if n_paid:
@@ -82,9 +109,10 @@ def category_to_plugin(category: str, skills: list[dict]) -> dict:
 
 
 def render() -> dict:
-    skills = load_installable_skills()
+    skills, all_skills = load_installable_skills()
+    by_name = {s["name"]: s for s in all_skills}
     grouped = group_by_category(skills)
-    plugins = [category_to_plugin(cat, items) for cat, items in grouped.items()]
+    plugins = [category_to_plugin(cat, items, by_name) for cat, items in grouped.items()]
     return {
         "name": MARKETPLACE_NAME,
         "owner": OWNER,
