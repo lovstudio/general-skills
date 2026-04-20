@@ -118,7 +118,7 @@ skills:
   version: 0.1.1
 - name: review-doc
   repo: lovstudio/review-doc-skill
-  name_zh: 文档审阅
+  name_zh: 合同审阅
   paid: true
   category: Business
   description: Review and annotate documents/contracts — output annotated docx with
