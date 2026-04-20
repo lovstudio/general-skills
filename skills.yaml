@@ -45,6 +45,7 @@ skills:
   repo: lovstudio/numeric-verdict-skill
   name_zh: 数对判定 (教学 demo)
   paid: true
+  test: true
   category: General
   version: 0.1.0
   description: Evaluate a pair of numeric inputs against a server-side rule and return
