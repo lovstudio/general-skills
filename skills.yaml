@@ -214,7 +214,7 @@ skills:
   name_zh: 公众号抓取
   paid: true
   category: Content Creation
-  version: 0.1.1
+  version: 0.1.2
   description: 微信公众号文章抓取
   tagline_en: Archive WeChat Official Account articles into clean, reusable text.
   tagline_zh: 把微信公众号的文章批量归档成可再利用的整洁文本。

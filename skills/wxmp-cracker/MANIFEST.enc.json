@@ -1,26 +1,26 @@
 {
   "skill_name": "wxmp-cracker",
-  "skill_version": "0.1.1",
-  "skill_id": 2,
-  "skill_version_id": 8,
+  "skill_version": "0.1.2",
+  "skill_id": 22,
+  "skill_version_id": 13,
   "format_version": 2,
   "cipher": "aes-256-gcm",
   "files": {
     "SKILL.md": {
-      "iv": "k4oLWYb34MFxHE8r",
-      "tag": "DRzkPcxPy4aTFnZfnYSSZA==",
-      "original_checksum": "7095e7756154ec8a2984572f82bb13b115e6297e35acd042eac146ac185cf29d",
+      "iv": "PQdxCFN+wTBnxewi",
+      "tag": "ffEiGhp6SpbJe6bmrXbArQ==",
+      "original_checksum": "be003f94ec32aed68f76e25315481415832d150c8fb715dc2e4d493c94c45436",
       "original_size": 6689
     },
     "scripts/refresh_token.py": {
-      "iv": "up1PSAJzvCQoPtQO",
-      "tag": "lM1jTE8ay9Y+uvbP8uoVDw==",
+      "iv": "/rUR22AgSJkyCYYi",
+      "tag": "4FSoBRde3UJ3IuQhbC4Q2Q==",
       "original_checksum": "bbf53436fa91694b3993f41657817365e35c424841e8f74c00a468778d20af4a",
       "original_size": 5485
     },
     "scripts/wcx_run.py": {
-      "iv": "cJMh/3/Qu4hOrVGr",
-      "tag": "pHbbJ4iZwYs/NWsnrKIS+w==",
+      "iv": "UH1wpdZUrthuSMer",
+      "tag": "f0xpivFC3VjW8DP7sCD4GA==",
       "original_checksum": "fdbe66276cb3c8e41dd0ff78d1ded7716c86ced9e3f868ee6fef154734da7fb3",
       "original_size": 3649
     }
