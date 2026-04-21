@@ -7,7 +7,7 @@ Part of [lovstudio/skills](https://github.com/lovstudio/skills) — by [lovstudi
 ## Install
 
 ```bash
-npx skills add lovstudio/skills --skill lovstudio:pdf2png
+npx skills add lovstudio/skills --skill lovstudio:pdf2png -y -g
 ```
 
 Requires: macOS, `pip install pyobjc-framework-Quartz`

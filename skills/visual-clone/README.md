@@ -9,7 +9,7 @@ Part of [lovstudio/skills](https://github.com/lovstudio/skills) — by [lovstudi
 ## Install
 
 ```bash
-npx skills add lovstudio/skills --skill lovstudio:visual-clone
+npx skills add lovstudio/skills --skill lovstudio:visual-clone -y -g
 ```
 
 No dependencies — pure AI visual analysis.

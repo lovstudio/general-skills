@@ -7,7 +7,7 @@ Part of [lovstudio/skills](https://github.com/lovstudio/skills) — by [lovstudi
 ## Install
 
 ```bash
-npx skills add lovstudio/skills --skill lovstudio:anti-wechat-ai-check
+npx skills add lovstudio/skills --skill lovstudio:anti-wechat-ai-check -y -g
 ```
 
 Requires: Python 3.8+ (no external dependencies)

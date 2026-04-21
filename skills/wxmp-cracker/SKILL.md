@@ -33,7 +33,7 @@ uvx lovstudio-skill-helper decrypt wxmp-cracker
 5. If the command prints `error: skill 'wxmp-cracker' not installed`, the encrypted bundle isn't on disk yet. Tell the user:
    > ```
    > npx lovstudio skills add wxmp-cracker                      # recommended: also checks deps
-   > npx skills add lovstudio/skills --skill wxmp-cracker       # raw alternative
+   > npx skills add lovstudio/skills --skill wxmp-cracker -y -g       # raw alternative
    > ```
 6. Do NOT cache the decrypted output between invocations — always re-decrypt on each use. The decryption is cheap (one HTTP round-trip) and re-running guarantees the user's license is still valid.
 

@@ -25,8 +25,8 @@ uvx lovstudio-skill-helper decrypt write-professional-book
 4. If the command prints `error: not entitled`, the helper will interactively prompt the user to (a) enter a license key, (b) open the purchase page, or (c) cancel. Just let the user pick.
 5. If the command prints `error: skill 'write-professional-book' not installed`, the encrypted bundle isn't on disk yet. Tell the user one of:
    > ```
-   > npx skills add lovstudio/skills --skill write-professional-book   # just this one
-   > npx skills add lovstudio/skills                 # full marketplace
+   > npx skills add lovstudio/skills --skill write-professional-book -y -g   # just this one
+   > npx skills add lovstudio/skills --all -g                 # full marketplace
    > ```
 6. Do NOT cache the decrypted output between invocations — always re-decrypt on each use. The decryption is cheap (one HTTP round-trip) and re-running guarantees the user's license is still valid.
 

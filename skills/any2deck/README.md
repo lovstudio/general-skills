@@ -9,7 +9,7 @@ Part of [lovstudio/skills](https://github.com/lovstudio/skills) &mdash; by [lovs
 ## Install
 
 ```bash
-npx skills add lovstudio/skills --skill lovstudio:any2deck
+npx skills add lovstudio/skills --skill lovstudio:any2deck -y -g
 ```
 
 Requires: Image generation skill + Node.js (for PPTX/PDF) + Python 3.8+ (for branding)

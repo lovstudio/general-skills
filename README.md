@@ -79,18 +79,29 @@
 
 | 子索引 | 内容 | 安装 |
 |---|---|---|
-| [`lovstudio/dev-skills`](https://github.com/lovstudio/dev-skills) | 开发者与技能作者工具：Meta（skill-creator / skill-optimizer）+ Dev Tools（GitHub、Vercel、macOS、Claude Code session 等） | `npx skills add lovstudio/dev-skills` |
-| [`lovstudio/xbti-skills`](https://github.com/lovstudio/xbti-skills) | xBTI 人格测试定制与画廊（配合 [xbti.lovstudio.ai](https://xbti.lovstudio.ai)） | `npx skills add lovstudio/xbti-skills` |
+| [`lovstudio/dev-skills`](https://github.com/lovstudio/dev-skills) | 开发者与技能作者工具：Meta（skill-creator / skill-optimizer）+ Dev Tools（GitHub、Vercel、macOS、Claude Code session 等） | `npx skills add lovstudio/dev-skills --all -g` |
+| [`lovstudio/xbti-skills`](https://github.com/lovstudio/xbti-skills) | xBTI 人格测试定制与画廊（配合 [xbti.lovstudio.ai](https://xbti.lovstudio.ai)） | `npx skills add lovstudio/xbti-skills --all -g` |
 
 ## 安装
 
-每个技能从自己的仓库独立安装，示例：
+**推荐：一键装全部免费技能到 Claude Code 全局**（AI 友好，无交互卡顿）：
 
 ```bash
-# 免费技能
-git clone https://github.com/lovstudio/any2pdf-skill ~/.claude/skills/lovstudio-any2pdf
+npx skills add lovstudio/skills --all -g
+```
 
-# 付费技能（购买后——使用已授权的 SSH key）
+> `--all` 等价于 `--skill '*' --agent '*' -y`，`-g` 装到 `~/.claude/skills/`。不加 flag 时 CLI 会弹出三个交互式 prompt（选技能 → 选 agent → 确认），AI/CI/非 TTY 环境会挂住。
+
+**按需装单个技能**：
+
+```bash
+npx skills add lovstudio/skills --skill any2pdf -g -y
+```
+
+**或手动 clone**（付费技能购买后用已授权 SSH key）：
+
+```bash
+git clone https://github.com/lovstudio/any2pdf-skill ~/.claude/skills/lovstudio-any2pdf
 git clone git@github.com:lovstudio/write-professional-book-skill ~/.claude/skills/lovstudio-write-professional-book
 ```
 

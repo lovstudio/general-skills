@@ -7,7 +7,7 @@ Part of [lovstudio/skills](https://github.com/lovstudio/skills) &mdash; by [lovs
 ## Install
 
 ```bash
-npx skills add lovstudio/skills --skill lovstudio:fill-form
+npx skills add lovstudio/skills --skill lovstudio:fill-form -y -g
 ```
 
 Requires: Python 3.8+ and `pip install python-docx`

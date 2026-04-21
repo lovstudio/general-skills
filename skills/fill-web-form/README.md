@@ -7,7 +7,7 @@ Part of [lovstudio/skills](https://github.com/lovstudio/skills) — by [lovstudi
 ## Install
 
 ```bash
-npx skills add lovstudio/skills --skill lovstudio:fill-web-form
+npx skills add lovstudio/skills --skill lovstudio:fill-web-form -y -g
 ```
 
 No external dependencies — uses Claude's built-in tools only.

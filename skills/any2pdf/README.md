@@ -9,7 +9,7 @@ Part of [lovstudio/skills](https://github.com/lovstudio/skills) &mdash; by [lovs
 ## Install
 
 ```bash
-npx skills add lovstudio/skills --skill lovstudio:any2pdf
+npx skills add lovstudio/skills --skill lovstudio:any2pdf -y -g
 ```
 
 Requires: Python 3.8+ and `pip install reportlab`

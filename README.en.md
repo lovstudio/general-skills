@@ -79,18 +79,29 @@ The following thematic skills live in their own sub-index repos, each with its o
 
 | Sub-index | Scope | Install |
 |---|---|---|
-| [`lovstudio/dev-skills`](https://github.com/lovstudio/dev-skills) | Developer & skill-author tools: Meta (skill-creator / skill-optimizer) + Dev Tools (GitHub, Vercel, macOS, Claude Code session, …) | `npx skills add lovstudio/dev-skills` |
-| [`lovstudio/xbti-skills`](https://github.com/lovstudio/xbti-skills) | Build and browse xBTI personality tests (paired with [xbti.lovstudio.ai](https://xbti.lovstudio.ai)) | `npx skills add lovstudio/xbti-skills` |
+| [`lovstudio/dev-skills`](https://github.com/lovstudio/dev-skills) | Developer & skill-author tools: Meta (skill-creator / skill-optimizer) + Dev Tools (GitHub, Vercel, macOS, Claude Code session, …) | `npx skills add lovstudio/dev-skills --all -g` |
+| [`lovstudio/xbti-skills`](https://github.com/lovstudio/xbti-skills) | Build and browse xBTI personality tests (paired with [xbti.lovstudio.ai](https://xbti.lovstudio.ai)) | `npx skills add lovstudio/xbti-skills --all -g` |
 
 ## Install
 
-Each skill installs independently via its own repo. Example:
+**Recommended: install all free skills globally for Claude Code** (AI-friendly, no interactive prompts):
 
 ```bash
-# Free skill
-git clone https://github.com/lovstudio/any2pdf-skill ~/.claude/skills/lovstudio-any2pdf
+npx skills add lovstudio/skills --all -g
+```
 
-# Paid skill (after purchase — use SSH with your authorized key)
+> `--all` expands to `--skill '*' --agent '*' -y`; `-g` installs into `~/.claude/skills/`. Without these flags the CLI opens three interactive prompts (pick skills → pick agents → confirm), which hang in AI/CI/non-TTY environments.
+
+**Install a single skill**:
+
+```bash
+npx skills add lovstudio/skills --skill any2pdf -g -y
+```
+
+**Or clone manually** (paid skills after purchase with your authorized SSH key):
+
+```bash
+git clone https://github.com/lovstudio/any2pdf-skill ~/.claude/skills/lovstudio-any2pdf
 git clone git@github.com:lovstudio/write-professional-book-skill ~/.claude/skills/lovstudio-write-professional-book
 ```
 

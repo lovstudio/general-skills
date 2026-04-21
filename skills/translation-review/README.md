@@ -7,7 +7,7 @@ Part of [lovstudio/skills](https://github.com/lovstudio/skills) — by [lovstudi
 ## Install
 
 ```bash
-npx skills add lovstudio/skills --skill lovstudio:translation-review
+npx skills add lovstudio/skills --skill lovstudio:translation-review -y -g
 ```
 
 Requires: `pandoc` for .docx support (`brew install pandoc`)

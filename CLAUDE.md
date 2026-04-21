@@ -6,7 +6,7 @@ Guidance for Claude Code when working in this repo.
 
 The **central index** for Lovstudio skills. The source of truth for each skill is its own repo at `github.com/lovstudio/{name}-skill`. Locally, skills are developed under `~/lovstudio/coding/skills/{name}-skill/`.
 
-This index repo also carries a **read-only mirror** of every free skill under `./skills/<name>/`, auto-synced by CI from the upstream skill repos. The mirror exists so that `npx skills add lovstudio/skills` (vercel-labs/skills CLI) can discover every skill in a single clone — that CLI only resolves local paths in `.claude-plugin/marketplace.json`, not external `github` sources.
+This index repo also carries a **read-only mirror** of every free skill under `./skills/<name>/`, auto-synced by CI from the upstream skill repos. The mirror exists so that `npx skills add lovstudio/skills --all -g` (vercel-labs/skills CLI) can discover every skill in a single clone — that CLI only resolves local paths in `.claude-plugin/marketplace.json`, not external `github` sources.
 
 ## Repo Layout
 
@@ -28,7 +28,7 @@ This index repo also carries a **read-only mirror** of every free skill under `.
 
 ## How users install
 
-- **Via `npx skills`** (vercel-labs CLI, cross-agent): `npx skills add lovstudio/skills` — clones this repo, scans `./skills/**/SKILL.md`, installs into the active project or globally.
+- **Via `npx skills`** (vercel-labs CLI, cross-agent): `npx skills add lovstudio/skills --all -g` — clones this repo, scans `./skills/**/SKILL.md`, installs everything into `~/.claude/skills/`. The `--all -g` flags are non-negotiable for AI/CI/non-TTY environments because the default path opens three `@clack/prompts` interactive selectors (skills → agents → confirm) and hangs without a TTY. When recommending install commands to users — in READMEs, SKILL.md, marketplace blurbs, anywhere — always include `--all -g` (or `--skill <name> -g -y` for single-skill installs).
 - **Via Claude Code native marketplace**: `/plugin marketplace add lovstudio/skills` then `/plugin install <name>@lovstudio` — reads `.claude-plugin/marketplace.json`, each plugin resolves to `./skills/<name>/`.
 
 Both paths work off the same mirror.

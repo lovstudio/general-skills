@@ -25,6 +25,7 @@ Env:
 from __future__ import annotations
 
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -90,6 +91,49 @@ def rsync_mirror(src: Path, dst: Path) -> None:
     subprocess.check_call(cmd)
 
 
+# Matches `npx skills add <owner>/<repo>` plus any trailing flag cluster on the
+# SAME line (stopping at newline or inline-comment marker `#`). Group 1 = the
+# command up to repo, group 2 = remaining flags on that line.
+_NPX_CMD_RE = re.compile(
+    r"(npx[ \t]+skills[ \t]+add[ \t]+[\w.\-]+/[\w.\-]+)((?:[ \t]+[^\s#]+)*)"
+)
+
+
+def _rewrite_npx_command(match: re.Match) -> str:
+    """Inject `--all -g` (bulk) or `-g -y` (single-skill) when missing, so
+    non-TTY callers (AI agents, CI) don't hang on the CLI's interactive prompts."""
+    prefix, flags = match.group(1), match.group(2)
+    existing = set(flags.split())
+    has_noninteractive = bool(
+        existing & {"-y", "--yes", "--all", "-a", "--agent"}
+    )
+    has_scope = bool(existing & {"-g", "--global", "-p", "--project"})
+    targets_single_skill = bool(existing & {"-s", "--skill"})
+
+    if has_noninteractive and has_scope:
+        return match.group(0)
+
+    extra = []
+    if not has_noninteractive:
+        extra.append("--all" if not targets_single_skill else "-y")
+    if not has_scope:
+        extra.append("-g")
+    return f"{prefix}{flags} {' '.join(extra)}"
+
+
+def harden_npx_commands(root: Path) -> int:
+    """Rewrite `npx skills add …` occurrences under `root/` to always carry
+    non-interactive flags. Returns count of files modified."""
+    modified = 0
+    for path in root.rglob("*.md"):
+        original = path.read_text()
+        patched = _NPX_CMD_RE.sub(_rewrite_npx_command, original)
+        if patched != original:
+            path.write_text(patched)
+            modified += 1
+    return modified
+
+
 def prune_stale(installable_names: set[str]) -> None:
     """Remove ./skills/<name>/ dirs for skills no longer installable.
 
@@ -125,7 +169,9 @@ def mirror_one(skill: dict, skip_clone: bool) -> None:
             print(f"  ⚠ {name}: SKILL.md not found at {skill_root.relative_to(clone_dir) or '.'}, skipping", file=sys.stderr)
             return
         rsync_mirror(skill_root, dest)
-        print(f"  ✓ {name}")
+        touched = harden_npx_commands(dest)
+        suffix = f" (hardened {touched} md file{'s' if touched != 1 else ''})" if touched else ""
+        print(f"  ✓ {name}{suffix}")
 
 
 def main() -> int:
