@@ -11,11 +11,9 @@
     {
       "name": "general",
       "source": "./",
-      "description": "General — 3 free skills bundled together.",
+      "description": "General — 1 free skill bundled together.",
       "category": "General",
       "skills": [
-        "./skills/skill-creator",
-        "./skills/skill-optimizer",
         "./skills/image-creator"
       ],
       "strict": false
@@ -91,35 +89,6 @@
         "./skills/image-creator",
         "./skills/write-professional-book",
         "./skills/wxmp-cracker"
-      ],
-      "strict": false
-    },
-    {
-      "name": "dev-tools",
-      "source": "./",
-      "description": "Dev Tools — 9 free skills bundled together.",
-      "category": "Dev Tools",
-      "skills": [
-        "./skills/auto-context",
-        "./skills/cc-migrate-session",
-        "./skills/deploy-to-vercel",
-        "./skills/finder-action",
-        "./skills/gh-access",
-        "./skills/gh-contribute",
-        "./skills/gh-tidy",
-        "./skills/obsidian-reset-cache",
-        "./skills/project-port"
-      ],
-      "strict": false
-    },
-    {
-      "name": "xbti",
-      "source": "./",
-      "description": "xBTI — 2 free skills bundled together.",
-      "category": "xBTI",
-      "skills": [
-        "./skills/xbti-creator",
-        "./skills/xbti-gallery"
       ],
       "strict": false
     }

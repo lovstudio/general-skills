@@ -36,7 +36,7 @@ Skills marked ![Free](https://img.shields.io/badge/Free-green) are open source (
 ## Skills
 
 <!-- COUNT:START -->
-> **33 skills** — 28 Free + 5 Paid.
+> **20 skills** — 15 Free + 5 Paid.
 <!-- COUNT:END -->
 
 <!-- SKILLS:START -->
@@ -44,8 +44,6 @@ Skills marked ![Free](https://img.shields.io/badge/Free-green) are open source (
 |---|---|---|
 | **General** | | |
 | ![Free](https://img.shields.io/badge/Free-green) | [`image-creator`](https://github.com/lovstudio/image-creator-skill) | Generate images through the right mechanism — AI, code rendering, or prompt tuning. |
-| ![Free](https://img.shields.io/badge/Free-green) | [`skill-creator`](https://github.com/lovstudio/skill-creator-skill) | Scaffold a new Claude Code skill with the right structure in seconds. |
-| ![Free](https://img.shields.io/badge/Free-green) | [`skill-optimizer`](https://github.com/lovstudio/skill-optimizer-skill) | Audit an existing skill, auto-fix issues, and bump its version in one pass. |
 | **Business** | | |
 | ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [`proposal`](https://github.com/lovstudio/proposal-skill) | Turn a project brief into a complete, client-ready business proposal. |
 | ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [`review-doc`](https://github.com/lovstudio/review-doc-skill) | Review a document or contract and return it with inline comments. |
@@ -71,22 +69,18 @@ Skills marked ![Free](https://img.shields.io/badge/Free-green) are open source (
 | ![Free](https://img.shields.io/badge/Free-green) | [`document-illustrator`](https://github.com/lovstudio/document-illustrator-skill) | Illustrate a long document in place — plan, generate, and insert images automatically. — requires: `image-creator` |
 | ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [`write-professional-book`](https://github.com/lovstudio/write-professional-book-skill) | Write a full multi-chapter book — technical, tutorial, or monograph — from an outline. |
 | ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [`wxmp-cracker`](https://github.com/lovstudio/wxmp-cracker-skill) | Archive WeChat Official Account articles into clean, reusable text. |
-| **Dev Tools** | | |
-| ![Free](https://img.shields.io/badge/Free-green) | [`auto-context`](https://github.com/lovstudio/auto-context-skill) | Watch your Claude Code context for pollution and suggest when to fork or reset. |
-| ![Free](https://img.shields.io/badge/Free-green) | [`cc-migrate-session`](https://github.com/lovstudio/cc-migrate-session) | Keep your Claude Code session history working after you move a project folder. |
-| ![Free](https://img.shields.io/badge/Free-green) | [`deploy-to-vercel`](https://github.com/lovstudio/deploy-to-vercel-skill) | Ship a frontend to Vercel with custom domain and Cloudflare DNS wired up automatically. |
-| ![Free](https://img.shields.io/badge/Free-green) | [`finder-action`](https://github.com/lovstudio/finder-action-skill) | Add a custom right-click action to macOS Finder in minutes. |
-| ![Free](https://img.shields.io/badge/Free-green) | [`gh-access`](https://github.com/lovstudio/gh-access-skill) | Grant, revoke, or audit collaborator access on private GitHub repos in one command. |
-| ![Free](https://img.shields.io/badge/Free-green) | [`gh-contribute`](https://github.com/lovstudio/gh-contribute-skill) | Ship a clean PR to any upstream GitHub repo — fork, branch, push, and open PR for you. |
-| ![Free](https://img.shields.io/badge/Free-green) | [`gh-tidy`](https://github.com/lovstudio/gh-tidy-skill) | Triage and clean up GitHub issues, PRs, branches, and labels in a single pass. |
-| ![Free](https://img.shields.io/badge/Free-green) | [`obsidian-reset-cache`](https://github.com/lovstudio/obsidian-reset-cache-skill) | Reset Obsidian's cache when it gets stuck on "Loading cache". |
-| ![Free](https://img.shields.io/badge/Free-green) | [`project-port`](https://github.com/lovstudio/project-port-skill) | Assign each project a stable, unique dev port so services stop colliding. |
-| **xBTI** | | |
-| ![Free](https://img.shields.io/badge/Free-green) | [`xbti-creator`](https://github.com/lovstudio/xbti-creator-skill) | Build your own BTI-style personality test — questions, results, and avatars generated for you. |
-| ![Free](https://img.shields.io/badge/Free-green) | [`xbti-gallery`](https://github.com/lovstudio/xbti-gallery-skill) | Browse every community-made BTI personality test on xbti.lovstudio.ai. |
 <!-- SKILLS:END -->
 
 <sub>The table above is auto-generated from [`skills.yaml`](skills.yaml) by [`scripts/render-readme.py`](scripts/render-readme.py). Edit `skills.yaml`, not this table.</sub>
+
+## Extension indexes
+
+The following thematic skills live in their own sub-index repos, each with its own manifest and mirror. Install as needed:
+
+| Sub-index | Scope | Install |
+|---|---|---|
+| [`lovstudio/dev-skills`](https://github.com/lovstudio/dev-skills) | Developer & skill-author tools: Meta (skill-creator / skill-optimizer) + Dev Tools (GitHub, Vercel, macOS, Claude Code session, …) | `npx skills add lovstudio/dev-skills` |
+| [`lovstudio/xbti-skills`](https://github.com/lovstudio/xbti-skills) | Build and browse xBTI personality tests (paired with [xbti.lovstudio.ai](https://xbti.lovstudio.ai)) | `npx skills add lovstudio/xbti-skills` |
 
 ## Install
 
@@ -111,7 +105,7 @@ lovstudio/skills (this repo)         ← you are here
 ├── skills.yaml                      ← machine-readable manifest
 └── .github/workflows/               ← CI: renders READMEs, syncs descriptions
 
-lovstudio/<name>-skill (27 repos)    ← each skill, independent repo
+lovstudio/<name>-skill               ← each skill, independent repo
 ├── SKILL.md                         ← skill definition (frontmatter + docs)
 ├── scripts/                         ← implementation (Python/Shell/Node)
 ├── README.md                        ← per-skill install & usage

@@ -36,7 +36,7 @@
 ## 技能列表
 
 <!-- COUNT:START -->
-> **33 个技能** — 28 个免费 + 5 个付费。
+> **20 个技能** — 15 个免费 + 5 个付费。
 <!-- COUNT:END -->
 
 <!-- SKILLS:START -->
@@ -44,8 +44,6 @@
 |---|---|---|
 | **通用** | | |
 | ![Free](https://img.shields.io/badge/Free-green) | [图片生成 · `image-creator`](https://github.com/lovstudio/image-creator-skill) | 按需选择最合适的出图方式：端到端 AI、代码渲染或提示词精修。 |
-| ![Free](https://img.shields.io/badge/Free-green) | [技能脚手架 · `skill-creator`](https://github.com/lovstudio/skill-creator-skill) | 一条命令生成规范的 Claude Code 技能骨架，结构即对即用。 |
-| ![Free](https://img.shields.io/badge/Free-green) | [技能优化器 · `skill-optimizer`](https://github.com/lovstudio/skill-optimizer-skill) | 一键体检并修复现有技能，自动升版本号并追加 CHANGELOG。 |
 | **商务** | | |
 | ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [商业提案 · `proposal`](https://github.com/lovstudio/proposal-skill) | 把项目简述一键变成可交付的商业提案，方案、报价、排版全配齐。 |
 | ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [合同审阅 · `review-doc`](https://github.com/lovstudio/review-doc-skill) | 审阅文档或合同，输出带批注的 docx，直接拿给同事或客户。 |
@@ -71,22 +69,18 @@
 | ![Free](https://img.shields.io/badge/Free-green) | [文档配图 · `document-illustrator`](https://github.com/lovstudio/document-illustrator-skill) | 给长文原地配图，先规划插入点再并行出图，最后自动插回原文。 — 依赖: `image-creator` |
 | ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [多章节写书 · `write-professional-book`](https://github.com/lovstudio/write-professional-book-skill) | 从大纲开始，逐章写出一本完整的书，技术、教程、专著多种风格。 |
 | ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [公众号抓取 · `wxmp-cracker`](https://github.com/lovstudio/wxmp-cracker-skill) | 把微信公众号的文章批量归档成可再利用的整洁文本。 |
-| **开发工具** | | |
-| ![Free](https://img.shields.io/badge/Free-green) | [上下文体检 · `auto-context`](https://github.com/lovstudio/auto-context-skill) | 监测 Claude Code 上下文是否被污染，适时提示你 /fork 或 /btw。 |
-| ![Free](https://img.shields.io/badge/Free-green) | [会话迁移 · `cc-migrate-session`](https://github.com/lovstudio/cc-migrate-session) | 项目目录搬家后，让 Claude Code 的历史会话还能正常 `--resume`。 |
-| ![Free](https://img.shields.io/badge/Free-green) | [部署到 Vercel · `deploy-to-vercel`](https://github.com/lovstudio/deploy-to-vercel-skill) | 一键把前端部署到 Vercel，自动配好 Cloudflare DNS 和自定义域名。 |
-| ![Free](https://img.shields.io/badge/Free-green) | [访达右键动作 · `finder-action`](https://github.com/lovstudio/finder-action-skill) | 几分钟给 macOS 访达右键菜单加一个你自己的动作。 |
-| ![Free](https://img.shields.io/badge/Free-green) | [GitHub 协作者管理 · `gh-access`](https://github.com/lovstudio/gh-access-skill) | 一条命令给私有 GitHub 仓库加减协作者权限，或盘点现有访问清单。 |
-| ![Free](https://img.shields.io/badge/Free-green) | [GitHub 投稿 PR · `gh-contribute`](https://github.com/lovstudio/gh-contribute-skill) | 给任意上游 GitHub 仓库提一份干净的 PR——fork、分支、推送、开 PR 一站搞定。 |
-| ![Free](https://img.shields.io/badge/Free-green) | [GitHub 仓库整理 · `gh-tidy`](https://github.com/lovstudio/gh-tidy-skill) | 一次过清理 GitHub 上的 issue、PR、分支和标签，让仓库重新整洁。 |
-| ![Free](https://img.shields.io/badge/Free-green) | [重置 Obsidian 缓存 · `obsidian-reset-cache`](https://github.com/lovstudio/obsidian-reset-cache-skill) | Obsidian 卡在 Loading cache 时，一键重置缓存救场。 |
-| ![Free](https://img.shields.io/badge/Free-green) | [项目端口分配 · `project-port`](https://github.com/lovstudio/project-port-skill) | 给每个项目分配一个稳定且唯一的开发端口，彻底告别端口撞车。 |
-| **人格测试** | | |
-| ![Free](https://img.shields.io/badge/Free-green) | [xBTI 测试定制 · `xbti-creator`](https://github.com/lovstudio/xbti-creator-skill) | 定制属于你自己的 BTI 人格测试（LBTI、FBTI 等），题目、结果、头像全自动生成。 |
-| ![Free](https://img.shields.io/badge/Free-green) | [xBTI 画廊 · `xbti-gallery`](https://github.com/lovstudio/xbti-gallery-skill) | 浏览社区在 xbti.lovstudio.ai 上发布的所有 BTI 人格测试。 |
 <!-- SKILLS:END -->
 
 <sub>上表由 [`scripts/render-readme.py`](scripts/render-readme.py) 从 [`skills.yaml`](skills.yaml) 自动生成。请编辑 `skills.yaml`，不要手动改表格。</sub>
+
+## 扩展索引
+
+以下专题技能已独立成子索引仓库，自行管理清单与镜像。按需安装：
+
+| 子索引 | 内容 | 安装 |
+|---|---|---|
+| [`lovstudio/dev-skills`](https://github.com/lovstudio/dev-skills) | 开发者与技能作者工具：Meta（skill-creator / skill-optimizer）+ Dev Tools（GitHub、Vercel、macOS、Claude Code session 等） | `npx skills add lovstudio/dev-skills` |
+| [`lovstudio/xbti-skills`](https://github.com/lovstudio/xbti-skills) | xBTI 人格测试定制与画廊（配合 [xbti.lovstudio.ai](https://xbti.lovstudio.ai)） | `npx skills add lovstudio/xbti-skills` |
 
 ## 安装
 
@@ -111,7 +105,7 @@ lovstudio/skills (本仓库)            ← 你在这里
 ├── skills.yaml                      ← 机器可读清单
 └── .github/workflows/               ← CI：渲染 README、同步描述
 
-lovstudio/<name>-skill (27 个仓库)   ← 每个技能的独立仓库
+lovstudio/<name>-skill               ← 每个技能的独立仓库
 ├── SKILL.md                         ← 技能定义（frontmatter + 文档）
 ├── scripts/                         ← 实现（Python / Shell / Node）
 ├── README.md                        ← 单技能安装与使用说明
