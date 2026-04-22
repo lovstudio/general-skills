@@ -68,6 +68,7 @@ skills:
   repo: lovstudio/any2docx-skill
   name_zh: 转 Word
   paid: false
+  featured: true
   category: Office Automation
   description: Convert Markdown documents to professionally styled DOCX (Word) files
     with python-docx.
