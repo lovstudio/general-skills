@@ -220,7 +220,7 @@ skills:
 - name: write-professional-book
   display_name: Book Writer
   repo: lovstudio/write-professional-book-skill
-  name_zh: 长篇写书
+  name_zh: 专业写书
   paid: true
   category: Content Creation
   description: Write multi-chapter books (technical, tutorial, monograph) / 逐章写书，支持多种风格
