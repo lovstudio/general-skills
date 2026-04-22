@@ -19,29 +19,6 @@
       "strict": false
     },
     {
-      "name": "design",
-      "source": "./",
-      "description": "Design — 2 free + 1 paid (activation required).",
-      "category": "Design",
-      "skills": [
-        "./skills/event-poster",
-        "./skills/visual-clone",
-        "./skills/find-logo"
-      ],
-      "strict": false
-    },
-    {
-      "name": "academic",
-      "source": "./",
-      "description": "Academic — 2 free skills bundled together.",
-      "category": "Academic",
-      "skills": [
-        "./skills/thesis-polish",
-        "./skills/translation-review"
-      ],
-      "strict": false
-    },
-    {
       "name": "office-automation",
       "source": "./",
       "description": "Office Automation — 7 free skills bundled together.",
@@ -60,21 +37,23 @@
     {
       "name": "business",
       "source": "./",
-      "description": "Business — 0 free + 2 paid (activation required).",
+      "description": "Business — 1 free + 2 paid (activation required).",
       "category": "Business",
       "skills": [
         "./skills/proposal",
-        "./skills/review-doc"
+        "./skills/review-doc",
+        "./skills/expense-report"
       ],
       "strict": false
     },
     {
-      "name": "finance",
+      "name": "design",
       "source": "./",
-      "description": "Finance — 1 free skill bundled together.",
-      "category": "Finance",
+      "description": "Design — 1 free + 1 paid (activation required).",
+      "category": "Design",
       "skills": [
-        "./skills/expense-report"
+        "./skills/event-poster",
+        "./skills/find-logo"
       ],
       "strict": false
     },
@@ -90,6 +69,17 @@
         "./skills/write-professional-book",
         "./skills/wxmp-cracker",
         "./skills/event-curator"
+      ],
+      "strict": false
+    },
+    {
+      "name": "academic",
+      "source": "./",
+      "description": "Academic — 2 free skills bundled together.",
+      "category": "Academic",
+      "skills": [
+        "./skills/thesis-polish",
+        "./skills/translation-review"
       ],
       "strict": false
     }
