@@ -128,10 +128,11 @@ skills:
   encrypted_bundle: true
   version: 0.1.1
 - name: review-doc
-  display_name: Document Reviewer
+  display_name: Contract Review
   repo: lovstudio/review-doc-skill
-  name_zh: 文档审阅
+  name_zh: 合同审阅 · 日常版
   paid: true
+  featured: true
   category: Business
   description: Review and annotate documents/contracts — output annotated docx with
     comments
@@ -142,9 +143,9 @@ skills:
 - name: contract-review-pro
   display_name: Contract Review Pro
   repo: lovstudio/contract-review-pro-skill
-  name_zh: 合同审阅 Pro
+  name_zh: 合同审阅 · 专业版
   paid: false
-  featured: true
+  recommended_by: industry
   category: Business
   description: Professional contract review with four-layer methodology (entity verification,
     basic, business, legal), structured comments with risk levels, contract summary,
