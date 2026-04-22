@@ -119,7 +119,7 @@ skills:
 - name: proposal
   display_name: Proposal Writer
   repo: lovstudio/proposal-skill
-  name_zh: 商业提案
+  name_zh: 专业需求评估
   paid: true
   category: Business
   description: Business proposal with architecture, budget & PDF / 完整商业提案
@@ -131,14 +131,13 @@ skills:
   display_name: Contract Review
   repo: lovstudio/review-doc-skill
   name_zh: 合同审阅 · 日常版
-  paid: true
+  paid: false
   featured: true
   category: Business
   description: Review and annotate documents/contracts — output annotated docx with
     comments
   tagline_en: Review a document or contract and return it with inline comments.
   tagline_zh: 审阅文档或合同，输出带批注的 docx，直接拿给同事或客户。
-  encrypted_bundle: true
   version: 0.1.1
 - name: contract-review-pro
   display_name: Contract Review Pro
@@ -166,7 +165,7 @@ skills:
 - name: event-poster
   display_name: Event Poster
   repo: lovstudio/event-poster-skill
-  name_zh: 活动海报
+  name_zh: 大师级海报生成
   paid: true
   category: Design
   version: 0.3.2
@@ -177,7 +176,7 @@ skills:
 - name: visual-clone
   display_name: Visual Clone
   repo: lovstudio/visual-clone-skill
-  name_zh: 视觉复刻
+  name_zh: 像素级海报复刻
   paid: true
   category: Design
   description: Extract design DNA from reference images / 提取设计要素生成复刻指令
@@ -233,7 +232,7 @@ skills:
 - name: wxmp-cracker
   display_name: WeChat Archiver
   repo: lovstudio/wxmp-cracker-skill
-  name_zh: 公众号归档
+  name_zh: 公众号神器
   paid: true
   category: Content Creation
   version: 0.1.4
@@ -246,7 +245,7 @@ skills:
   repo: lovstudio/event-curator-skill
   name_zh: 活动策展
   paid: true
-  category: Content Creation
+  category: Business
   version: 0.1.0
   description: >
     Generate a complete professional event plan from guest background material.
