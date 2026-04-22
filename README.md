@@ -45,10 +45,10 @@
 | **通用** | | |
 | ![Free](https://img.shields.io/badge/Free-green) | [图像工坊 · `image-creator`](https://github.com/lovstudio/image-creator-skill) | 按需选择最合适的出图方式：端到端 AI、代码渲染或提示词精修。 |
 | **商务** | | |
-| ![Free](https://img.shields.io/badge/Free-green) | [合同审阅 Pro · `contract-review-pro`](https://github.com/lovstudio/contract-review-pro-skill) | 专业级合同审阅 — 四层方法论（主体核验 + 基础 + 业务 + 法务），结构化批注含风险等级，附合同摘要、综合意见与业务流程图。 |
+| ![Free](https://img.shields.io/badge/Free-green) | [合同审阅 · 专业版 · `contract-review-pro`](https://github.com/lovstudio/contract-review-pro-skill) | 专业级合同审阅 — 四层方法论（主体核验 + 基础 + 业务 + 法务），结构化批注含风险等级，附合同摘要、综合意见与业务流程图。 |
 | ![Free](https://img.shields.io/badge/Free-green) | [报销整理 · `expense-report`](https://github.com/lovstudio/expense-report-skill) | 发票图片或文字一键整理成分类报销 Excel，业务招待、差旅、办公自动归类。 |
 | ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [商业提案 · `proposal`](https://github.com/lovstudio/proposal-skill) | 把项目简述一键变成可交付的商业提案，方案、报价、排版全配齐。 |
-| ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [文档审阅 · `review-doc`](https://github.com/lovstudio/review-doc-skill) | 审阅文档或合同，输出带批注的 docx，直接拿给同事或客户。 |
+| ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [合同审阅 · 日常版 · `review-doc`](https://github.com/lovstudio/review-doc-skill) | 审阅文档或合同，输出带批注的 docx，直接拿给同事或客户。 |
 | **设计** | | |
 | ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [活动海报 · `event-poster`](https://github.com/lovstudio/event-poster-skill) | 把活动信息一键变成高质感海报，直接拿去发。 |
 | ![Free](https://img.shields.io/badge/Free-green) | [Logo 狩猎 · `find-logo`](https://github.com/lovstudio/find-logo-skill) | 按品牌名或网址抓取 logo，自动评分择优（偏好长条形 + 透明底），统一归档到本地，方便网站/PPT/海报罗列。 |
