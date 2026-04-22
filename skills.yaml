@@ -157,6 +157,7 @@ skills:
   repo: lovstudio/find-logo-skill
   name_zh: Logo 收集
   paid: false
+  featured: true
   category: Design
   version: 0.1.0
   description: Fetch a brand/product logo from public sources (Clearbit, og:image,
