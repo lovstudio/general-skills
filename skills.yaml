@@ -4,6 +4,7 @@ skills:
   repo: lovstudio/image-creator-skill
   name_zh: 图片生成
   paid: false
+  featured: true
   category: General
   version: 0.2.0
   description: 'Multi-mechanism image generation: end-to-end AI, code rendering, or
@@ -34,55 +35,6 @@ skills:
     a symbolic verdict. Cloud-split teaching demo — real logic on the server.
   tagline_en: Pairwise numeric verdict — cloud-split demo with symbolic output.
   tagline_zh: 成对数字判定的 cloud-split 教学 demo — 本地只看到 A/B 符号。
-- name: event-poster
-  repo: lovstudio/event-poster-skill
-  name_zh: 活动海报
-  paid: true
-  category: Design
-  version: 0.3.2
-  description: Generate event posters via HTML + Playwright / 活动海报生成
-  tagline_en: Turn an event brief into a polished poster, ready to share.
-  tagline_zh: 把活动信息一键变成高质感海报，直接拿去发。
-  encrypted_bundle: true
-- name: visual-clone
-  repo: lovstudio/visual-clone-skill
-  name_zh: 视觉复刻
-  paid: false
-  category: Design
-  description: Extract design DNA from reference images / 提取设计要素生成复刻指令
-  tagline_en: Extract the design DNA of a reference image so you can recreate the
-    look.
-  tagline_zh: 从参考图中提取设计要素，生成可复刻同款风格的指令。
-- name: find-logo
-  repo: lovstudio/find-logo-skill
-  name_zh: Logo 收集
-  paid: false
-  category: Design
-  version: 0.1.0
-  description: Fetch a brand/product logo from public sources (Clearbit, og:image,
-    favicon), score candidates (prefer wide-aspect + transparent), and archive into
-    ~/.lovstudio/logo-collection/.
-  tagline_en: Collect brand logos from public sources — wide and transparent preferred,
-    archived for website/PPT/poster lineups.
-  tagline_zh: 按品牌名或网址抓取 logo，自动评分择优（偏好长条形 + 透明底），统一归档到本地，方便网站/PPT/海报罗列。
-- name: thesis-polish
-  repo: lovstudio/thesis-polish-skill
-  name_zh: 论文润色
-  paid: false
-  category: Academic
-  description: MBA 论文全面润色，对标全国优秀论文标准。语言+结构+论证+创新四维提升。
-  tagline_en: Polish an MBA thesis across language, structure, argument, and originality.
-  tagline_zh: MBA 论文全维度润色，对标国优标准，打磨语言、结构、论证与创新四个面。
-- name: translation-review
-  repo: lovstudio/translation-review-skill
-  name_zh: 译文审阅
-  paid: false
-  category: Academic
-  description: Chinese-to-English translation review. Compares source & translation
-    across 6 dimensions.
-  tagline_en: Review a Chinese→English translation against the original across six
-    quality dimensions.
-  tagline_zh: 中译英译文审阅，从六个维度逐条对照原文，找出问题并给出改写建议。
 - name: fill-form
   repo: lovstudio/fill-form-skill
   name_zh: Word 表单填写
@@ -101,39 +53,11 @@ skills:
     → generate markdown doc.
   tagline_en: Answer online forms using your own knowledge base as the source of truth.
   tagline_zh: 用你本地的知识库来应答网页表单，一轮检索一轮生成，草稿即交付。
-- name: proposal
-  repo: lovstudio/proposal-skill
-  name_zh: 商业提案
-  paid: true
-  category: Business
-  description: Business proposal with architecture, budget & PDF / 完整商业提案
-  tagline_en: Turn a project brief into a complete, client-ready business proposal.
-  tagline_zh: 把项目简述一键变成可交付的商业提案，方案、报价、排版全配齐。
-  encrypted_bundle: true
-  version: 0.1.1
-- name: review-doc
-  repo: lovstudio/review-doc-skill
-  name_zh: 合同审阅
-  paid: true
-  category: Business
-  description: Review and annotate documents/contracts — output annotated docx with
-    comments
-  tagline_en: Review a document or contract and return it with inline comments.
-  tagline_zh: 审阅文档或合同，输出带批注的 docx，直接拿给同事或客户。
-  encrypted_bundle: true
-  version: 0.1.1
-- name: expense-report
-  repo: lovstudio/expense-report-skill
-  name_zh: 报销单整理
-  paid: false
-  category: Finance
-  description: Invoice images/text → categorized Excel expense report
-  tagline_en: Turn a pile of invoices into a categorized Excel expense report.
-  tagline_zh: 发票图片或文字一键整理成分类报销 Excel，业务招待、差旅、办公自动归类。
 - name: any2pdf
   repo: lovstudio/any2pdf-skill
   name_zh: 转 PDF
   paid: false
+  featured: true
   category: Office Automation
   description: Markdown → professionally typeset PDF. CJK/Latin mixed text, code blocks,
     tables, 14 themes.
@@ -154,6 +78,7 @@ skills:
   repo: lovstudio/any2deck-skill
   name_zh: 转幻灯片
   paid: false
+  featured: true
   category: Office Automation
   description: Content → slide deck images with 16 visual styles, PPTX/PDF export,
     branding overlay.
@@ -180,6 +105,66 @@ skills:
     curves.
   tagline_en: Convert a PNG to a crisp SVG, with background removed and curves smoothed.
   tagline_zh: 把 PNG 矢量化为高质量 SVG，自动抠背景、曲线平滑。
+- name: proposal
+  repo: lovstudio/proposal-skill
+  name_zh: 商业提案
+  paid: true
+  category: Business
+  description: Business proposal with architecture, budget & PDF / 完整商业提案
+  tagline_en: Turn a project brief into a complete, client-ready business proposal.
+  tagline_zh: 把项目简述一键变成可交付的商业提案，方案、报价、排版全配齐。
+  encrypted_bundle: true
+  version: 0.1.1
+- name: review-doc
+  repo: lovstudio/review-doc-skill
+  name_zh: 合同审阅
+  paid: true
+  category: Business
+  description: Review and annotate documents/contracts — output annotated docx with
+    comments
+  tagline_en: Review a document or contract and return it with inline comments.
+  tagline_zh: 审阅文档或合同，输出带批注的 docx，直接拿给同事或客户。
+  encrypted_bundle: true
+  version: 0.1.1
+- name: expense-report
+  repo: lovstudio/expense-report-skill
+  name_zh: 报销单整理
+  paid: false
+  category: Business
+  description: Invoice images/text → categorized Excel expense report
+  tagline_en: Turn a pile of invoices into a categorized Excel expense report.
+  tagline_zh: 发票图片或文字一键整理成分类报销 Excel，业务招待、差旅、办公自动归类。
+- name: event-poster
+  repo: lovstudio/event-poster-skill
+  name_zh: 活动海报
+  paid: true
+  category: Design
+  version: 0.3.2
+  description: Generate event posters via HTML + Playwright / 活动海报生成
+  tagline_en: Turn an event brief into a polished poster, ready to share.
+  tagline_zh: 把活动信息一键变成高质感海报，直接拿去发。
+  encrypted_bundle: true
+- name: visual-clone
+  repo: lovstudio/visual-clone-skill
+  name_zh: 视觉复刻
+  paid: true
+  category: Design
+  description: Extract design DNA from reference images / 提取设计要素生成复刻指令
+  tagline_en: Extract the design DNA of a reference image so you can recreate the
+    look.
+  tagline_zh: 从参考图中提取设计要素，生成可复刻同款风格的指令。
+- name: find-logo
+  repo: lovstudio/find-logo-skill
+  name_zh: Logo 收集
+  paid: false
+  category: Design
+  version: 0.1.0
+  description: Fetch a brand/product logo from public sources (Clearbit, og:image,
+    favicon), score candidates (prefer wide-aspect + transparent), and archive into
+    ~/.lovstudio/logo-collection/.
+  tagline_en: Collect brand logos from public sources — wide and transparent preferred,
+    archived for website/PPT/poster lineups.
+  tagline_zh: 按品牌名或网址抓取 logo，自动评分择优（偏好长条形 + 透明底），统一归档到本地，方便网站/PPT/海报罗列。
 - name: anti-wechat-ai-check
   repo: lovstudio/anti-wechat-ai-check-skill
   name_zh: 微信 AI 味降检
@@ -235,3 +220,21 @@ skills:
     host questions, and gifts.
   tagline_zh: 从嘉宾履历一键生成可交付的活动策划案 — 主题文案、分钟级 rundown、主持人问题卡、伴手礼。
   encrypted_bundle: true
+- name: thesis-polish
+  repo: lovstudio/thesis-polish-skill
+  name_zh: 论文润色
+  paid: false
+  category: Academic
+  description: MBA 论文全面润色，对标全国优秀论文标准。语言+结构+论证+创新四维提升。
+  tagline_en: Polish an MBA thesis across language, structure, argument, and originality.
+  tagline_zh: MBA 论文全维度润色，对标国优标准，打磨语言、结构、论证与创新四个面。
+- name: translation-review
+  repo: lovstudio/translation-review-skill
+  name_zh: 译文审阅
+  paid: false
+  category: Academic
+  description: Chinese-to-English translation review. Compares source & translation
+    across 6 dimensions.
+  tagline_en: Review a Chinese→English translation against the original across six
+    quality dimensions.
+  tagline_zh: 中译英译文审阅，从六个维度逐条对照原文，找出问题并给出改写建议。
