@@ -1,8 +1,9 @@
 version: 1
 skills:
 - name: image-creator
+  display_name: Image Studio
   repo: lovstudio/image-creator-skill
-  name_zh: 图片生成
+  name_zh: 图像工坊
   paid: false
   featured: true
   category: General
@@ -13,8 +14,9 @@ skills:
     prompt tuning.
   tagline_zh: 按需选择最合适的出图方式：端到端 AI、代码渲染或提示词精修。
 - name: paid-add
+  display_name: Paid Add (PoC)
   repo: lovstudio/paid-add-skill
-  name_zh: 加法 (测试付费)
+  name_zh: 付费加法
   paid: true
   encrypted_bundle: true
   test: true
@@ -25,8 +27,9 @@ skills:
   tagline_en: Trivial addition skill — the PoC proving end-to-end paid-skill encryption.
   tagline_zh: 付费加密分发机制的联调测试 skill，输入数字返回求和。
 - name: numeric-verdict
+  display_name: Numeric Verdict (PoC)
   repo: lovstudio/numeric-verdict-skill
-  name_zh: 数对判定 (教学 demo)
+  name_zh: 数对判定
   paid: true
   test: true
   category: General
@@ -36,8 +39,9 @@ skills:
   tagline_en: Pairwise numeric verdict — cloud-split demo with symbolic output.
   tagline_zh: 成对数字判定的 cloud-split 教学 demo — 本地只看到 A/B 符号。
 - name: fill-form
+  display_name: Form Filler
   repo: lovstudio/fill-form-skill
-  name_zh: Word 表单填写
+  name_zh: 表单代笔
   paid: false
   category: Office Automation
   description: Fill Word form templates (.docx). Auto-detects table fields, CJK font
@@ -45,8 +49,9 @@ skills:
   tagline_en: Fill Word (.docx) form templates automatically, with clean CJK typography.
   tagline_zh: 自动填写 Word 表单模板，字段识别 + 中英文排版一气呵成。
 - name: fill-web-form
+  display_name: Web Form Filler
   repo: lovstudio/fill-web-form-skill
-  name_zh: 网页表单填写
+  name_zh: 网页代笔
   paid: false
   category: Office Automation
   description: Fill web forms from local knowledge base. Fetch URL → deep-search KB
@@ -54,8 +59,9 @@ skills:
   tagline_en: Answer online forms using your own knowledge base as the source of truth.
   tagline_zh: 用你本地的知识库来应答网页表单，一轮检索一轮生成，草稿即交付。
 - name: any2pdf
+  display_name: Any → PDF
   repo: lovstudio/any2pdf-skill
-  name_zh: 转 PDF
+  name_zh: 万物转 PDF
   paid: false
   featured: true
   category: Office Automation
@@ -65,8 +71,9 @@ skills:
   tagline_zh: 把 Markdown 排成出版级 PDF，中英混排、代码块、表格全支持，内置 14 套主题。
   related: [any2docx, any2deck]
 - name: any2docx
+  display_name: Any → Word
   repo: lovstudio/any2docx-skill
-  name_zh: 转 Word
+  name_zh: 万物转 Word
   paid: false
   featured: true
   category: Office Automation
@@ -76,8 +83,9 @@ skills:
   tagline_zh: 把 Markdown 转成排版规范的 Word 文档，可以直接发给甲方。
   related: [any2pdf, any2deck]
 - name: any2deck
+  display_name: Any → Slides
   repo: lovstudio/any2deck-skill
-  name_zh: 转幻灯片
+  name_zh: 万物转幻灯
   paid: false
   featured: true
   category: Office Automation
@@ -88,8 +96,9 @@ skills:
   tagline_zh: 把任意内容变成带设计感的幻灯片，16 种风格可选，导出 PPTX / PDF。
   related: [any2pdf, any2docx]
 - name: pdf2png
+  display_name: PDF → Image
   repo: lovstudio/pdf2png-skill
-  name_zh: PDF 转长图
+  name_zh: PDF 出长图
   paid: false
   category: Office Automation
   description: PDF → single vertically concatenated PNG. Uses macOS CoreGraphics,
@@ -98,8 +107,9 @@ skills:
     macOS.
   tagline_zh: 把 PDF 拼成一张长图 PNG，在 macOS 上快到几乎瞬间出图。
 - name: png2svg
+  display_name: PNG → SVG
   repo: lovstudio/png2svg-skill
-  name_zh: PNG 转 SVG
+  name_zh: PNG 矢量化
   paid: false
   category: Office Automation
   description: PNG → high-quality SVG conversion with background removal and spline
@@ -107,6 +117,7 @@ skills:
   tagline_en: Convert a PNG to a crisp SVG, with background removed and curves smoothed.
   tagline_zh: 把 PNG 矢量化为高质量 SVG，自动抠背景、曲线平滑。
 - name: proposal
+  display_name: Proposal Writer
   repo: lovstudio/proposal-skill
   name_zh: 商业提案
   paid: true
@@ -117,8 +128,9 @@ skills:
   encrypted_bundle: true
   version: 0.1.1
 - name: review-doc
+  display_name: Document Reviewer
   repo: lovstudio/review-doc-skill
-  name_zh: 合同审阅（日常）
+  name_zh: 文档审阅
   paid: true
   category: Business
   description: Review and annotate documents/contracts — output annotated docx with
@@ -128,8 +140,9 @@ skills:
   encrypted_bundle: true
   version: 0.1.1
 - name: contract-review-pro
+  display_name: Contract Review Pro
   repo: lovstudio/contract-review-pro-skill
-  name_zh: 合同审阅（专业版）
+  name_zh: 合同审阅 Pro
   paid: false
   featured: true
   category: Business
@@ -141,14 +154,16 @@ skills:
   tagline_zh: 专业级合同审阅 — 四层方法论（主体核验 + 基础 + 业务 + 法务），结构化批注含风险等级，附合同摘要、综合意见与业务流程图。
   version: 0.1.0
 - name: expense-report
+  display_name: Expense Reporter
   repo: lovstudio/expense-report-skill
-  name_zh: 报销单整理
+  name_zh: 报销整理
   paid: false
   category: Business
   description: Invoice images/text → categorized Excel expense report
   tagline_en: Turn a pile of invoices into a categorized Excel expense report.
   tagline_zh: 发票图片或文字一键整理成分类报销 Excel，业务招待、差旅、办公自动归类。
 - name: event-poster
+  display_name: Event Poster
   repo: lovstudio/event-poster-skill
   name_zh: 活动海报
   paid: true
@@ -159,6 +174,7 @@ skills:
   tagline_zh: 把活动信息一键变成高质感海报，直接拿去发。
   encrypted_bundle: true
 - name: visual-clone
+  display_name: Visual Clone
   repo: lovstudio/visual-clone-skill
   name_zh: 视觉复刻
   paid: true
@@ -168,8 +184,9 @@ skills:
     look.
   tagline_zh: 从参考图中提取设计要素，生成可复刻同款风格的指令。
 - name: find-logo
+  display_name: Logo Hunter
   repo: lovstudio/find-logo-skill
-  name_zh: Logo 收集
+  name_zh: Logo 狩猎
   paid: false
   featured: true
   category: Design
@@ -181,14 +198,16 @@ skills:
     archived for website/PPT/poster lineups.
   tagline_zh: 按品牌名或网址抓取 logo，自动评分择优（偏好长条形 + 透明底），统一归档到本地，方便网站/PPT/海报罗列。
 - name: anti-wechat-ai-check
+  display_name: Humanizer
   repo: lovstudio/anti-wechat-ai-check-skill
-  name_zh: 微信 AI 味降检
+  name_zh: 文章去 AI 味
   paid: false
   category: Content Creation
   description: 检测文章 AI 痕迹 + 人性化润色，通过微信 3.27 条款检测。
   tagline_en: Detect AI fingerprints in an article and rewrite it to read like a human.
   tagline_zh: 检测文章的 AI 味并做人性化润色，帮助稳过微信 3.27 条款的机器判定。
 - name: document-illustrator
+  display_name: Document Illustrator
   repo: lovstudio/document-illustrator-skill
   name_zh: 文档配图
   paid: false
@@ -199,8 +218,9 @@ skills:
   tagline_zh: 给长文原地配图，先规划插入点再并行出图，最后自动插回原文。
   depends_on: [image-creator]
 - name: write-professional-book
+  display_name: Book Writer
   repo: lovstudio/write-professional-book-skill
-  name_zh: 多章节写书
+  name_zh: 长篇写书
   paid: true
   category: Content Creation
   description: Write multi-chapter books (technical, tutorial, monograph) / 逐章写书，支持多种风格
@@ -210,8 +230,9 @@ skills:
   encrypted_bundle: true
   version: 0.1.2
 - name: wxmp-cracker
+  display_name: WeChat Archiver
   repo: lovstudio/wxmp-cracker-skill
-  name_zh: 公众号抓取
+  name_zh: 公众号归档
   paid: true
   category: Content Creation
   version: 0.1.4
@@ -220,8 +241,9 @@ skills:
   tagline_zh: 把微信公众号的文章批量归档成可再利用的整洁文本。
   encrypted_bundle: true
 - name: event-curator
+  display_name: Event Curator
   repo: lovstudio/event-curator-skill
-  name_zh: 活动策展人
+  name_zh: 活动策展
   paid: true
   category: Content Creation
   version: 0.1.0
@@ -236,6 +258,7 @@ skills:
   tagline_zh: 从嘉宾履历一键生成可交付的活动策划案 — 主题文案、分钟级 rundown、主持人问题卡、伴手礼。
   encrypted_bundle: true
 - name: thesis-polish
+  display_name: Thesis Polish
   repo: lovstudio/thesis-polish-skill
   name_zh: 论文润色
   paid: false
@@ -244,6 +267,7 @@ skills:
   tagline_en: Polish an MBA thesis across language, structure, argument, and originality.
   tagline_zh: MBA 论文全维度润色，对标国优标准，打磨语言、结构、论证与创新四个面。
 - name: translation-review
+  display_name: Translation Review
   repo: lovstudio/translation-review-skill
   name_zh: 译文审阅
   paid: false
