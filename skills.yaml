@@ -118,7 +118,7 @@ skills:
   version: 0.1.1
 - name: review-doc
   repo: lovstudio/review-doc-skill
-  name_zh: 合同审阅
+  name_zh: 合同审阅（日常）
   paid: true
   category: Business
   description: Review and annotate documents/contracts — output annotated docx with
@@ -127,6 +127,19 @@ skills:
   tagline_zh: 审阅文档或合同，输出带批注的 docx，直接拿给同事或客户。
   encrypted_bundle: true
   version: 0.1.1
+- name: contract-review-pro
+  repo: lovstudio/contract-review-pro-skill
+  name_zh: 合同审阅（专业版）
+  paid: false
+  featured: true
+  category: Business
+  description: Professional contract review with four-layer methodology (entity verification,
+    basic, business, legal), structured comments with risk levels, contract summary,
+    consolidated opinion, and Mermaid business flowchart.
+  tagline_en: Professional-grade contract review — four-layer methodology, structured
+    comments with risk levels, summary, opinion, and business flowchart.
+  tagline_zh: 专业级合同审阅 — 四层方法论（主体核验 + 基础 + 业务 + 法务），结构化批注含风险等级，附合同摘要、综合意见与业务流程图。
+  version: 0.1.0
 - name: expense-report
   repo: lovstudio/expense-report-skill
   name_zh: 报销单整理
