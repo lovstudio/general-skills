@@ -43,33 +43,33 @@
 | | 技能 | 描述 |
 |---|---|---|
 | **通用** | | |
-| ![Free](https://img.shields.io/badge/Free-green) | [图片生成 · `image-creator`](https://github.com/lovstudio/image-creator-skill) | 按需选择最合适的出图方式：端到端 AI、代码渲染或提示词精修。 |
+| ![Free](https://img.shields.io/badge/Free-green) | [图像工坊 · `image-creator`](https://github.com/lovstudio/image-creator-skill) | 按需选择最合适的出图方式：端到端 AI、代码渲染或提示词精修。 |
 | **商务** | | |
-| ![Free](https://img.shields.io/badge/Free-green) | [合同审阅（专业版） · `contract-review-pro`](https://github.com/lovstudio/contract-review-pro-skill) | 专业级合同审阅 — 四层方法论（主体核验 + 基础 + 业务 + 法务），结构化批注含风险等级，附合同摘要、综合意见与业务流程图。 |
-| ![Free](https://img.shields.io/badge/Free-green) | [报销单整理 · `expense-report`](https://github.com/lovstudio/expense-report-skill) | 发票图片或文字一键整理成分类报销 Excel，业务招待、差旅、办公自动归类。 |
+| ![Free](https://img.shields.io/badge/Free-green) | [合同审阅 Pro · `contract-review-pro`](https://github.com/lovstudio/contract-review-pro-skill) | 专业级合同审阅 — 四层方法论（主体核验 + 基础 + 业务 + 法务），结构化批注含风险等级，附合同摘要、综合意见与业务流程图。 |
+| ![Free](https://img.shields.io/badge/Free-green) | [报销整理 · `expense-report`](https://github.com/lovstudio/expense-report-skill) | 发票图片或文字一键整理成分类报销 Excel，业务招待、差旅、办公自动归类。 |
 | ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [商业提案 · `proposal`](https://github.com/lovstudio/proposal-skill) | 把项目简述一键变成可交付的商业提案，方案、报价、排版全配齐。 |
-| ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [合同审阅（日常） · `review-doc`](https://github.com/lovstudio/review-doc-skill) | 审阅文档或合同，输出带批注的 docx，直接拿给同事或客户。 |
+| ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [文档审阅 · `review-doc`](https://github.com/lovstudio/review-doc-skill) | 审阅文档或合同，输出带批注的 docx，直接拿给同事或客户。 |
 | **设计** | | |
 | ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [活动海报 · `event-poster`](https://github.com/lovstudio/event-poster-skill) | 把活动信息一键变成高质感海报，直接拿去发。 |
-| ![Free](https://img.shields.io/badge/Free-green) | [Logo 收集 · `find-logo`](https://github.com/lovstudio/find-logo-skill) | 按品牌名或网址抓取 logo，自动评分择优（偏好长条形 + 透明底），统一归档到本地，方便网站/PPT/海报罗列。 |
+| ![Free](https://img.shields.io/badge/Free-green) | [Logo 狩猎 · `find-logo`](https://github.com/lovstudio/find-logo-skill) | 按品牌名或网址抓取 logo，自动评分择优（偏好长条形 + 透明底），统一归档到本地，方便网站/PPT/海报罗列。 |
 | ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [视觉复刻 · `visual-clone`](https://github.com/lovstudio/visual-clone-skill) | 从参考图中提取设计要素，生成可复刻同款风格的指令。 |
 | **学术** | | |
 | ![Free](https://img.shields.io/badge/Free-green) | [论文润色 · `thesis-polish`](https://github.com/lovstudio/thesis-polish-skill) | MBA 论文全维度润色，对标国优标准，打磨语言、结构、论证与创新四个面。 |
 | ![Free](https://img.shields.io/badge/Free-green) | [译文审阅 · `translation-review`](https://github.com/lovstudio/translation-review-skill) | 中译英译文审阅，从六个维度逐条对照原文，找出问题并给出改写建议。 |
 | **办公** | | |
-| ![Free](https://img.shields.io/badge/Free-green) | [转幻灯片 · `any2deck`](https://github.com/lovstudio/any2deck-skill) | 把任意内容变成带设计感的幻灯片，16 种风格可选，导出 PPTX / PDF。 — 相关: `any2pdf`, `any2docx` |
-| ![Free](https://img.shields.io/badge/Free-green) | [转 Word · `any2docx`](https://github.com/lovstudio/any2docx-skill) | 把 Markdown 转成排版规范的 Word 文档，可以直接发给甲方。 — 相关: `any2pdf`, `any2deck` |
-| ![Free](https://img.shields.io/badge/Free-green) | [转 PDF · `any2pdf`](https://github.com/lovstudio/any2pdf-skill) | 把 Markdown 排成出版级 PDF，中英混排、代码块、表格全支持，内置 14 套主题。 — 相关: `any2docx`, `any2deck` |
-| ![Free](https://img.shields.io/badge/Free-green) | [Word 表单填写 · `fill-form`](https://github.com/lovstudio/fill-form-skill) | 自动填写 Word 表单模板，字段识别 + 中英文排版一气呵成。 |
-| ![Free](https://img.shields.io/badge/Free-green) | [网页表单填写 · `fill-web-form`](https://github.com/lovstudio/fill-web-form-skill) | 用你本地的知识库来应答网页表单，一轮检索一轮生成，草稿即交付。 |
-| ![Free](https://img.shields.io/badge/Free-green) | [PDF 转长图 · `pdf2png`](https://github.com/lovstudio/pdf2png-skill) | 把 PDF 拼成一张长图 PNG，在 macOS 上快到几乎瞬间出图。 |
-| ![Free](https://img.shields.io/badge/Free-green) | [PNG 转 SVG · `png2svg`](https://github.com/lovstudio/png2svg-skill) | 把 PNG 矢量化为高质量 SVG，自动抠背景、曲线平滑。 |
+| ![Free](https://img.shields.io/badge/Free-green) | [万物转幻灯 · `any2deck`](https://github.com/lovstudio/any2deck-skill) | 把任意内容变成带设计感的幻灯片，16 种风格可选，导出 PPTX / PDF。 — 相关: `any2pdf`, `any2docx` |
+| ![Free](https://img.shields.io/badge/Free-green) | [万物转 Word · `any2docx`](https://github.com/lovstudio/any2docx-skill) | 把 Markdown 转成排版规范的 Word 文档，可以直接发给甲方。 — 相关: `any2pdf`, `any2deck` |
+| ![Free](https://img.shields.io/badge/Free-green) | [万物转 PDF · `any2pdf`](https://github.com/lovstudio/any2pdf-skill) | 把 Markdown 排成出版级 PDF，中英混排、代码块、表格全支持，内置 14 套主题。 — 相关: `any2docx`, `any2deck` |
+| ![Free](https://img.shields.io/badge/Free-green) | [表单代笔 · `fill-form`](https://github.com/lovstudio/fill-form-skill) | 自动填写 Word 表单模板，字段识别 + 中英文排版一气呵成。 |
+| ![Free](https://img.shields.io/badge/Free-green) | [网页代笔 · `fill-web-form`](https://github.com/lovstudio/fill-web-form-skill) | 用你本地的知识库来应答网页表单，一轮检索一轮生成，草稿即交付。 |
+| ![Free](https://img.shields.io/badge/Free-green) | [PDF 出长图 · `pdf2png`](https://github.com/lovstudio/pdf2png-skill) | 把 PDF 拼成一张长图 PNG，在 macOS 上快到几乎瞬间出图。 |
+| ![Free](https://img.shields.io/badge/Free-green) | [PNG 矢量化 · `png2svg`](https://github.com/lovstudio/png2svg-skill) | 把 PNG 矢量化为高质量 SVG，自动抠背景、曲线平滑。 |
 | **内容创作** | | |
-| ![Free](https://img.shields.io/badge/Free-green) | [微信 AI 味降检 · `anti-wechat-ai-check`](https://github.com/lovstudio/anti-wechat-ai-check-skill) | 检测文章的 AI 味并做人性化润色，帮助稳过微信 3.27 条款的机器判定。 |
+| ![Free](https://img.shields.io/badge/Free-green) | [文章去 AI 味 · `anti-wechat-ai-check`](https://github.com/lovstudio/anti-wechat-ai-check-skill) | 检测文章的 AI 味并做人性化润色，帮助稳过微信 3.27 条款的机器判定。 |
 | ![Free](https://img.shields.io/badge/Free-green) | [文档配图 · `document-illustrator`](https://github.com/lovstudio/document-illustrator-skill) | 给长文原地配图，先规划插入点再并行出图，最后自动插回原文。 — 依赖: `image-creator` |
-| ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [活动策展人 · `event-curator`](https://github.com/lovstudio/event-curator-skill) | 从嘉宾履历一键生成可交付的活动策划案 — 主题文案、分钟级 rundown、主持人问题卡、伴手礼。 |
-| ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [多章节写书 · `write-professional-book`](https://github.com/lovstudio/write-professional-book-skill) | 从大纲开始，逐章写出一本完整的书，技术、教程、专著多种风格。 |
-| ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [公众号抓取 · `wxmp-cracker`](https://github.com/lovstudio/wxmp-cracker-skill) | 把微信公众号的文章批量归档成可再利用的整洁文本。 |
+| ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [活动策展 · `event-curator`](https://github.com/lovstudio/event-curator-skill) | 从嘉宾履历一键生成可交付的活动策划案 — 主题文案、分钟级 rundown、主持人问题卡、伴手礼。 |
+| ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [长篇写书 · `write-professional-book`](https://github.com/lovstudio/write-professional-book-skill) | 从大纲开始，逐章写出一本完整的书，技术、教程、专著多种风格。 |
+| ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [公众号归档 · `wxmp-cracker`](https://github.com/lovstudio/wxmp-cracker-skill) | 把微信公众号的文章批量归档成可再利用的整洁文本。 |
 <!-- SKILLS:END -->
 
 <sub>上表由 [`scripts/render-readme.py`](scripts/render-readme.py) 从 [`skills.yaml`](skills.yaml) 自动生成。请编辑 `skills.yaml`，不要手动改表格。</sub>
