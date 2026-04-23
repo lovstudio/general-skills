@@ -235,7 +235,7 @@ skills:
     — from an outline.
   tagline_zh: 从大纲开始，逐章写出一本完整的书，技术、教程、专著多种风格。
   encrypted_bundle: true
-  version: 0.1.3
+  version: 0.1.4
 - name: wxmp-cracker
   display_name: WeChat Archiver
   repo: lovstudio/wxmp-cracker-skill
