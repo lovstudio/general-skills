@@ -11,10 +11,11 @@
     {
       "name": "general",
       "source": "./",
-      "description": "General — 1 free skill bundled together.",
+      "description": "General — 2 free skills bundled together.",
       "category": "General",
       "skills": [
-        "./skills/image-creator"
+        "./skills/image-creator",
+        "./skills/maintain-partners"
       ],
       "strict": false
     },

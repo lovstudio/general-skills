@@ -36,7 +36,7 @@
 ## 技能列表
 
 <!-- COUNT:START -->
-> **22 个技能** — 16 个免费 + 6 个付费。
+> **23 个技能** — 17 个免费 + 6 个付费。
 <!-- COUNT:END -->
 
 <!-- SKILLS:START -->
@@ -44,6 +44,7 @@
 |---|---|---|
 | **通用** | | |
 | ![Free](https://img.shields.io/badge/Free-green) | [图像工坊 · `image-creator`](https://github.com/lovstudio/image-creator-skill) | 按需选择最合适的出图方式：端到端 AI、代码渲染或提示词精修。 |
+| ![Free](https://img.shields.io/badge/Free-green) | [合作伙伴维护 · `maintain-partners`](https://github.com/lovstudio/maintain-partners-skill) | 一键抓取品牌 logo、标准化处理并接入官网 partners 区块，多语言全覆盖。 |
 | **商务** | | |
 | ![Free](https://img.shields.io/badge/Free-green) | [合同审阅 · 专业版 · `contract-review-pro`](https://github.com/lovstudio/contract-review-pro-skill) | 专业级合同审阅 — 四层方法论（主体核验 + 基础 + 业务 + 法务），结构化批注含风险等级，附合同摘要、综合意见与业务流程图。 |
 | ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [活动策展 · `event-curator`](https://github.com/lovstudio/event-curator-skill) | 从嘉宾履历一键生成可交付的活动策划案 — 主题文案、分钟级 rundown、主持人问题卡、伴手礼。 |
