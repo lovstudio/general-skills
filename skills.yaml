@@ -38,6 +38,29 @@ skills:
     a symbolic verdict. Cloud-split teaching demo — real logic on the server.
   tagline_en: Pairwise numeric verdict — cloud-split demo with symbolic output.
   tagline_zh: 成对数字判定的 cloud-split 教学 demo — 本地只看到 A/B 符号。
+- name: threshold-check
+  display_name: Threshold Check (PoC)
+  repo: lovstudio/threshold-check-skill
+  name_zh: 阈值判定
+  paid: true
+  test: true
+  category: General
+  version: 0.1.0
+  description: Evaluate a set of numeric inputs against configurable parameters and
+    return a symbolic verdict. Cloud-split teaching demo — real logic on the server.
+  tagline_en: Configurable threshold check — cloud-split demo with symbolic output.
+  tagline_zh: 可配置阈值的 cloud-split 教学 demo — 本地只看到符号化判定结果。
+- name: maintain-partners
+  display_name: Partners Maintainer
+  repo: lovstudio/maintain-partners-skill
+  name_zh: 合作伙伴维护
+  paid: false
+  category: General
+  description: Maintain a website's partners section — scrape brand logos from homepages,
+    normalize them, and wire them into the site across multiple locales in one shot.
+  tagline_en: Scrape, normalize, and wire brand logos into the partners section across
+    4 locales in one shot.
+  tagline_zh: 一键抓取品牌 logo、标准化处理并接入官网 partners 区块，多语言全覆盖。
 - name: fill-form
   display_name: Form Filler
   repo: lovstudio/fill-form-skill
