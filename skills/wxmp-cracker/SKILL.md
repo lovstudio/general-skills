@@ -1,7 +1,7 @@
 ---
 name: lovstudio:wxmp-cracker
 description: 微信公众号文章抓取与导出。自动处理 mp.weixin.qq.com 的登录态获取与续期， 支持按公众号搜索、抓取文章列表与正文、按日期窗口导出 Markdown / JSON / CSV。 Trigger when the user wants to crawl a WeChat public account, export recent articles, or 提到 "wcx"、"微信公众号"、"公众号文章"、"mp.weixin"、"抓公众号"、 "crawl wechat official account"、"wxmp"、"最近十天的文章"。
-version: 0.1.5
+version: 0.1.6
 dependencies:
 - name: wcx
   check: wcx --help >/dev/null 2>&1
