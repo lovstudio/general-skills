@@ -1,13 +1,22 @@
 ---
 name: lovstudio:maintain-partners
 description: >
-  Maintain the LovStudio website's partners section: scrape brand logos from
-  homepages, normalize to the 80px-tall canvas, replace existing logos with
-  user-provided files, append new partners to the PARTNERS array with i18n
-  taglines across zh-CN/en/ja/th, and audit the section for dead URLs / missing
-  files / missing translations. Trigger when the user mentions "合作伙伴",
-  "partners", "trusted by", "新增 logo", "标准化 logo", "替换 logo",
-  "审计合作伙伴", "维护合作伙伴".
+  Maintain the LovStudio website's partners section AND align partner logo
+  rows on event posters / hero strips: scrape brand logos from homepages,
+  normalize to a 240px-tall content canvas (retina-ready), rasterize SVGs via
+  rsvg-convert before normalizing (so SVG viewBox padding gets cropped),
+  strip embedded background rects from icon-style SVGs, composite icon +
+  wordmark when only an icon is available (using brand fonts), wrap logos
+  in a fixed-size grid box (96×30 with subtle border) for stable matrix
+  layouts, replace existing logos with user-provided files, append new
+  partners to the PARTNERS array with i18n taglines across zh-CN/en/ja/th,
+  and audit the section for dead URLs / missing files / missing translations.
+  Also handles cross-asset visual height parity (multi-logo strips on dark
+  backgrounds, "logo 不等高", unified-color filter recipe). Trigger when the
+  user mentions "合作伙伴", "partners", "trusted by", "新增 logo", "标准化 logo",
+  "替换 logo", "审计合作伙伴", "维护合作伙伴", "logo 不一样高", "logo 对齐",
+  "logo 大小不一致", "logo 颜色不统一", "logo 不清晰", "logo 糊了", "矩阵格子",
+  "等宽 box", "图标加文字", "compose wordmark".
 license: MIT
 compatibility: >
   Requires Python 3.8+ with Pillow (`pip install Pillow --break-system-packages`).
@@ -15,7 +24,7 @@ compatibility: >
   Tested on macOS; Linux should work.
 metadata:
   author: lovstudio
-  version: "0.1.0"
+  version: "0.3.0"
   tags: [lovstudio, web, branding, i18n]
 ---
 
@@ -35,7 +44,9 @@ taglines in `src/i18n/messages/{zh-CN,en,ja,th}.json` under `dispatch.partner*Ta
 
 ## Standards
 
-- Logo canvas: **80px content height**, width auto, optimized PNG.
+- Logo canvas: **80px** content height for the website partners strip
+  (light grayscale, CSS `height: 32px` ≈ 2.5× density, sharp enough),
+  **240px** for event posters or any retina export at `scale: 2` or higher.
 - For white-on-transparent logos: invert (full or selective) so they show on
   the light grayscale strip.
 - For icon-only logos < ~40px wide after normalization: pass `--show-name`
@@ -105,6 +116,121 @@ python3 ~/.claude/skills/lovstudio-maintain-partners/scripts/audit_partners.py
 
 Reports: missing logo files, missing i18n keys per locale, dead URLs.
 
+### Op 5: Align a row of partner logos (cross-asset visual height parity)
+
+**When**: putting 3+ partner logos in a single horizontal strip and they look
+different sizes despite having the same CSS `height`. Common in event posters,
+hero sections, "联办 / co-host" rows.
+
+**Root cause**: each source file has different internal padding (designer
+canvas margin), so two PNGs both set to `height: 24px` render at different
+*visible* heights because their content occupies different fractions of the
+canvas. Per-logo CSS height tweaks based on eyeballed content ratios are
+unstable—different displays / scaling will diverge again.
+
+**Reliable fix — trim at file level, uniform CSS box**:
+
+1. **Normalize every logo** to identical content height. Default raster file
+   target is **240px** (3× density for retina poster export at `scale: 2`;
+   80px gives only 1.7× and looks soft after PNG export). Use `--invert off`
+   if the source is already light-on-transparent (don't double-invert):
+   ```bash
+   for f in lujiazui juanyi citic-bookstore citic-thinker-lab; do
+     python3 ~/.claude/skills/lovstudio-maintain-partners/scripts/normalize_logo.py \
+       --src ~/lovstudio/partners/<brand>/<file>.png \
+       --dst <event-assets>/partners/$f.png \
+       --height 240 --invert auto
+   done
+   ```
+   **Always normalize from the original source**, never from a previously
+   normalized 80px file (upscaling = blurry — burned by this on juanyi).
+
+2. **For SVG sources, rasterize first**. `normalize_logo.py` operates on
+   raster pixels and **cannot crop SVG viewBox padding**. Without this step
+   an SVG always renders smaller than rasterized PNG siblings:
+   ```bash
+   rsvg-convert -h 720 brand.svg -o /tmp/brand-raw.png   # 3× of 240
+   python3 ~/.claude/skills/lovstudio-maintain-partners/scripts/normalize_logo.py \
+     --src /tmp/brand-raw.png --dst <event-assets>/partners/brand.png \
+     --height 240 --invert off
+   ```
+   `rsvg-convert` ships with `librsvg` (`brew install librsvg`).
+
+3. **For SVG with embedded background rect** (icon wrapped in a black/colored
+   rounded square — common in app-icon-style SVGs from `find-logo`), strip
+   the background before rasterizing, otherwise filter `brightness(0)
+   invert(1)` flattens it into a solid white block that hides the icon:
+   ```bash
+   # Drop the outer <rect fill="#000"...> wrapper
+   sed -E 's|<rect[^/]*fill="#0+"[^/]*/>||' brand.svg > /tmp/brand-clean.svg
+   rsvg-convert -h 720 /tmp/brand-clean.svg -o /tmp/brand-raw.png
+   ```
+
+4. **Wrap each logo in a fixed-size box** (recommended over auto-width flex):
+   ```html
+   <span class="ps-logo-box"><img src="..." class="ps-logo"></span>
+   ```
+   ```css
+   .ps-logo-box {
+     width: 96px; height: 30px;             /* fixed grid cell */
+     display: inline-flex;
+     align-items: center; justify-content: center;
+     border: 1px solid rgba(255,255,255,0.10);
+     border-radius: 4px;
+     padding: 3px 6px;
+     box-sizing: border-box;
+   }
+   .ps-logo { max-width: 100%; max-height: 100%; width: auto; height: auto; display: block; }
+   ```
+   Fixed boxes give a stable matrix look — narrow logos (icon-only) and wide
+   logos (icon + wordmark) all occupy the same footprint, with the asset
+   scaled to fit. Auto-width flex (the older recipe) makes per-row total
+   widths unpredictable as logos get added/removed.
+
+5. **Dark-background unification** — when the row sits on a dark canvas
+   (e.g. event poster), most brand logos are designed for white BG and look
+   inconsistent (some have black text, some have brand-colored marks). The
+   stable recipe:
+   ```css
+   .ps-logo { filter: brightness(0) invert(1) opacity(0.88); }
+   /* logos already white-on-transparent — opt out of inversion */
+   .ps-logo.ps-logo-original { filter: opacity(0.88); }
+   ```
+   `brightness(0)` flattens all colors to black, then `invert(1)` produces
+   uniform white at the configured opacity. The `.ps-logo-original` escape
+   hatch is for source files that are already white-on-transparent (white
+   SVG variants from a brand kit) so you don't double-process them into
+   invisible black-on-dark.
+
+6. **Icon-only SVG → composite icon + wordmark** — if the brand SVG only
+   has an icon (no "BrandName" wordmark beside it), don't ship just the icon
+   in a 96×30 box (it'll look like an unidentified mark). Compose the
+   wordmark with PIL using the brand's own font when possible:
+
+   ```python
+   from PIL import Image, ImageDraw, ImageFont, ImageOps
+   # 1. rasterize cleaned SVG, invert white→black so default filter works
+   icon = Image.open('/tmp/brand-icon.png').convert('RGBA')
+   r, g, b, a = icon.split()
+   inv = Image.merge('RGB', (ImageOps.invert(r), ImageOps.invert(g), ImageOps.invert(b)))
+   icon = Image.merge('RGBA', (*inv.split(), a))
+   icon = icon.crop(icon.getbbox())
+   target_h = 240
+   icon = icon.resize((int(icon.width * target_h / icon.height), target_h), Image.LANCZOS)
+   # 2. render wordmark in brand font (find-logo bundles fonts/ when found)
+   font = ImageFont.truetype('partners/<brand>/fonts/<Family>.ttf', 150)
+   # 3. compose icon + gap + text on transparent canvas
+   ```
+   The PNG goes through the same `brightness(0) invert(1)` filter as raster
+   logos — match colors with all other entries automatically. Use the brand's
+   own font (often shipped under `<brand>/fonts/` by the find-logo skill);
+   fall back to system SF / Helvetica only if no brand font is available.
+
+7. **Anti-pattern — do not** try to fix alignment by setting per-logo
+   heights like `.ps-logo-juanyi { height: 26px }`. It's brittle (every new
+   logo needs another magic number), unstable across browsers, and breaks
+   the moment a designer reships the source asset with different padding.
+
 ## CLI Reference
 
 ### normalize_logo.py
@@ -112,7 +238,7 @@ Reports: missing logo files, missing i18n keys per locale, dead URLs.
 |---|---|---|
 | `--src` | required | input image (PNG/JPG/rasterized SVG) |
 | `--dst` | required | output PNG path; parent dirs auto-created |
-| `--height` | `80` | target content height |
+| `--height` | `80` | target content height. **Use 240 for retina poster export** (`scale: 2`) — 80 looks soft after 2× downscale. |
 | `--invert` | `auto` | `auto` / `off` / `full` / `selective` (selective preserves colored icons) |
 
 ### scrape_logo.py
