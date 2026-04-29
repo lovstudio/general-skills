@@ -36,7 +36,7 @@
 ## 技能列表
 
 <!-- COUNT:START -->
-> **23 个技能** — 17 个免费 + 6 个付费。
+> **24 个技能** — 18 个免费 + 6 个付费。
 <!-- COUNT:END -->
 
 <!-- SKILLS:START -->
@@ -69,6 +69,7 @@
 | **内容创作** | | |
 | ![Free](https://img.shields.io/badge/Free-green) | [文章去 AI 味 · `anti-wechat-ai-check`](https://github.com/lovstudio/anti-wechat-ai-check-skill) | 检测文章的 AI 味并做人性化润色，帮助稳过微信 3.27 条款的机器判定。 |
 | ![Free](https://img.shields.io/badge/Free-green) | [文档配图 · `document-illustrator`](https://github.com/lovstudio/document-illustrator-skill) | 给长文原地配图，先规划插入点再并行出图，最后自动插回原文。 — 依赖: `image-creator` |
+| ![Free](https://img.shields.io/badge/Free-green) | [文风克隆 · `style-clone`](https://github.com/lovstudio/style-clone-skill) | 从样本文章中提取文风画像，再把任意内容改写成该文风。 |
 | ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [专业写书 · `write-professional-book`](https://github.com/lovstudio/write-professional-book-skill) | 从大纲开始，逐章写出一本完整的书，技术、教程、专著多种风格。 |
 | ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [公众号神器 · `wxmp-cracker`](https://github.com/lovstudio/wxmp-cracker-skill) | 把微信公众号的文章批量归档成可再利用的整洁文本。 |
 <!-- SKILLS:END -->
