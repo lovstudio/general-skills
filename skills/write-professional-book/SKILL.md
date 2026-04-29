@@ -1,5 +1,5 @@
 ---
-name: lovstudio:write-professional-book
+name: lovstudio-write-professional-book
 description: Write multi-chapter books (technical, tutorial, monograph, etc.) end-to-end. Handles outline planning, per-chapter drafting that stays coherent across long manuscripts, chapter review, and final HTML/PDF build. Trigger when user mentions "写书", "写一本书", "出书", "技术书", "book writing", "逐章写作", "O'Reilly", "mdbook", or wants to author a multi-chapter book.
 version: 0.1.4
 ---

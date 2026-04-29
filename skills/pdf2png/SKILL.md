@@ -1,5 +1,5 @@
 ---
-name: lovstudio:pdf2png
+name: lovstudio-pdf2png
 category: Document Conversion
 tagline: "PDF → single vertically concatenated PNG. Uses macOS CoreGraphics, ~20x faster than pdftoppm."
 description: >

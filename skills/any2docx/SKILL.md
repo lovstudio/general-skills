@@ -1,5 +1,5 @@
 ---
-name: lovstudio:any2docx
+name: lovstudio-any2docx
 description: >
   Convert Markdown documents to professionally styled DOCX (Word) files with python-docx.
   Handles CJK/Latin mixed text, fenced code blocks, tables, blockquotes, cover pages,

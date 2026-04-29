@@ -1,5 +1,5 @@
 ---
-name: lovstudio:fill-form
+name: lovstudio-fill-form
 category: Office Automation
 tagline: "Fill Word form templates (.docx). Auto-detects table fields, CJK font support."
 description: >

@@ -1,5 +1,5 @@
 ---
-name: lovstudio:review-doc
+name: lovstudio-review-doc
 version: "0.1.1"
 description: >
   Review and annotate documents/contracts — output annotated docx with comments

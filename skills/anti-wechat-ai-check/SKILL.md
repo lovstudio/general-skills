@@ -1,5 +1,5 @@
 ---
-name: lovstudio:anti-wechat-ai-check
+name: lovstudio-anti-wechat-ai-check
 category: Content Processing
 tagline: "检测文章 AI 痕迹 + 人性化润色，通过微信 3.27 条款检测。"
 description: >

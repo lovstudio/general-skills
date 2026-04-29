@@ -1,5 +1,5 @@
 ---
-name: lovstudio:expense-report
+name: lovstudio-expense-report
 category: Finance
 tagline: "Invoice images/text → categorized Excel expense report."
 description: >

@@ -1,5 +1,5 @@
 ---
-name: lovstudio:translation-review
+name: lovstudio-translation-review
 category: Content Processing
 tagline: "Chinese-to-English translation review. Compares source & translation across 6 dimensions."
 description: >

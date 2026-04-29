@@ -1,5 +1,5 @@
 ---
-name: lovstudio:event-poster
+name: lovstudio-event-poster
 description: 'Create event posters and promotional graphics from a brief. Outputs print-ready high-resolution PNG. Trigger words: 海报, poster, event poster, 活动海报, 宣传图, promotional, banner, flyer'
 version: 0.3.2
 ---

@@ -1,5 +1,5 @@
 ---
-name: lovstudio:proposal
+name: lovstudio-proposal
 description: Generate complete business proposals for client projects. Takes client requirement documents (docx/pdf/md) or verbal descriptions as input, outputs a professionally formatted proposal with technical architecture, budget, timeline, risk analysis, and team introduction. Automatically calls illustrate for images and any2pdf for final PDF delivery. Trigger when user mentions "商务方案", "合作评估", "项目评估", "报价方案", "proposal", "需求评估", "给客户出方案", or wants to generate a client-facing project proposal from requirements.
 version: 0.1.1
 ---
