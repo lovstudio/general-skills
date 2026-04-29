@@ -308,3 +308,16 @@ skills:
   tagline_en: Review a Chinese→English translation against the original across six
     quality dimensions.
   tagline_zh: 中译英译文审阅，从六个维度逐条对照原文，找出问题并给出改写建议。
+- name: style-clone
+  display_name: Style Clone
+  repo: lovstudio/style-clone-skill
+  name_zh: 文风克隆
+  paid: false
+  category: Content Creation
+  version: "0.1.0"
+  description: >
+    Analyzes sample articles to extract an 8-dimension writing style profile,
+    then rewrites any target article in that exact style.
+    Trigger on: "分析文风", "模仿文风", "克隆写作风格", "用XX的风格改写", "style clone", "rewrite in this style".
+  tagline_en: Extract a writing style profile from sample articles, then rewrite any content in that style.
+  tagline_zh: 从样本文章中提取文风画像，再把任意内容改写成该文风。
