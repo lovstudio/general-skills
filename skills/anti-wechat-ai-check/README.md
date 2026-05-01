@@ -1,4 +1,4 @@
-# lovstudio:anti-wechat-ai-check
+# lovstudio-anti-wechat-ai-check
 
 检测文章 AI 生成痕迹，输出风险评分，并可人性化润色以通过微信公众号 3.27 条款检测。
 
@@ -7,7 +7,7 @@ Part of [lovstudio/skills](https://github.com/lovstudio/skills) — by [lovstudi
 ## Install
 
 ```bash
-npx skills add lovstudio/skills --skill lovstudio:anti-wechat-ai-check -y -g
+npx lovstudio skills add anti-wechat-ai-check -g -y
 ```
 
 Requires: Python 3.8+ (no external dependencies)

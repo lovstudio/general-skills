@@ -1,4 +1,4 @@
-# lovstudio:any2docx
+# lovstudio-any2docx
 
 ![Version](https://img.shields.io/badge/version-0.3.0-CC785C)
 
@@ -9,7 +9,7 @@ Part of [lovstudio/skills](https://github.com/lovstudio/skills) &mdash; by [lovs
 ## Install
 
 ```bash
-npx skills add lovstudio/skills --skill lovstudio:any2docx -y -g
+npx lovstudio skills add any2docx -g -y
 ```
 
 Requires: Python 3.8+ and `pip install python-docx`

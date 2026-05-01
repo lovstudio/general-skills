@@ -1,4 +1,4 @@
-# lovstudio:translation-review
+# lovstudio-translation-review
 
 Systematic Chinese-to-English translation review. Compares source and translation across 6 dimensions, produces a prioritized review report.
 
@@ -7,7 +7,7 @@ Part of [lovstudio/skills](https://github.com/lovstudio/skills) — by [lovstudi
 ## Install
 
 ```bash
-npx skills add lovstudio/skills --skill lovstudio:translation-review -y -g
+npx lovstudio skills add translation-review -g -y
 ```
 
 Requires: `pandoc` for .docx support (`brew install pandoc`)

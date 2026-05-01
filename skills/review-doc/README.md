@@ -1,4 +1,4 @@
-# lovstudio:review-doc
+# lovstudio-review-doc
 
 ![Version](https://img.shields.io/badge/version-0.3.1-CC785C) ![Category](https://img.shields.io/badge/category-business-blue)
 
@@ -11,7 +11,7 @@ Part of [lovstudio/skills](https://github.com/lovstudio/skills) — by [lovstudi
 ## Install
 
 ```bash
-npx skills add lovstudio/skills --skill lovstudio:review-doc -y -g
+npx lovstudio skills add review-doc -g -y
 pip install python-docx --break-system-packages
 ```
 

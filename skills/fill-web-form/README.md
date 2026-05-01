@@ -1,4 +1,4 @@
-# lovstudio:fill-web-form
+# lovstudio-fill-web-form
 
 Fill web forms by deep-searching your local knowledge base. Give it a URL, get back a ready-to-paste markdown document.
 
@@ -7,7 +7,7 @@ Part of [lovstudio/skills](https://github.com/lovstudio/skills) — by [lovstudi
 ## Install
 
 ```bash
-npx skills add lovstudio/skills --skill lovstudio:fill-web-form -y -g
+npx lovstudio skills add fill-web-form -g -y
 ```
 
 No external dependencies — uses Claude's built-in tools only.
