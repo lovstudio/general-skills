@@ -1,7 +1,7 @@
 ---
 name: lovstudio-proposal
 description: Generate complete business proposals for client projects. Takes client requirement documents (docx/pdf/md) or verbal descriptions as input, outputs a professionally formatted proposal with technical architecture, budget, timeline, risk analysis, and team introduction. Automatically calls illustrate for images and any2pdf for final PDF delivery. Trigger when user mentions "商务方案", "合作评估", "项目评估", "报价方案", "proposal", "需求评估", "给客户出方案", or wants to generate a client-facing project proposal from requirements.
-version: 0.1.1
+version: 0.1.2
 ---
 
 # proposal (encrypted)
@@ -25,8 +25,8 @@ uvx lovstudio-skill-helper decrypt proposal
 4. If the command prints `error: not entitled`, the helper will interactively prompt the user to (a) enter a license key, (b) open the purchase page, or (c) cancel. Just let the user pick.
 5. If the command prints `error: skill 'proposal' not installed`, the encrypted bundle isn't on disk yet. Tell the user one of:
    > ```
-   > npx skills add lovstudio/skills --skill proposal -y -g   # just this one
-   > npx skills add lovstudio/skills --all -g                 # full marketplace
+   > npx skills add lovstudio/skills --skill proposal   # just this one
+   > npx skills add lovstudio/skills                 # full marketplace
    > ```
 6. Do NOT cache the decrypted output between invocations — always re-decrypt on each use. The decryption is cheap (one HTTP round-trip) and re-running guarantees the user's license is still valid.
 

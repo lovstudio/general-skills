@@ -155,7 +155,7 @@ skills:
   tagline_en: Turn a project brief into a complete, client-ready business proposal.
   tagline_zh: 把项目简述一键变成可交付的商业提案，方案、报价、排版全配齐。
   encrypted_bundle: true
-  version: 0.1.1
+  version: 0.1.2
 - name: review-doc
   display_name: Contract Review
   repo: lovstudio/review-doc-skill
@@ -276,7 +276,7 @@ skills:
   name_zh: 活动策展
   paid: true
   category: Business
-  version: 0.1.0
+  version: 0.1.1
   description: 'Generate a complete professional event plan from guest background
     material. Takes guest bio / CV / intro copy as input, runs a multi-turn clarification
     dialog (activity type, audience, duration, tone), and outputs a cohesive plan
