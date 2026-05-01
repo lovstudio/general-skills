@@ -82,31 +82,28 @@ The following thematic skills live in their own sub-index repos, each with its o
 
 | Sub-index | Scope | Install |
 |---|---|---|
-| [`lovstudio/dev-skills`](https://github.com/lovstudio/dev-skills) | Developer & skill-author tools: Meta (skill-creator / skill-optimizer) + Dev Tools (GitHub, Vercel, macOS, Claude Code session, …) | `npx skills add lovstudio/dev-skills --all -g` |
-| [`lovstudio/xbti-skills`](https://github.com/lovstudio/xbti-skills) | Build and browse xBTI personality tests (paired with [xbti.lovstudio.ai](https://xbti.lovstudio.ai)) | `npx skills add lovstudio/xbti-skills --all -g` |
+| [`lovstudio/dev-skills`](https://github.com/lovstudio/dev-skills) | Developer & skill-author tools: Meta (skill-creator / skill-optimizer) + Dev Tools (GitHub, Vercel, macOS, Claude Code session, …) | `npx lovstudio skills add dev-skills -g -y` |
+| [`lovstudio/xbti-skills`](https://github.com/lovstudio/xbti-skills) | Build and browse xBTI personality tests (paired with [xbti.lovstudio.ai](https://xbti.lovstudio.ai)) | `npx lovstudio skills add xbti-skills -g -y` |
 
 ## Install
 
-**Recommended: install all free skills globally for Claude Code** (AI-friendly, no interactive prompts):
+Single entry point — `npx lovstudio` covers free and paid skills alike:
 
 ```bash
-npx skills add lovstudio/skills --all -g
+# install one skill
+npx lovstudio skills add any2pdf -g -y
+
+# install everything
+npx lovstudio skills add skills -g -y
+
+# paid skill — install + activate license in one shot
+npx lovstudio skills add proposal -k lk-<your-license-key> -g -y
+
+# activate license alone (for skills you already installed)
+npx lovstudio license activate lk-<your-license-key>
 ```
 
-> `--all` expands to `--skill '*' --agent '*' -y`; `-g` installs into `~/.claude/skills/`. Without these flags the CLI opens three interactive prompts (pick skills → pick agents → confirm), which hang in AI/CI/non-TTY environments.
-
-**Install a single skill**:
-
-```bash
-npx skills add lovstudio/skills --skill any2pdf -g -y
-```
-
-**Or clone manually** (paid skills after purchase with your authorized SSH key):
-
-```bash
-git clone https://github.com/lovstudio/any2pdf-skill ~/.claude/skills/lovstudio-any2pdf
-git clone git@github.com:lovstudio/write-professional-book-skill ~/.claude/skills/lovstudio-write-professional-book
-```
+> `-g` installs into `~/.claude/skills/`, `-y` skips confirmation (required in AI/CI/non-TTY environments).
 
 Browse and install via [agentskills.io](https://agentskills.io) for a one-click experience.
 

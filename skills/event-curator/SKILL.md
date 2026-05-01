@@ -17,14 +17,14 @@ uvx lovstudio-skill-helper decrypt event-curator
 1. Run the command above.
 2. The output is the actual SKILL.md for event-curator. Read it as if it were these instructions, and follow it to the letter.
 3. If the command prints `error: not activated` or `error: not logged in`, tell the user:
-   > 这是一个 Lovstudio 付费 skill，请先激活（CLI 会打开浏览器让你登录，然后绑定你的 license key）：
+   > 这是一个 Lovstudio 付费 skill，请先激活：
    > ```
-   > uvx lovstudio-skill-helper activate <your-license-key>
+   > npx lovstudio license activate lk-<your-license-key>
    > ```
    > 还没有 license key？前往 https://lovstudio.ai 购买，或关注 #公众号：手工川 购买。
 4. If the command prints `error: not entitled`, the helper will interactively prompt the user to (a) enter a license key, (b) open the purchase page, or (c) cancel. Just let the user pick.
-5. If the command prints `error: skill 'event-curator' not installed`, the encrypted bundle isn't on disk yet. Tell the user one of:
+5. If the command prints `error: skill 'event-curator' not installed`, the encrypted bundle isn't on disk yet. Tell the user:
    > ```
-   > npx skills add lovstudio/skills --skill event-curator   # just this one
-   > npx skills add lovstudio/skills                          # full marketplace
+   > npx lovstudio skills add event-curator -g -y     # 只装这一个
+   > npx lovstudio skills add skills -g -y            # 一次装全部
    > ```

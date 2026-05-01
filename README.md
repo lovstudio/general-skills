@@ -82,31 +82,28 @@
 
 | 子索引 | 内容 | 安装 |
 |---|---|---|
-| [`lovstudio/dev-skills`](https://github.com/lovstudio/dev-skills) | 开发者与技能作者工具：Meta（skill-creator / skill-optimizer）+ Dev Tools（GitHub、Vercel、macOS、Claude Code session 等） | `npx skills add lovstudio/dev-skills --all -g` |
-| [`lovstudio/xbti-skills`](https://github.com/lovstudio/xbti-skills) | xBTI 人格测试定制与画廊（配合 [xbti.lovstudio.ai](https://xbti.lovstudio.ai)） | `npx skills add lovstudio/xbti-skills --all -g` |
+| [`lovstudio/dev-skills`](https://github.com/lovstudio/dev-skills) | 开发者与技能作者工具：Meta（skill-creator / skill-optimizer）+ Dev Tools（GitHub、Vercel、macOS、Claude Code session 等） | `npx lovstudio skills add dev-skills -g -y` |
+| [`lovstudio/xbti-skills`](https://github.com/lovstudio/xbti-skills) | xBTI 人格测试定制与画廊（配合 [xbti.lovstudio.ai](https://xbti.lovstudio.ai)） | `npx lovstudio skills add xbti-skills -g -y` |
 
 ## 安装
 
-**推荐：一键装全部免费技能到 Claude Code 全局**（AI 友好，无交互卡顿）：
+统一使用 `npx lovstudio` 入口，免费付费一致：
 
 ```bash
-npx skills add lovstudio/skills --all -g
+# 装单个技能
+npx lovstudio skills add any2pdf -g -y
+
+# 一次装全部
+npx lovstudio skills add skills -g -y
+
+# 付费技能 — 一行带激活
+npx lovstudio skills add proposal -k lk-<your-license-key> -g -y
+
+# 单独激活 license（已装过的付费技能也走这条）
+npx lovstudio license activate lk-<your-license-key>
 ```
 
-> `--all` 等价于 `--skill '*' --agent '*' -y`，`-g` 装到 `~/.claude/skills/`。不加 flag 时 CLI 会弹出三个交互式 prompt（选技能 → 选 agent → 确认），AI/CI/非 TTY 环境会挂住。
-
-**按需装单个技能**：
-
-```bash
-npx skills add lovstudio/skills --skill any2pdf -g -y
-```
-
-**或手动 clone**（付费技能购买后用已授权 SSH key）：
-
-```bash
-git clone https://github.com/lovstudio/any2pdf-skill ~/.claude/skills/lovstudio-any2pdf
-git clone git@github.com:lovstudio/write-professional-book-skill ~/.claude/skills/lovstudio-write-professional-book
-```
+> `-g` 装到 `~/.claude/skills/`，`-y` 跳过交互确认（AI / CI / 非 TTY 必加）。
 
 通过 [agentskills.io](https://agentskills.io) 可浏览并一键安装。
 

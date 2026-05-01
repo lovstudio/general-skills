@@ -6,7 +6,7 @@ Guidance for Claude Code when working in this repo.
 
 The **central index** for Lovstudio skills. The source of truth for each skill is its own repo at `github.com/lovstudio/{name}-skill`. Locally, skills are developed under `~/lovstudio/coding/skills/{name}-skill/`.
 
-This index repo also carries a **read-only mirror** of every free skill under `./skills/<name>/`, auto-synced by CI from the upstream skill repos. The mirror exists so that `npx skills add lovstudio/skills --all -g` (vercel-labs/skills CLI) can discover every skill in a single clone — that CLI only resolves local paths in `.claude-plugin/marketplace.json`, not external `github` sources.
+This index repo also carries a **read-only mirror** of every free skill under `./skills/<name>/`, auto-synced by CI from the upstream skill repos. The mirror exists so that the `npx skills add lovstudio/skills` discovery flow (used internally by the `lovstudio` CLI) can find every skill in a single clone — that flow only resolves local paths in `.claude-plugin/marketplace.json`, not external `github` sources.
 
 ## Repo Layout
 
@@ -28,10 +28,24 @@ This index repo also carries a **read-only mirror** of every free skill under `.
 
 ## How users install
 
-- **Via `npx skills`** (vercel-labs CLI, cross-agent): `npx skills add lovstudio/skills --all -g` — clones this repo, scans `./skills/**/SKILL.md`, installs everything into `~/.claude/skills/`. The `--all -g` flags are non-negotiable for AI/CI/non-TTY environments because the default path opens three `@clack/prompts` interactive selectors (skills → agents → confirm) and hangs without a TTY. When recommending install commands to users — in READMEs, SKILL.md, marketplace blurbs, anywhere — always include `--all -g` (or `--skill <name> -g -y` for single-skill installs).
-- **Via Claude Code native marketplace**: `/plugin marketplace add lovstudio/skills` then `/plugin install <name>@lovstudio` — reads `.claude-plugin/marketplace.json`, each plugin resolves to `./skills/<name>/`.
+**Canonical surface — always advertise this form, free and paid alike:**
 
-Both paths work off the same mirror.
+```bash
+npx lovstudio skills add <name> -g -y                                # one skill
+npx lovstudio skills add skills -g -y                                # all skills
+npx lovstudio skills add <name> -k lk-<key> -g -y                    # paid: install + activate
+npx lovstudio license activate lk-<key>                              # activate license alone
+```
+
+`npx lovstudio` (the `lovstudio` npm package, lovstudio-cli repo) is a thin wrapper:
+- `lovstudio skills add` shells out to `npx skills add lovstudio/skills -s lovstudio-<name> -y -g [-a <agents>]` (vercel-labs/skills CLI).
+- `lovstudio license activate` shells out to `uvx lovstudio-skill-helper activate <key>` (Python helper).
+
+Both underlying CLIs still work and remain the actual implementation. **Do not advertise them in user-facing docs** — only `npx lovstudio` should appear in READMEs, SKILL.md, marketplace blurbs, blog posts, agentskills.io listings, etc.
+
+`-g -y` are non-negotiable in AI/CI/non-TTY contexts because the underlying CLI opens three `@clack/prompts` interactive selectors (skills → agents → confirm) and hangs without a TTY.
+
+The native Claude Code marketplace path (`/plugin marketplace add lovstudio/skills` then `/plugin install <name>@lovstudio`) still works off `.claude-plugin/marketplace.json`, but treat it as a fallback — `npx lovstudio` is the path we promote.
 
 ## skills.yaml Schema
 

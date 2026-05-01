@@ -117,7 +117,7 @@ def render() -> dict:
         "name": MARKETPLACE_NAME,
         "owner": OWNER,
         "metadata": {
-            "description": "Free Lovstudio skills — one-command install via `npx skills add lovstudio/skills --all -g`.",
+            "description": "Lovstudio skills — install via `npx lovstudio skills add <name> -g -y` (or `... add skills -g -y` for all).",
         },
         "plugins": plugins,
     }
