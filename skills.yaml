@@ -56,11 +56,15 @@ skills:
   name_zh: 合作伙伴维护
   paid: false
   category: Design
-  description: Maintain a website's partners section — scrape brand logos from homepages,
-    normalize them, and wire them into the site across multiple locales in one shot.
-  tagline_en: Scrape, normalize, and wire brand logos into the partners section across
-    4 locales in one shot.
-  tagline_zh: 一键抓取品牌 logo、标准化处理并接入官网 partners 区块，多语言全覆盖。
+  version: 0.4.0
+  description: Maintain a website's partners section — reuse find-logo for brand
+    logo discovery, normalize collected assets, and wire them into the site across
+    multiple locales in one shot.
+  tagline_en: Reuse find-logo, normalize assets, and wire partners into the site across
+    4 locales.
+  tagline_zh: 复用 find-logo 收集品牌 logo，标准化处理并接入官网 partners 区块，多语言全覆盖。
+  depends_on:
+  - find-logo
 - name: fill-form
   display_name: Form Filler
   repo: lovstudio/fill-form-skill
