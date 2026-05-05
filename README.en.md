@@ -21,7 +21,9 @@
 
 ## What Is This
 
-This repo is the **central index** for Lovstudio skills. Each skill lives in its own repo at `github.com/lovstudio/{name}-skill`. This repo contains:
+This repo is the **central index** for Lovstudio skills. Regular skills live in their own repos at
+`github.com/lovstudio/{name}-skill`; developer tooling, xBTI, and other themed
+collections are linked below as extension index repos. This repo contains:
 
 - [`skills.yaml`](skills.yaml) — machine-readable manifest. Each skill has a terse `description` (Agent-facing trigger copy, CI-synced from the GitHub repo description) plus hand-maintained `tagline_en` / `tagline_zh` (the human-friendly one-liners you see in the table below).
 - [`README.md`](README.md) / [`README.en.md`](README.en.md) — auto-rendered from the manifest.
@@ -82,7 +84,7 @@ The following thematic skills live in their own sub-index repos, each with its o
 
 | Sub-index | Scope | Install |
 |---|---|---|
-| [`lovstudio/dev-skills`](https://github.com/lovstudio/dev-skills) | Developer & skill-author tools: Meta (skill-creator / skill-optimizer) + Dev Tools (GitHub, Vercel, macOS, Claude Code session, …) | `npx lovstudio skills add dev-skills -g -y` |
+| [`lovstudio/dev-skills`](https://github.com/lovstudio/dev-skills) | Developer & skill-author tools: Meta (skill-creator / skill-optimizer) + Dev Tools (GitHub, Vercel, macOS, Claude Code session, TanStack Query setup/refactors, …) | `npx lovstudio skills add dev-skills -g -y` |
 | [`lovstudio/xbti-skills`](https://github.com/lovstudio/xbti-skills) | Build and browse xBTI personality tests (paired with [xbti.lovstudio.ai](https://xbti.lovstudio.ai)) | `npx lovstudio skills add xbti-skills -g -y` |
 
 ## Install
