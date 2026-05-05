@@ -1,7 +1,7 @@
-<h1 align="center">Lovstudio Skills</h1>
+<h1 align="center">Lovstudio General Skills</h1>
 
 <p align="center">
-  <strong>Main index and install mirror for Lovstudio AI coding skills for Claude Code.</strong><br>
+  <strong>Index and install mirror for Lovstudio general AI coding skills for Claude Code.</strong><br>
   <sub>By <a href="https://lovstudio.ai">Lovstudio</a> · <a href="https://agentskills.io">agentskills.io</a></sub>
 </p>
 
@@ -22,10 +22,11 @@
 
 ## What Is This
 
-This repo is the **main index** for the Lovstudio skills ecosystem and the install mirror used by
-`npx lovstudio skills add skills`. Regular skills live in their own repos at
+This repo is the index and install mirror for Lovstudio **general skills**, used by
+`npx lovstudio skills add general-skills`. Each regular skill lives in its own repo at
 `github.com/lovstudio/{name}-skill`; developer tooling, xBTI, and other themed collections are
-linked below as extension index repos.
+linked below as extension index repos. The top-level entry point for the full Lovstudio skills
+ecosystem is [`lovstudio/skills`](https://github.com/lovstudio/skills).
 
 This repo contains:
 
@@ -101,8 +102,8 @@ Single entry point — `npx lovstudio` covers free and paid skills alike:
 # install one skill
 npx lovstudio skills add any2pdf -g -y
 
-# install everything
-npx lovstudio skills add skills -g -y
+# install all general skills
+npx lovstudio skills add general-skills -g -y
 
 # paid skill — install + activate license in one shot
 npx lovstudio skills add proposal -k lk-<your-license-key> -g -y
@@ -118,7 +119,10 @@ Browse and install via [agentskills.io](https://agentskills.io) for a one-click 
 ## How It Works
 
 ```
-lovstudio/skills (this repo)         ← main index + install mirror
+lovstudio/skills                     ← top-level Lovstudio skills ecosystem index
+└── README.md                        ← links to general/dev/xBTI sub-indexes
+
+lovstudio/general-skills (this repo) ← general skills index + install mirror
 ├── README.md                        ← primary index (简体中文, default)
 ├── README.en.md                     ← English index
 ├── skills.yaml                      ← machine-readable manifest for regular skills
@@ -153,7 +157,7 @@ The **`paid` field** lives in `skills.yaml` (this repo), not in each SKILL.md �
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=lovstudio/skills&type=Date)](https://star-history.com/#lovstudio/skills&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=lovstudio/general-skills&type=Date)](https://star-history.com/#lovstudio/general-skills&Date)
 
 ---
 

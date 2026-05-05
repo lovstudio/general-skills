@@ -1,7 +1,7 @@
-<h1 align="center">Lovstudio Skills</h1>
+<h1 align="center">Lovstudio General Skills</h1>
 
 <p align="center">
-  <strong>Lovstudio Claude Code AI 编程技能的主索引与安装镜像。</strong><br>
+  <strong>Lovstudio 常规 Claude Code AI 编程技能的索引与安装镜像。</strong><br>
   <sub>由 <a href="https://lovstudio.ai">Lovstudio</a> 出品 · <a href="https://agentskills.io">agentskills.io</a></sub>
 </p>
 
@@ -22,9 +22,11 @@
 
 ## 这是什么
 
-本仓库是 Lovstudio 技能生态的**主索引**，同时也是 `npx lovstudio skills add skills`
-使用的安装镜像。常规技能在各自独立仓库 `github.com/lovstudio/{name}-skill` 中维护；
-开发者工具、xBTI 等专题技能通过下方“扩展索引”链接到各自的子索引仓库。
+本仓库是 Lovstudio **常规技能集合**的索引与安装镜像，同时也是
+`npx lovstudio skills add general-skills` 使用的安装入口。每个常规技能在各自独立仓库
+`github.com/lovstudio/{name}-skill` 中维护；开发者工具、xBTI 等专题技能通过下方
+“扩展索引”链接到各自的子索引仓库。Lovstudio 全部技能集合的总入口是
+[`lovstudio/skills`](https://github.com/lovstudio/skills)。
 
 本仓库包含：
 
@@ -99,8 +101,8 @@
 # 装单个技能
 npx lovstudio skills add any2pdf -g -y
 
-# 一次装全部
-npx lovstudio skills add skills -g -y
+# 一次安装全部常规技能
+npx lovstudio skills add general-skills -g -y
 
 # 付费技能 — 一行带激活
 npx lovstudio skills add proposal -k lk-<your-license-key> -g -y
@@ -116,7 +118,10 @@ npx lovstudio license activate lk-<your-license-key>
 ## 工作原理
 
 ```
-lovstudio/skills (本仓库)            ← 主索引 + 安装镜像
+lovstudio/skills                     ← Lovstudio 技能生态总索引
+└── README.md                        ← 指向 general/dev/xBTI 等子索引
+
+lovstudio/general-skills (本仓库)    ← 常规技能索引 + 安装镜像
 ├── README.md                        ← 中文版主索引（默认）
 ├── README.en.md                     ← English index
 ├── skills.yaml                      ← 常规技能的机器可读清单
@@ -151,7 +156,7 @@ lovstudio/dev-skills                 ← 开发者/技能作者工具子索引
 
 ## Star 历史
 
-[![Star History Chart](https://api.star-history.com/svg?repos=lovstudio/skills&type=Date)](https://star-history.com/#lovstudio/skills&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=lovstudio/general-skills&type=Date)](https://star-history.com/#lovstudio/general-skills&Date)
 
 ---
 
