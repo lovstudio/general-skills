@@ -21,7 +21,9 @@
 
 ## 这是什么
 
-本仓库是 Lovstudio 技能的**中央索引**。每个技能都有自己独立的仓库 `github.com/lovstudio/{name}-skill`。本仓库包含：
+本仓库是 Lovstudio 技能的**中央索引**。常规技能在各自独立仓库
+`github.com/lovstudio/{name}-skill` 中维护；开发者工具、xBTI 等专题技能通过下方
+“扩展索引”链接到各自的子索引仓库。本仓库包含：
 
 - [`skills.yaml`](skills.yaml) — 机器可读清单。每个技能包含两类描述：`description` 是给 Agent 看的英文触发文案，由 CI 自动从各自 GitHub 仓库 description 同步；`tagline_en` / `tagline_zh` 是给人看的中英文一句话简介，由维护者手工填写，也就是下方表格里展示的那一列。
 - [`README.md`](README.md) / [`README.en.md`](README.en.md) — 由清单自动渲染生成。
@@ -82,7 +84,7 @@
 
 | 子索引 | 内容 | 安装 |
 |---|---|---|
-| [`lovstudio/dev-skills`](https://github.com/lovstudio/dev-skills) | 开发者与技能作者工具：Meta（skill-creator / skill-optimizer）+ Dev Tools（GitHub、Vercel、macOS、Claude Code session 等） | `npx lovstudio skills add dev-skills -g -y` |
+| [`lovstudio/dev-skills`](https://github.com/lovstudio/dev-skills) | 开发者与技能作者工具：Meta（skill-creator / skill-optimizer）+ Dev Tools（GitHub、Vercel、macOS、Claude Code session、TanStack Query 初始化/重构等） | `npx lovstudio skills add dev-skills -g -y` |
 | [`lovstudio/xbti-skills`](https://github.com/lovstudio/xbti-skills) | xBTI 人格测试定制与画廊（配合 [xbti.lovstudio.ai](https://xbti.lovstudio.ai)） | `npx lovstudio skills add xbti-skills -g -y` |
 
 ## 安装
