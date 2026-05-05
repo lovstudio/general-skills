@@ -25,8 +25,8 @@
       "category": "Design",
       "skills": [
         "./skills/maintain-partners",
-        "./skills/event-poster",
-        "./skills/find-logo"
+        "./skills/find-logo",
+        "./skills/event-poster"
       ],
       "strict": false
     },
