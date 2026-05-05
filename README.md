@@ -1,7 +1,7 @@
 <h1 align="center">Lovstudio Skills</h1>
 
 <p align="center">
-  <strong>Lovstudio 所有 Claude Code AI 编程技能的中央索引。</strong><br>
+  <strong>Lovstudio Claude Code AI 编程技能的主索引与安装镜像。</strong><br>
   <sub>由 <a href="https://lovstudio.ai">Lovstudio</a> 出品 · <a href="https://agentskills.io">agentskills.io</a></sub>
 </p>
 
@@ -11,6 +11,7 @@
 
 <p align="center">
   <a href="#技能列表">技能</a> ·
+  <a href="#扩展索引">扩展索引</a> ·
   <a href="#安装">安装</a> ·
   <a href="#工作原理">工作原理</a> ·
   <a href="#贡献">贡献</a> ·
@@ -21,13 +22,15 @@
 
 ## 这是什么
 
-本仓库是 Lovstudio 技能的**中央索引**。常规技能在各自独立仓库
-`github.com/lovstudio/{name}-skill` 中维护；开发者工具、xBTI 等专题技能通过下方
-“扩展索引”链接到各自的子索引仓库。本仓库包含：
+本仓库是 Lovstudio 技能生态的**主索引**，同时也是 `npx lovstudio skills add skills`
+使用的安装镜像。常规技能在各自独立仓库 `github.com/lovstudio/{name}-skill` 中维护；
+开发者工具、xBTI 等专题技能通过下方“扩展索引”链接到各自的子索引仓库。
+
+本仓库包含：
 
 - [`skills.yaml`](skills.yaml) — 机器可读清单。每个技能包含两类描述：`description` 是给 Agent 看的英文触发文案，由 CI 自动从各自 GitHub 仓库 description 同步；`tagline_en` / `tagline_zh` 是给人看的中英文一句话简介，由维护者手工填写，也就是下方表格里展示的那一列。
 - [`README.md`](README.md) / [`README.en.md`](README.en.md) — 由清单自动渲染生成。
-- 不含代码。技能代码和历史均在各自独立仓库中。
+- [`skills/`](skills) — 面向安装器的同步镜像。免费技能从各自独立仓库同步而来，付费技能只放可公开分发的加密包或占位内容；真正的源码和历史仍以各自 skill repo 为准。
 
 标记为 ![Free](https://img.shields.io/badge/Free-green) 的技能是开源免费的（MIT 协议）。标记为 ![Paid](https://img.shields.io/badge/Paid-blueviolet) 的技能是商业版——私有仓库，需购买后使用。购买或咨询请扫码关注公众号 **手工川**：
 
@@ -80,7 +83,8 @@
 
 ## 扩展索引
 
-以下专题技能已独立成子索引仓库，自行管理清单与镜像。按需安装：
+以下专题技能已独立成子索引仓库，自行管理清单与镜像。它们仍属于 Lovstudio
+技能生态，但不会在上方常规技能表里逐项展开。按需安装：
 
 | 子索引 | 内容 | 安装 |
 |---|---|---|
@@ -112,24 +116,30 @@ npx lovstudio license activate lk-<your-license-key>
 ## 工作原理
 
 ```
-lovstudio/skills (本仓库)            ← 你在这里
-├── README.md                        ← 中文版索引（默认）
+lovstudio/skills (本仓库)            ← 主索引 + 安装镜像
+├── README.md                        ← 中文版主索引（默认）
 ├── README.en.md                     ← English index
-├── skills.yaml                      ← 机器可读清单
-└── .github/workflows/               ← CI：渲染 README、同步描述
+├── skills.yaml                      ← 常规技能的机器可读清单
+├── skills/<name>/                   ← 安装器使用的镜像目录
+├── .claude-plugin/marketplace.json  ← Claude Code plugin marketplace 元数据
+└── .github/workflows/               ← CI：同步镜像、渲染 README、同步描述
 
-lovstudio/<name>-skill               ← 每个技能的独立仓库
+lovstudio/<name>-skill               ← 常规技能的独立源码仓库
 ├── SKILL.md                         ← 技能定义（frontmatter + 文档）
 ├── scripts/                         ← 实现（Python / Shell / Node）
 ├── README.md                        ← 单技能安装与使用说明
 └── examples/ · references/          ← 可选资源
+
+lovstudio/dev-skills                 ← 开发者/技能作者工具子索引
+└── skills/<name>/                   ← 聚合分发的 dev/meta skills
 ```
 
 **`paid` 字段**放在 `skills.yaml`（本仓库）中，而不是每个 SKILL.md 里——它是商业分类，不是技能本身的属性。付费技能代码私有，但公开的触发信息（名称、简介、分类）仍在此索引，以便 agentskills.io 展示并引导购买。
 
 ## 贡献
 
-- **新增技能**：用 [`skill-creator`](https://github.com/lovstudio/skill-creator-skill) 脚手架生成。然后在 `lovstudio/{name}-skill` 创建仓库，并向本仓库提 PR 将其添加到 `skills.yaml`。
+- **新增常规技能**：用 [`skill-creator`](https://github.com/lovstudio/skill-creator-skill) 脚手架生成。然后在 `lovstudio/{name}-skill` 创建仓库，并向本仓库提 PR 将其添加到 `skills.yaml`。
+- **新增开发者/元技能**：优先放到 [`lovstudio/dev-skills`](https://github.com/lovstudio/dev-skills)，在该子索引内维护 `skills.yaml`、README 和镜像。
 - **现有技能**：请在技能自己的仓库中提 issue / PR。
 - **索引修正**（分类、描述、链接）：向本仓库的 `skills.yaml` 提 PR。**不要改动 README 表格**——CI 会自动重新生成。
 
