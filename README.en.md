@@ -1,7 +1,7 @@
 <h1 align="center">Lovstudio Skills</h1>
 
 <p align="center">
-  <strong>Central index of all Lovstudio AI coding skills for Claude Code.</strong><br>
+  <strong>Main index and install mirror for Lovstudio AI coding skills for Claude Code.</strong><br>
   <sub>By <a href="https://lovstudio.ai">Lovstudio</a> · <a href="https://agentskills.io">agentskills.io</a></sub>
 </p>
 
@@ -11,6 +11,7 @@
 
 <p align="center">
   <a href="#skills">Skills</a> ·
+  <a href="#extension-indexes">Extension indexes</a> ·
   <a href="#install">Install</a> ·
   <a href="#how-it-works">How It Works</a> ·
   <a href="#contributing">Contributing</a> ·
@@ -21,13 +22,16 @@
 
 ## What Is This
 
-This repo is the **central index** for Lovstudio skills. Regular skills live in their own repos at
-`github.com/lovstudio/{name}-skill`; developer tooling, xBTI, and other themed
-collections are linked below as extension index repos. This repo contains:
+This repo is the **main index** for the Lovstudio skills ecosystem and the install mirror used by
+`npx lovstudio skills add skills`. Regular skills live in their own repos at
+`github.com/lovstudio/{name}-skill`; developer tooling, xBTI, and other themed collections are
+linked below as extension index repos.
+
+This repo contains:
 
 - [`skills.yaml`](skills.yaml) — machine-readable manifest. Each skill has a terse `description` (Agent-facing trigger copy, CI-synced from the GitHub repo description) plus hand-maintained `tagline_en` / `tagline_zh` (the human-friendly one-liners you see in the table below).
 - [`README.md`](README.md) / [`README.en.md`](README.en.md) — auto-rendered from the manifest.
-- No code. Skill code and history live in their individual repos.
+- [`skills/`](skills) — installer-facing mirrors. Free skills are synced from their own repos; paid skills only expose public encrypted bundles or placeholders. Source code and history still live in each skill's own repo.
 
 Skills marked ![Free](https://img.shields.io/badge/Free-green) are open source (MIT). Skills marked ![Paid](https://img.shields.io/badge/Paid-blueviolet) are commercial — private repo, purchase required. To purchase or ask questions, scan the QR code to follow the **手工川 (ShougongChuan)** WeChat official account:
 
@@ -80,7 +84,9 @@ Skills marked ![Free](https://img.shields.io/badge/Free-green) are open source (
 
 ## Extension indexes
 
-The following thematic skills live in their own sub-index repos, each with its own manifest and mirror. Install as needed:
+The following thematic skills live in their own sub-index repos, each with its own manifest and
+mirror. They are still part of the Lovstudio skills ecosystem, but they are not expanded one by one
+in the regular skills table above. Install as needed:
 
 | Sub-index | Scope | Install |
 |---|---|---|
@@ -112,24 +118,30 @@ Browse and install via [agentskills.io](https://agentskills.io) for a one-click 
 ## How It Works
 
 ```
-lovstudio/skills (this repo)         ← you are here
-├── README.md                        ← human-readable index (简体中文, default)
+lovstudio/skills (this repo)         ← main index + install mirror
+├── README.md                        ← primary index (简体中文, default)
 ├── README.en.md                     ← English index
-├── skills.yaml                      ← machine-readable manifest
-└── .github/workflows/               ← CI: renders READMEs, syncs descriptions
+├── skills.yaml                      ← machine-readable manifest for regular skills
+├── skills/<name>/                   ← installer-facing mirrored skill directories
+├── .claude-plugin/marketplace.json  ← Claude Code plugin marketplace metadata
+└── .github/workflows/               ← CI: syncs mirrors, renders READMEs, syncs descriptions
 
-lovstudio/<name>-skill               ← each skill, independent repo
+lovstudio/<name>-skill               ← regular skill source repo
 ├── SKILL.md                         ← skill definition (frontmatter + docs)
 ├── scripts/                         ← implementation (Python/Shell/Node)
 ├── README.md                        ← per-skill install & usage
 └── examples/ · references/          ← optional assets
+
+lovstudio/dev-skills                 ← developer / skill-author tooling sub-index
+└── skills/<name>/                   ← bundled dev/meta skills
 ```
 
 The **`paid` field** lives in `skills.yaml` (this repo), not in each SKILL.md — it's a business categorization, not a skill property. Paid skill code is private; public trigger info (name, tagline, category) is still indexed here so agentskills.io can display and prompt purchase.
 
 ## Contributing
 
-- **New skill**: use [`skill-creator`](https://github.com/lovstudio/skill-creator-skill) to scaffold. Then create a repo at `lovstudio/{name}-skill` and open a PR here adding it to `skills.yaml`.
+- **New regular skill**: use [`skill-creator`](https://github.com/lovstudio/skill-creator-skill) to scaffold. Then create a repo at `lovstudio/{name}-skill` and open a PR here adding it to `skills.yaml`.
+- **New developer/meta skill**: prefer [`lovstudio/dev-skills`](https://github.com/lovstudio/dev-skills), where that sub-index owns its `skills.yaml`, README, and mirror.
 - **Existing skill**: file issues / PRs in the skill's own repo.
 - **Index fixes** (categorization, descriptions, links): PR against this repo's `skills.yaml`. **Don't touch the README table** — CI regenerates it.
 
