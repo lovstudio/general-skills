@@ -45,7 +45,7 @@ skills:
   paid: true
   test: true
   category: General
-  version: 0.1.0
+  version: 0.1.1
   description: Evaluate a pair of numeric inputs against a server-side rule and return
     a symbolic verdict. Cloud-split teaching demo — real logic on the server.
   tagline_en: Pairwise numeric verdict — cloud-split demo with symbolic output.
@@ -57,7 +57,7 @@ skills:
   paid: true
   test: true
   category: General
-  version: 0.1.0
+  version: 0.1.1
   description: Evaluate a set of numeric inputs against configurable parameters and
     return a symbolic verdict. Cloud-split teaching demo — real logic on the server.
   tagline_en: Configurable threshold check — cloud-split demo with symbolic output.
@@ -258,6 +258,7 @@ skills:
   name_zh: 文档配图
   paid: false
   category: Content Creation
+  version: 0.2.1
   description: 为文档原地插入 AI 配图。全局规划插入点，并行生成，异步插回原文。
   tagline_en: Illustrate a long document in place — plan, generate, and insert images
     automatically.
