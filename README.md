@@ -43,13 +43,14 @@
 ## 技能列表
 
 <!-- COUNT:START -->
-> **24 个技能** — 18 个免费 + 6 个付费。
+> **25 个技能** — 19 个免费 + 6 个付费。
 <!-- COUNT:END -->
 
 <!-- SKILLS:START -->
 | | 英文名 | 中文名 | 描述 |
 |---|---|---|---|
 | **通用** | | | |
+| ![Free](https://img.shields.io/badge/Free-green) | [`fact-check`](https://github.com/lovstudio/fact-check-skill) | [事实校验](https://github.com/lovstudio/fact-check-skill) | 用尽调思路确认事实：查一手资料、找反例、标证据等级，给出置信度和下一步。 |
 | ![Free](https://img.shields.io/badge/Free-green) | [`image-creator`](https://github.com/lovstudio/image-creator-skill) | [图像工坊](https://github.com/lovstudio/image-creator-skill) | 按需选择最合适的出图方式：端到端 AI、代码渲染或提示词精修。 |
 | **商务** | | | |
 | ![Free](https://img.shields.io/badge/Free-green) | [`contract-review-pro`](https://github.com/lovstudio/contract-review-pro-skill) | [合同审阅 · 专业版](https://github.com/lovstudio/contract-review-pro-skill) | 专业级合同审阅 — 四层方法论（主体核验 + 基础 + 业务 + 法务），结构化批注含风险等级，附合同摘要、综合意见与业务流程图。 |

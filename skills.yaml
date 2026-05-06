@@ -13,6 +13,18 @@ skills:
   tagline_en: Generate images through the right mechanism — AI, code rendering, or
     prompt tuning.
   tagline_zh: 按需选择最合适的出图方式：端到端 AI、代码渲染或提示词精修。
+- name: fact-check
+  display_name: Fact Check
+  repo: lovstudio/fact-check-skill
+  name_zh: 事实校验
+  paid: false
+  category: General
+  version: 0.1.0
+  description: Verify factual claims through due-diligence style research, primary-source
+    checking, source labels, and confidence-aware conclusions.
+  tagline_en: Verify claims like a careful researcher, with primary sources, counterexamples,
+    confidence, and next steps.
+  tagline_zh: 用尽调思路确认事实：查一手资料、找反例、标证据等级，给出置信度和下一步。
 - name: paid-add
   display_name: Paid Add (PoC)
   repo: lovstudio/paid-add-skill

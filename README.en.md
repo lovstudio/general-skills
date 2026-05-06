@@ -43,13 +43,14 @@ Skills marked ![Free](https://img.shields.io/badge/Free-green) are open source (
 ## Skills
 
 <!-- COUNT:START -->
-> **24 skills** — 18 Free + 6 Paid.
+> **25 skills** — 19 Free + 6 Paid.
 <!-- COUNT:END -->
 
 <!-- SKILLS:START -->
 | | Skill | Description |
 |---|---|---|
 | **General** | | |
+| ![Free](https://img.shields.io/badge/Free-green) | [`fact-check`](https://github.com/lovstudio/fact-check-skill) | Verify claims like a careful researcher, with primary sources, counterexamples, confidence, and next steps. |
 | ![Free](https://img.shields.io/badge/Free-green) | [`image-creator`](https://github.com/lovstudio/image-creator-skill) | Generate images through the right mechanism — AI, code rendering, or prompt tuning. |
 | **Business** | | |
 | ![Free](https://img.shields.io/badge/Free-green) | [`contract-review-pro`](https://github.com/lovstudio/contract-review-pro-skill) | Professional-grade contract review — four-layer methodology, structured comments with risk levels, summary, opinion, and business flowchart. |
