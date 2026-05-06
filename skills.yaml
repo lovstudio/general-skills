@@ -68,7 +68,7 @@ skills:
   name_zh: 合作伙伴维护
   paid: false
   category: Design
-  version: 0.4.0
+  version: 0.8.0
   description: Maintain a website's partners section — reuse find-logo for brand
     logo discovery, normalize collected assets, and wire them into the site across
     multiple locales in one shot.
