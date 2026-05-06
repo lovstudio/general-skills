@@ -1,6 +1,6 @@
 # lovstudio-fact-check
 
-![Version](https://img.shields.io/badge/version-0.1.0-CC785C)
+![Version](https://img.shields.io/badge/version-0.1.1-CC785C)
 
 尽调式事实校验 skill：把用户提出的事实命题拆成可验证问题，优先查一手资料，交叉验证证据链，并输出结论、边界和置信度。
 
@@ -9,14 +9,7 @@ Part of [lovstudio general skills](https://github.com/lovstudio/general-skills) 
 ## Install
 
 ```bash
-git clone https://github.com/lovstudio/fact-check-skill ~/.claude/skills/lovstudio-fact-check
-```
-
-本地开发时也可以用 symlink：
-
-```bash
-ln -s ~/lovstudio/coding/skills/fact-check-skill ~/.agents/skills/lovstudio-fact-check
-ln -s ../../.agents/skills/lovstudio-fact-check ~/.claude/skills/lovstudio-fact-check
+npx lovstudio skills add fact-check -g -y
 ```
 
 ## Dependencies

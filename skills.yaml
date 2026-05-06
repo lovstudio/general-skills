@@ -19,7 +19,7 @@ skills:
   name_zh: 事实校验
   paid: false
   category: General
-  version: 0.1.0
+  version: 0.1.1
   description: Verify factual claims through due-diligence style research, primary-source
     checking, source labels, and confidence-aware conclusions.
   tagline_en: Verify claims like a careful researcher, with primary sources, counterexamples,
@@ -235,7 +235,7 @@ skills:
   paid: false
   featured: true
   category: Design
-  version: 0.1.0
+  version: 0.2.0
   description: Fetch a brand/product logo from public sources (Clearbit, og:image,
     favicon), score candidates (prefer wide-aspect + transparent), and archive into
     ~/.lovstudio/logo-collection/.

@@ -14,7 +14,7 @@ compatibility: >
   dependencies.
 metadata:
   author: lovstudio
-  version: "0.1.0"
+  version: "0.1.1"
   tags: fact-check verification research due-diligence source-check
 ---
 
