@@ -68,7 +68,7 @@ skills:
   name_zh: 合作伙伴维护
   paid: false
   category: Design
-  version: 0.9.0
+  version: 0.9.1
   description: Maintain a website's partners section — reuse find-logo for brand
     logo discovery, normalize collected assets, and wire them into the site across
     multiple locales in one shot.
@@ -149,7 +149,7 @@ skills:
   name_zh: PDF 出长图
   paid: false
   category: Office Automation
-  version: 0.1.1
+  version: 0.1.2
   description: PDF → single vertically concatenated PNG. Uses macOS CoreGraphics,
     ~20x faster than pdftoppm.
   tagline_en: Convert a PDF to a single long PNG — fast enough to feel instant on
@@ -340,7 +340,7 @@ skills:
   name_zh: 文风克隆
   paid: false
   category: Content Creation
-  version: "0.1.0"
+  version: "0.1.1"
   description: >
     Analyzes sample articles to extract an 8-dimension writing style profile,
     then rewrites any target article in that exact style.
