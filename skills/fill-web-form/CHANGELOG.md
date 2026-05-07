@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1] - 2026-05-07
+
+### Fixed
+
+- add release metadata
+- add README version badge
+
 ## 1.1.0 — 2026-04-14
 
 - Output document now includes "检索文件路径" appendix with tree of all inspected files

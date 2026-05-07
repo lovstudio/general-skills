@@ -15,7 +15,7 @@ compatibility: >
   Uses native CoreGraphics + AppKit via Python bridge.
 metadata:
   author: lovstudio
-  version: "0.1.0"
+  version: "0.1.1"
   tags: pdf png macos coregraphics finder-action
 ---
 

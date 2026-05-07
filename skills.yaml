@@ -83,6 +83,7 @@ skills:
   name_zh: 表单代笔
   paid: false
   category: Office Automation
+  version: 1.1.1
   description: Fill Word form templates (.docx). Auto-detects table fields, CJK font
     support.
   tagline_en: Fill Word (.docx) form templates automatically, with clean CJK typography.
@@ -93,6 +94,7 @@ skills:
   name_zh: 网页代笔
   paid: false
   category: Office Automation
+  version: 1.1.1
   description: Fill web forms from local knowledge base. Fetch URL → deep-search KB
     → generate markdown doc.
   tagline_en: Answer online forms using your own knowledge base as the source of truth.
@@ -146,6 +148,7 @@ skills:
   name_zh: PDF 出长图
   paid: false
   category: Office Automation
+  version: 0.1.1
   description: PDF → single vertically concatenated PNG. Uses macOS CoreGraphics,
     ~20x faster than pdftoppm.
   tagline_en: Convert a PDF to a single long PNG — fast enough to feel instant on
@@ -205,6 +208,7 @@ skills:
   name_zh: 报销整理
   paid: false
   category: Business
+  version: 0.1.1
   description: Invoice images/text → categorized Excel expense report
   tagline_en: Turn a pile of invoices into a categorized Excel expense report.
   tagline_zh: 发票图片或文字一键整理成分类报销 Excel，业务招待、差旅、办公自动归类。
@@ -249,6 +253,7 @@ skills:
   name_zh: 文章去 AI 味
   paid: false
   category: Content Creation
+  version: 1.0.1
   description: 检测文章 AI 痕迹 + 人性化润色，通过微信 3.27 条款检测。
   tagline_en: Detect AI fingerprints in an article and rewrite it to read like a human.
   tagline_zh: 检测文章的 AI 味并做人性化润色，帮助稳过微信 3.27 条款的机器判定。
@@ -312,6 +317,7 @@ skills:
   name_zh: 论文润色
   paid: false
   category: Academic
+  version: 1.0.1
   description: MBA 论文全面润色，对标全国优秀论文标准。语言+结构+论证+创新四维提升。
   tagline_en: Polish an MBA thesis across language, structure, argument, and originality.
   tagline_zh: MBA 论文全维度润色，对标国优标准，打磨语言、结构、论证与创新四个面。
@@ -321,6 +327,7 @@ skills:
   name_zh: 译文审阅
   paid: false
   category: Academic
+  version: 1.0.1
   description: Chinese-to-English translation review. Compares source & translation
     across 6 dimensions.
   tagline_en: Review a Chinese→English translation against the original across six

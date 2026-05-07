@@ -16,7 +16,7 @@ compatibility: >
   Cross-platform: macOS, Windows, Linux.
 metadata:
   author: lovstudio
-  version: "0.1.0"
+  version: "0.1.1"
   tags: invoice expense report reimbursement excel categorize
 ---
 

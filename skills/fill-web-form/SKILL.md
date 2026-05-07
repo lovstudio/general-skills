@@ -18,7 +18,7 @@ compatibility: >
   Grep, Glob, Read, Write. Requires internet access for URL fetching.
 metadata:
   author: lovstudio
-  version: "1.1.0"
+  version: "1.1.1"
   tags: form web fill knowledge-base conference speaker application
 ---
 
