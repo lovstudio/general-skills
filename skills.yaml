@@ -25,19 +25,6 @@ skills:
   tagline_en: Verify claims like a careful researcher, with primary sources, counterexamples,
     confidence, and next steps.
   tagline_zh: 用尽调思路确认事实：查一手资料、找反例、标证据等级，给出置信度和下一步。
-- name: paid-add
-  display_name: Paid Add (PoC)
-  repo: lovstudio/paid-add-skill
-  name_zh: 付费加法
-  paid: true
-  encrypted_bundle: true
-  test: true
-  category: General
-  version: 0.1.1
-  description: A paid-skill end-to-end test skill. Given numbers, returns their sum.
-    Used to verify encryption + activation works.
-  tagline_en: Trivial addition skill — the PoC proving end-to-end paid-skill encryption.
-  tagline_zh: 付费加密分发机制的联调测试 skill，输入数字返回求和。
 - name: numeric-verdict
   display_name: Numeric Verdict (PoC)
   repo: lovstudio/numeric-verdict-skill
