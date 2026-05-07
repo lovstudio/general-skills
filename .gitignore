@@ -12,3 +12,7 @@ url-to-markdown/
 手工川-*
 articles/
 output/
+
+# Local tool/runtime state
+.claude/
+supabase/.temp/
