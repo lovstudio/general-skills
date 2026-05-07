@@ -134,6 +134,7 @@ skills:
   paid: false
   featured: true
   category: Office Automation
+  version: 1.0.1
   description: Content → slide deck images with 16 visual styles, PPTX/PDF export,
     branding overlay.
   tagline_en: Turn any content into a styled slide deck — 16 looks, export to PPTX
