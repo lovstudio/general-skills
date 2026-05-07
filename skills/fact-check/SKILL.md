@@ -14,7 +14,7 @@ compatibility: >
   dependencies.
 metadata:
   author: lovstudio
-  version: "0.1.1"
+  version: "0.1.2"
   tags: fact-check verification research due-diligence source-check
 ---
 
@@ -47,6 +47,8 @@ metadata:
 ### Step 1: Restate the Claim
 
 把用户的问题改写成一个可验证命题，并指出关键歧义。
+如果关键歧义会改变检索方向，先用 `AskUserQuestion` 问一个澄清问题；
+否则继续执行，不要为了形式而打断用户。
 
 Example:
 

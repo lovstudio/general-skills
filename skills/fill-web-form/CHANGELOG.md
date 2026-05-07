@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.2] - 2026-05-07
+
+### Fixed
+
+- ask only for missing required web form fields
+
 ## [1.1.1] - 2026-05-07
 
 ### Fixed

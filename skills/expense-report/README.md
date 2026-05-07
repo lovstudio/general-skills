@@ -1,6 +1,6 @@
 # lovstudio:expense-report
 
-![Version](https://img.shields.io/badge/version-0.1.2-CC785C)
+![Version](https://img.shields.io/badge/version-0.1.3-CC785C)
 
 Invoice images / text → categorized Excel expense report.
 

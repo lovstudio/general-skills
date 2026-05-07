@@ -19,7 +19,7 @@ skills:
   name_zh: 事实校验
   paid: false
   category: General
-  version: 0.1.1
+  version: 0.1.2
   description: Verify factual claims through due-diligence style research, primary-source
     checking, source labels, and confidence-aware conclusions.
   tagline_en: Verify claims like a careful researcher, with primary sources, counterexamples,
@@ -94,7 +94,7 @@ skills:
   name_zh: 网页代笔
   paid: false
   category: Office Automation
-  version: 1.1.1
+  version: 1.1.2
   description: Fill web forms from local knowledge base. Fetch URL → deep-search KB
     → generate markdown doc.
   tagline_en: Answer online forms using your own knowledge base as the source of truth.
@@ -188,7 +188,7 @@ skills:
     comments
   tagline_en: Review a document or contract and return it with inline comments.
   tagline_zh: 审阅文档或合同，输出带批注的 docx，直接拿给同事或客户。
-  version: 0.1.1
+  version: 0.1.3
 - name: contract-review-pro
   display_name: Contract Review Pro
   repo: lovstudio/contract-review-pro-skill
