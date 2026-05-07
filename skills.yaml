@@ -83,7 +83,7 @@ skills:
   name_zh: 表单代笔
   paid: false
   category: Office Automation
-  version: 1.1.1
+  version: 1.1.2
   description: Fill Word form templates (.docx). Auto-detects table fields, CJK font
     support.
   tagline_en: Fill Word (.docx) form templates automatically, with clean CJK typography.
