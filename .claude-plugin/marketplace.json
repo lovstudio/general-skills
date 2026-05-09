@@ -86,6 +86,16 @@
         "./skills/translation-review"
       ],
       "strict": false
+    },
+    {
+      "name": "dev-tools",
+      "source": "./",
+      "description": "Dev Tools — 1 free skill bundled together.",
+      "category": "Dev Tools",
+      "skills": [
+        "./skills/mobile-adapt"
+      ],
+      "strict": false
     }
   ]
 }
