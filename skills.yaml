@@ -334,3 +334,17 @@ skills:
     Trigger on: "分析文风", "模仿文风", "克隆写作风格", "用XX的风格改写", "style clone", "rewrite in this style".
   tagline_en: Extract a writing style profile from sample articles, then rewrite any content in that style.
   tagline_zh: 从样本文章中提取文风画像，再把任意内容改写成该文风。
+- name: mobile-adapt
+  display_name: Mobile Adapt
+  repo: lovstudio/dev-skills
+  skill_path: skills/mobile-adapt
+  name_zh: 移动端适配
+  paid: false
+  category: Dev Tools
+  version: "0.1.0"
+  description: >
+    Scan and fix mobile adaptation issues — overflow, safe area, 100vh,
+    responsive layout, multi-level navigation, touch targets.
+    Trigger on: "mobile adapt", "移动端适配", "手机适配", "responsive optimization", "fix mobile overflow".
+  tagline_en: Scan a web project for mobile issues and fix them — overflow, safe area, viewport units, responsive layouts, and page navigation.
+  tagline_zh: 扫描并修复 Web 项目的移动端适配问题——溢出、安全区、视口单位、响应式布局和多级导航。
