@@ -22,12 +22,13 @@
     {
       "name": "design",
       "source": "./",
-      "description": "Design — 2 free + 1 paid (activation required).",
+      "description": "Design — 3 free + 1 paid (activation required).",
       "category": "Design",
       "skills": [
         "./skills/maintain-partners",
         "./skills/find-logo",
-        "./skills/event-poster"
+        "./skills/event-poster",
+        "./skills/business-card"
       ],
       "strict": false
     },
@@ -91,10 +92,11 @@
     {
       "name": "dev-tools",
       "source": "./",
-      "description": "Dev Tools — 1 free skill bundled together.",
+      "description": "Dev Tools — 2 free skills bundled together.",
       "category": "Dev Tools",
       "skills": [
-        "./skills/mobile-adapt"
+        "./skills/mobile-adapt",
+        "./skills/repo2docs"
       ],
       "strict": false
     }
