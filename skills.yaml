@@ -235,6 +235,16 @@ skills:
   tagline_en: Collect brand logos from public sources — wide and transparent preferred,
     archived for website/PPT/poster lineups.
   tagline_zh: 按品牌名或网址抓取 logo，自动评分择优（偏好长条形 + 透明底），统一归档到本地，方便网站/PPT/海报罗列。
+- name: business-card
+  display_name: Business Card
+  repo: lovstudio/business-card-skill
+  name_zh: 专业名片生成
+  paid: false
+  category: Design
+  version: 0.1.0
+  description: Generate an editorial 2:1 business card as high-res PNG + interactive HTML / 编辑式电子名片生成
+  tagline_en: Turn anyone's name, roles and tagline into a polished editorial business card — high-res PNG plus a click-to-download HTML.
+  tagline_zh: 把任何人的姓名、头衔、金句一键变成精美的编辑式名片，输出高清 PNG 与可点击下载的 HTML。
 - name: anti-wechat-ai-check
   display_name: Humanizer
   repo: lovstudio/anti-wechat-ai-check-skill
