@@ -1,32 +1,35 @@
-# lovstudio-business-card
+<p align="center">
+  <img src="docs/images/example-dark-terracotta.png" alt="business-card example" width="100%">
+</p>
 
-![Version](https://img.shields.io/badge/version-0.1.0-CC785C)
+<h1 align="center">lovstudio-business-card</h1>
 
-Generate a professional, editorial-style business card (2:1) — high-resolution PNG
-plus a self-contained interactive HTML with click-to-download.
+<p align="center">
+  <strong>把任何人的姓名、头衔与金句，一键变成精美的编辑式名片。</strong><br>
+  <sub>高清 PNG（默认 4800×2400） · 可点击下载的自包含 HTML · 三套主题</sub>
+</p>
 
-Part of [lovstudio general skills](https://github.com/lovstudio/general-skills) — by [lovstudio.ai](https://lovstudio.ai)
+<p align="center">
+  <img src="https://img.shields.io/badge/version-0.1.0-CC785C" alt="version">
+  <img src="https://img.shields.io/badge/license-MIT-green" alt="license">
+  <a href="https://lovstudio.ai">lovstudio.ai</a> · part of <a href="https://github.com/lovstudio/general-skills">general-skills</a>
+</p>
 
-## What it makes
+---
 
-An editorial / luxury-minimal name card: Swiss typographic grid, hairline dividers,
-a single accent color, Songti × Didot type pairing, masthead + footer bands, and a
-faint watermark glyph. Three themes: `dark-terracotta`, `midnight`, `ivory`.
-No avatar? It falls back to a serif monogram of the name.
+## 这是什么
 
-```
-┌──────────────────────────────────────────────────────────┐
-│ BRAND.AI                              STUDIO — Nº 2026     │
-│ ────────────────────────────────────────────────────────  │
-│ ┌────────┐    手工川  Mark Shawn                           │
-│ │ avatar │    背包客 ◆ 超级开发者 ◆ AI / OPC 布道师        │
-│ │   or   │                                                 │
-│ │ 林 mono│    在 Agent 时代，                              │
-│ └────────┘    寻找人的意义                                 │
-│ ────────────────────────────────────────────────────────  │
-│ 旅行 · 羽毛球 · 哲学            ◈ 上海 …   ◈ 北京 …          │
-└──────────────────────────────────────────────────────────┘
-```
+把一段身份信息渲染成一张 2:1 的**编辑式（editorial / luxury-minimal）**名片：瑞士排版网格、
+发丝线分隔、单一强调色、宋体 × Didot 字体配对、刊头与底栏分区、淡淡的姓名水印。靠字号、字距、
+层级建立秩序，而不是堆装饰。没有头像？自动用姓名首字渲染衬线 monogram。
+
+## 示例
+
+上图为「手工川」的实际名片（`dark-terracotta` 主题 + 头像）。同一套数据，三种主题：
+
+| `dark-terracotta`（暖深·陶土，默认） | `midnight`（冷深·钢蓝） | `ivory`（浅·象牙 + monogram 回退） |
+|---|---|---|
+| ![dark](docs/images/example-dark-terracotta.png) | ![midnight](docs/images/example-midnight.png) | ![ivory](docs/images/example-ivory-monogram.png) |
 
 ## Install
 
@@ -34,9 +37,8 @@ No avatar? It falls back to a serif monogram of the name.
 git clone https://github.com/lovstudio/business-card-skill "${LOVSTUDIO_SKILLS_INSTALL_DIR:?Set LOVSTUDIO_SKILLS_INSTALL_DIR}/lovstudio-business-card"
 ```
 
-Requires: Python 3.8+ and Google Chrome / Chromium (for PNG rendering). On macOS,
-cropping uses the built-in `sips`; elsewhere `pip install pillow`. Without a
-browser the PNG step is skipped — open the HTML and use its download button.
+Requires: Python 3.8+ and Google Chrome / Chromium (for PNG rendering). macOS 用内置 `sips` 裁切，
+其他平台 `pip install pillow`。没有浏览器时跳过 PNG —— 打开 HTML 用右下角按钮下载即可。
 
 ## Usage
 
@@ -57,31 +59,34 @@ python3 "$SKILL_DIR/scripts/render_card.py" \
 
 | Option | Default | Description |
 |--------|---------|-------------|
-| `--name` | (required) | Display name (CJK ok) |
-| `--latin` | `""` | Secondary / romanized name (italic) |
-| `--brand` | `""` | Top-left brand; a `.` is accent-colored |
-| `--index` | `""` | Top-right line, e.g. `STUDIO — Nº 2026` |
-| `--tags` | `""` | Comma-separated role tags |
-| `--tagline` | `""` | Hero line; `**word**` = accent, `\|` = line break |
-| `--pursuits` | `""` | Comma-separated interests (footer left) |
-| `--bases` | `""` | Comma-separated locations (footer right) |
-| `--avatar` | `""` | Portrait image path; omit → monogram |
-| `--caption` | `""` | Portrait caption (optional) |
-| `--watermark` | last char of name | Giant background glyph |
+| `--name` | (required) | 姓名，支持中文 |
+| `--latin` | `""` | 英文名 / 罗马音（斜体小字） |
+| `--brand` | `""` | 左上品牌；含 `.` 时圆点会高亮 |
+| `--index` | `""` | 右上编号，如 `STUDIO — Nº 2026` |
+| `--tags` | `""` | 角色标签，逗号分隔 |
+| `--tagline` | `""` | 金句；`**词**` 高亮，`\|` 换行 |
+| `--pursuits` | `""` | 爱好，逗号分隔（底栏左） |
+| `--bases` | `""` | 据点/城市，逗号分隔（底栏右，带定位针） |
+| `--avatar` | `""` | 头像图片路径；省略则用 monogram |
+| `--caption` | `""` | 头像底部图注（可选） |
+| `--watermark` | 姓名末字 | 背景巨型水印字 |
 | `--theme` | `dark-terracotta` | `dark-terracotta` \| `midnight` \| `ivory` |
-| `--out` | `./output` | Output directory |
+| `--out` | `./output` | 输出目录 |
 | `--format` | `both` | `png` \| `html` \| `both` |
-| `--scale` | `3` | PNG scale factor (3 → 4800×2400) |
+| `--scale` | `3` | PNG 倍率（3 → 4800×2400） |
 
 ## Output
 
-- `{name}-名片.png` — high-res card (default 4800×2400)
-- `{name}-名片.html` + `modern-screenshot.umd.js` — open in a browser, click 下载 for a 3× PNG
+- `{name}-名片.png` — 高清名片（默认 4800×2400）
+- `{name}-名片.html` + `modern-screenshot.umd.js` — 浏览器打开，点「下载为图片 PNG」自出 3× 高清图（两文件需同目录）
 
-## Adding a theme
+## 加主题
 
-Add a CSS-variable set to the `THEMES` dict in `scripts/render_card.py` — no template
-edits needed.
+往 `scripts/render_card.py` 的 `THEMES` 字典加一组 CSS 变量即可，模板无需改动。
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=lovstudio/business-card-skill&type=Date)](https://star-history.com/#lovstudio/business-card-skill&Date)
 
 ## License
 
