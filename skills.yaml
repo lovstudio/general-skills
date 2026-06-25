@@ -360,3 +360,17 @@ skills:
     Trigger on: "mobile adapt", "移动端适配", "手机适配", "responsive optimization", "fix mobile overflow".
   tagline_en: Scan a web project for mobile issues and fix them — overflow, safe area, viewport units, responsive layouts, and page navigation.
   tagline_zh: 扫描并修复 Web 项目的移动端适配问题——溢出、安全区、视口单位、响应式布局和多级导航。
+- name: repo2docs
+  display_name: Repo to Docs
+  repo: lovstudio/repo2docs-skill
+  name_zh: 文件夹生成文档站
+  paid: false
+  category: Dev Tools
+  version: "0.2.0"
+  description: >
+    Turn any folder of source material — a code repo, a pile of articles, a mixed
+    knowledge dump with images — into a polished Fumadocs site, reading one unit at
+    a time and incrementally refining the structure, then deploy to {id}.lovstudio.ai/docs.
+    Trigger on: "generate docs", "build a docs site", "fumadocs", "为项目生成文档", "把文件夹做成文档站", "整理成知识库网站".
+  tagline_en: Turn any folder — code, articles, images — into a polished Fumadocs site, built incrementally and shipped to {id}.lovstudio.ai/docs.
+  tagline_zh: 把任意文件夹（代码、文章、图片）增量编纂成精美的 Fumadocs 文档站，并部署到 {id}.lovstudio.ai/docs。
