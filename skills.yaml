@@ -373,13 +373,14 @@ skills:
 - name: repo2docs
   display_name: Repo to Docs
   repo: lovstudio/repo2docs-skill
-  name_zh: 代码库生成文档站
+  name_zh: 文件夹生成文档站
   paid: false
   category: Dev Tools
-  version: "0.1.0"
+  version: "0.2.0"
   description: >
-    Generate a professional Fumadocs documentation website from a product's
-    GitHub or local code repository, then deploy it to {product-id}.lovstudio.ai/docs.
-    Trigger on: "generate docs", "build a docs site", "fumadocs", "为项目生成文档", "做文档站", "生成文档网站".
-  tagline_en: Turn a product's codebase into a polished Fumadocs site and ship it to {id}.lovstudio.ai/docs.
-  tagline_zh: 把产品代码库变成精美的 Fumadocs 文档站，并部署到 {id}.lovstudio.ai/docs。
+    Turn any folder of source material — a code repo, a pile of articles, a mixed
+    knowledge dump with images — into a polished Fumadocs site, reading one unit at
+    a time and incrementally refining the structure, then deploy to {product-id}.lovstudio.ai/docs.
+    Trigger on: "generate docs", "build a docs site", "fumadocs", "为项目生成文档", "把文件夹做成文档站", "整理成知识库网站".
+  tagline_en: Turn any folder — code, articles, images — into a polished Fumadocs site, built incrementally and shipped to {id}.lovstudio.ai/docs.
+  tagline_zh: 把任意文件夹（代码、文章、图片）增量编纂成精美的 Fumadocs 文档站，并部署到 {id}.lovstudio.ai/docs。
