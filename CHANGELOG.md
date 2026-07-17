@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.9.0 — 2026-07-17
+
+- **`review-doc@1.0.0`**：将轻量文档批注升级为合同专家审阅，新增七轮审查、风险与谈判双维度分级、替代条款、签署建议和结构化审阅报告。
+- **DOCX 审阅引擎**：支持正文、表格、页眉和页脚稳定定位，写入前校验歧义与跨格式替换风险。
+- **向后兼容**：保留 0.x `annotate_docx.py` 段落编号接口，由兼容层自动转换为 1.0 稳定锚点。
+
 ## 0.8.1 — 2026-04-21
 
 - **New skill**: `find-logo` (free, Design) — fetch + score brand logos from public sources, archive to `~/.lovstudio/logo-collection/`.

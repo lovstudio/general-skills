@@ -165,17 +165,18 @@ skills:
   encrypted_bundle: true
   version: 0.1.2
 - name: review-doc
-  display_name: Contract Review
+  display_name: Contract Expert Review
   repo: lovstudio/review-doc-skill
-  name_zh: 合同审阅 · 日常版
+  name_zh: 合同专家审阅
   paid: false
   featured: true
   category: Business
-  description: Review and annotate documents/contracts — output annotated docx with
-    comments
-  tagline_en: Review a document or contract and return it with inline comments.
-  tagline_zh: 审阅文档或合同，输出带批注的 docx，直接拿给同事或客户。
-  version: 0.1.3
+  description: Expert contract analysis with risk-ranked comments, safe DOCX redlines,
+    replacement clauses, negotiation priorities, and signing recommendations.
+  tagline_en: Review contracts like a senior legal expert — comments, redlines, fallback
+    clauses, and negotiation priorities.
+  tagline_zh: 像资深法务一样审合同，交付逐条批注、红线修订、替代条款和谈判底线。
+  version: 1.0.0
 - name: contract-review-pro
   display_name: Contract Review Pro
   repo: lovstudio/contract-review-pro-skill
