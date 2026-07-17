@@ -57,7 +57,7 @@ Skills marked ![Free](https://img.shields.io/badge/Free-green) are open source (
 | ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [`event-curator`](https://github.com/lovstudio/event-curator-skill) | Turn a guest bio into a ready-to-run event plan — title, rundown, host questions, and gifts. |
 | ![Free](https://img.shields.io/badge/Free-green) | [`expense-report`](https://github.com/lovstudio/expense-report-skill) | Turn a pile of invoices into a categorized Excel expense report. |
 | ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [`proposal`](https://github.com/lovstudio/proposal-skill) | Turn a project brief into a complete, client-ready business proposal. |
-| ![Free](https://img.shields.io/badge/Free-green) | [`review-doc`](https://github.com/lovstudio/review-doc-skill) | Review a document or contract and return it with inline comments. |
+| ![Free](https://img.shields.io/badge/Free-green) | [`review-doc`](https://github.com/lovstudio/review-doc-skill) | Review contracts like a senior legal expert — comments, redlines, fallback clauses, and negotiation priorities. |
 | **Design** | | |
 | ![Free](https://img.shields.io/badge/Free-green) | [`business-card`](https://github.com/lovstudio/business-card-skill) | Turn anyone's name, roles and tagline into a polished editorial business card — high-res PNG plus a click-to-download HTML. |
 | ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [`event-poster`](https://github.com/lovstudio/event-poster-skill) | Turn an event brief into a polished poster, ready to share or print for exhibitions. |
