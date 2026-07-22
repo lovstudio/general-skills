@@ -153,6 +153,22 @@ skills:
     curves.
   tagline_en: Convert a PNG to a crisp SVG, with background removed and curves smoothed.
   tagline_zh: 把 PNG 矢量化为高质量 SVG，自动抠背景、曲线平滑。
+- name: bp
+  display_name: Investor BP Builder
+  repo: lovstudio/bp-skill
+  name_zh: 投资人 BP
+  paid: false
+  featured: true
+  category: Business
+  version: 0.1.0
+  description: Build or improve investor-ready business plans from project evidence,
+    with a 12–15 slide narrative, professional chart plan, PPTX/PDF, and a scored
+    review report.
+  tagline_en: Turn scattered project evidence into an investor-ready BP deck, charts,
+    and an honest review report.
+  tagline_zh: 把零散项目资料变成投资人看得懂、愿意继续聊的 BP，含专业图表、PPTX/PDF 和审稿报告。
+  depends_on:
+  - any2deck
 - name: proposal
   display_name: Proposal Writer
   repo: lovstudio/proposal-skill
