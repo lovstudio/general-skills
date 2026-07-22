@@ -51,9 +51,11 @@
     {
       "name": "business",
       "source": "./",
-      "description": "Business — 3 free + 2 paid (activation required).",
+      "description": "Business — 4 free + 2 paid (activation required).",
       "category": "Business",
       "skills": [
+        "./skills/bp",
+        "./skills/any2deck",
         "./skills/proposal",
         "./skills/review-doc",
         "./skills/contract-review-pro",
