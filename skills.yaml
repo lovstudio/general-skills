@@ -416,18 +416,18 @@ skills:
   tagline_en: Extract a writing style profile from sample articles, then rewrite any content in that style.
   tagline_zh: 从样本文章中提取文风画像，再把任意内容改写成该文风。
 - name: video-chapter
-  display_name: Video Chapter
+  display_name: Video Chapter Skill Kit
   repo: lovstudio/video-chapter-skill
-  name_zh: 字幕视频分段
+  name_zh: 视频章节工作台
   paid: false
   category: Video Creation
-  version: "0.1.0"
+  version: "0.2.0"
   description: >
-    Turn timestamped SRT/VTT subtitles into a natural 3–5 chapter video
-    structure with cue-aligned cut points, concise titles, summaries, and
-    copy-ready chapter lists.
-  tagline_en: Turn subtitles into natural video chapters with accurate cut points, titles, summaries, and paste-ready timestamps.
-  tagline_zh: 基于字幕理解主题转折，把长视频整理成 3–5 个自然章节，输出切点、标题、摘要和可直接粘贴的时间码。
+    Plan semantic chapters from SRT/VTT subtitles, refine boundaries and styles
+    in React Studio, render transparent ProRes overlays or burned MP4s, and
+    export editor-ready packages.
+  tagline_en: Plan chapters, tune the progress bar in React Studio, then export an overlay, final video, or editor package.
+  tagline_zh: 从字幕确定章节，在 React 工作台调整切点与样式，再导出透明章节条、烧录成片或剪辑软件素材包。
 - name: mobile-adapt
   display_name: Mobile Adapt
   repo: lovstudio/dev-skills

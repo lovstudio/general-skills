@@ -87,7 +87,7 @@
 | ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [`write-professional-book`](https://github.com/lovstudio/write-professional-book-skill) | [专业写书](https://github.com/lovstudio/write-professional-book-skill) | 从大纲开始，逐章写出一本完整的书，技术、教程、专著多种风格。 |
 | ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [`wxmp-cracker`](https://github.com/lovstudio/wxmp-cracker-skill) | [公众号神器](https://github.com/lovstudio/wxmp-cracker-skill) | 把微信公众号的文章批量归档成可再利用的整洁文本。 |
 | **影视创作** | | | |
-| ![Free](https://img.shields.io/badge/Free-green) | [`video-chapter`](https://github.com/lovstudio/video-chapter-skill) | [字幕视频分段](https://github.com/lovstudio/video-chapter-skill) | 基于字幕理解主题转折，把长视频整理成 3–5 个自然章节，输出切点、标题、摘要和可直接粘贴的时间码。 |
+| ![Free](https://img.shields.io/badge/Free-green) | [`video-chapter`](https://github.com/lovstudio/video-chapter-skill) | [视频章节工作台](https://github.com/lovstudio/video-chapter-skill) | 从字幕确定章节，在 React 工作台调整切点与样式，再导出透明章节条、烧录成片或剪辑软件素材包。 |
 | **开发工具** | | | |
 | ![Free](https://img.shields.io/badge/Free-green) | [`mobile-adapt`](https://github.com/lovstudio/dev-skills) | [移动端适配](https://github.com/lovstudio/dev-skills) | 扫描并修复 Web 项目的移动端适配问题——溢出、安全区、视口单位、响应式布局和多级导航。 |
 | ![Free](https://img.shields.io/badge/Free-green) | [`repo2docs`](https://github.com/lovstudio/repo2docs-skill) | [文件夹生成文档站](https://github.com/lovstudio/repo2docs-skill) | 把任意文件夹（代码、文章、图片）增量编纂成精美的 Fumadocs 文档站，并部署到 {id}.lovstudio.ai/docs。 |
