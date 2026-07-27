@@ -1,25 +1,36 @@
-# lovstudio-video-chapter
+# Video Chapter Skill Kit
 
-![Version](https://img.shields.io/badge/version-0.1.0-CC785C)
+![Version](https://img.shields.io/badge/version-0.2.0-EB6637)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-基于 SRT/VTT 字幕，把长视频整理成 3–5 个语义完整的章节，并输出自然切点、标题、摘要和可直接粘贴的时间码。
+从字幕理解章节内容，在 React 剪辑台中调整切点和样式，再生成透明章节条、烧录成片或剪映素材包。
 
 Part of [lovstudio general skills](https://github.com/lovstudio/general-skills) — by [lovstudio.ai](https://lovstudio.ai)
 
-## 它解决什么问题
-
-普通进度条工具只知道时间，不理解内容；简单等分视频又经常把一句话或一个案例从中间切断。这个 skill 把两件事分开处理：
+## 完整流程
 
 ```text
-SRT / VTT
-   │
-   ├─ Python CLI：可靠解析时间码、整理逐分钟文本、发现停顿
-   │
-   └─ AI Agent：理解主题转折、选择自然切点、命名章节
-                    │
-                    └─ 章节表 + Chapter Bar / YouTube / Bilibili 时间码
+SRT / VTT + 视频
+        │
+        ▼
+  语义章节规划
+  切点 / 标题 / 摘要
+        │
+        ▼
+ chapter-project.json
+        │
+        ├── React Studio：预览、拖动切点、修改样式
+        ├── Overlay：透明 ProRes 4444 MOV
+        ├── Burn：带章节条的最终 MP4
+        └── Package：剪映 / CapCut 可导入素材包
 ```
+
+它由四个可组合子技能组成：
+
+- `chapter-plan`：根据字幕确定 3–5 个自然章节。
+- `chapter-design`：在 React Studio 中调整内容和视觉。
+- `chapter-render`：渲染透明素材或烧录视频。
+- `chapter-export`：生成剪映和其他剪辑软件需要的交付文件。
 
 ## 安装
 
@@ -28,82 +39,123 @@ git clone https://github.com/lovstudio/video-chapter-skill \
   "${LOVSTUDIO_SKILLS_INSTALL_DIR:?Set LOVSTUDIO_SKILLS_INSTALL_DIR}/lovstudio-video-chapter"
 ```
 
-也可以使用 LovStudio 技能安装器：
+或使用 LovStudio 技能安装器：
 
 ```bash
 npx lovstudio skills add video-chapter -g -y
 ```
 
-依赖：Python 3.8+，无需第三方 Python 包。
-
-## 使用方式
-
-在支持 Agent Skills 的 AI 工具中提供字幕文件，然后说：
-
-```text
-基于这个 SRT 把视频分成 3–5 段，给出时间范围、标题和摘要。
-```
-
-也支持这些触发方式：
-
-- “给这个教程视频生成 5 个章节”
-- “根据字幕找自然切点”
-- “输出 Chapter Bar 可以直接粘贴的章节时间”
-- “Split this video into chapters from its subtitles”
-- “Create YouTube chapters from this VTT”
-
-## CLI
-
-CLI 负责生成给 Agent 阅读的分析包，不会用机械等分代替语义判断。
+基础分析只需要 Python 3.8+。渲染需要：
 
 ```bash
-SKILL_DIR="${LOVSTUDIO_SKILLS_INSTALL_DIR:?Set LOVSTUDIO_SKILLS_INSTALL_DIR}/lovstudio-video-chapter"
+brew install ffmpeg
+python3 -m pip install -r requirements.txt
+```
 
-python3 "$SKILL_DIR/scripts/subtitle_chapters.py" \
+React Studio 使用 Node.js：
+
+```bash
+cd studio
+npm install
+npm run dev
+```
+
+## 1. 根据字幕规划章节
+
+```bash
+python3 scripts/subtitle_chapters.py \
   --input "/path/to/video.srt" \
   --segments 5 \
   --output "/tmp/video-chapter-analysis.md"
 ```
 
-输出 JSON：
+Agent 会根据主题转折、完整语句和停顿选择切点，避免机械等分。
 
-```bash
-python3 "$SKILL_DIR/scripts/subtitle_chapters.py" \
-  --input "/path/to/video.vtt" \
-  --segments 4 \
-  --format json
-```
-
-## 参数
-
-| 参数 | 默认值 | 说明 |
-|---|---:|---|
-| `--input` | 必填 | SRT 或 VTT 字幕文件 |
-| `--segments` | `5` | 章节数，只接受 3、4、5 |
-| `--chunk-seconds` | `60` | 分析文本窗口长度 |
-| `--gap-threshold` | `1.5` | 收录字幕停顿的最短秒数 |
-| `--max-gaps` | `20` | 最多展示多少个停顿候选 |
-| `--format` | `markdown` | `markdown` 或 `json` |
-| `--output` | `-` | 输出文件；`-` 表示标准输出 |
-
-## 默认交付
-
-```markdown
-| 段落 | 时间范围 | 标题 | 内容 |
-|---|---|---|---|
-| 1 | 00:00–04:16 | 从成品开始 | 展示最终效果并介绍制作目标 |
-```
-
-以及可直接粘贴到 Chapter Bar、YouTube 或 Bilibili 的文本：
+准备章节文本：
 
 ```text
-00:00 从成品开始
-04:16 挑选并评估 Skill
+00:00 一份完全由 AI 制作的 BP | 从最终效果说明制作目标
+04:16 挑选并改造一个 BP Skill | 评估并调整现有能力
+10:32 生成大纲并打磨产品定位 | 组织叙事并收紧定位
 ```
 
-## 隐私
+生成统一项目：
 
-脚本只读取本地字幕文件，不上传视频或字幕，也不要求用户配置文件。
+```bash
+python3 scripts/chapter_project.py create \
+  --chapters "/path/to/chapters.txt" \
+  --video "/path/to/video.mp4" \
+  --output "/path/to/chapter-project.json"
+```
+
+## 2. 在 React Studio 中调整
+
+```bash
+cd studio
+npm install
+npm run dev
+```
+
+Studio 支持：
+
+- 导入和导出 `chapter-project.json`
+- 本地选择视频并实时预览
+- 点击章节跳转画面
+- 拖动章节接缝调整切点
+- 修改标题与摘要
+- 调整颜色、位置、字号、边距和章节条尺寸
+- 同时预览逐段连续填充效果
+
+视频只在本机浏览器中读取。
+
+## 3. 生成透明章节条
+
+```bash
+python3 scripts/render_chapter_bar.py overlay \
+  --project "/path/to/chapter-project.json" \
+  --output "/path/to/chapter-overlay.mov"
+```
+
+输出采用 ProRes 4444 与 Alpha 通道，适合放到剪映、CapCut、Premiere、Final Cut Pro 或 DaVinci Resolve 的最上方轨道。
+
+## 4. 直接烧录成片
+
+```bash
+python3 scripts/render_chapter_bar.py burn \
+  --project "/path/to/chapter-project.json" \
+  --output "/path/to/video-with-chapters.mp4"
+```
+
+输出为 H.264 MP4，并保留源视频音频。
+
+## 5. 生成剪映素材包
+
+```bash
+python3 scripts/render_chapter_bar.py package \
+  --project "/path/to/chapter-project.json" \
+  --output "/path/to/chapter-package"
+```
+
+素材包包含：
+
+```text
+chapter-overlay.mov
+chapter-project.json
+chapters.txt
+chapters.csv
+剪映导入说明.txt
+```
+
+在剪映中导入 `chapter-overlay.mov`，放到最上方视频轨道并对齐 `00:00` 即可。这属于稳定的素材级集成；直接修改剪映草稿工程保留在实验适配层。
+
+## 项目校验
+
+```bash
+python3 scripts/chapter_project.py validate \
+  --project "/path/to/chapter-project.json"
+```
+
+校验会检查时间连续性、最终时长、标题、颜色格式和视频参数。
 
 ## License
 
