@@ -41,6 +41,7 @@ CATEGORY_LABELS = {
     "Office Automation": ("Office Automation", "办公"),
     "Finance": ("Finance", "财税"),
     "Content Creation": ("Content Creation", "内容创作"),
+    "Video Creation": ("Video Creation", "影视创作"),
     "Dev Tools": ("Dev Tools", "开发工具"),
     "xBTI": ("xBTI", "人格测试"),
 }
@@ -54,6 +55,7 @@ CATEGORY_ORDER_EN = [
     "Office Automation",
     "Finance",
     "Content Creation",
+    "Video Creation",
     "Dev Tools",
     "xBTI",
 ]
