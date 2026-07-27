@@ -95,6 +95,16 @@
       "strict": false
     },
     {
+      "name": "video-creation",
+      "source": "./",
+      "description": "Video Creation — 1 free skill bundled together.",
+      "category": "Video Creation",
+      "skills": [
+        "./skills/video-chapter"
+      ],
+      "strict": false
+    },
+    {
       "name": "dev-tools",
       "source": "./",
       "description": "Dev Tools — 2 free skills bundled together.",
