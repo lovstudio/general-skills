@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{TITLE}}</title>
+  <style>
+    :root {
+      --brand-primary: {{BRAND_PRIMARY}};
+      --brand-accent: {{BRAND_ACCENT}};
+      --ink: {{BRAND_INK}};
+      --muted: {{BRAND_MUTED}};
+      --paper: {{BRAND_PAPER}};
+      --line: color-mix(in srgb, var(--ink) 14%, transparent);
+      --soft-line: color-mix(in srgb, var(--ink) 8%, transparent);
+      --accent-soft: color-mix(in srgb, var(--brand-accent) 11%, var(--paper));
+      --font: {{FONT_FAMILY}};
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: #D8D7D4;
+      color: var(--ink);
+      font-family: var(--font);
+      text-rendering: geometricPrecision;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      display: grid;
+      place-items: center;
+    }
+
+    .poster {
+      position: relative;
+      width: {{CANVAS_WIDTH}}px;
+      height: {{CANVAS_HEIGHT}}px;
+      padding: 64px 68px 42px;
+      overflow: hidden;
+      display: grid;
+      grid-template-rows: auto auto auto minmax(0, 1fr) auto;
+      gap: 25px;
+      background:
+        linear-gradient(90deg, var(--brand-accent) 0 72%, transparent 72%) top / 100% 8px no-repeat,
+        var(--paper);
+      box-shadow: 0 30px 80px rgb(18 28 45 / 18%);
+      isolation: isolate;
+    }
+
+    .poster::after {
+      content: "";
+      position: absolute;
+      right: -180px;
+      top: -220px;
+      width: 500px;
+      height: 500px;
+      border: 1px solid var(--soft-line);
+      border-radius: 50%;
+      z-index: -1;
+    }
+
+    .topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 44px;
+      gap: 30px;
+    }
+
+    .eyebrow {
+      margin: 0;
+      color: var(--brand-accent);
+      font-size: 16px;
+      line-height: 1;
+      font-weight: 760;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .brand-lockup {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex: 0 0 auto;
+    }
+
+    .brand-lockup img {
+      width: 168px;
+      max-height: 50px;
+      object-fit: contain;
+      object-position: right center;
+    }
+
+    .header {
+      display: grid;
+      grid-template-columns: minmax(0, 8.5fr) minmax(190px, 3.5fr);
+      gap: 48px;
+      align-items: end;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .poster__title {
+      margin: 0;
+      max-width: 830px;
+      font-size: 56px;
+      line-height: 1.12;
+      font-weight: 760;
+      letter-spacing: -.035em;
+      text-wrap: balance;
+    }
+
+    .deck {
+      margin: 0 0 4px;
+      color: var(--muted);
+      font-size: 20px;
+      line-height: 1.55;
+      font-weight: 440;
+    }
+
+    .takeaway {
+      display: grid;
+      grid-template-columns: 8px minmax(0, 1fr);
+      gap: 19px;
+      align-items: center;
+      padding: 22px 26px;
+      border: 1px solid color-mix(in srgb, var(--brand-accent) 30%, transparent);
+      background: var(--accent-soft);
+    }
+
+    .takeaway::before {
+      content: "";
+      align-self: stretch;
+      background: var(--brand-accent);
+    }
+
+    .takeaway p {
+      margin: 0;
+      font-size: 23px;
+      line-height: 1.48;
+      font-weight: 650;
+      letter-spacing: -.01em;
+    }
+
+    .visual {
+      min-height: 0;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 22px;
+      padding-top: 3px;
+    }
+
+    .visual__intro {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 28px;
+    }
+
+    .visual__intro h2 {
+      margin: 0;
+      font-size: 19px;
+      line-height: 1.25;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .visual__intro p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.4;
+      text-align: right;
+    }
+
+    .logic-grid {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .pillar {
+      position: relative;
+      min-width: 0;
+      padding: 25px 23px 23px;
+      display: grid;
+      grid-template-rows: auto auto minmax(0, 1fr) auto;
+      gap: 13px;
+      border: 1px solid var(--line);
+      background: rgb(255 255 255 / 45%);
+    }
+
+    .pillar__index {
+      display: inline-grid;
+      place-items: center;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      color: white;
+      background: var(--brand-primary);
+      font-size: 14px;
+      font-weight: 760;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .pillar h3 {
+      margin: 0;
+      font-size: 25px;
+      line-height: 1.22;
+      letter-spacing: -.02em;
+    }
+
+    .pillar p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.58;
+    }
+
+    .evidence {
+      align-self: end;
+      padding-top: 16px;
+      border-top: 1px solid var(--soft-line);
+    }
+
+    .evidence strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--brand-accent);
+      font-size: 14px;
+      line-height: 1.2;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .evidence span {
+      display: block;
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.42;
+      font-weight: 620;
+    }
+
+    .implication {
+      display: grid;
+      grid-template-columns: 130px minmax(0, 1fr);
+      gap: 20px;
+      align-items: center;
+      padding: 18px 22px;
+      color: white;
+      background: var(--brand-primary);
+    }
+
+    .implication__label {
+      color: color-mix(in srgb, white 68%, transparent);
+      font-size: 13px;
+      line-height: 1.2;
+      font-weight: 760;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+
+    .implication p {
+      margin: 0;
+      font-size: 19px;
+      line-height: 1.42;
+      font-weight: 620;
+    }
+
+    .footer {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 30px;
+      align-items: end;
+      padding-top: 17px;
+      border-top: 1px solid var(--line);
+    }
+
+    .source-note,
+    .generation-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .generation-note {
+      max-width: 350px;
+      text-align: right;
+    }
+
+    .site {
+      color: var(--ink);
+      font-weight: 650;
+    }
+
+    .poster[data-aspect="16:9"] {
+      padding: 46px 62px 32px;
+      gap: 16px;
+    }
+
+    .poster[data-aspect="16:9"] .header {
+      grid-template-columns: 8fr 4fr;
+      padding-bottom: 16px;
+    }
+
+    .poster[data-aspect="16:9"] .poster__title {
+      max-width: 1040px;
+      font-size: 49px;
+    }
+
+    .poster[data-aspect="16:9"] .takeaway {
+      padding: 13px 20px;
+    }
+
+    .poster[data-aspect="16:9"] .takeaway p {
+      font-size: 19px;
+    }
+
+    .poster[data-aspect="16:9"] .pillar {
+      padding: 18px 20px;
+      gap: 8px;
+    }
+
+    .poster[data-aspect="16:9"] .pillar h3 {
+      font-size: 22px;
+    }
+
+    .poster[data-aspect="16:9"] .pillar p {
+      font-size: 15px;
+      line-height: 1.44;
+    }
+
+    .poster[data-aspect="16:9"] .evidence {
+      padding-top: 9px;
+    }
+
+    .poster[data-aspect="16:9"] .implication {
+      padding: 12px 20px;
+    }
+
+    @media print {
+      html, body { background: transparent; }
+      .poster { box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <article class="poster" data-aspect="{{ASPECT}}">
+    <div class="topline">
+      <p class="eyebrow">Executive visual brief · {{ASPECT}}</p>
+      <div class="brand-lockup">
+        <img src="{{BRAND_LOGO_DATA_URL}}" alt="{{BRAND_NAME}} Logo">
+      </div>
+    </div>
+
+    <header class="header">
+      <h1 class="poster__title" data-audit="title">{{TITLE}}</h1>
+      <p class="deck" data-audit="description">
+        用一句结论统领页面，再用最少但充分的证据建立可信的阅读路径。
+      </p>
+    </header>
+
+    <section class="takeaway" aria-label="核心洞察">
+      <p data-audit="takeaway">
+        专业不是增加元素，而是让每个元素都承担信息职责，并删掉无法强化结论的内容。
+      </p>
+    </section>
+
+    <main class="visual" data-region="visual">
+      <div class="visual__intro">
+        <h2>Argument structure</h2>
+        <p>示例结构 · 请依据 brief 替换为真实内容</p>
+      </div>
+
+      <section class="logic-grid" aria-label="支撑逻辑">
+        <article class="pillar" data-primary-block>
+          <span class="pillar__index">01</span>
+          <h3 data-audit="label">先确定决策</h3>
+          <p data-audit="description">明确受众、使用场景，以及读者看完后需要改变的判断或行动。</p>
+          <div class="evidence">
+            <strong>Evidence</strong>
+            <span data-audit="label">受众与决策时刻</span>
+          </div>
+        </article>
+
+        <article class="pillar" data-primary-block>
+          <span class="pillar__index">02</span>
+          <h3 data-audit="label">再建立论证</h3>
+          <p data-audit="description">用一个核心结论和三至五条支撑逻辑，压缩而不是堆叠原始材料。</p>
+          <div class="evidence">
+            <strong>Evidence</strong>
+            <span data-audit="label">事实、机制与含义</span>
+          </div>
+        </article>
+
+        <article class="pillar" data-primary-block>
+          <span class="pillar__index">03</span>
+          <h3 data-audit="label">最后选择图形</h3>
+          <p data-audit="description">根据比较、因果、顺序或数量关系选择视觉语法，风格只服务于表达。</p>
+          <div class="evidence">
+            <strong>Evidence</strong>
+            <span data-audit="label">正确图形胜过装饰</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="implication" aria-label="行动含义">
+        <span class="implication__label">So what</span>
+        <p data-audit="description">在提交前完成自动审计与原图复核；任何溢出、伪数据或弱结论都必须返工。</p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p class="source-note" data-audit="source">
+        来源：请替换为真实来源、时间范围、单位与必要限定。
+      </p>
+      <p class="generation-note" data-audit="attribution">
+        {{COPYRIGHT}} · <span class="site">{{SITE}}</span>
+      </p>
+    </footer>
+  </article>
+
+  <script>
+    document.fonts.ready.finally(() => {
+      window.__INFOGRAPHIC_READY__ = true;
+    });
+  </script>
+</body>
+</html>
