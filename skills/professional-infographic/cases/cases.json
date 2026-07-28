@@ -1,0 +1,14 @@
+[
+  {
+    "type": "case",
+    "title": "咨询级方法论信息图",
+    "description": "将“专业信息图如何形成”压缩为一张 4:5 视觉论证：行动标题、三段支撑逻辑、质量门禁、LovStudio 品牌和来源完整保留。交付 2160×2700 PNG、可编辑 HTML、brief 与 audit.json；严格审计为 0 错误、0 警告。"
+  },
+  {
+    "type": "article",
+    "title": "查看严格审计通过的高清示例",
+    "url": "https://github.com/lovstudio/professional-infographic-skill/tree/main/examples/consulting-quality-loop",
+    "source": "LovStudio · editable example",
+    "cover": "https://raw.githubusercontent.com/lovstudio/professional-infographic-skill/main/examples/consulting-quality-loop/poster.png"
+  }
+]
