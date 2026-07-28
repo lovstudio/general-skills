@@ -1,98 +1,144 @@
 ---
 name: lovstudio-professional-infographic
 description: >
-  Turn the current conversation, a completed answer, Markdown, or source material
-  into a consulting-grade professional infographic with an editable HTML/SVG
-  source and a high-resolution PNG. Use for answer-first visual summaries,
-  strategy maps, executive one-pagers, data stories, matrices, roadmaps, and
-  systems diagrams. Also trigger when the user says "把以上内容做成专业信息图",
-  "一图总结", "生成咨询风格海报", "turn this into a professional infographic",
-  or "create a consulting-style visual summary".
+  Turn the current conversation, a completed answer, Markdown, research, or
+  source material into a consulting Exhibit-quality professional infographic
+  with an editable HTML/SVG source and high-resolution PNG. Use for
+  answer-first executive visuals, comparison or heat matrices, decision and
+  driver trees, 2x2 positioning maps, waterfalls, roadmaps, operating models,
+  and small-multiple data stories. Trigger when the user says "把以上内容做成专业信息图",
+  "一图总结", "生成咨询风格海报", "咨询 Exhibit", "turn this into a professional
+  infographic", or "create a consulting-style visual summary".
 license: MIT
-compatibility: >
-  Portable Agent Skills format. Requires Python 3.8+; PNG rendering and visual
-  audits require Playwright for Python and Chromium. Optional image-generation
-  capability may be used for text-free supporting illustrations. Brand assets,
-  design guides, and output paths resolve from CLI flags, environment variables,
-  or the shared user profile.
 metadata:
   author: lovstudio
-  version: "0.1.0"
-  tags: infographic consulting data-visualization poster html svg png
+  version: "0.2.0"
+  tags: infographic consulting exhibit data-visualization html svg png
 ---
 
-# Professional Infographic — Consulting-grade visual synthesis
+# Professional Infographic
 
-Convert dense material into one clear visual argument. The default is
-**code-rendered HTML/SVG**, not a text-heavy image-generation prompt. Image
-generation is reserved for supporting illustrations that contain no text,
-numbers, charts, logos, or citations.
+Build an evidence-led consulting Exhibit, not a decorated summary.
 
-`Professional infographic = defensible message + visual grammar + disciplined editing`
+Requires Python 3.8+. PNG rendering and browser audit require Playwright for
+Python and Chromium. Brand assets and output paths remain user-configurable.
+
+```text
+source
+→ decision and evidence graph
+→ action title
+→ semantic Exhibit template
+→ visible evidence + direct annotation
+→ code-rendered master
+→ technical + semantic gate
+→ human visual review
+```
+
+Default to a `16:9` master. Treat `4:5`, `1:1`, and `A4` as separately
+recomposed derivatives.
 
 ## Non-negotiable outcome
 
-Deliver a decision-ready one-pager, not decorated notes:
+Deliver:
 
-- one governing message that can be understood in five seconds;
-- a visual structure that explains why the message is true;
-- exact numbers, names, units, caveats, and sources;
-- editable `poster.html` plus high-resolution `poster.png`;
-- the resolved brand logo in the upper-right or lower-right;
-- a visible attribution such as
-  `本信息图由 LovStudio 的「专业信息图」Skill 生成`;
-- no overflow, placeholder copy, fabricated data, emoji, or generic AI decoration.
+- one action title that states a supported conclusion;
+- one dominant visual relationship that proves the title;
+- visible values, units, periods, definitions, caveats, and sources;
+- semantic color, position, length, shape, connection, order, or containment;
+- direct annotations at decision-changing evidence;
+- editable `poster.html` and high-resolution `poster.png`;
+- brand Logo at upper-right or lower-right;
+- attribution such as `本信息图由 LovStudio 的「专业信息图」Skill 生成`;
+- `brief.md`, `source.md`, and `audit.json`.
 
-## When to use
-
-- Turn the current conversation or a completed answer into a visual summary.
-- Convert research, strategy, product, process, or operating-model material
-  into an executive one-pager.
-- Produce a matrix, roadmap, issue tree, comparison, system map, metric story,
-  or portfolio view.
-
-Do not use this skill for a decorative social poster with no information
-structure, a full slide deck, or a faithful chart when the source data is
-missing.
+Reject generic card walls, prose tables, unsupported scores, oversized titles,
+decorative AI imagery, and any output that merely passes a technical audit.
 
 ## Required references
 
-Read only what the selected route needs:
+Read these before authoring:
 
-- Always read `references/consulting-standard.md`.
-- Always read `references/visual-grammar.md`.
-- Read `references/spec-schema.md` before creating project files.
-- Read `references/hybrid-rendering.md` only when a custom illustration may
-  materially improve comprehension.
-- Read `references/user-config.md` when brand or output configuration is not
-  already resolved.
+1. `references/exhibit-benchmark.md`
+2. `references/consulting-standard.md`
+3. `references/visual-grammar.md`
+4. `references/spec-schema.md`
 
-## Workflow (MANDATORY)
+Read `references/hybrid-rendering.md` only if a custom text-free illustration
+may materially improve comprehension. Read `references/user-config.md` when
+brand or output configuration is unresolved.
 
-Follow the steps in order. Do not jump directly from raw text to a poster.
+## Workflow
 
-### Step 0: Resolve the skill and source
+### 1. Preserve and scope the source
 
-Use `SKILL_DIR` when provided; otherwise infer the installed skill directory
-from the active skill context.
+If the user says “以上内容”, “当前结果”, or similar, use the current conversation
+result. Do not ask them to paste it again.
 
-If the user says “以上内容”, “当前结果”, “this”, or similar, use the current
-conversation result as the source. Do not ask the user to paste it again.
-Save the exact source as `source.md`; do not overwrite an existing project.
+Save exact input as `source.md`. Identify:
 
-### Step 1: Resolve brand configuration
+- audience and decision/use moment;
+- governing conclusion;
+- evidence type: qualitative, quantitative, or mixed;
+- material gaps that prevent a defensible chart;
+- what must be omitted to keep one argument.
+
+Split genuinely separate stories into separate Exhibits.
+
+### 2. Build `brief.md`
+
+Create an evidence graph before visual code:
+
+| ID | Claim / criterion | Exact evidence | Encoding | Annotation |
+|---|---|---|---|---|
+| C1 | | S1 | position / length / color / connection | |
+
+For every visible mark, record:
+
+- exact source and location;
+- unit, denominator, and period;
+- fact, estimate, assumption, or interpretation;
+- caveat.
+
+Do not invent proxy values. Label qualitative positions and judgments.
+
+### 3. Write the action title
+
+State subject + directional finding + implication. Put the decision-changing
+contrast early. Avoid topic labels and empty claims.
+
+The visual must prove this title. Do not add a separate takeaway band that
+repeats it.
+
+### 4. Select one semantic template
+
+Use `references/visual-grammar.md`.
+
+| Relationship | Template |
+|---|---|
+| Alternatives × consistent criteria | `comparison-matrix` |
+| Sequential constraints | `decision-tree` |
+| Result → drivers → subdrivers | `driver-tree` |
+| Two independent axes | `positioning-map` |
+| Additive value movement | `waterfall` |
+| Phases, milestones, gates | `roadmap` |
+| Actors, capabilities, flows, outcomes | `operating-model` |
+| Repeated comparison on one scale | `small-multiples` |
+
+Use a single user-choice prompt only when two materially different templates
+remain plausible. Pre-fill the recommendation, two alternatives, master aspect,
+and brand. Do not re-ask explicit choices.
+
+### 5. Resolve brand configuration
 
 Resolution order:
 
 1. explicit `--brand-profile`;
 2. `LOVSTUDIO_PROFESSIONAL_INFOGRAPHIC_BRAND_PROFILE`;
 3. `LOVSTUDIO_SKILLS_BRAND_PROFILE`;
-4. `brand.profile` in
-   `${LOVSTUDIO_SKILLS_PROFILE:-$HOME/.lovstudio/skills/profile.json}`;
-5. packaged LovStudio public default.
+4. `brand.profile` in the shared LovStudio profile;
+5. packaged public LovStudio default.
 
-If the resolved profile belongs to the user, use it. If no usable profile or
-logo exists, ask once and initialize one:
+Initialize only when none is usable:
 
 ```bash
 python3 "$SKILL_DIR/scripts/infographic_cli.py" init-brand \
@@ -101,123 +147,53 @@ python3 "$SKILL_DIR/scripts/infographic_cli.py" init-brand \
   --copyright "Generated by Brand's Professional Infographic Skill"
 ```
 
-Never hard-code a private workspace path into generated source or this skill.
+Never hard-code a private workspace path into the public Skill.
 
-### Step 2: Build the message architecture
-
-Create `brief.md` before any visual code. Apply the standard in
-`references/consulting-standard.md` and include:
-
-1. audience and decision/use moment;
-2. one-sentence governing message;
-3. 3–5 supporting claims in logical order;
-4. evidence ledger with exact source text for every number or quote;
-5. assumptions, uncertainty, and missing evidence;
-6. visual job: compare, explain, locate, sequence, quantify, or show causality;
-7. what will be deliberately omitted.
-
-If the source does not support a numeric chart, use a conceptual diagram.
-Never invent proxy numbers merely to make the poster look analytical.
-
-### Step 3: Select visual grammar
-
-Use `references/visual-grammar.md` to select one primary archetype and at most
-one secondary device. The information structure chooses the visual form.
-Styling preferences must not override semantic fit.
-
-Default to one of:
-
-- argument map / issue tree;
-- process or roadmap;
-- two-column comparison;
-- 2×2 matrix;
-- system or operating-model map;
-- metric story;
-- portfolio / landscape;
-- flywheel / feedback loop.
-
-Avoid “bento grid” as a catch-all. It is allowed only when the content is
-genuinely modular and no causal or comparative relationship dominates.
-
-### Step 4: Confirm options before execution
-
-**Use one `AskUserQuestion` call before scaffolding or rendering.**
-
-Context-aware pre-fill is mandatory. Ask only for unresolved choices:
-
-- recommended visual structure, with 2 alternatives and short rationales;
-- aspect ratio: `4:5` editorial, `16:9` presentation, `1:1` social, or `A4`;
-- target audience only when it cannot be inferred;
-- resolved brand only when multiple profiles are plausible.
-
-If the user explicitly supplied a choice, do not ask again.
-
-Choice mapping:
-
-| User choice | Execution mapping |
-|---|---|
-| Recommended visual structure | Record under `brief.md` → `Visual job`; implement in `poster.html` |
-| `4:5`, `16:9`, `1:1`, or `A4` | `scaffold --aspect <value>` |
-| Brand profile | `scaffold --brand-profile <path>` |
-| Audience | Record under `brief.md` → `Audience and decision` |
-
-### Step 5: Scaffold the editable project
+### 6. Scaffold the selected Exhibit
 
 ```bash
 python3 "$SKILL_DIR/scripts/infographic_cli.py" scaffold \
-  --title "<working title>" \
+  --title "<action title>" \
   --source "<source path>" \
-  --aspect 4:5 \
+  --template comparison-matrix \
+  --mode qualitative \
+  --aspect 16:9 \
   --output-dir "<project directory>" \
   --brand-profile "<brand.json>"
 ```
 
-This creates a non-destructive project with:
+The template is a semantic skeleton, not finished design. Replace every
+placeholder. Preserve `data-*` contracts so the audit can inspect the visual
+argument.
 
-```text
-<project>/
-├── source.md
-├── brief.md
-├── poster.html
-├── project.json
-└── assets/
-```
+### 7. Author the Exhibit
 
-### Step 6: Author the infographic
+Use HTML/CSS/SVG. Apply these rules:
 
-Start from `poster.html` and preserve its canvas, safe area, brand lockup, and
-footer contract. Replace the demonstration content with the approved brief.
+- keep header at 7%–18% of canvas area;
+- give the main visual 58%–82%;
+- use alignment and rules before containers;
+- attach evidence with `data-source-ref`;
+- declare visual variables with `data-encoding`;
+- mark plotted evidence, annotations, and the decision;
+- use a shared scale for comparisons;
+- label axes at both ends;
+- label branches and outcomes;
+- put units beside values;
+- make color encode one meaning;
+- keep source, caveats, brand, and attribution readable but subordinate.
 
-Code-rendering rules:
+Do not copy the scaffold text or geometry blindly. The source relationship
+determines exact composition.
 
-- use semantic HTML, CSS Grid/Flexbox, and inline SVG where useful;
-- use a 12-column mental grid and align every edge intentionally;
-- use an action title that states the conclusion, not merely the topic;
-- keep 3–7 primary visual blocks;
-- label data directly; put units next to values;
-- use one base color, one accent, and neutrals unless the brand guide requires
-  more;
-- use diagrams for relationships and charts for quantities;
-- retain small explanatory text only when it resolves ambiguity;
-- keep sources and qualifications visible but subordinate.
+### 8. Use image generation only as support
 
-For chart-heavy material, AntV Infographic may be used as an optional rendering
-primitive, but its template must sit inside the poster hierarchy; a stock
-template by itself is not a finished consulting infographic.
+Use the hybrid route only for a physical scene, object, or metaphor that cannot
+be communicated efficiently with geometry. The generated asset must contain no
+text, numbers, charts, logos, watermarks, or pseudo-UI. Keep all facts and labels
+in code.
 
-### Step 7: Use the hybrid route only when justified
-
-Read `references/hybrid-rendering.md`. Generate an illustration only when it
-communicates a concept that shapes and lines cannot. The generated asset must:
-
-- contain no text, letters, numbers, charts, trademarks, or logo;
-- use a plain or transparent background;
-- match the poster palette and lighting;
-- remain supporting evidence, never the source of factual information.
-
-Place all text, labels, data, branding, and citations in code.
-
-### Step 8: Render, audit, inspect, revise
+### 9. Render and run the machine gate
 
 ```bash
 python3 "$SKILL_DIR/scripts/infographic_cli.py" render \
@@ -228,37 +204,65 @@ python3 "$SKILL_DIR/scripts/infographic_cli.py" render \
 python3 "$SKILL_DIR/scripts/infographic_cli.py" audit \
   --input "<project>/poster.html" \
   --image "<project>/poster.png" \
+  --report "<project>/audit.json"
+```
+
+The audit checks:
+
+- template-specific semantic contract;
+- evidence linkage and unit requirements;
+- header, visual, footer, and generic-card area;
+- data points, annotations, decision markers, and encoding tokens;
+- low-occupancy blocks;
+- copy, overflow, contrast, images, logo, and PNG dimensions;
+- a 100-point machine proxy with an 85 threshold and critical-dimension floors.
+
+The proxy is not proof of professional quality.
+
+### 10. Inspect the rendered image
+
+Open `poster.png` at original detail and at thumbnail size. Review:
+
+1. Can the conclusion be repeated after five seconds?
+2. Does the visual prove it without reading every sentence?
+3. Does each color, position, length, shape, or connection have a named meaning?
+4. Are decisive differences directly annotated?
+5. Is there any large empty container or prose disguised as a chart?
+6. Are units, axes, branches, zones, source, and caveats explicit?
+7. Does it look commissioned rather than template-generated?
+
+Perform deliberate revisions until both the strict gate and visual review pass.
+Do not report success because `audit.json` contains zero technical errors.
+
+Record the exact reviewed image and concrete review evidence, then run the
+release gate:
+
+```bash
+python3 "$SKILL_DIR/scripts/infographic_cli.py" audit \
+  --input "<project>/poster.html" \
+  --image "<project>/poster.png" \
   --report "<project>/audit.json" \
+  --human-review passed \
+  --review-note "<what was verified at full size and thumbnail size>" \
   --strict
 ```
 
-Then inspect `poster.png` with the available image-viewing tool at original
-detail. Check at both full-page and 100% scale:
+`passed` without both `--image` and a specific review note is invalid.
 
-1. Is the governing message obvious within five seconds?
-2. Does eye movement follow the intended argument?
-3. Is any text clipped, crowded, tiny, or semantically redundant?
-4. Would removing any element make the argument no weaker?
-5. Does the output look commissioned rather than template-generated?
-
-Revise and repeat. Do not deliver while a strict audit fails. Perform up to
-three deliberate revision rounds; if a source limitation prevents a pass,
-state the limitation instead of disguising it.
-
-### Step 9: Deliver
+### 11. Deliver
 
 Return clickable paths to:
 
-- `poster.png` — publication-ready image;
-- `poster.html` — editable source;
-- `brief.md` — message and evidence model;
-- `audit.json` — quality evidence;
-- `source.md` — preserved input.
+- `poster.png`
+- `poster.html`
+- `brief.md`
+- `audit.json`
+- `source.md`
 
-Summarize the selected visual grammar, aspect ratio, and brand. Mention any
-source limitations or intentionally omitted material.
+State the selected template, evidence mode, aspect, proxy score, and human-review
+result. Disclose assumptions and omitted material.
 
-## CLI reference
+## CLI
 
 ```bash
 python3 "$SKILL_DIR/scripts/infographic_cli.py" --help
@@ -268,14 +272,9 @@ python3 "$SKILL_DIR/scripts/infographic_cli.py" render --help
 python3 "$SKILL_DIR/scripts/infographic_cli.py" audit --help
 ```
 
-## Dependencies
-
-HTML scaffolding is standard-library only. PNG rendering and browser-based
-audits require:
+Rendering and browser audit require:
 
 ```bash
 python3 -m pip install "playwright>=1.45,<2"
 python3 -m playwright install chromium
 ```
-
-Google Chrome may be used as a fallback when installed locally.

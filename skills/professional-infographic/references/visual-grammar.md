@@ -1,129 +1,208 @@
-# Visual grammar and selection matrix
+# Exhibit grammar and semantic contracts
 
-Select a layout from the relationship in the source, not from aesthetic taste.
-Use one primary grammar and at most one secondary device.
+Choose a template from the information relationship. Style never overrides
+semantic fit. Use one primary grammar and, at most, one secondary annotation
+device.
 
-## Selection matrix
+## Contents
 
-| Information relationship | Primary grammar | Use when | Avoid when |
-|---|---|---|---|
-| Claim → reasons → evidence | Argument map / issue tree | The page must prove one conclusion | Claims overlap heavily or evidence is missing |
-| Before → intervention → after | Transformation bridge | A clear change mechanism exists | Only two static options are compared |
-| A vs B across matched criteria | Two-column comparison | Both sides share the same dimensions | More than two alternatives dominate |
-| High/low on two independent axes | 2×2 matrix | Placement matters more than exact values | Axes are vague or categories do not map cleanly |
-| Ordered phases or milestones | Process / roadmap | Sequence, gates, or maturity is the story | Steps can happen in any order |
-| Inputs → system → outputs | Operating-model / system map | Interfaces and flows explain the result | The story is only a list of components |
-| Cause → effect or reinforcing loops | Causal map / flywheel | Feedback explains growth or decline | Causality is speculative |
-| One metric with drivers and context | Metric story | Quantitative evidence leads the argument | Values are missing or incomparable |
-| Many entities across dimensions | Portfolio / landscape | Classification or whitespace is the insight | The user needs a precise statistical chart |
-| Independent modules | Modular grid | Topics are genuinely peer-level | A causal, temporal, or comparative structure exists |
+1. Selection
+2. Shared DOM contract
+3. Eight template contracts
+4. Composition
+5. Template-specific visual review
 
-## Argument map / issue tree
+## Selection
 
-Best default for strategy and executive summaries.
-
-```text
-                      Governing message
-                             │
-         ┌───────────────────┼───────────────────┐
-      Claim 1             Claim 2             Claim 3
-         │                   │                   │
-      Evidence            Evidence            Action
-```
-
-Use consistent branches. If branches answer different questions, rewrite the
-logic or make the difference explicit.
-
-## Transformation bridge
-
-Use three clear zones:
-
-```text
-Current constraint → Change mechanism → Future state
-```
-
-The bridge must name the mechanism. A “before / after” pair without a mechanism
-is only a comparison.
-
-## Comparison
-
-Use identical row labels and aligned baselines. Highlight only the dimensions
-that change the decision. Do not turn two prose columns into a pseudo-chart.
-
-## 2×2 matrix
-
-Both axes must be:
-
-- independent;
-- directional;
-- named at both ends;
-- relevant to the decision.
-
-Label zones directly. Plot only defensible items. If coordinates are
-qualitative, say so in the source note.
-
-## Process / roadmap
-
-Differentiate:
-
-- **process** — repeatable steps;
-- **roadmap** — time-bound milestones;
-- **maturity path** — capability stages;
-- **funnel** — attrition or filtering.
-
-Do not use a funnel simply because the blocks get smaller.
-
-## System / operating model
-
-Separate actors, capabilities, flows, and outcomes. Use edge labels when the
-relationship is not self-evident. Prefer fewer well-labeled connections over a
-dense network.
-
-## Flywheel / feedback loop
-
-Every arrow must express a real causal or reinforcing relationship. If the last
-step does not strengthen the first, it is a cycle illustration, not a flywheel.
-
-## Metric story
-
-Use:
-
-- a headline number;
-- one comparison or trend;
-- 1–3 annotated drivers;
-- source, unit, and period.
-
-Choose chart form:
-
-| Question | Chart |
-|---|---|
-| How much across categories? | Sorted bars |
-| How did it change over time? | Line |
-| How does a whole divide? | Stacked bar; donut only for ≤5 simple parts |
-| How do two variables relate? | Scatter |
-| How does a value decompose? | Waterfall |
-| Where does conversion drop? | Funnel with actual stage values |
-
-## Composition rules
-
-- Establish a safe area of at least 6% of the short canvas edge.
-- Align to a 12-column mental grid.
-- Reserve 14–22% of height for header and takeaway.
-- Reserve 7–10% for sources, attribution, and brand lockup.
-- Give the main visual 60–72% of the canvas.
-- Maintain one obvious entry point and one reading direction.
-- Keep 3–7 primary blocks.
-- Use no more than two card styles and two connector styles.
-- Use color to encode one meaning consistently.
-
-## Aspect guidance
-
-| Aspect | Best use | Typical canvas |
+| Relationship | Template | Required visual job |
 |---|---|---|
-| `4:5` | Editorial/social one-pager | 1080 × 1350 |
-| `16:9` | Presentation and screen | 1600 × 900 |
-| `1:1` | Compact social summary | 1200 × 1200 |
-| `A4` | Printable handout | 1240 × 1754 |
+| Alternatives × consistent criteria | `comparison-matrix` | Encode aligned differences and a decision |
+| Sequential yes/no constraints | `decision-tree` | Route the reader through testable conditions |
+| Result → drivers → subdrivers | `driver-tree` | Decompose one outcome using consistent logic |
+| Entities on two independent axes | `positioning-map` | Reveal zones, clusters, whitespace, or a target position |
+| Start + gains − losses = end | `waterfall` | Explain value movement on one additive scale |
+| Time / maturity with dependencies | `roadmap` | Show phases, milestones, gates, and critical path |
+| Actors → capabilities → outcomes | `operating-model` | Explain interfaces, ownership, and flows |
+| Repeated comparison on one scale | `small-multiples` | Expose a pattern across comparable panels |
 
-Do not design one canvas and mechanically crop it into all ratios. Recompose
-the reading path for each format.
+Do not choose:
+
+- a matrix when criteria are not consistent;
+- a decision tree when branches are merely categories;
+- a driver tree when children do not explain the same parent metric;
+- a positioning map when axes are dependent or vague;
+- a waterfall when components are not additive;
+- a roadmap when there is no time, maturity, or dependency;
+- an operating model for a flat component list;
+- small multiples when scales or units differ.
+
+## Shared DOM contract
+
+The poster must declare:
+
+```html
+<article
+  class="poster"
+  data-template="comparison-matrix"
+  data-mode="qualitative"
+  data-aspect="16:9"
+>
+```
+
+Required shared semantics:
+
+- `[data-region="header"]`
+- `[data-region="visual"]`
+- `[data-region="footer"]`
+- `[data-primary-block]`
+- `[data-encoding="position color"]`
+- `[data-source-ref="S1"]`
+- `[data-annotation]`
+- `[data-decision]`
+
+Allowed encoding tokens:
+
+```text
+position length color shape connection order containment
+```
+
+Quantitative or mixed Exhibits also require `[data-unit]`.
+
+## Template contracts
+
+### `comparison-matrix`
+
+Minimum:
+
+- 3 `[data-entity]`;
+- 3 `[data-dimension]`;
+- 6 `[data-data-point]`;
+- 1 `[data-annotation]`;
+- 1 `[data-decision]`;
+- 2 encoding tokens.
+
+Use a shared row/column grammar. A cell must encode a value, category, or
+decision—not a paragraph. Highlight only decision-changing differences.
+
+### `decision-tree`
+
+Minimum:
+
+- 3 `[data-condition]`;
+- 4 `[data-branch]`;
+- 3 `[data-outcome]`;
+- 4 `[data-connector]`;
+- 1 `[data-decision]`;
+- 2 encoding tokens.
+
+Every condition must be testable. Label branches directly with yes/no or named
+states. Put outcomes at terminal nodes. A vertical stack of boxes with side
+arrows is not sufficient.
+
+### `driver-tree`
+
+Minimum:
+
+- 5 `[data-driver]`;
+- 3 distinct `[data-level]` values;
+- 4 `[data-connector]`;
+- 2 `[data-annotation]`;
+- 2 encoding tokens.
+
+All children of one parent must answer the same decomposition question. Mark
+assumptions when branches are not exhaustive or mutually exclusive.
+
+### `positioning-map`
+
+Minimum:
+
+- 2 `[data-axis]`;
+- 4 `[data-axis-end]`;
+- 4 `[data-zone]`;
+- 4 `[data-data-point]`;
+- 2 `[data-annotation]`;
+- 1 `[data-decision]`;
+- 2 encoding tokens.
+
+Name both axis ends and explain the units or qualitative basis. Label zones
+with business meaning. Plot direct labels; avoid large floating cards. Say
+explicitly when positions are judgment rather than measurement.
+
+### `waterfall`
+
+Minimum:
+
+- 4 `[data-data-point]`;
+- 1 `[data-baseline]`;
+- 1 `[data-unit]`;
+- 2 `[data-annotation]`;
+- 1 `[data-decision]`;
+- 2 encoding tokens.
+
+Use one additive unit and reconcile start to end. Encode positive and negative
+movement consistently. Annotate the largest driver or surprising offset.
+
+### `roadmap`
+
+Minimum:
+
+- 3 `[data-phase]`;
+- 4 `[data-milestone]`;
+- 2 `[data-gate]`;
+- 3 `[data-connector]`;
+- 1 `[data-decision]`;
+- 2 encoding tokens.
+
+Differentiate milestones from gates. Show dependencies or critical path. A
+calendar-colored task list is not a roadmap.
+
+### `operating-model`
+
+Minimum:
+
+- 2 `[data-actor]`;
+- 3 `[data-capability]`;
+- 3 `[data-flow]`;
+- 2 `[data-outcome]`;
+- 3 `[data-connector]`;
+- 2 `[data-annotation]`;
+- 2 encoding tokens.
+
+Actors, capabilities, flows, and outcomes need distinct visual grammar. Label
+non-obvious flows. Avoid all-to-all networks.
+
+### `small-multiples`
+
+Minimum:
+
+- 3 `[data-panel]`;
+- 6 `[data-data-point]`;
+- 1 `[data-unit]`;
+- 2 `[data-annotation]`;
+- 1 `[data-decision]`;
+- 2 encoding tokens.
+
+Use the same axes, period, unit, panel size, and encoding across every panel.
+Annotate the cross-panel pattern, not each obvious value.
+
+## Composition
+
+- Default to `16:9` at 1600 × 900 for the master Exhibit.
+- Keep header at 7%–18% of canvas area and the main visual at 58%–82%.
+- Use direct labels and thin rules instead of large card containers.
+- Use alignment before boxes; use boxes only for real grouping or state.
+- Keep brand and attribution subordinate.
+- Recompose `4:5`, `1:1`, and `A4` derivatives; never crop the master.
+
+## Visual review by template
+
+Ask:
+
+- Matrix: Can differences be scanned down columns without reading sentences?
+- Tree: Can every path be followed without guessing branch meaning?
+- Driver tree: Does each level answer one consistent “why/how much” question?
+- Positioning: Are axes independent, directional, and defensible?
+- Waterfall: Does every component reconcile mathematically?
+- Roadmap: Are gates and dependencies more visible than task descriptions?
+- Operating model: Are roles, capabilities, flows, and outcomes distinguishable?
+- Small multiples: Can the cross-panel pattern be seen before reading labels?

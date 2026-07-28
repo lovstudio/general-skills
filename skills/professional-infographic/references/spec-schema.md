@@ -1,5 +1,14 @@
 # Project and HTML contract
 
+## Contents
+
+1. Project structure
+2. `brief.md`
+3. `project.json`
+4. Brand profile
+5. Auditable HTML
+6. Readiness signal
+
 ## Project structure
 
 ```text
@@ -47,10 +56,12 @@ An evidence-ledger item should include:
 
 ```json
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "title": "Working title",
-  "aspect": "4:5",
-  "canvas": {"width": 1080, "height": 1350},
+  "aspect": "16:9",
+  "template": "comparison-matrix",
+  "evidence_mode": "qualitative",
+  "canvas": {"width": 1600, "height": 900},
   "brand_profile": "/resolved/path/brand.json",
   "source": "source.md",
   "brief": "brief.md",
@@ -86,18 +97,30 @@ logo path.
 Keep these selectors and attributes:
 
 - `.poster` — fixed canvas and screenshot target;
+- `.poster[data-template][data-mode][data-aspect]` — semantic template, evidence
+  mode, and canvas;
 - `.poster__title[data-audit="title"]` — governing message;
+- `[data-region="header"]` — compact action-title region;
 - `[data-region="visual"]` — main visual area;
+- `[data-region="footer"]` — notes and ownership;
 - `[data-primary-block]` — each main block;
+- `[data-encoding]` — space-separated visual variables such as `position color`;
+- `[data-data-point]` — plotted or encoded evidence;
+- `[data-annotation]` — explanation attached to a visual mark;
+- `[data-source-ref="S1"]` — evidence-ledger linkage;
+- `[data-decision]` — the mark or outcome that supports the action title;
 - `[data-audit="label"]` — module labels;
 - `[data-audit="description"]` — supporting copy;
+- `[data-audit="annotation"]` — direct annotation copy;
 - `.source-note[data-audit="source"]` — source and caveats;
 - `.brand-lockup img` — embedded brand logo;
 - `.generation-note[data-audit="attribution"]` — generation attribution.
 
-`audit` uses these selectors for copy budgets, missing elements, overflow, and
-contrast checks. Custom layouts may add selectors but must not remove the
-contract.
+Each template adds its own semantic selectors; read
+`references/visual-grammar.md`. `audit` checks semantic completeness, evidence
+linkage, header/visual area ratios, empty blocks, generic card area, copy
+budgets, overflow, contrast, and image integrity. Custom layouts may add
+selectors but must not remove the contract.
 
 ## Readiness signal
 

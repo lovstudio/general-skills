@@ -31,6 +31,97 @@ CANVASES: Dict[str, Tuple[int, int]] = {
     "A4": (1240, 1754),
 }
 
+TEMPLATE_NAMES = (
+    "comparison-matrix",
+    "decision-tree",
+    "driver-tree",
+    "positioning-map",
+    "waterfall",
+    "roadmap",
+    "operating-model",
+    "small-multiples",
+)
+
+ALLOWED_ENCODINGS = {
+    "position",
+    "length",
+    "color",
+    "shape",
+    "connection",
+    "order",
+    "containment",
+}
+
+TEMPLATE_CONTRACTS: Dict[str, Dict[str, int]] = {
+    "comparison-matrix": {
+        "entities": 3,
+        "dimensions": 3,
+        "dataPoints": 6,
+        "annotations": 1,
+        "decisionMarkers": 1,
+        "encodings": 2,
+    },
+    "decision-tree": {
+        "conditions": 3,
+        "branches": 4,
+        "outcomes": 3,
+        "connectors": 4,
+        "decisionMarkers": 1,
+        "encodings": 2,
+    },
+    "driver-tree": {
+        "drivers": 5,
+        "levels": 3,
+        "connectors": 4,
+        "annotations": 2,
+        "decisionMarkers": 1,
+        "encodings": 2,
+    },
+    "positioning-map": {
+        "axes": 2,
+        "axisEnds": 4,
+        "zones": 4,
+        "dataPoints": 4,
+        "annotations": 2,
+        "decisionMarkers": 1,
+        "encodings": 2,
+    },
+    "waterfall": {
+        "dataPoints": 4,
+        "baselines": 1,
+        "units": 1,
+        "annotations": 2,
+        "decisionMarkers": 1,
+        "encodings": 2,
+    },
+    "roadmap": {
+        "phases": 3,
+        "milestones": 4,
+        "gates": 2,
+        "connectors": 3,
+        "decisionMarkers": 1,
+        "encodings": 2,
+    },
+    "operating-model": {
+        "actors": 2,
+        "capabilities": 3,
+        "flows": 3,
+        "outcomes": 2,
+        "connectors": 3,
+        "annotations": 2,
+        "decisionMarkers": 1,
+        "encodings": 2,
+    },
+    "small-multiples": {
+        "panels": 3,
+        "dataPoints": 6,
+        "units": 1,
+        "annotations": 2,
+        "decisionMarkers": 1,
+        "encodings": 2,
+    },
+}
+
 REQUIRED_BRAND_FIELDS = (
     "name",
     "logo",
@@ -88,6 +179,12 @@ def write_json(path: Path, value: Dict[str, Any]) -> None:
     with path.open("w", encoding="utf-8") as handle:
         json.dump(value, handle, ensure_ascii=False, indent=2)
         handle.write("\n")
+
+
+def report_path_value(path: Path, report_path: Optional[Path]) -> str:
+    if report_path is None:
+        return str(path)
+    return os.path.relpath(path, report_path.parent)
 
 
 def shared_profile_path() -> Path:
@@ -245,10 +342,35 @@ def render_template(template: str, replacements: Dict[str, str]) -> str:
     return result
 
 
-def scaffold_brief(title: str) -> str:
+def load_visual_template(name: str) -> Tuple[str, str]:
+    path = ASSETS_DIR / "templates" / f"{name}.html"
+    if not path.is_file():
+        raise CliError(f"Visual template does not exist: {path}")
+    value = path.read_text(encoding="utf-8")
+    style_match = re.search(
+        r"<style\s+data-template-style>(.*?)</style>",
+        value,
+        re.DOTALL | re.IGNORECASE,
+    )
+    body_match = re.search(
+        r"<template\s+data-template-body>(.*?)</template>",
+        value,
+        re.DOTALL | re.IGNORECASE,
+    )
+    if not style_match or not body_match:
+        raise CliError(
+            f"Template {path.name} must contain data-template-style and "
+            "data-template-body blocks"
+        )
+    return style_match.group(1).strip(), body_match.group(1).strip()
+
+
+def scaffold_brief(title: str, template_name: str, mode: str) -> str:
     return f"""# Infographic brief
 
 Working title: {title}
+Template: {template_name}
+Evidence mode: {mode}
 
 ## Audience and decision
 
@@ -258,17 +380,21 @@ Working title: {title}
 
 ## Governing message
 
-Write one answer-first sentence supported by the source.
+Write one answer-first sentence supported by visible evidence. Do not repeat it
+in a separate takeaway band.
 
-## Supporting claims
+## Argument and evidence map
 
-1.
-2.
-3.
+| ID | Claim or decision criterion | Exact evidence | Visual encoding | Annotation |
+|---|---|---|---|---|
+| C1 | | | | |
+| C2 | | | | |
+| C3 | | | | |
 
 ## Evidence ledger
 
-- Claim:
+- Evidence ID:
+  - Supports claim:
   - Exact source:
   - Location:
   - Type: fact | estimate | assumption | interpretation
@@ -279,15 +405,35 @@ Write one answer-first sentence supported by the source.
 
 - None recorded yet.
 
-## Visual job
+## Exhibit specification
 
-- Primary relationship: compare | explain | locate | sequence | quantify | cause
-- Recommended grammar:
-- Secondary device, if any:
+- Primary relationship: compare | decide | decompose | locate | bridge | sequence | system | trend
+- Template: {template_name}
+- Evidence mode: {mode}
+- Required encodings:
+- Direct annotations:
+- Decision marker:
+- Source-reference mapping:
+
+## Copy map
+
+- Figure label:
+- Action title:
+- Optional deck:
+- Visual labels:
+- Source / note:
 
 ## Deliberate omissions
 
 - List material excluded to preserve a single visual argument.
+
+## Human review
+
+- [ ] The title states a non-obvious conclusion.
+- [ ] The visual proves the title rather than restating it.
+- [ ] Color, position, length, shape, or connection each has one explicit meaning.
+- [ ] Every plotted point or decision cell maps to evidence.
+- [ ] The Exhibit is legible at 100% and intelligible at thumbnail size.
 """
 
 
@@ -322,6 +468,7 @@ def scaffold(args: argparse.Namespace) -> int:
         )
 
     template = (ASSETS_DIR / "poster-template.html").read_text(encoding="utf-8")
+    template_style, visual_body = load_visual_template(args.template)
     replacements = {
         "TITLE": html.escape(title),
         "ASPECT": args.aspect,
@@ -337,19 +484,25 @@ def scaffold(args: argparse.Namespace) -> int:
         "FONT_FAMILY": safe_font_family(str(brand["font_family"])),
         "COPYRIGHT": html.escape(str(brand["copyright"])),
         "SITE": html.escape(str(brand.get("site", ""))),
+        "TEMPLATE_NAME": args.template,
+        "EVIDENCE_MODE": args.mode,
+        "TEMPLATE_STYLE": template_style,
+        "VISUAL_BODY": visual_body,
     }
     poster = render_template(template, replacements)
 
     (project_dir / "source.md").write_text(source_text, encoding="utf-8")
     (project_dir / "brief.md").write_text(
-        scaffold_brief(title),
+        scaffold_brief(title, args.template, args.mode),
         encoding="utf-8",
     )
     (project_dir / "poster.html").write_text(poster, encoding="utf-8")
     project = {
-        "schema_version": 1,
+        "schema_version": 2,
         "title": title,
         "aspect": args.aspect,
+        "template": args.template,
+        "evidence_mode": args.mode,
         "canvas": {"width": width, "height": height},
         "brand_profile": str(brand_path),
         "brand_name": brand["name"],
@@ -554,6 +707,54 @@ def browser_audit(input_path: Path, timeout_ms: int) -> Dict[str, Any]:
                     return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
                   }
 
+                  function areaRatio(element) {
+                    if (!element) return 0;
+                    const rect = element.getBoundingClientRect();
+                    return (rect.width * rect.height) / (posterRect.width * posterRect.height);
+                  }
+
+                  function occupancy(element) {
+                    const rect = element.getBoundingClientRect();
+                    const blockArea = Math.max(1, rect.width * rect.height);
+                    const marks = [...element.querySelectorAll(
+                      '[data-data-point], [data-annotation], [data-condition], ' +
+                      '[data-outcome], [data-driver], [data-milestone], [data-capability], ' +
+                      '[data-zone], [data-phase], [data-panel], ' +
+                      'svg text, svg rect, svg circle, svg path, svg line, h2, h3, p, span'
+                    )];
+                    let occupied = 0;
+                    for (const mark of marks) {
+                      const style = getComputedStyle(mark);
+                      if (style.display === 'none' || style.visibility === 'hidden') continue;
+                      const item = mark.getBoundingClientRect();
+                      const width = Math.max(
+                        0,
+                        Math.min(rect.right, item.right) - Math.max(rect.left, item.left)
+                      );
+                      const height = Math.max(
+                        0,
+                        Math.min(rect.bottom, item.bottom) - Math.max(rect.top, item.top)
+                      );
+                      occupied += width * height;
+                    }
+                    return Math.min(1, occupied / blockArea);
+                  }
+
+                  function visibleElements(selector) {
+                    return [...poster.querySelectorAll(selector)].filter((element) => {
+                      const style = getComputedStyle(element);
+                      const rect = element.getBoundingClientRect();
+                      return style.display !== 'none' &&
+                             style.visibility !== 'hidden' &&
+                             rect.width > 0 &&
+                             rect.height > 0;
+                    });
+                  }
+
+                  function visibleCount(selector) {
+                    return visibleElements(selector).length;
+                  }
+
                   const audited = [...document.querySelectorAll('[data-audit]')].map((el) => {
                     const rect = el.getBoundingClientRect();
                     const style = getComputedStyle(el);
@@ -603,16 +804,74 @@ def browser_audit(input_path: Path, timeout_ms: int) -> Dict[str, Any]:
                     naturalHeight: img.naturalHeight
                   }));
 
+                  const encodings = new Set();
+                  for (const element of visibleElements('[data-encoding]')) {
+                    for (const token of (element.dataset.encoding || '').split(/\\s+/)) {
+                      if (token) encodings.add(token);
+                    }
+                  }
+
+                  const blocks = visibleElements('[data-primary-block]').map((el) => ({
+                    occupancy: occupancy(el),
+                    areaRatio: areaRatio(el),
+                    text: (el.innerText || '').trim().slice(0, 80)
+                  }));
+                  const header = poster.querySelector('[data-region="header"]');
+                  const visual = poster.querySelector('[data-region="visual"]');
+                  const footer = poster.querySelector('[data-region="footer"]');
+                  const cardNodes = [...poster.querySelectorAll(
+                    '.card, .pillar, .bento, [data-card]'
+                  )];
+                  const cardAreaRatio = cardNodes.reduce(
+                    (sum, el) => sum + areaRatio(el),
+                    0
+                  );
+
                   return {
                     missingPoster: false,
                     width: Math.round(posterRect.width),
                     height: Math.round(posterRect.height),
-                    titleCount: poster.querySelectorAll('.poster__title[data-audit="title"]').length,
-                    visualCount: poster.querySelectorAll('[data-region="visual"]').length,
-                    sourceCount: poster.querySelectorAll('.source-note[data-audit="source"]').length,
-                    attributionCount: poster.querySelectorAll('.generation-note[data-audit="attribution"]').length,
-                    brandLogoCount: poster.querySelectorAll('.brand-lockup img').length,
-                    primaryBlocks: poster.querySelectorAll('[data-primary-block]').length,
+                    template: poster.dataset.template || '',
+                    evidenceMode: poster.dataset.mode || '',
+                    titleCount: visibleCount('.poster__title[data-audit="title"]'),
+                    visualCount: visibleCount('[data-region="visual"]'),
+                    sourceCount: visibleCount('.source-note[data-audit="source"]'),
+                    attributionCount: visibleCount('.generation-note[data-audit="attribution"]'),
+                    brandLogoCount: visibleCount('.brand-lockup img'),
+                    primaryBlocks: visibleCount('[data-primary-block]'),
+                    headerAreaRatio: areaRatio(header),
+                    visualAreaRatio: areaRatio(visual),
+                    footerAreaRatio: areaRatio(footer),
+                    cardAreaRatio,
+                    blocks,
+                    encodings: [...encodings],
+                    dataPoints: visibleCount('[data-data-point]'),
+                    annotations: visibleCount('[data-annotation]'),
+                    sourceRefs: visibleCount('[data-source-ref]'),
+                    decisionMarkers: visibleCount('[data-decision]'),
+                    entities: visibleCount('[data-entity]'),
+                    dimensions: visibleCount('[data-dimension]'),
+                    conditions: visibleCount('[data-condition]'),
+                    branches: visibleCount('[data-branch]'),
+                    outcomes: visibleCount('[data-outcome]'),
+                    connectors: visibleCount('[data-connector]'),
+                    drivers: visibleCount('[data-driver]'),
+                    levels: new Set(
+                      visibleElements('[data-level]')
+                        .map((el) => el.getAttribute('data-level'))
+                    ).size,
+                    axes: visibleCount('[data-axis]'),
+                    axisEnds: visibleCount('[data-axis-end]'),
+                    zones: visibleCount('[data-zone]'),
+                    baselines: visibleCount('[data-baseline]'),
+                    units: visibleCount('[data-unit]'),
+                    phases: visibleCount('[data-phase]'),
+                    milestones: visibleCount('[data-milestone]'),
+                    gates: visibleCount('[data-gate]'),
+                    actors: visibleCount('[data-actor]'),
+                    capabilities: visibleCount('[data-capability]'),
+                    flows: visibleCount('[data-flow]'),
+                    panels: visibleCount('[data-panel]'),
                     text: poster.innerText.trim(),
                     audited,
                     containers,
@@ -640,6 +899,152 @@ def add_issue(
     items.append(item)
 
 
+def bounded_score(value: float, maximum: int) -> int:
+    return max(0, min(maximum, int(round(value))))
+
+
+def professional_proxy_score(
+    result: Dict[str, Any],
+    audited: Sequence[Dict[str, Any]],
+    errors: Sequence[Dict[str, str]],
+    warnings: Sequence[Dict[str, str]],
+    contract_passed: bool,
+) -> Dict[str, Any]:
+    title_items = [item for item in audited if item.get("kind") == "title"]
+    title_units = semantic_units(str(title_items[0].get("text", ""))) if title_items else 999
+    conclusion = 0
+    if result.get("titleCount") == 1:
+        conclusion += 8
+    if 8 <= title_units <= 34:
+        conclusion += 6
+    elif title_units < 44:
+        conclusion += 3
+    if int(result.get("decisionMarkers", 0)) >= 1:
+        conclusion += 6
+
+    data_points = int(result.get("dataPoints", 0))
+    source_refs = int(result.get("sourceRefs", 0))
+    annotations = int(result.get("annotations", 0))
+    evidence_marks = (
+        data_points
+        + int(result.get("outcomes", 0))
+        + int(result.get("drivers", 0))
+        + int(result.get("milestones", 0))
+        + int(result.get("capabilities", 0))
+    )
+    evidence = (
+        bounded_score(evidence_marks / 8 * 8, 8)
+        + bounded_score(source_refs / 4 * 8, 8)
+        + bounded_score(annotations / 2 * 4, 4)
+    )
+    if result.get("evidenceMode") in {"quantitative", "mixed"} and int(
+        result.get("units", 0)
+    ) == 0:
+        evidence = max(0, evidence - 5)
+
+    encoding_count = len(result.get("encodings", []))
+    encoding = (
+        bounded_score(encoding_count / 2 * 8, 8)
+        + (8 if contract_passed else 0)
+        + bounded_score(annotations / 2 * 4, 4)
+    )
+
+    visual_ratio = float(result.get("visualAreaRatio") or 0)
+    header_ratio = float(result.get("headerAreaRatio") or 0)
+    low_occupancy = sum(
+        1
+        for block in result.get("blocks", [])
+        if float(block.get("occupancy") or 0) < 0.18
+    )
+    density = 0
+    if 0.58 <= visual_ratio <= 0.82:
+        density += 5
+    elif visual_ratio >= 0.50:
+        density += 2
+    if 0.07 <= header_ratio <= 0.18:
+        density += 3
+    elif header_ratio <= 0.22:
+        density += 1
+    if low_occupancy == 0:
+        density += 3
+    elif low_occupancy == 1:
+        density += 1
+    density += bounded_score((data_points + annotations) / 10 * 4, 4)
+
+    copy_issue_codes = {
+        "empty-copy",
+        "placeholder-copy",
+        "title-length",
+        "takeaway-length",
+        "label-length",
+        "description-length",
+        "copy-density",
+    }
+    copy_issues = [
+        issue
+        for issue in [*errors, *warnings]
+        if str(issue.get("code")) in copy_issue_codes
+    ]
+    copy_score = (5 if not copy_issues else 1) + bounded_score(annotations / 3 * 5, 5)
+
+    technical_codes = {
+        "out-of-bounds",
+        "container-overflow",
+        "container-out-of-bounds",
+        "font-size",
+        "contrast",
+        "broken-image",
+        "canvas-size",
+    }
+    technical_issues = [
+        issue for issue in errors if str(issue.get("code")) in technical_codes
+    ]
+    layout = 6 if not technical_issues else max(0, 6 - len(technical_issues) * 2)
+    layout += 2 if float(result.get("cardAreaRatio") or 0) <= 0.35 else 0
+    layout += 2 if low_occupancy == 0 else 0
+
+    trust = 0
+    if result.get("sourceCount") == 1 and source_refs >= 1:
+        trust += 2
+    if result.get("brandLogoCount") == 1:
+        trust += 1
+    if result.get("attributionCount") == 1:
+        trust += 1
+    if source_refs >= 2:
+        trust += 1
+
+    dimensions = {
+        "core_conclusion": min(20, conclusion),
+        "evidence_quality": min(20, evidence),
+        "visual_encoding": min(20, encoding),
+        "information_density": min(15, density),
+        "copy_and_annotations": min(10, copy_score),
+        "layout_and_type": min(10, layout),
+        "source_and_brand": min(5, trust),
+    }
+    critical_minimums = {
+        "core_conclusion": 16,
+        "evidence_quality": 12,
+        "visual_encoding": 14,
+        "information_density": 10,
+    }
+    critical_failures = [
+        key
+        for key, minimum in critical_minimums.items()
+        if int(dimensions.get(key, 0)) < minimum
+    ]
+    total = sum(dimensions.values())
+    return {
+        "total": total,
+        "threshold": 85,
+        "dimensions": dimensions,
+        "critical_minimums": critical_minimums,
+        "critical_failures": critical_failures,
+        "machine_proxy_only": True,
+        "human_review_required": True,
+    }
+
+
 def audit(args: argparse.Namespace) -> int:
     input_path = expand_path(args.input)
     if not input_path.is_file():
@@ -647,6 +1052,7 @@ def audit(args: argparse.Namespace) -> int:
     markup = input_path.read_text(encoding="utf-8")
     aspect = detect_aspect(markup)
     expected_width, expected_height = CANVASES[aspect]
+    report_path = expand_path(args.report) if args.report else None
     result = browser_audit(input_path, args.timeout)
     errors: List[Dict[str, str]] = []
     warnings: List[Dict[str, str]] = []
@@ -682,19 +1088,144 @@ def audit(args: argparse.Namespace) -> int:
                 selector,
             )
 
+    template_name = str(result.get("template", "")).strip()
+    evidence_mode = str(result.get("evidenceMode", "")).strip()
+    contract_passed = True
+    if template_name not in TEMPLATE_CONTRACTS:
+        contract_passed = False
+        add_issue(
+            errors,
+            "template-contract",
+            "Set .poster data-template to a supported semantic Exhibit template",
+            ".poster",
+        )
+    if evidence_mode not in {"qualitative", "quantitative", "mixed"}:
+        add_issue(
+            errors,
+            "evidence-mode",
+            "Set .poster data-mode to qualitative, quantitative, or mixed",
+            ".poster",
+        )
+
+    encodings = [str(value) for value in result.get("encodings", [])]
+    invalid_encodings = sorted(set(encodings) - ALLOWED_ENCODINGS)
+    if invalid_encodings:
+        contract_passed = False
+        add_issue(
+            errors,
+            "encoding-token",
+            "Unsupported visual encoding token(s): " + ", ".join(invalid_encodings),
+            "[data-encoding]",
+        )
+
+    if template_name in TEMPLATE_CONTRACTS:
+        for metric, minimum in TEMPLATE_CONTRACTS[template_name].items():
+            actual = len(encodings) if metric == "encodings" else int(result.get(metric, 0))
+            if actual < minimum:
+                contract_passed = False
+                add_issue(
+                    errors,
+                    "semantic-contract",
+                    f"{template_name} requires at least {minimum} {metric}; found {actual}",
+                    f"[data-template='{template_name}']",
+                )
+
+    if int(result.get("sourceRefs", 0)) < 1:
+        add_issue(
+            errors,
+            "evidence-linkage",
+            "At least one visible mark must map to evidence with data-source-ref",
+            "[data-source-ref]",
+        )
+    if evidence_mode in {"quantitative", "mixed"} and int(result.get("units", 0)) < 1:
+        add_issue(
+            errors,
+            "missing-unit",
+            f"{evidence_mode} Exhibits require at least one visible data-unit",
+            "[data-unit]",
+        )
+
+    header_ratio = float(result.get("headerAreaRatio") or 0)
+    visual_ratio = float(result.get("visualAreaRatio") or 0)
+    if header_ratio > 0.20:
+        add_issue(
+            errors,
+            "header-area",
+            f"Header occupies {header_ratio:.1%} of the canvas; maximum is 20%",
+            "[data-region='header']",
+        )
+    elif header_ratio > 0.18:
+        add_issue(
+            warnings,
+            "header-area",
+            f"Header occupies {header_ratio:.1%}; target range is 7%–18%",
+            "[data-region='header']",
+        )
+    if visual_ratio < 0.52:
+        add_issue(
+            errors,
+            "visual-area",
+            f"Main visual occupies only {visual_ratio:.1%} of the canvas; minimum is 52%",
+            "[data-region='visual']",
+        )
+    elif visual_ratio < 0.58:
+        add_issue(
+            warnings,
+            "visual-area",
+            f"Main visual occupies {visual_ratio:.1%}; target is at least 58%",
+            "[data-region='visual']",
+        )
+
+    card_area_ratio = float(result.get("cardAreaRatio") or 0)
+    if card_area_ratio > 0.55:
+        add_issue(
+            errors,
+            "card-wall",
+            f"Generic card-like containers occupy {card_area_ratio:.1%} of the canvas",
+            ".card, .pillar, .bento, [data-card]",
+        )
+    elif card_area_ratio > 0.35:
+        add_issue(
+            warnings,
+            "card-wall",
+            f"Generic card-like containers occupy {card_area_ratio:.1%}; verify they encode meaning",
+            ".card, .pillar, .bento, [data-card]",
+        )
+
+    low_occupancy_blocks = [
+        block
+        for block in result.get("blocks", [])
+        if float(block.get("occupancy") or 0) < 0.18
+        and float(block.get("areaRatio") or 0) > 0.04
+    ]
+    if len(low_occupancy_blocks) >= 2:
+        add_issue(
+            errors,
+            "empty-blocks",
+            f"{len(low_occupancy_blocks)} large primary blocks have less than 18% encoded occupancy",
+            "[data-primary-block]",
+        )
+    elif low_occupancy_blocks:
+        add_issue(
+            warnings,
+            "empty-block",
+            "A large primary block has less than 18% encoded occupancy",
+            "[data-primary-block]",
+        )
+
     primary_blocks = int(result.get("primaryBlocks", 0))
-    if primary_blocks < 2 or primary_blocks > 7:
+    if primary_blocks < 1 or primary_blocks > 8:
         add_issue(
             errors,
             "primary-block-count",
-            f"Primary visual blocks must be between 2 and 7; found {primary_blocks}",
+            f"Primary visual blocks must be between 1 and 8; found {primary_blocks}",
             "[data-primary-block]",
         )
-    elif primary_blocks < 3 or primary_blocks > 5:
+    elif primary_blocks > 5:
         add_issue(
             warnings,
             "primary-block-count",
-            f"Primary visual blocks are strongest at 3–5; found {primary_blocks}",
+            f"More than five primary blocks needs a clear shared scale; found {primary_blocks}",
             "[data-primary-block]",
         )
 
@@ -715,10 +1246,11 @@ def audit(args: argparse.Namespace) -> int:
         )
 
     text_limits = {
-        "title": (24, 34),
+        "title": (28, 42),
         "takeaway": (55, 85),
-        "label": (10, 16),
-        "description": (32, 48),
+        "label": (12, 20),
+        "description": (32, 56),
+        "annotation": (18, 28),
     }
     for item in result.get("audited", []):
         kind = str(item.get("kind", ""))
@@ -750,11 +1282,12 @@ def audit(args: argparse.Namespace) -> int:
                 f"[data-audit='{kind}']",
             )
         font_size = float(item.get("fontSize") or 0)
-        if font_size < 12:
+        minimum_font_size = 10 if kind in {"source", "attribution"} else 11
+        if font_size < minimum_font_size:
             add_issue(
                 errors,
                 "font-size",
-                f"Audited text is {font_size:.1f}px; minimum is 12px",
+                f"Audited text is {font_size:.1f}px; minimum is {minimum_font_size}px",
                 f"[data-audit='{kind}']",
             )
         contrast = item.get("contrast")
@@ -785,14 +1318,16 @@ def audit(args: argparse.Namespace) -> int:
                 str(container.get("name", "")),
             )
 
-    total_limits = {"4:5": 520, "16:9": 420, "1:1": 420, "A4": 680}
+    total_limits = {"4:5": 620, "16:9": 560, "1:1": 480, "A4": 760}
     total_units = semantic_units(full_text)
-    if total_units > total_limits[aspect]:
+    encoded_copy_allowance = min(int(result.get("dataPoints", 0)) * 5, 150)
+    effective_copy_limit = total_limits[aspect] + encoded_copy_allowance
+    if total_units > effective_copy_limit:
         add_issue(
             warnings,
             "copy-density",
             f"Poster has {total_units} semantic units; target maximum is "
-            f"{total_limits[aspect]} for {aspect}",
+            f"{effective_copy_limit} for {aspect} after encoded-mark allowance",
             ".poster",
         )
 
@@ -829,7 +1364,7 @@ def audit(args: argparse.Namespace) -> int:
         image_path = expand_path(args.image)
         image_width, image_height = png_dimensions(image_path)
         image_info = {
-            "path": str(image_path),
+            "path": report_path_value(image_path, report_path),
             "width": image_width,
             "height": image_height,
         }
@@ -847,10 +1382,65 @@ def audit(args: argparse.Namespace) -> int:
         else:
             image_info["scale"] = image_width // expected_width
 
+    quality_proxy = professional_proxy_score(
+        result,
+        result.get("audited", []),
+        errors,
+        warnings,
+        contract_passed,
+    )
+    if int(quality_proxy["total"]) < int(quality_proxy["threshold"]):
+        add_issue(
+            warnings,
+            "professional-score",
+            "Machine proxy score is "
+            f"{quality_proxy['total']}/{quality_proxy['threshold']}; "
+            "revise evidence, encoding, density, or annotations",
+            ".poster",
+        )
+    if quality_proxy["critical_failures"]:
+        add_issue(
+            warnings,
+            "critical-dimension",
+            "Critical quality dimension(s) below minimum: "
+            + ", ".join(quality_proxy["critical_failures"]),
+            ".poster",
+        )
+
+    if args.human_review == "pending":
+        add_issue(
+            warnings,
+            "human-review-pending",
+            "Rendered-image review is still pending",
+            ".poster",
+        )
+    elif args.human_review == "failed":
+        add_issue(
+            errors,
+            "human-review-failed",
+            args.review_note or "Rendered image failed human visual review",
+            ".poster",
+        )
+    elif not args.image:
+        add_issue(
+            errors,
+            "human-review-image",
+            "A passed human review requires --image so the reviewed artifact is explicit",
+            ".poster",
+        )
+    elif semantic_units(args.review_note or "") < 8:
+        add_issue(
+            errors,
+            "human-review-note",
+            "A passed human review requires a specific --review-note "
+            "covering the argument, visual encoding, and legibility",
+            ".poster",
+        )
+
     report: Dict[str, Any] = {
-        "schema_version": 1,
+        "schema_version": 2,
         "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
-        "input": str(input_path),
+        "input": report_path_value(input_path, report_path),
         "aspect": aspect,
         "canvas": {"width": expected_width, "height": expected_height},
         "image": image_info,
@@ -859,6 +1449,28 @@ def audit(args: argparse.Namespace) -> int:
             "semantic_units": total_units,
             "audited_elements": len(result.get("audited", [])),
             "images": len(images),
+            "template": template_name,
+            "evidence_mode": evidence_mode,
+            "header_area_ratio": round(header_ratio, 4),
+            "visual_area_ratio": round(visual_ratio, 4),
+            "footer_area_ratio": round(float(result.get("footerAreaRatio") or 0), 4),
+            "card_area_ratio": round(card_area_ratio, 4),
+            "data_points": int(result.get("dataPoints", 0)),
+            "annotations": int(result.get("annotations", 0)),
+            "source_refs": int(result.get("sourceRefs", 0)),
+            "decision_markers": int(result.get("decisionMarkers", 0)),
+            "encodings": encodings,
+            "low_occupancy_blocks": len(low_occupancy_blocks),
+        },
+        "quality_proxy": quality_proxy,
+        "human_review": {
+            "required": True,
+            "status": args.human_review,
+            "note": args.review_note
+            or (
+                "Automatic audit cannot judge whether the argument is true, "
+                "the title is insightful, or the visual feels commissioned."
+            ),
         },
         "errors": errors,
         "warnings": warnings,
@@ -866,12 +1478,13 @@ def audit(args: argparse.Namespace) -> int:
         "strict": bool(args.strict),
     }
 
-    if args.report:
-        write_json(expand_path(args.report), report)
+    if report_path:
+        write_json(report_path, report)
 
     print(
         f"Audit {report['status'].upper()}: "
-        f"{len(errors)} error(s), {len(warnings)} warning(s)"
+        f"{len(errors)} error(s), {len(warnings)} warning(s), "
+        f"quality proxy {quality_proxy['total']}/100"
     )
     for label, issues in (("ERROR", errors), ("WARN", warnings)):
         for issue in issues:
@@ -926,7 +1539,20 @@ def parser() -> argparse.ArgumentParser:
     scaffold_parser.add_argument(
         "--aspect",
         choices=list(CANVASES),
-        default="4:5",
+        default="16:9",
+        help="16:9 is the default consulting Exhibit; other ratios are derivatives.",
+    )
+    scaffold_parser.add_argument(
+        "--template",
+        choices=TEMPLATE_NAMES,
+        required=True,
+        help="Semantic Exhibit template selected from the source relationship.",
+    )
+    scaffold_parser.add_argument(
+        "--mode",
+        choices=("qualitative", "quantitative", "mixed"),
+        required=True,
+        help="Evidence mode; controls required units and source semantics.",
     )
     scaffold_parser.add_argument(
         "--output-dir",
@@ -957,6 +1583,16 @@ def parser() -> argparse.ArgumentParser:
         "--strict",
         action="store_true",
         help="Treat editorial warnings as a non-zero result.",
+    )
+    audit_parser.add_argument(
+        "--human-review",
+        choices=("pending", "passed", "failed"),
+        default="pending",
+        help="Record rendered-image review status; strict release requires passed.",
+    )
+    audit_parser.add_argument(
+        "--review-note",
+        help="Concise evidence from the rendered-image review.",
     )
     audit_parser.set_defaults(handler=audit)
     return root
