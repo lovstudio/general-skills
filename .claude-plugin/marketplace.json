@@ -22,12 +22,13 @@
     {
       "name": "design",
       "source": "./",
-      "description": "Design — 3 free + 1 paid (activation required).",
+      "description": "Design — 4 free + 1 paid (activation required).",
       "category": "Design",
       "skills": [
         "./skills/maintain-partners",
         "./skills/find-logo",
         "./skills/event-poster",
+        "./skills/professional-infographic",
         "./skills/business-card"
       ],
       "strict": false

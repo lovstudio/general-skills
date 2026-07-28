@@ -13,6 +13,8 @@ skills:
   tagline_en: Generate images through the right mechanism — AI, code rendering, or
     prompt tuning.
   tagline_zh: 按需选择最合适的出图方式：端到端 AI、代码渲染或提示词精修。
+  related:
+  - professional-infographic
 - name: fact-check
   display_name: Fact Check
   repo: lovstudio/fact-check-skill
@@ -270,6 +272,22 @@ skills:
   tagline_en: Turn an event brief into a polished poster, ready to share or print for exhibitions.
   tagline_zh: 把活动信息一键变成高质感海报，可直接分享或用于线下展览。
   encrypted_bundle: true
+- name: professional-infographic
+  display_name: Professional Infographic
+  repo: lovstudio/professional-infographic-skill
+  name_zh: 专业信息图
+  paid: false
+  featured: true
+  category: Design
+  version: 0.1.0
+  description: Turn the current conversation, a completed answer, Markdown, or source
+    material into a consulting-grade one-page infographic with editable HTML/SVG,
+    high-resolution PNG, brand lockup, and strict visual QA.
+  tagline_en: Turn dense material into a consulting-grade visual argument with editable
+    source, high-resolution output, and evidence-backed quality gates.
+  tagline_zh: 把复杂上下文变成咨询级视觉论证，交付可编辑源文件、高清图片与可验证的质量门禁。
+  related:
+  - image-creator
 - name: visual-clone
   display_name: Visual Clone
   repo: lovstudio/visual-clone-skill
