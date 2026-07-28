@@ -43,7 +43,7 @@
 ## 技能列表
 
 <!-- COUNT:START -->
-> **35 个技能** — 29 个免费 + 6 个付费。
+> **36 个技能** — 30 个免费 + 6 个付费。
 <!-- COUNT:END -->
 
 <!-- SKILLS:START -->
@@ -51,6 +51,7 @@
 |---|---|---|---|
 | **通用** | | | |
 | ![Free](https://img.shields.io/badge/Free-green) | [`fact-check`](https://github.com/lovstudio/fact-check-skill) | [事实校验](https://github.com/lovstudio/fact-check-skill) | 用尽调思路确认事实：查一手资料、找反例、标证据等级，给出置信度和下一步。 |
+| ![Free](https://img.shields.io/badge/Free-green) | [`hanzi-lens`](https://github.com/lovstudio/hanzi-lens-skill) | [汉字镜](https://github.com/lovstudio/hanzi-lens-skill) | 用证据看懂一个汉字：读音、字形、字书、经典语境与专业信息图。 — 依赖: `professional-infographic` |
 | ![Free](https://img.shields.io/badge/Free-green) | [`image-creator`](https://github.com/lovstudio/image-creator-skill) | [图像工坊](https://github.com/lovstudio/image-creator-skill) | 按需选择最合适的出图方式：端到端 AI、代码渲染或提示词精修。 — 相关: `professional-infographic` |
 | **商务** | | | |
 | ![Free](https://img.shields.io/badge/Free-green) | [`bp`](https://github.com/lovstudio/bp-skill) | [BP 工具包](https://github.com/lovstudio/bp-skill) | 可组合的投资人 BP 工具包：大纲、PPT 制作、审稿润色既能单独使用，也能串成完整流程。 — 依赖: `bp-outline`, `bp-deck`, `bp-polish` |
