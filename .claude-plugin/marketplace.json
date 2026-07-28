@@ -11,10 +11,12 @@
     {
       "name": "general",
       "source": "./",
-      "description": "General — 2 free skills bundled together.",
+      "description": "General — 3 free skills bundled together.",
       "category": "General",
       "skills": [
         "./skills/image-creator",
+        "./skills/hanzi-lens",
+        "./skills/professional-infographic",
         "./skills/fact-check"
       ],
       "strict": false
