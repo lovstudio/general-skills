@@ -279,13 +279,13 @@ skills:
   paid: false
   featured: true
   category: Design
-  version: 0.1.0
-  description: Turn the current conversation, a completed answer, Markdown, or source
-    material into a consulting-grade one-page infographic with editable HTML/SVG,
-    high-resolution PNG, brand lockup, and strict visual QA.
-  tagline_en: Turn dense material into a consulting-grade visual argument with editable
-    source, high-resolution output, and evidence-backed quality gates.
-  tagline_zh: 把复杂上下文变成咨询级视觉论证，交付可编辑源文件、高清图片与可验证的质量门禁。
+  version: 0.2.0
+  description: Turn conversation, research, or source material into evidence-led
+    consulting Exhibits with semantic templates, editable HTML/SVG, high-resolution
+    PNG, and machine plus human quality gates.
+  tagline_en: Turn dense material into an evidence-led consulting Exhibit whose
+    title, visual encoding, sources, and decision meaning form one argument.
+  tagline_zh: 把复杂材料重构为证据驱动的咨询 Exhibit：行动标题、图形编码、来源与决策含义形成一条视觉论证。
   related:
   - image-creator
 - name: visual-clone
