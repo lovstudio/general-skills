@@ -43,7 +43,7 @@
 ## 技能列表
 
 <!-- COUNT:START -->
-> **34 个技能** — 28 个免费 + 6 个付费。
+> **35 个技能** — 29 个免费 + 6 个付费。
 <!-- COUNT:END -->
 
 <!-- SKILLS:START -->
@@ -51,7 +51,7 @@
 |---|---|---|---|
 | **通用** | | | |
 | ![Free](https://img.shields.io/badge/Free-green) | [`fact-check`](https://github.com/lovstudio/fact-check-skill) | [事实校验](https://github.com/lovstudio/fact-check-skill) | 用尽调思路确认事实：查一手资料、找反例、标证据等级，给出置信度和下一步。 |
-| ![Free](https://img.shields.io/badge/Free-green) | [`image-creator`](https://github.com/lovstudio/image-creator-skill) | [图像工坊](https://github.com/lovstudio/image-creator-skill) | 按需选择最合适的出图方式：端到端 AI、代码渲染或提示词精修。 |
+| ![Free](https://img.shields.io/badge/Free-green) | [`image-creator`](https://github.com/lovstudio/image-creator-skill) | [图像工坊](https://github.com/lovstudio/image-creator-skill) | 按需选择最合适的出图方式：端到端 AI、代码渲染或提示词精修。 — 相关: `professional-infographic` |
 | **商务** | | | |
 | ![Free](https://img.shields.io/badge/Free-green) | [`bp`](https://github.com/lovstudio/bp-skill) | [BP 工具包](https://github.com/lovstudio/bp-skill) | 可组合的投资人 BP 工具包：大纲、PPT 制作、审稿润色既能单独使用，也能串成完整流程。 — 依赖: `bp-outline`, `bp-deck`, `bp-polish` |
 | ![Free](https://img.shields.io/badge/Free-green) | [`bp-deck`](https://github.com/lovstudio/bp-skill) | [BP 幻灯片](https://github.com/lovstudio/bp-skill) | 把已经确认的 BP 大纲做成风格统一、图表专业的 PPTX、PDF 和全稿预览。 — 依赖: `any2deck` |
@@ -67,6 +67,7 @@
 | ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [`event-poster`](https://github.com/lovstudio/event-poster-skill) | [大师级海报生成](https://github.com/lovstudio/event-poster-skill) | 把活动信息一键变成高质感海报，可直接分享或用于线下展览。 |
 | ![Free](https://img.shields.io/badge/Free-green) | [`find-logo`](https://github.com/lovstudio/find-logo-skill) | [Logo 狩猎](https://github.com/lovstudio/find-logo-skill) | 按品牌名或网址抓取 logo，自动评分择优（偏好长条形 + 透明底），统一归档到本地，方便网站/PPT/海报罗列。 |
 | ![Free](https://img.shields.io/badge/Free-green) | [`maintain-partners`](https://github.com/lovstudio/maintain-partners-skill) | [合作伙伴维护](https://github.com/lovstudio/maintain-partners-skill) | 复用 find-logo 收集品牌 logo，标准化处理并接入官网 partners 区块，多语言全覆盖。 — 依赖: `find-logo` |
+| ![Free](https://img.shields.io/badge/Free-green) | [`professional-infographic`](https://github.com/lovstudio/professional-infographic-skill) | [专业信息图](https://github.com/lovstudio/professional-infographic-skill) | 把复杂上下文变成咨询级视觉论证，交付可编辑源文件、高清图片与可验证的质量门禁。 — 相关: `image-creator` |
 | ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [`visual-clone`](https://github.com/lovstudio/visual-clone-skill) | [像素级海报复刻](https://github.com/lovstudio/visual-clone-skill) | 从参考图中提取设计要素，生成可复刻同款风格的指令。 |
 | **学术** | | | |
 | ![Free](https://img.shields.io/badge/Free-green) | [`thesis-polish`](https://github.com/lovstudio/thesis-polish-skill) | [论文润色](https://github.com/lovstudio/thesis-polish-skill) | MBA 论文全维度润色，对标国优标准，打磨语言、结构、论证与创新四个面。 |
