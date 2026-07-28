@@ -43,7 +43,7 @@ Skills marked ![Free](https://img.shields.io/badge/Free-green) are open source (
 ## Skills
 
 <!-- COUNT:START -->
-> **35 skills** — 29 Free + 6 Paid.
+> **36 skills** — 30 Free + 6 Paid.
 <!-- COUNT:END -->
 
 <!-- SKILLS:START -->
@@ -51,6 +51,7 @@ Skills marked ![Free](https://img.shields.io/badge/Free-green) are open source (
 |---|---|---|
 | **General** | | |
 | ![Free](https://img.shields.io/badge/Free-green) | [`fact-check`](https://github.com/lovstudio/fact-check-skill) | Verify claims like a careful researcher, with primary sources, counterexamples, confidence, and next steps. |
+| ![Free](https://img.shields.io/badge/Free-green) | [`hanzi-lens`](https://github.com/lovstudio/hanzi-lens-skill) | See one Chinese character through evidence — readings, form, history, classical context, meaning, and a professional visual. — requires: `professional-infographic` |
 | ![Free](https://img.shields.io/badge/Free-green) | [`image-creator`](https://github.com/lovstudio/image-creator-skill) | Generate images through the right mechanism — AI, code rendering, or prompt tuning. — related: `professional-infographic` |
 | **Business** | | |
 | ![Free](https://img.shields.io/badge/Free-green) | [`bp`](https://github.com/lovstudio/bp-skill) | A composable BP skill kit — use outline, deck, and polish alone or run the complete investor workflow. — requires: `bp-outline`, `bp-deck`, `bp-polish` |

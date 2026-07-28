@@ -15,6 +15,21 @@ skills:
   tagline_zh: 按需选择最合适的出图方式：端到端 AI、代码渲染或提示词精修。
   related:
   - professional-infographic
+- name: hanzi-lens
+  display_name: Hanzi Lens
+  repo: lovstudio/hanzi-lens-skill
+  name_zh: 汉字镜
+  paid: false
+  category: General
+  version: 0.1.0
+  description: Explain one Chinese character through verified readings, form analysis,
+    historical lexicography, classical usage, semantic modeling, and an audited
+    professional infographic.
+  tagline_en: See one Chinese character through evidence — readings, form, history,
+    classical context, meaning, and a professional visual.
+  tagline_zh: 用证据看懂一个汉字：读音、字形、字书、经典语境与专业信息图。
+  depends_on:
+  - professional-infographic
 - name: fact-check
   display_name: Fact Check
   repo: lovstudio/fact-check-skill
