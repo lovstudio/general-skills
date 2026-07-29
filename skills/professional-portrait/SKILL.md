@@ -18,7 +18,7 @@ compatibility: >
   built-in image tool. No Python dependency is required.
 metadata:
   author: lovstudio
-  version: "0.1.0"
+  version: "0.1.1"
   tags: portrait headshot retouch identity-preserve photo-editing
 ---
 

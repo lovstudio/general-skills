@@ -88,7 +88,7 @@ skills:
   name_zh: 职业形象照
   paid: false
   category: Design
-  version: 0.1.0
+  version: 0.1.1
   description: Turn one photo into a polished professional portrait while preserving
     identity, natural skin texture, and believable photographic detail.
   tagline_en: Turn one photo into a clean, identity-preserving professional portrait.

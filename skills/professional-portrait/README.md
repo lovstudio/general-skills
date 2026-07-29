@@ -1,6 +1,6 @@
 # lovstudio-professional-portrait
 
-![Version](https://img.shields.io/badge/version-0.1.0-CC785C)
+![Version](https://img.shields.io/badge/version-0.1.1-CC785C)
 
 把一张普通人像修成干净、自然、仍然像本人的职业形象照。
 
@@ -53,6 +53,13 @@ git clone https://github.com/lovstudio/professional-portrait-skill \
 - 先少量精修，再根据反馈增强一个维度。
 - 原图始终保留，结果使用新文件名保存。
 - 用户照片不会被自动发布为公开案例。
+
+## 真实案例
+
+下面展示一次经过本人明确同意公开的四阶段渐进精修：原图、净颜提亮、
+发型升级、职业形象照。
+
+![从普通照片到职业形象照的四阶段渐进精修](cases/professional-portrait-progress-16x9.png)
 
 ## 运行要求
 
