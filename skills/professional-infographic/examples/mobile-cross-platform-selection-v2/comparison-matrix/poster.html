@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>四类特殊约束各有优先路线；无特殊约束时，RN + Expo 是均衡默认</title>
+  <title>移动端跨平台技术选型指南：渠道、体验与团队约束对比</title>
   <style>
     :root {
       --brand-primary: #24324A;
@@ -41,8 +41,8 @@
       padding: 32px 54px 26px;
       overflow: hidden;
       display: grid;
-      grid-template-rows: 32px minmax(88px, auto) minmax(0, 1fr) 42px;
-      gap: 12px;
+      grid-template-rows: 32px minmax(88px, auto) minmax(0, 1fr) 48px 42px;
+      gap: 10px;
       background: var(--paper);
       box-shadow: 0 28px 70px rgb(18 28 45 / 16%);
     }
@@ -111,6 +111,31 @@
       position: relative;
       border-top: 1px solid var(--line);
       padding-top: 13px;
+    }
+
+    .recommendation {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: 116px minmax(0, 1fr);
+      gap: 18px;
+      align-items: center;
+      padding: 0 16px;
+      color: white;
+      background: var(--brand-primary);
+    }
+
+    .recommendation strong {
+      color: var(--brand-accent);
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .recommendation p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.3;
+      font-weight: 650;
     }
 
     .footer {
@@ -305,6 +330,16 @@
     text-transform: uppercase;
   }
 
+  .poster[data-title-mode="topic"] .matrix-readout {
+    color: var(--muted);
+    background: transparent;
+    border-top: 1px solid var(--line);
+  }
+
+  .poster[data-title-mode="topic"] .matrix-readout strong {
+    color: var(--brand-accent);
+  }
+
     .poster[data-aspect="4:5"],
     .poster[data-aspect="1:1"],
     .poster[data-aspect="A4"] {
@@ -333,6 +368,7 @@
     data-aspect="16:9"
     data-template="comparison-matrix"
     data-mode="qualitative"
+    data-title-mode="topic"
   >
     <div class="topline">
       <p class="figure-label">Exhibit 01 · 跨端选型决策矩阵</p>
@@ -342,9 +378,9 @@
     </div>
 
     <header class="header" data-region="header">
-      <h1 class="poster__title" data-audit="title">四类特殊约束各有优先路线；无特殊约束时，RN + Expo 是均衡默认</h1>
+      <h1 class="poster__title" data-audit="title">移动端跨平台技术选型指南：渠道、体验与团队约束对比</h1>
       <p class="deck" data-audit="description">
-        同维比较约束、机制、资产与代价；结论是场景适配，不是性能跑分。
+        同维比较 React Native、Flutter、KMP、uni-app／Taro 与 Capacitor；不做性能跑分。
       </p>
     </header>
 
@@ -412,11 +448,23 @@
     </div>
 
     <div class="matrix-readout" data-annotation>
-      <strong>Decision rule</strong>
-      <span data-audit="annotation">四类特殊约束先分流；均不命中，再选 RN + Expo。</span>
+      <strong>Reading order</strong>
+      <span data-audit="annotation">先看触发约束，再核对机制、资产与代价。</span>
     </div>
   </section>
     </main>
+
+    <section
+      class="recommendation"
+      data-region="recommendation"
+      data-audit="recommendation"
+      data-annotation
+      data-decision
+      data-source-ref="S1 S2 S3 S4 S5"
+    >
+      <strong>选型建议</strong>
+      <p>先按四类特殊约束分流；均不命中时，React Native + Expo 是均衡默认。</p>
+    </section>
 
     <footer class="footer" data-region="footer">
       <p class="source-note" data-audit="source">

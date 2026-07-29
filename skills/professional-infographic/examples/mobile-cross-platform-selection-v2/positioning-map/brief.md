@@ -1,6 +1,8 @@
 # Infographic brief
 
 Working title: 跨端路线不是一条性能榜：渠道广度与平台融合深度决定战略位置
+Title mode: action
+Tail recommendation: Not applicable; the action title carries the conclusion.
 Template: positioning-map
 Evidence mode: qualitative
 
@@ -13,6 +15,8 @@ Evidence mode: qualitative
 ## Governing message
 
 跨端路线沿“渠道广度 × 平台融合深度”形成不同主场；React Native + Expo 位于常规商业 App 的均衡位置。
+
+Presentation rule: 该图用于已有跨端选型上下文的管理层 Exhibit，因此保留结论型标题，不增加重复的尾部建议。
 
 ## Argument and evidence map
 

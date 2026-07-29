@@ -4,15 +4,16 @@ description: >
   Turn the current conversation, a completed answer, Markdown, research, or
   source material into a consulting Exhibit-quality professional infographic
   with an editable HTML/SVG source and high-resolution PNG. Use for
-  answer-first executive visuals, comparison or heat matrices, decision and
-  driver trees, 2x2 positioning maps, waterfalls, roadmaps, operating models,
-  and small-multiple data stories. Trigger when the user says "把以上内容做成专业信息图",
+  topic-led public visuals, answer-first executive Exhibits, comparison or heat
+  matrices, decision and driver trees, 2x2 positioning maps, waterfalls,
+  roadmaps, operating models, and small-multiple data stories. Trigger when the
+  user says "把以上内容做成专业信息图",
   "一图总结", "生成咨询风格海报", "咨询 Exhibit", "turn this into a professional
   infographic", or "create a consulting-style visual summary".
 license: MIT
 metadata:
   author: lovstudio
-  version: "0.2.0"
+  version: "0.3.0"
   tags: infographic consulting exhibit data-visualization html svg png
 ---
 
@@ -26,9 +27,10 @@ Python and Chromium. Brand assets and output paths remain user-configurable.
 ```text
 source
 → decision and evidence graph
-→ action title
+→ title mode + governing recommendation
 → semantic Exhibit template
 → visible evidence + direct annotation
+→ recommendation after evidence
 → code-rendered master
 → technical + semantic gate
 → human visual review
@@ -41,8 +43,9 @@ recomposed derivatives.
 
 Deliver:
 
-- one action title that states a supported conclusion;
-- one dominant visual relationship that proves the title;
+- one display title that makes the subject, purpose, or reader job clear;
+- one dominant visual relationship that supports a governing conclusion;
+- one evidence-backed recommendation after the main visual;
 - visible values, units, periods, definitions, caveats, and sources;
 - semantic color, position, length, shape, connection, order, or containment;
 - direct annotations at decision-changing evidence;
@@ -51,8 +54,11 @@ Deliver:
 - attribution such as `本信息图由 LovStudio 的「专业信息图」Skill 生成`;
 - `brief.md`, `source.md`, and `audit.json`.
 
-Reject generic card walls, prose tables, unsupported scores, oversized titles,
-decorative AI imagery, and any output that merely passes a technical audit.
+For a standalone executive Exhibit with known context, `action` title mode may
+state the conclusion at the top and omit the tail recommendation. Reject generic
+card walls, prose tables, unsupported scores, duplicated conclusions, oversized
+titles, decorative AI imagery, and any output that merely passes a technical
+audit.
 
 ## Required references
 
@@ -101,13 +107,20 @@ For every visible mark, record:
 
 Do not invent proxy values. Label qualitative positions and judgments.
 
-### 3. Write the action title
+### 3. Choose title mode and place the recommendation
 
-State subject + directional finding + implication. Put the decision-changing
-contrast early. Avoid topic labels and empty claims.
+Default to `topic` mode for public-facing infographics:
 
-The visual must prove this title. Do not add a separate takeaway band that
-repeats it.
+1. Header: explain the subject, purpose, or comparison job.
+2. Main visual: present the evidence relationship.
+3. Tail: state the recommendation, boundary, or next action.
+
+Use `action` mode only when the audience already knows the subject and expects
+an executive Exhibit. Then the title may state subject + directional finding +
+implication, and no separate recommendation band should repeat it.
+
+In either mode, avoid empty labels such as “趋势分析” without a reader job. Keep
+the recommendation linked to visible evidence and source IDs.
 
 ### 4. Select one semantic template
 
@@ -153,7 +166,9 @@ Never hard-code a private workspace path into the public Skill.
 
 ```bash
 python3 "$SKILL_DIR/scripts/infographic_cli.py" scaffold \
-  --title "<action title>" \
+  --title "<subject, purpose, or comparison job>" \
+  --title-mode topic \
+  --recommendation "<evidence-backed advice>" \
   --source "<source path>" \
   --template comparison-matrix \
   --mode qualitative \
@@ -176,6 +191,8 @@ Use HTML/CSS/SVG. Apply these rules:
 - attach evidence with `data-source-ref`;
 - declare visual variables with `data-encoding`;
 - mark plotted evidence, annotations, and the decision;
+- keep the recommendation after the visual and before the source footer;
+- map the recommendation to evidence with `data-source-ref`;
 - use a shared scale for comparisons;
 - label axes at both ends;
 - label branches and outcomes;
@@ -210,6 +227,7 @@ python3 "$SKILL_DIR/scripts/infographic_cli.py" audit \
 The audit checks:
 
 - template-specific semantic contract;
+- title mode, recommendation presence, placement, evidence linkage, and duplication;
 - evidence linkage and unit requirements;
 - header, visual, footer, and generic-card area;
 - data points, annotations, decision markers, and encoding tokens;
@@ -223,13 +241,14 @@ The proxy is not proof of professional quality.
 
 Open `poster.png` at original detail and at thumbnail size. Review:
 
-1. Can the conclusion be repeated after five seconds?
-2. Does the visual prove it without reading every sentence?
-3. Does each color, position, length, shape, or connection have a named meaning?
-4. Are decisive differences directly annotated?
-5. Is there any large empty container or prose disguised as a chart?
-6. Are units, axes, branches, zones, source, and caveats explicit?
-7. Does it look commissioned rather than template-generated?
+1. Can the reader state what the infographic is for after five seconds?
+2. Does the reading path move from topic to evidence to recommendation?
+3. Is the recommendation visible at the tail and supported by the visual?
+4. Does each color, position, length, shape, or connection have a named meaning?
+5. Are decisive differences directly annotated?
+6. Is there any large empty container or prose disguised as a chart?
+7. Are units, axes, branches, zones, source, and caveats explicit?
+8. Does it look commissioned rather than template-generated?
 
 Perform deliberate revisions until both the strict gate and visual review pass.
 Do not report success because `audit.json` contains zero technical errors.
@@ -259,8 +278,8 @@ Return clickable paths to:
 - `audit.json`
 - `source.md`
 
-State the selected template, evidence mode, aspect, proxy score, and human-review
-result. Disclose assumptions and omitted material.
+State the selected title mode, template, evidence mode, aspect, proxy score, and
+human-review result. Disclose assumptions and omitted material.
 
 ## CLI
 

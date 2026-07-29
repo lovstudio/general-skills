@@ -2,6 +2,24 @@
 
 All notable changes to this project are documented here.
 
+## [0.3.0] - 2026-07-29
+
+### Changed
+
+- Added explicit `topic` and `action` title modes; `topic` is now the default
+  for standalone, public-facing infographics.
+- Changed the default reading order to subject/purpose → visual evidence →
+  evidence-backed recommendation.
+- Added a shared tail recommendation region between the main visual and source
+  footer, with source linkage and duplication rules.
+- Extended the CLI with `--title-mode` and `--recommendation`, and upgraded
+  generated project metadata to schema version 3.
+- Extended strict audit and the quality proxy to check recommendation presence,
+  placement, evidence linkage, copy length, and title/recommendation role
+  separation.
+- Kept answer-first action titles as an opt-in mode for contextual executive
+  Exhibits without a repeated recommendation band.
+
 ## [0.2.0] - 2026-07-28
 
 ### Changed

@@ -1,6 +1,8 @@
 # Infographic brief
 
-Working title: 四类特殊约束各有优先路线；无特殊约束时，RN + Expo 是均衡默认
+Working title: 移动端跨平台技术选型指南：渠道、体验与团队约束对比
+Title mode: topic
+Tail recommendation: 先按四类特殊约束分流；均不命中时，React Native + Expo 是均衡默认。
 Template: comparison-matrix
 Evidence mode: qualitative
 
@@ -13,6 +15,8 @@ Evidence mode: qualitative
 ## Governing message
 
 小程序、Web 复用、自绘 UI、重原生四类特殊约束分别触发专用路线；若全部不命中，React Native + Expo 是常规商业 App 的均衡默认。
+
+Presentation rule: 顶部标题说明本图的选型用途与比较维度；具体建议位于矩阵之后、来源之前。
 
 ## Argument and evidence map
 
@@ -80,7 +84,8 @@ Evidence mode: qualitative
 ## Copy map
 
 - Figure label: Exhibit 01 · 跨端选型决策矩阵
-- Action title: 四类特殊约束各有优先路线；无特殊约束时，RN + Expo 是均衡默认
+- Display title: 移动端跨平台技术选型指南：渠道、体验与团队约束对比
+- Tail recommendation: 先按四类特殊约束分流；均不命中时，React Native + Expo 是均衡默认。
 - Deck: 定性同维比较说明
 - Visual labels: 路线、触发约束、体验机制、可复用资产、主要代价、决策含义
 - Source / note: S1–S5，截至 2026-07
@@ -92,7 +97,9 @@ Evidence mode: qualitative
 
 ## Human review
 
-- [x] Action title states a non-obvious conclusion.
+- [x] Display title explains the infographic's subject and comparison job.
+- [x] Recommendation appears after the matrix and before the source footer.
+- [x] Title and recommendation play different roles.
 - [x] Matrix encodes aligned differences rather than paragraphs in cards.
 - [x] Color has one meaning: default path.
 - [x] Every row maps to S1–S5.

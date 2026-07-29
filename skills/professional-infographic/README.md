@@ -1,6 +1,6 @@
 # lovstudio-professional-infographic
 
-![Version](https://img.shields.io/badge/version-0.2.0-CC785C)
+![Version](https://img.shields.io/badge/version-0.3.0-CC785C)
 ![License](https://img.shields.io/badge/license-MIT-1F2937)
 
 把当前上下文、研究结论或文档，转成咨询 Exhibit：先建立可辩护的视觉论证，再生成可编辑 HTML/SVG 与高清 PNG。
@@ -9,7 +9,8 @@ Part of [lovstudio general skills](https://github.com/lovstudio/general-skills) 
 
 ## 它解决什么问题
 
-普通信息图生成器往往从“挑一个风格”开始，结果是装饰很多、结论很弱。本 Skill 从决策者需要理解的核心结论开始：
+普通信息图生成器往往从“挑一个风格”开始，结果是装饰很多、结论很弱。本 Skill
+先区分标题与建议的产品角色，再建立可辩护的视觉论证：
 
 ```text
 原始上下文
@@ -18,9 +19,11 @@ Part of [lovstudio general skills](https://github.com/lovstudio/general-skills) 
     ↓
 决策与证据图
     ↓
-行动标题 + 语义 Exhibit 模板
+主题标题 / 行动标题 + 语义 Exhibit 模板
     ↓
 直接标注的可编辑 Exhibit
+    ↓
+尾部建议（主题模式）
     ↓
 机器门禁 + 原图与缩略图人工复核
 ```
@@ -39,8 +42,10 @@ Part of [lovstudio general skills](https://github.com/lovstudio/general-skills) 
 
 ## 质量标准
 
-- 行动标题必须是有证据支持的结论，而不是主题标签；
-- 主视觉必须证明标题，而不是把标题改写成三张卡片；
+- 默认采用“主题模式”：顶部说明图的主题、用途或比较任务，建议放在主视觉之后；
+- 已有明确上下文的管理层 Exhibit 可采用“行动模式”：顶部直接给结论，并省略重复建议；
+- 主视觉必须支持最终建议或行动标题，而不是把文字改写成三张卡片；
+- 建议必须位于证据之后、来源之前，并映射到证据 ID；
 - 数字、坐标、分支、因果箭头和决策单元必须映射到证据；
 - 图形由信息关系决定，并满足模板专用语义契约；
 - 定量图必须有单位、口径、周期与共享尺度；
@@ -99,7 +104,9 @@ Create a consulting-style visual summary
 SKILL_DIR="${LOVSTUDIO_SKILLS_INSTALL_DIR:-$HOME/.agents/skills}/lovstudio-professional-infographic"
 
 python3 "$SKILL_DIR/scripts/infographic_cli.py" scaffold \
-  --title "渠道约束决定跨端路线；无特殊约束时 RN + Expo 是均衡默认" \
+  --title "移动端跨平台技术选型指南：渠道、性能与团队约束对比" \
+  --title-mode topic \
+  --recommendation "先按渠道与原生约束分流；均不命中时，RN + Expo 是均衡默认。" \
   --source report.md \
   --template comparison-matrix \
   --mode qualitative \
@@ -116,9 +123,13 @@ python3 "$SKILL_DIR/scripts/infographic_cli.py" audit \
   --image ./infographic-output/poster.png \
   --report ./infographic-output/audit.json \
   --human-review passed \
-  --review-note "已检查原图与缩略图；主视觉可证明标题，编码、来源、单位和注释均清晰。" \
+  --review-note "已检查原图与缩略图；主题、证据与尾部建议层级清晰，编码、来源、单位和注释均可读。" \
   --strict
 ```
+
+`topic` 是默认标题模式，阅读顺序是“主题 → 证据 → 建议”。如果图表嵌在已有上下文的
+管理层报告中，可改用 `--title-mode action`，此时标题直接给出结论，并且不传
+`--recommendation`。
 
 ## 品牌配置
 
@@ -177,7 +188,8 @@ infographic-output/
 - [awesome-design-md](https://github.com/VoltAgent/awesome-design-md)：品牌设计令牌与 UI 风格档案。
 - [baoyu-infographic](https://github.com/JimLiu/baoyu-skills/tree/main/skills/baoyu-infographic)：布局与视觉风格组合工作流。
 
-这些项目提供模板、语法或风格参考，但不能替代咨询 Exhibit 的证据链。本 Skill 重点补上行动标题、证据台账、图形语义、直接标注、决策含义和可验证质量门禁。
+这些项目提供模板、语法或风格参考，但不能替代咨询 Exhibit 的证据链。本 Skill
+重点补上标题模式、证据台账、图形语义、尾部建议、直接标注、决策含义和可验证质量门禁。
 
 ## License
 

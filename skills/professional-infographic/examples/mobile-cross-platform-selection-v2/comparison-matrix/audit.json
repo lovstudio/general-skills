@@ -1,6 +1,6 @@
 {
-  "schema_version": 2,
-  "generated_at": "2026-07-28T06:34:12.298577+00:00",
+  "schema_version": 3,
+  "generated_at": "2026-07-29T07:48:28.678697+00:00",
   "input": "poster.html",
   "aspect": "16:9",
   "canvas": {
@@ -15,19 +15,21 @@
   },
   "metrics": {
     "primary_blocks": 1,
-    "semantic_units": 564,
-    "audited_elements": 6,
+    "semantic_units": 580,
+    "audited_elements": 7,
     "images": 1,
     "template": "comparison-matrix",
     "evidence_mode": "qualitative",
+    "title_mode": "topic",
+    "recommendation_count": 1,
     "header_area_ratio": 0.1076,
-    "visual_area_ratio": 0.6509,
+    "visual_area_ratio": 0.597,
     "footer_area_ratio": 0.0435,
     "card_area_ratio": 0.0,
     "data_points": 20,
-    "annotations": 2,
-    "source_refs": 20,
-    "decision_markers": 1,
+    "annotations": 3,
+    "source_refs": 21,
+    "decision_markers": 2,
     "encodings": [
       "position",
       "color"
@@ -35,14 +37,14 @@
     "low_occupancy_blocks": 0
   },
   "quality_proxy": {
-    "total": 98,
+    "total": 100,
     "threshold": 85,
     "dimensions": {
       "core_conclusion": 20,
       "evidence_quality": 20,
       "visual_encoding": 20,
       "information_density": 15,
-      "copy_and_annotations": 8,
+      "copy_and_annotations": 10,
       "layout_and_type": 10,
       "source_and_brand": 5
     },
@@ -59,7 +61,7 @@
   "human_review": {
     "required": true,
     "status": "passed",
-    "note": "已检查原图与缩略图；矩阵可同维扫描，颜色仅编码默认路线，来源和注释清晰。"
+    "note": "已检查 3200×1800 原图与 480×270 缩略图：标题说明移动端跨平台选型主题与比较维度，矩阵提供同维证据，选型建议位于矩阵之后、来源之前；无双重结论带、溢出或断词。"
   },
   "errors": [],
   "warnings": [],

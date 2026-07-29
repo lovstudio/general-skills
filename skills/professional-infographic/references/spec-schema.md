@@ -41,6 +41,13 @@ Required headings:
 ## Deliberate omissions
 ```
 
+The brief must also record:
+
+- `Title mode: topic | action`
+- the display/action title;
+- the tail recommendation for `topic` mode;
+- why that recommendation belongs after the visual.
+
 An evidence-ledger item should include:
 
 ```markdown
@@ -56,8 +63,10 @@ An evidence-ledger item should include:
 
 ```json
 {
-  "schema_version": 2,
-  "title": "Working title",
+  "schema_version": 3,
+  "title": "What this infographic helps the reader decide",
+  "title_mode": "topic",
+  "recommendation": "Evidence-backed advice shown after the visual",
   "aspect": "16:9",
   "template": "comparison-matrix",
   "evidence_mode": "qualitative",
@@ -97,18 +106,22 @@ logo path.
 Keep these selectors and attributes:
 
 - `.poster` — fixed canvas and screenshot target;
-- `.poster[data-template][data-mode][data-aspect]` — semantic template, evidence
-  mode, and canvas;
-- `.poster__title[data-audit="title"]` — governing message;
-- `[data-region="header"]` — compact action-title region;
+- `.poster[data-template][data-mode][data-aspect][data-title-mode]` — semantic
+  template, evidence mode, canvas, and title strategy;
+- `.poster__title[data-audit="title"]` — subject/purpose in `topic` mode or the
+  governing conclusion in `action` mode;
+- `[data-region="header"]` — compact title and scope region;
 - `[data-region="visual"]` — main visual area;
+- `[data-region="recommendation"][data-audit="recommendation"]` — evidence-linked
+  tail advice required in `topic` mode and omitted in `action` mode;
 - `[data-region="footer"]` — notes and ownership;
 - `[data-primary-block]` — each main block;
 - `[data-encoding]` — space-separated visual variables such as `position color`;
 - `[data-data-point]` — plotted or encoded evidence;
 - `[data-annotation]` — explanation attached to a visual mark;
 - `[data-source-ref="S1"]` — evidence-ledger linkage;
-- `[data-decision]` — the mark or outcome that supports the action title;
+- `[data-decision]` — the mark, outcome, or tail recommendation that carries the
+  decision;
 - `[data-audit="label"]` — module labels;
 - `[data-audit="description"]` — supporting copy;
 - `[data-audit="annotation"]` — direct annotation copy;

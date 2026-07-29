@@ -1,6 +1,6 @@
 {
-  "schema_version": 2,
-  "generated_at": "2026-07-28T06:34:13.832550+00:00",
+  "schema_version": 3,
+  "generated_at": "2026-07-29T07:48:29.690701+00:00",
   "input": "poster.html",
   "aspect": "16:9",
   "canvas": {
@@ -20,6 +20,8 @@
     "images": 1,
     "template": "positioning-map",
     "evidence_mode": "qualitative",
+    "title_mode": "action",
+    "recommendation_count": 0,
     "header_area_ratio": 0.1076,
     "visual_area_ratio": 0.6509,
     "footer_area_ratio": 0.0435,
@@ -59,7 +61,7 @@
   "human_review": {
     "required": true,
     "status": "passed",
-    "note": "已检查原图与缩略图；双轴、轴端、区域、直接标签与执行结论均可辨，定性定位已明确披露。"
+    "note": "已检查 3200×1800 原图与 480×270 缩略图：action 模式标题直接给出跨端路线的战略结论，双轴、区域、五个点位与右侧读出共同支持标题，且未添加重复尾部建议；无溢出或断词。"
   },
   "errors": [],
   "warnings": [],

@@ -365,10 +365,64 @@ def load_visual_template(name: str) -> Tuple[str, str]:
     return style_match.group(1).strip(), body_match.group(1).strip()
 
 
-def scaffold_brief(title: str, template_name: str, mode: str) -> str:
+def recommendation_block(recommendation: str) -> str:
+    value = recommendation.strip() or (
+        "请替换：基于上方证据给出具体建议、适用条件或下一步行动。"
+    )
+    return f"""<section
+      class="recommendation"
+      data-region="recommendation"
+      data-audit="recommendation"
+      data-annotation
+      data-decision
+      data-source-ref="S1"
+    >
+      <strong>Recommendation</strong>
+      <p>{html.escape(value)}</p>
+    </section>"""
+
+
+def scaffold_brief(
+    title: str,
+    template_name: str,
+    mode: str,
+    title_mode: str,
+    recommendation: str,
+) -> str:
+    if title_mode == "topic":
+        tail_recommendation = recommendation or "Not written yet."
+    else:
+        tail_recommendation = "Not applicable; the action title carries the conclusion."
+    if title_mode == "topic":
+        message_guidance = """Use the display title to explain the infographic's subject, purpose, or
+reader job. Put the evidence-backed recommendation after the main visual so the
+reader encounters context first, evidence second, and advice last."""
+        copy_map = f"""- Figure label:
+- Display title: {title}
+- Optional deck:
+- Tail recommendation: {recommendation or "Write the evidence-backed advice here."}
+- Visual labels:
+- Source / note:"""
+        review_items = """- [ ] The title explains what the infographic is for or what it compares.
+- [ ] The recommendation appears after the evidence and before the source footer.
+- [ ] The recommendation is not duplicated in the title."""
+    else:
+        message_guidance = """Use one answer-first title supported by visible evidence. Do not add a
+separate recommendation band that repeats the same sentence."""
+        copy_map = f"""- Figure label:
+- Action title: {title}
+- Optional deck:
+- Visual labels:
+- Source / note:"""
+        review_items = """- [ ] The action title states a non-obvious conclusion.
+- [ ] The visual proves the title rather than restating it.
+- [ ] No separate recommendation band duplicates the title."""
+
     return f"""# Infographic brief
 
 Working title: {title}
+Title mode: {title_mode}
+Tail recommendation: {tail_recommendation}
 Template: {template_name}
 Evidence mode: {mode}
 
@@ -380,8 +434,7 @@ Evidence mode: {mode}
 
 ## Governing message
 
-Write one answer-first sentence supported by visible evidence. Do not repeat it
-in a separate takeaway band.
+{message_guidance}
 
 ## Argument and evidence map
 
@@ -417,11 +470,7 @@ in a separate takeaway band.
 
 ## Copy map
 
-- Figure label:
-- Action title:
-- Optional deck:
-- Visual labels:
-- Source / note:
+{copy_map}
 
 ## Deliberate omissions
 
@@ -429,8 +478,7 @@ in a separate takeaway band.
 
 ## Human review
 
-- [ ] The title states a non-obvious conclusion.
-- [ ] The visual proves the title rather than restating it.
+{review_items}
 - [ ] Color, position, length, shape, or connection each has one explicit meaning.
 - [ ] Every plotted point or decision cell maps to evidence.
 - [ ] The Exhibit is legible at 100% and intelligible at thumbnail size.
@@ -441,6 +489,12 @@ def scaffold(args: argparse.Namespace) -> int:
     title = args.title.strip()
     if not title:
         raise CliError("--title cannot be empty")
+    recommendation = (args.recommendation or "").strip()
+    if args.title_mode == "action" and recommendation:
+        raise CliError(
+            "--recommendation is only valid with --title-mode topic; "
+            "an action title already carries the recommendation"
+        )
     width, height = CANVASES[args.aspect]
     brand_path, brand, logo = load_brand(args.brand_profile)
 
@@ -471,6 +525,12 @@ def scaffold(args: argparse.Namespace) -> int:
     template_style, visual_body = load_visual_template(args.template)
     replacements = {
         "TITLE": html.escape(title),
+        "TITLE_MODE": args.title_mode,
+        "RECOMMENDATION_BLOCK": (
+            recommendation_block(recommendation)
+            if args.title_mode == "topic"
+            else ""
+        ),
         "ASPECT": args.aspect,
         "CANVAS_WIDTH": str(width),
         "CANVAS_HEIGHT": str(height),
@@ -493,13 +553,21 @@ def scaffold(args: argparse.Namespace) -> int:
 
     (project_dir / "source.md").write_text(source_text, encoding="utf-8")
     (project_dir / "brief.md").write_text(
-        scaffold_brief(title, args.template, args.mode),
+        scaffold_brief(
+            title,
+            args.template,
+            args.mode,
+            args.title_mode,
+            recommendation,
+        ),
         encoding="utf-8",
     )
     (project_dir / "poster.html").write_text(poster, encoding="utf-8")
     project = {
-        "schema_version": 2,
+        "schema_version": 3,
         "title": title,
+        "title_mode": args.title_mode,
+        "recommendation": recommendation,
         "aspect": args.aspect,
         "template": args.template,
         "evidence_mode": args.mode,
@@ -818,7 +886,15 @@ def browser_audit(input_path: Path, timeout_ms: int) -> Dict[str, Any]:
                   }));
                   const header = poster.querySelector('[data-region="header"]');
                   const visual = poster.querySelector('[data-region="visual"]');
+                  const recommendation = poster.querySelector(
+                    '[data-region="recommendation"][data-audit="recommendation"]'
+                  );
                   const footer = poster.querySelector('[data-region="footer"]');
+                  const visualRect = visual ? visual.getBoundingClientRect() : null;
+                  const recommendationRect = recommendation
+                    ? recommendation.getBoundingClientRect()
+                    : null;
+                  const footerRect = footer ? footer.getBoundingClientRect() : null;
                   const cardNodes = [...poster.querySelectorAll(
                     '.card, .pillar, .bento, [data-card]'
                   )];
@@ -833,7 +909,28 @@ def browser_audit(input_path: Path, timeout_ms: int) -> Dict[str, Any]:
                     height: Math.round(posterRect.height),
                     template: poster.dataset.template || '',
                     evidenceMode: poster.dataset.mode || '',
+                    titleMode: poster.dataset.titleMode || 'action',
+                    titleModeExplicit: Boolean(poster.dataset.titleMode),
                     titleCount: visibleCount('.poster__title[data-audit="title"]'),
+                    recommendationCount: visibleCount(
+                      '[data-region="recommendation"][data-audit="recommendation"]'
+                    ),
+                    recommendationAfterVisual: Boolean(
+                      visualRect &&
+                      recommendationRect &&
+                      recommendationRect.top >= visualRect.bottom - 2
+                    ),
+                    recommendationBeforeFooter: Boolean(
+                      recommendationRect &&
+                      footerRect &&
+                      recommendationRect.bottom <= footerRect.top + 2
+                    ),
+                    recommendationSourceRefs: recommendation
+                      ? visibleCount(
+                          '[data-region="recommendation"] [data-source-ref], ' +
+                          '[data-region="recommendation"][data-source-ref]'
+                        )
+                      : 0,
                     visualCount: visibleCount('[data-region="visual"]'),
                     sourceCount: visibleCount('.source-note[data-audit="source"]'),
                     attributionCount: visibleCount('.generation-note[data-audit="attribution"]'),
@@ -912,14 +1009,30 @@ def professional_proxy_score(
 ) -> Dict[str, Any]:
     title_items = [item for item in audited if item.get("kind") == "title"]
     title_units = semantic_units(str(title_items[0].get("text", ""))) if title_items else 999
+    recommendation_items = [
+        item for item in audited if item.get("kind") == "recommendation"
+    ]
+    recommendation_units = (
+        semantic_units(str(recommendation_items[0].get("text", "")))
+        if recommendation_items
+        else 999
+    )
+    title_mode = str(result.get("titleMode", "action"))
     conclusion = 0
     if result.get("titleCount") == 1:
-        conclusion += 8
-    if 8 <= title_units <= 34:
         conclusion += 6
+    if 8 <= title_units <= 34:
+        conclusion += 4
     elif title_units < 44:
-        conclusion += 3
+        conclusion += 2
     if int(result.get("decisionMarkers", 0)) >= 1:
+        conclusion += 4
+    if title_mode == "topic":
+        if result.get("recommendationCount") == 1:
+            conclusion += 4
+        if 6 <= recommendation_units <= 48:
+            conclusion += 2
+    else:
         conclusion += 6
 
     data_points = int(result.get("dataPoints", 0))
@@ -975,7 +1088,7 @@ def professional_proxy_score(
         "empty-copy",
         "placeholder-copy",
         "title-length",
-        "takeaway-length",
+        "recommendation-length",
         "label-length",
         "description-length",
         "copy-density",
@@ -1090,6 +1203,7 @@ def audit(args: argparse.Namespace) -> int:
 
     template_name = str(result.get("template", "")).strip()
     evidence_mode = str(result.get("evidenceMode", "")).strip()
+    title_mode = str(result.get("titleMode", "action")).strip()
     contract_passed = True
     if template_name not in TEMPLATE_CONTRACTS:
         contract_passed = False
@@ -1105,6 +1219,88 @@ def audit(args: argparse.Namespace) -> int:
             "evidence-mode",
             "Set .poster data-mode to qualitative, quantitative, or mixed",
             ".poster",
+        )
+    if title_mode not in {"topic", "action"}:
+        add_issue(
+            errors,
+            "title-mode",
+            "Set .poster data-title-mode to topic or action",
+            ".poster",
+        )
+
+    recommendation_count = int(result.get("recommendationCount", 0))
+    if title_mode == "topic":
+        if recommendation_count != 1:
+            add_issue(
+                errors,
+                "required-recommendation",
+                "Topic-title infographics require exactly one tail recommendation; "
+                f"found {recommendation_count}",
+                "[data-region='recommendation'][data-audit='recommendation']",
+            )
+        else:
+            if not result.get("recommendationAfterVisual") or not result.get(
+                "recommendationBeforeFooter"
+            ):
+                add_issue(
+                    errors,
+                    "recommendation-placement",
+                    "Place the recommendation after the main visual and before the source footer",
+                    "[data-region='recommendation']",
+                )
+            if int(result.get("recommendationSourceRefs", 0)) < 1:
+                add_issue(
+                    errors,
+                    "recommendation-evidence",
+                    "The recommendation must map to evidence with data-source-ref",
+                    "[data-region='recommendation']",
+                )
+    elif recommendation_count:
+        add_issue(
+            errors,
+            "duplicate-recommendation",
+            "Action-title infographics must not repeat the conclusion in a tail recommendation",
+            "[data-region='recommendation']",
+        )
+
+    audited_items = list(result.get("audited", []))
+    title_text = next(
+        (
+            str(item.get("text", "")).strip()
+            for item in audited_items
+            if item.get("kind") == "title"
+        ),
+        "",
+    )
+    recommendation_text = next(
+        (
+            str(item.get("text", "")).strip()
+            for item in audited_items
+            if item.get("kind") == "recommendation"
+        ),
+        "",
+    )
+    normalized_title = re.sub(r"[\W_]+", "", title_text, flags=re.UNICODE)
+    normalized_recommendation = re.sub(
+        r"[\W_]+",
+        "",
+        recommendation_text,
+        flags=re.UNICODE,
+    )
+    if (
+        title_mode == "topic"
+        and len(normalized_title) >= 6
+        and len(normalized_recommendation) >= 6
+        and (
+            normalized_title == normalized_recommendation
+            or normalized_recommendation in normalized_title
+        )
+    ):
+        add_issue(
+            errors,
+            "duplicate-title-recommendation",
+            "The display title and tail recommendation must play different roles",
+            "[data-audit='recommendation']",
         )
 
     encodings = [str(value) for value in result.get("encodings", [])]
@@ -1247,7 +1443,7 @@ def audit(args: argparse.Namespace) -> int:
 
     text_limits = {
         "title": (28, 42),
-        "takeaway": (55, 85),
+        "recommendation": (36, 56),
         "label": (12, 20),
         "description": (32, 56),
         "annotation": (18, 28),
@@ -1438,7 +1634,7 @@ def audit(args: argparse.Namespace) -> int:
         )
 
     report: Dict[str, Any] = {
-        "schema_version": 2,
+        "schema_version": 3,
         "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
         "input": report_path_value(input_path, report_path),
         "aspect": aspect,
@@ -1451,6 +1647,8 @@ def audit(args: argparse.Namespace) -> int:
             "images": len(images),
             "template": template_name,
             "evidence_mode": evidence_mode,
+            "title_mode": title_mode,
+            "recommendation_count": recommendation_count,
             "header_area_ratio": round(header_ratio, 4),
             "visual_area_ratio": round(visual_ratio, 4),
             "footer_area_ratio": round(float(result.get("footerAreaRatio") or 0), 4),
@@ -1534,7 +1732,24 @@ def parser() -> argparse.ArgumentParser:
         "scaffold",
         help="Create a non-destructive editable infographic project.",
     )
-    scaffold_parser.add_argument("--title", required=True, help="Working action title.")
+    scaffold_parser.add_argument(
+        "--title",
+        required=True,
+        help="Display title; describe the subject/purpose in topic mode or the conclusion in action mode.",
+    )
+    scaffold_parser.add_argument(
+        "--title-mode",
+        choices=("topic", "action"),
+        default="topic",
+        help=(
+            "topic (default) puts subject/purpose in the header and advice at the tail; "
+            "action uses a conclusion-first title without a separate recommendation band."
+        ),
+    )
+    scaffold_parser.add_argument(
+        "--recommendation",
+        help="Evidence-backed tail advice for topic mode.",
+    )
     scaffold_parser.add_argument("--source", help="UTF-8 source Markdown/text file.")
     scaffold_parser.add_argument(
         "--aspect",

@@ -46,6 +46,7 @@ The poster must declare:
   data-template="comparison-matrix"
   data-mode="qualitative"
   data-aspect="16:9"
+  data-title-mode="topic"
 >
 ```
 
@@ -53,12 +54,17 @@ Required shared semantics:
 
 - `[data-region="header"]`
 - `[data-region="visual"]`
+- `[data-region="recommendation"][data-audit="recommendation"]` in `topic` mode
 - `[data-region="footer"]`
 - `[data-primary-block]`
 - `[data-encoding="position color"]`
 - `[data-source-ref="S1"]`
 - `[data-annotation]`
 - `[data-decision]`
+
+`topic` mode requires one recommendation after the main visual and before the
+source footer. It must carry `data-source-ref`. `action` mode omits this region
+because its title already states the conclusion.
 
 Allowed encoding tokens:
 
@@ -189,6 +195,8 @@ Annotate the cross-panel pattern, not each obvious value.
 
 - Default to `16:9` at 1600 × 900 for the master Exhibit.
 - Keep header at 7%–18% of canvas area and the main visual at 58%–82%.
+- In `topic` mode, reserve a compact tail row for the recommendation; do not
+  move it into the header or below the source footer.
 - Use direct labels and thin rules instead of large card containers.
 - Use alignment before boxes; use boxes only for real grouping or state.
 - Keep brand and attribution subordinate.

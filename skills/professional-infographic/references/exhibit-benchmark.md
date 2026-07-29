@@ -3,6 +3,12 @@
 Use public consulting-company output as an editorial benchmark, not as a
 trademarked style kit. Do not claim affiliation.
 
+Consulting reports often use answer-first figure titles because the surrounding
+page already establishes context. A standalone public infographic has to
+introduce itself. For that use case, keep the subject/purpose in the header and
+place the evidence-backed recommendation after the visual. Preserve
+answer-first titles as `action` mode, not as the universal default.
+
 ## Primary observed benchmark
 
 ### Bain Technology Report 2025
@@ -46,7 +52,9 @@ Use these as additional review material when available:
 
 Check for:
 
-- answer-first figure titles;
+- a deliberate title mode: subject/purpose for standalone visuals or
+  answer-first for contextual executive Exhibits;
+- recommendation placement after evidence in topic-led standalone visuals;
 - shared scales and direct labels;
 - annotation placed at the decisive evidence;
 - meaningful whitespace, not empty containers;
@@ -70,7 +78,7 @@ evidence → conclusion → encoding → annotation → decision.
 
 When reviewing a public Exhibit, record:
 
-1. exact action title;
+1. title mode and exact title;
 2. figure number and source note;
 3. main visual area ratio;
 4. variables encoded by position, length, color, shape, and connection;

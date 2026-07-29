@@ -10,7 +10,7 @@ session.
 
 1. The unit of work is an Exhibit
 2. Decision and evidence graph
-3. Action titles
+3. Title modes and recommendation placement
 4. Evidence ledger
 5. Information density
 6. Visual variables
@@ -24,14 +24,17 @@ session.
 An Exhibit is not a poster decorated with information. It contains:
 
 1. a figure label;
-2. an action title that states the answer;
+2. a title that establishes the subject, purpose, or answer;
 3. one dominant visual relationship;
 4. directly attached evidence and annotations;
-5. a note/source line;
-6. restrained brand ownership.
+5. an evidence-backed recommendation after the visual in `topic` mode;
+6. a note/source line;
+7. restrained brand ownership.
 
-The visual must prove the title. If the visual only repeats the title in boxes,
-the Exhibit has failed.
+The reading order should be clear without explanation. For most public-facing
+infographics it is: topic → evidence → recommendation. For a standalone
+executive Exhibit with known context, an action title may state the answer and
+the tail recommendation is omitted.
 
 ## 2. Start with a decision and an evidence graph
 
@@ -47,36 +50,51 @@ Before layout, write:
 Map the argument:
 
 ```text
-Action title
+Display title or action title
 ├── visible claim / decision criterion
 │   ├── evidence ID
 │   └── visual encoding + direct annotation
 ├── visible claim / decision criterion
 │   ├── evidence ID
 │   └── visual encoding + direct annotation
-└── implication / decision
+├── implication / decision
+└── tail recommendation in topic mode
 ```
 
 Do not begin HTML until the map exists in `brief.md`.
 
-## 3. Write an action title
+## 3. Choose a title mode
 
-The title must contain a subject, a directional finding, and—when useful—a
-business implication.
+Use `topic` mode by default when the infographic must introduce itself to a
+reader. The title should name:
 
-| Weak | Strong |
+1. the subject;
+2. the purpose or comparison job;
+3. the most important dimensions when useful.
+
+Put the specific advice, boundary, or next action after the main visual and
+before the source footer.
+
+| Weak topic title | Strong topic title |
 |---|---|
-| 跨端方案对比 | 四类特殊约束各有优先路线；无特殊约束时 RN + Expo 是均衡默认 |
-| AI 市场趋势 | AI 原生公司增长更快，既有 SaaS 必须先守住高渗透工作流 |
-| 产品路线图 | 两个能力 Gate 决定规模化时间，功能数量不是关键路径 |
+| 跨端方案对比 | 移动端跨平台技术选型指南：渠道、性能与团队约束对比 |
+| AI 市场趋势 | AI 原生产品增长格局：渗透率、留存与商业化路径 |
+| 产品路线图 | AI 产品规模化路线图：能力 Gate、验证节点与关键依赖 |
 
-Rules:
+Use `action` mode only when the audience already knows the subject and expects
+an executive Exhibit. Then the title must contain a subject, directional
+finding, and—when useful—a business implication.
 
-- Prefer one line; allow two lines when the conclusion needs a qualification.
-- Do not add a separate takeaway band that restates the same sentence.
+Rules for both modes:
+
+- Prefer one or two deliberate lines; do not let a key term break across lines.
+- Keep topic titles specific enough to explain the infographic's job.
+- Keep action titles specific enough to carry the conclusion without a tail repeat.
+- Put recommendations only after the evidence in topic mode.
+- Map the recommendation to source IDs just like any other decision mark.
 - Avoid empty claims such as “至关重要”“正在改变一切”“没有绝对答案”.
-- Put the most decision-relevant contrast early.
-- Use 12–28 semantic units as the normal range and 42 as a hard ceiling.
+- Use 12–28 semantic units as the normal title range and 42 as a hard ceiling.
+- Use 8–36 semantic units for the tail recommendation and 56 as a hard ceiling.
 
 ## 4. Maintain an evidence ledger
 
@@ -122,8 +140,9 @@ Default composition for a 16:9 Exhibit:
 | Region | Target |
 |---|---:|
 | Brand + figure label | 3%–5% of height |
-| Action-title region | 8%–15% |
-| Main visual | 65%–78% |
+| Title region | 8%–15% |
+| Main visual | 58%–75% |
+| Tail recommendation in topic mode | 4%–7% |
 | Notes, source, attribution | 5%–8% |
 
 Use the space to enlarge the visual and annotations, not to create empty cards.
@@ -150,7 +169,7 @@ Rules:
   category. Do not alternate colors for decoration.
 - Direct-label values and series whenever space allows.
 - Use a legend only when direct labels would make reading slower.
-- Annotate the evidence that supports the action title.
+- Annotate the evidence that supports the governing conclusion.
 - Use one shared scale across a comparison or small-multiple set.
 
 ## 7. Edit copy by role
@@ -160,7 +179,8 @@ unit:
 
 | Element | Normal | Hard ceiling |
 |---|---:|---:|
-| Action title | 12–28 | 42 |
+| Display or action title | 12–28 | 42 |
+| Tail recommendation | 8–36 | 56 |
 | Deck / reading instruction | 12–32 | 56 |
 | Entity or dimension label | 2–12 | 20 |
 | Direct annotation | 4–18 | 28 |
@@ -188,6 +208,8 @@ Reject:
 - random icons, blobs, rings, gradients, fake UI, 3D, glow, or emoji;
 - unsupported scores, market positions, or causal arrows;
 - duplicated conclusion bands;
+- a recommendation placed above the evidence in topic mode;
+- a theme title with no reader job, such as only “趋势分析”;
 - source notes that cannot be mapped to individual claims.
 
 ## 9. Quality rubric
@@ -215,8 +237,10 @@ rendered image is always required.
 
 The Exhibit is done only when:
 
-- the title is a supported, non-obvious conclusion;
-- the visual proves the title in five seconds;
+- the title makes the subject, purpose, or answer clear in five seconds;
+- the visual supports the governing conclusion;
+- topic mode ends with an evidence-linked recommendation;
+- action mode does not duplicate its conclusion in a tail band;
 - the reader has one clear entry point and path;
 - all marks map to evidence;
 - variables and scales are explicit;
