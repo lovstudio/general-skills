@@ -15,6 +15,7 @@ skills:
   tagline_zh: 按需选择最合适的出图方式：端到端 AI、代码渲染或提示词精修。
   related:
   - professional-infographic
+  - professional-portrait
 - name: hanzi-lens
   display_name: Hanzi Lens
   repo: lovstudio/hanzi-lens-skill
@@ -81,6 +82,19 @@ skills:
   tagline_zh: 复用 find-logo 收集品牌 logo，标准化处理并接入官网 partners 区块，多语言全覆盖。
   depends_on:
   - find-logo
+- name: professional-portrait
+  display_name: Professional Portrait
+  repo: lovstudio/professional-portrait-skill
+  name_zh: 职业形象照
+  paid: false
+  category: Design
+  version: 0.1.0
+  description: Turn one photo into a polished professional portrait while preserving
+    identity, natural skin texture, and believable photographic detail.
+  tagline_en: Turn one photo into a clean, identity-preserving professional portrait.
+  tagline_zh: 把一张普通人像修成干净、自然、仍然像本人的职业形象照。
+  related:
+  - image-creator
 - name: fill-form
   display_name: Form Filler
   repo: lovstudio/fill-form-skill
