@@ -308,13 +308,13 @@ skills:
   paid: false
   featured: true
   category: Design
-  version: 0.2.0
-  description: Turn conversation, research, or source material into evidence-led
-    consulting Exhibits with semantic templates, editable HTML/SVG, high-resolution
-    PNG, and machine plus human quality gates.
-  tagline_en: Turn dense material into an evidence-led consulting Exhibit whose
-    title, visual encoding, sources, and decision meaning form one argument.
-  tagline_zh: 把复杂材料重构为证据驱动的咨询 Exhibit：行动标题、图形编码、来源与决策含义形成一条视觉论证。
+  version: 0.3.0
+  description: Build evidence-led professional infographics with topic-led titles,
+    tail recommendations, executive action-title mode, editable HTML/SVG, and PNG
+    quality gates.
+  tagline_en: Turn dense material into an evidence-led infographic whose topic
+    title, visual proof, tail recommendation, and sources form one clear argument.
+  tagline_zh: 把复杂材料重构为证据驱动的信息图：顶部说明主题与用途，主视觉呈现证据，建议置于尾部；亦支持结论型管理层 Exhibit。
   related:
   - image-creator
 - name: visual-clone
