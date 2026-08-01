@@ -317,6 +317,22 @@ skills:
   tagline_zh: 把复杂材料重构为证据驱动的信息图：顶部说明主题与用途，主视觉呈现证据，建议置于尾部；亦支持结论型管理层 Exhibit。
   related:
   - image-creator
+- name: oh-my-landingpage
+  display_name: Oh My Landing Page
+  repo: lovstudio/oh-my-landingpage-skill
+  name_zh: 品牌着陆页
+  paid: true
+  price_cny: 19.9
+  category: Design
+  version: 0.2.0
+  description: Rebuild a landing page from brand strategy through narrative, copy,
+    UI, media, and real conversion paths.
+  tagline_en: Rebuild a landing page as one coherent brand experience, from the
+    promise and story to the interface, media, and conversion path.
+  tagline_zh: 从品牌内核出发，统一重构着陆页的价值主张、内容叙事、文案、界面、媒体与真实转化路径。
+  distribution:
+    workbuddy: adapted
+    skillpay: planned
 - name: visual-clone
   display_name: Visual Clone
   repo: lovstudio/visual-clone-skill

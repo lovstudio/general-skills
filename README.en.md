@@ -43,7 +43,7 @@ Skills marked ![Free](https://img.shields.io/badge/Free-green) are open source (
 ## Skills
 
 <!-- COUNT:START -->
-> **37 skills** — 31 Free + 6 Paid.
+> **38 skills** — 31 Free + 7 Paid.
 <!-- COUNT:END -->
 
 <!-- SKILLS:START -->
@@ -68,6 +68,7 @@ Skills marked ![Free](https://img.shields.io/badge/Free-green) are open source (
 | ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [`event-poster`](https://github.com/lovstudio/event-poster-skill) | Turn an event brief into a polished poster, ready to share or print for exhibitions. |
 | ![Free](https://img.shields.io/badge/Free-green) | [`find-logo`](https://github.com/lovstudio/find-logo-skill) | Collect brand logos from public sources — wide and transparent preferred, archived for website/PPT/poster lineups. |
 | ![Free](https://img.shields.io/badge/Free-green) | [`maintain-partners`](https://github.com/lovstudio/maintain-partners-skill) | Reuse find-logo, normalize assets, and wire partners into the site across 4 locales. — requires: `find-logo` |
+| ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [`oh-my-landingpage`](https://github.com/lovstudio/oh-my-landingpage-skill) | Rebuild a landing page as one coherent brand experience, from the promise and story to the interface, media, and conversion path. — ¥19.9 CNY |
 | ![Free](https://img.shields.io/badge/Free-green) | [`professional-infographic`](https://github.com/lovstudio/professional-infographic-skill) | Turn dense material into an evidence-led infographic whose topic title, visual proof, tail recommendation, and sources form one clear argument. — related: `image-creator` |
 | ![Free](https://img.shields.io/badge/Free-green) | [`professional-portrait`](https://github.com/lovstudio/professional-portrait-skill) | Turn one photo into a clean, identity-preserving professional portrait. — related: `image-creator` |
 | ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [`visual-clone`](https://github.com/lovstudio/visual-clone-skill) | Extract the design DNA of a reference image so you can recreate the look. |

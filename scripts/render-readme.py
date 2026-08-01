@@ -90,6 +90,16 @@ def render_deps_suffix(skill: dict, lang: str) -> str:
     return " — " + "; ".join(parts) if parts else ""
 
 
+def render_price_suffix(skill: dict, lang: str) -> str:
+    """Append the explicit CNY price for paid skills that publish one."""
+    price = skill.get("price_cny")
+    if price is None:
+        return ""
+    formatted = f"{price:g}" if isinstance(price, (int, float)) else str(price)
+    label = f"售价 ¥{formatted}" if lang == "zh" else f"¥{formatted} CNY"
+    return f" — {label}"
+
+
 def gh_sync(skills: list[dict]) -> None:
     """Refresh `description` (Agent-facing trigger copy) from each skill's GitHub
     repo description. Never touches tagline_en / tagline_zh — those are human-maintained."""
@@ -145,7 +155,11 @@ def render_table(skills: list[dict], lang: str) -> str:
         for s in sorted(grouped[key], key=lambda x: x["name"]):
             badge = PAID_BADGE if s.get("paid") else FREE_BADGE
             link = f"https://github.com/{s['repo']}"
-            tagline = pick_tagline(s, lang) + render_deps_suffix(s, lang)
+            tagline = (
+                pick_tagline(s, lang)
+                + render_price_suffix(s, lang)
+                + render_deps_suffix(s, lang)
+            )
             if lang == "zh":
                 english_cell = f"[`{s['name']}`]({link})"
                 zh_name = (s.get("name_zh") or s.get("display_name") or s["name"]).strip()

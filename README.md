@@ -43,7 +43,7 @@
 ## 技能列表
 
 <!-- COUNT:START -->
-> **37 个技能** — 31 个免费 + 6 个付费。
+> **38 个技能** — 31 个免费 + 7 个付费。
 <!-- COUNT:END -->
 
 <!-- SKILLS:START -->
@@ -68,6 +68,7 @@
 | ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [`event-poster`](https://github.com/lovstudio/event-poster-skill) | [大师级海报生成](https://github.com/lovstudio/event-poster-skill) | 把活动信息一键变成高质感海报，可直接分享或用于线下展览。 |
 | ![Free](https://img.shields.io/badge/Free-green) | [`find-logo`](https://github.com/lovstudio/find-logo-skill) | [Logo 狩猎](https://github.com/lovstudio/find-logo-skill) | 按品牌名或网址抓取 logo，自动评分择优（偏好长条形 + 透明底），统一归档到本地，方便网站/PPT/海报罗列。 |
 | ![Free](https://img.shields.io/badge/Free-green) | [`maintain-partners`](https://github.com/lovstudio/maintain-partners-skill) | [合作伙伴维护](https://github.com/lovstudio/maintain-partners-skill) | 复用 find-logo 收集品牌 logo，标准化处理并接入官网 partners 区块，多语言全覆盖。 — 依赖: `find-logo` |
+| ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [`oh-my-landingpage`](https://github.com/lovstudio/oh-my-landingpage-skill) | [品牌着陆页](https://github.com/lovstudio/oh-my-landingpage-skill) | 从品牌内核出发，统一重构着陆页的价值主张、内容叙事、文案、界面、媒体与真实转化路径。 — 售价 ¥19.9 |
 | ![Free](https://img.shields.io/badge/Free-green) | [`professional-infographic`](https://github.com/lovstudio/professional-infographic-skill) | [专业信息图](https://github.com/lovstudio/professional-infographic-skill) | 把复杂材料重构为证据驱动的信息图：顶部说明主题与用途，主视觉呈现证据，建议置于尾部；亦支持结论型管理层 Exhibit。 — 相关: `image-creator` |
 | ![Free](https://img.shields.io/badge/Free-green) | [`professional-portrait`](https://github.com/lovstudio/professional-portrait-skill) | [职业形象照](https://github.com/lovstudio/professional-portrait-skill) | 把一张普通人像修成干净、自然、仍然像本人的职业形象照。 — 相关: `image-creator` |
 | ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [`visual-clone`](https://github.com/lovstudio/visual-clone-skill) | [像素级海报复刻](https://github.com/lovstudio/visual-clone-skill) | 从参考图中提取设计要素，生成可复刻同款风格的指令。 |
