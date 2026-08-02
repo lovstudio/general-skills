@@ -73,6 +73,7 @@ Skills marked ![Free](https://img.shields.io/badge/Free-green) are open source (
 | ![Free](https://img.shields.io/badge/Free-green) | [`professional-portrait`](https://github.com/lovstudio/professional-portrait-skill) | Turn one photo into a clean, identity-preserving professional portrait. — related: `image-creator` |
 | ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [`visual-clone`](https://github.com/lovstudio/visual-clone-skill) | Extract the design DNA of a reference image so you can recreate the look. |
 | **Academic** | | |
+| ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [`academic-translator`](https://github.com/lovstudio/academic-translator-skill) | Translate English papers into Chinese while preserving figures, equations, pages, and navigation. — ¥4.99 CNY |
 | ![Free](https://img.shields.io/badge/Free-green) | [`thesis-polish`](https://github.com/lovstudio/thesis-polish-skill) | Polish an MBA thesis across language, structure, argument, and originality. |
 | ![Free](https://img.shields.io/badge/Free-green) | [`translation-review`](https://github.com/lovstudio/translation-review-skill) | Review a Chinese→English translation against the original across six quality dimensions. |
 | **Office Automation** | | |

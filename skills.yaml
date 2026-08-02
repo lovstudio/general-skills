@@ -453,6 +453,16 @@ skills:
   description: MBA 论文全面润色，对标全国优秀论文标准。语言+结构+论证+创新四维提升。
   tagline_en: Polish an MBA thesis across language, structure, argument, and originality.
   tagline_zh: MBA 论文全维度润色，对标国优标准，打磨语言、结构、论证与创新四个面。
+- name: academic-translator
+  display_name: Academic PDF Translator
+  repo: lovstudio/academic-translator-skill
+  name_zh: 论文 PDF 超级翻译官
+  paid: true
+  category: Academic
+  version: 0.1.0
+  description: Translate English academic PDFs into Chinese while preserving figures, equations, page flow, and navigation.
+  tagline_en: Translate English papers into Chinese while preserving figures, equations, pages, and navigation.
+  tagline_zh: 将英文论文译为中文，优先保留图表、公式、页码对应与目录跳转。 — 售价 ¥4.99
 - name: translation-review
   display_name: Translation Review
   repo: lovstudio/translation-review-skill
