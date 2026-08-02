@@ -332,7 +332,7 @@ skills:
   tagline_zh: 从品牌内核出发，统一重构着陆页的价值主张、内容叙事、文案、界面、媒体与真实转化路径。
   distribution:
     workbuddy: adapted
-    skillpay: planned
+    skillpay: review
 - name: visual-clone
   display_name: Visual Clone
   repo: lovstudio/visual-clone-skill
