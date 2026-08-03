@@ -161,6 +161,17 @@ skills:
   related:
   - any2pdf
   - any2docx
+- name: rich-export
+  display_name: Rich Media Export
+  repo: lovstudio/rich-export-skill
+  name_zh: 富媒体一键导出
+  paid: false
+  category: Office Automation
+  version: 0.1.0
+  description: Export rich content to self-contained HTML, HTML folders, Markdown,
+    DOCX, PDF, and ZIP packages with format-aware media handling.
+  tagline_en: Export one rich-media source into web, editable document, print, and archive formats.
+  tagline_zh: 一份富媒体内容，同时交付网页、可编辑文档、打印版和归档包。
 - name: pdf2png
   display_name: PDF → Image
   repo: lovstudio/pdf2png-skill
