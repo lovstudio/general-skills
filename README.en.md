@@ -43,7 +43,7 @@ Skills marked ![Free](https://img.shields.io/badge/Free-green) are open source (
 ## Skills
 
 <!-- COUNT:START -->
-> **40 skills** — 32 Free + 8 Paid.
+> **42 skills** — 32 Free + 10 Paid.
 <!-- COUNT:END -->
 
 <!-- SKILLS:START -->
@@ -90,6 +90,8 @@ Skills marked ![Free](https://img.shields.io/badge/Free-green) are open source (
 | ![Free](https://img.shields.io/badge/Free-green) | [`deep-research`](https://github.com/lovstudio/deep-research-skill) | Produce citation-tracked research reports with persistent evidence, claim verification, and Markdown/HTML/PDF packaging. |
 | ![Free](https://img.shields.io/badge/Free-green) | [`document-illustrator`](https://github.com/lovstudio/document-illustrator-skill) | Illustrate a long document in place — plan, generate, and insert images automatically. — requires: `image-creator` |
 | ![Free](https://img.shields.io/badge/Free-green) | [`style-clone`](https://github.com/lovstudio/style-clone-skill) | Extract a writing style profile from sample articles, then rewrite any content in that style. |
+| ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [`wechat-article-branding`](https://github.com/lovstudio/wechat-article-branding-skill) | Turn a WeChat article into one coherent branded edition with stronger structure, cover, editorial polish, and real-page acceptance. — ¥9.99 CNY — related: `wechat-article-operator` |
+| ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [`wechat-article-operator`](https://github.com/lovstudio/wechat-article-operator-skill) | Read and edit an existing WeChat article with persisted-state verification, from exact content changes to cover replacement. — ¥9.99 CNY — related: `wechat-article-branding` |
 | ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [`write-professional-book`](https://github.com/lovstudio/write-professional-book-skill) | Write a full multi-chapter book — technical, tutorial, or monograph — from an outline. |
 | ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [`wxmp-cracker`](https://github.com/lovstudio/wxmp-cracker-skill) | Archive WeChat Official Account articles into clean, reusable text. |
 | **Video Creation** | | |

@@ -388,6 +388,38 @@ skills:
   description: 检测文章 AI 痕迹 + 人性化润色，通过微信 3.27 条款检测。
   tagline_en: Detect AI fingerprints in an article and rewrite it to read like a human.
   tagline_zh: 检测文章的 AI 味并做人性化润色，帮助稳过微信 3.27 条款的机器判定。
+- name: wechat-article-operator
+  display_name: WeChat Article Operator
+  repo: lovstudio/wechat-article-operator-skill
+  name_zh: 公众号文章操作器
+  paid: true
+  price_cny: 9.99
+  category: Content Creation
+  version: 0.1.0
+  description: Reliably read, edit, save, and reload-verify existing WeChat Official Account articles through authenticated browser automation.
+  tagline_en: Read and edit an existing WeChat article with persisted-state verification, from exact content changes to cover replacement.
+  tagline_zh: 可靠读取、编辑、保存并重载验收现有公众号文章，支持精确内容修改与封面替换。
+  related:
+  - wechat-article-branding
+  distribution:
+    workbuddy: planned
+    skillpay: planned
+- name: wechat-article-branding
+  display_name: WeChat Article Branding
+  repo: lovstudio/wechat-article-branding-skill
+  name_zh: 公众号文章品牌化
+  paid: true
+  price_cny: 9.99
+  category: Content Creation
+  version: 0.1.0
+  description: Turn an existing WeChat Official Account article into polished branded content with structure, TOC, cover direction, brand application, and persisted-page quality gates.
+  tagline_en: Turn a WeChat article into one coherent branded edition with stronger structure, cover, editorial polish, and real-page acceptance.
+  tagline_zh: 把现有公众号文章自动加工成结构专业、封面成熟、品牌统一且经过真实页面验收的完整制品。
+  related:
+  - wechat-article-operator
+  distribution:
+    workbuddy: planned
+    skillpay: planned
 - name: document-illustrator
   display_name: Document Illustrator
   repo: lovstudio/document-illustrator-skill
