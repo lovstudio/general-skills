@@ -402,8 +402,8 @@ skills:
   related:
   - wechat-article-branding
   distribution:
-    workbuddy: planned
-    skillpay: planned
+    workbuddy: review
+    skillpay: review
 - name: wechat-article-branding
   display_name: WeChat Article Branding
   repo: lovstudio/wechat-article-branding-skill
@@ -418,8 +418,8 @@ skills:
   related:
   - wechat-article-operator
   distribution:
-    workbuddy: planned
-    skillpay: planned
+    workbuddy: review
+    skillpay: review
 - name: document-illustrator
   display_name: Document Illustrator
   repo: lovstudio/document-illustrator-skill
