@@ -43,7 +43,7 @@ Skills marked ![Free](https://img.shields.io/badge/Free-green) are open source (
 ## Skills
 
 <!-- COUNT:START -->
-> **42 skills** — 32 Free + 10 Paid.
+> **43 skills** — 32 Free + 11 Paid.
 <!-- COUNT:END -->
 
 <!-- SKILLS:START -->
@@ -53,6 +53,7 @@ Skills marked ![Free](https://img.shields.io/badge/Free-green) are open source (
 | ![Free](https://img.shields.io/badge/Free-green) | [`fact-check`](https://github.com/lovstudio/fact-check-skill) | Verify claims like a careful researcher, with primary sources, counterexamples, confidence, and next steps. |
 | ![Free](https://img.shields.io/badge/Free-green) | [`hanzi-lens`](https://github.com/lovstudio/hanzi-lens-skill) | See one Chinese character through evidence — readings, form, history, classical context, meaning, and a professional visual. — requires: `professional-infographic` |
 | ![Free](https://img.shields.io/badge/Free-green) | [`image-creator`](https://github.com/lovstudio/image-creator-skill) | Generate images through the right mechanism — AI, code rendering, or prompt tuning. — related: `professional-infographic`, `professional-portrait` |
+| ![Paid](https://img.shields.io/badge/Paid-blueviolet) | [`wdb-cli`](https://github.com/lovstudio/wdb-cli-skill) | Find and analyze the WeChat data you need, from familiar records to newly added database structures. — ¥19.9 CNY |
 | **Business** | | |
 | ![Free](https://img.shields.io/badge/Free-green) | [`bp`](https://github.com/lovstudio/bp-skill) | A composable BP skill kit — use outline, deck, and polish alone or run the complete investor workflow. — requires: `bp-outline`, `bp-deck`, `bp-polish` |
 | ![Free](https://img.shields.io/badge/Free-green) | [`bp-deck`](https://github.com/lovstudio/bp-skill) | Turn an approved BP outline into a professional PPTX, PDF, and full-deck preview with deliberate style selection. — requires: `any2deck` |
