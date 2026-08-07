@@ -572,3 +572,17 @@ skills:
     Trigger on: "generate docs", "build a docs site", "fumadocs", "为项目生成文档", "把文件夹做成文档站", "整理成知识库网站".
   tagline_en: Turn any folder — code, articles, images — into a polished Fumadocs site, built incrementally and shipped to {id}.lovstudio.ai/docs.
   tagline_zh: 把任意文件夹（代码、文章、图片）增量编纂成精美的 Fumadocs 文档站，并部署到 {id}.lovstudio.ai/docs。
+- name: wdb-cli
+  display_name: WeChat DB Explorer
+  repo: lovstudio/wdb-cli-skill
+  name_zh: 微信数据库自由查询
+  paid: true
+  price_cny: 19.9
+  category: General
+  version: 0.1.1
+  description: Explore, query, and analyze WeChat database records by date, contact, keyword, schema, or exact row identity.
+  tagline_en: Find and analyze the WeChat data you need, from familiar records to newly added database structures.
+  tagline_zh: 自由查看、检索和分析微信数据库中的各类数据，常用内容与新版本结构都能精准定位。
+  distribution:
+    workbuddy: review
+    skillpay: review
