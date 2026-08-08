@@ -409,12 +409,12 @@ skills:
   repo: lovstudio/wechat-article-branding-skill
   name_zh: 公众号文章品牌化
   paid: true
-  price_cny: 9.99
+  price_cny: 4.99
   category: Content Creation
-  version: 0.1.0
-  description: Turn an existing WeChat Official Account article into polished branded content with structure, TOC, cover direction, brand application, and persisted-page quality gates.
-  tagline_en: Turn a WeChat article into one coherent branded edition with stronger structure, cover, editorial polish, and real-page acceptance.
-  tagline_zh: 把现有公众号文章自动加工成结构专业、封面成熟、品牌统一且经过真实页面验收的完整制品。
+  version: 0.7.0
+  description: Turn an existing WeChat Official Account article into polished branded content with an editorial art cover, centered publisher Logo, reusable cover prompt, and persisted-page quality gates.
+  tagline_en: Turn a WeChat article into one coherent branded edition with an editorial art cover, centered publisher Logo, reusable prompt, and real-page acceptance.
+  tagline_zh: 把现有公众号文章加工成结构清晰、艺术封面统一、Logo 居中、封面 Prompt 可复用且经过真实页面验收的品牌化成品。
   related:
   - wechat-article-operator
   distribution:
