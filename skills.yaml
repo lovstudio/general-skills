@@ -2187,19 +2187,19 @@ skills:
     review_trigger_en: Review after a version change, 10 real uses, or a material change
       in support cost.
     card_path: pricing-cards/wdb-cli.md
-- name: subtitle-gloss
-  skillpay_product_id: "P0806000201815623"
-  skillpay_purchase_url: "https://aipayapi.alipay.com/skillpay/ct?c=BHayB9Om2xSC3Q2LuCu7"
-  display_name: Subtitle Gloss
-  repo: lovstudio/subtitle-gloss-skill
-  name_zh: 英语学习字幕
+- name: subtitle-freedom
+  skillpay_product_id: "P0806000201813011"
+  skillpay_purchase_url: "https://aipayapi.alipay.com/skillpay/ct?c=BHayB9Om2xSC3Q2LuB_1"
+  display_name: Subtitle Freedom
+  repo: lovstudio/subtitle-freedom-skill
+  name_zh: 字幕自由
   paid: true
   price_cny: 0.99
   category: General
-  version: 0.8.0
-  description: Create learner-friendly English subtitles from video or source subtitles, with profile-aware glosses and optional evidence-based ASS art cards.
-  tagline_en: Make learner subtitles that explain only necessary vocabulary, with optional spoiler-safe ASS character cards.
-  tagline_zh: 从视频或原字幕生成只解释必要词汇的英语学习字幕，并可选生成不剧透的人物艺术卡片。
+  version: 1.0.0
+  description: Create learner-friendly English subtitles using the selected profile as a minimum difficulty floor, with higher-level glosses and optional evidence-based ASS art cards.
+  tagline_en: Make learner subtitles that keep the selected level and harder expressions, with optional spoiler-safe ASS character cards.
+  tagline_zh: 以用户选定级别为最低难度线生成英语学习字幕，覆盖更高难度表达，并可选生成不剧透的人物艺术卡片。
   distribution:
     workbuddy: review
     skillpay: review
@@ -2228,7 +2228,7 @@ skills:
     confidence: medium
     review_trigger_zh: 版本变化、连续 10 次真实使用或播放器兼容问题明显增加时复评。
     review_trigger_en: Review after a version change, 10 real uses, or a material increase in renderer-compatibility support.
-    card_path: pricing-cards/subtitle-gloss.md
+    card_path: pricing-cards/subtitle-freedom.md
 - name: media-fetch
   display_name: Media Fetch
   repo: lovstudio/media-fetch-skill

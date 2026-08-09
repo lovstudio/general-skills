@@ -1796,8 +1796,8 @@ cards:
     复制与渠道可控性: 3
   weighted_score: 0.77
   card_path: pricing-cards/wdb-cli.md
-- id: subtitle-gloss
-  version: 0.8.0
+- id: subtitle-freedom
+  version: 1.0.0
   model: one_time
   visibility: public
   list_price_cny: 0.99
@@ -1828,7 +1828,7 @@ cards:
     维护与交付效率: 4
     复制与渠道可控性: 4
   weighted_score: 0.83
-  card_path: pricing-cards/subtitle-gloss.md
+  card_path: pricing-cards/subtitle-freedom.md
 - id: media-fetch
   version: 0.2.0
   model: free_entry
