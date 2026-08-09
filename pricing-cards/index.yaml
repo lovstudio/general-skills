@@ -1,0 +1,1765 @@
+version: 1
+source: skills.yaml
+public_fields:
+- model
+- list_price_cny
+- price_range_cny
+- delivery_unit_zh
+- delivery_unit_en
+- value_zh
+- value_en
+- anchor_zh
+- anchor_en
+- basis_zh
+- basis_en
+- boundary_zh
+- boundary_en
+- maintenance_zh
+- maintenance_en
+- confidence
+- review_trigger_zh
+- review_trigger_en
+cards:
+- id: image-creator
+  version: 0.2.1
+  model: free_entry
+  visibility: public
+  list_price_cny: 0.0
+  launch_price_cny: 0
+  price_range_cny:
+  - 0
+  - 0
+  delivery_unit_zh: 公开 Skill 源码与当前版本说明
+  delivery_unit_en: Public Skill source and current-version notes
+  value_zh: 按需选择最合适的出图方式：端到端 AI、代码渲染或提示词精修。
+  value_en: Generate images through the right mechanism — AI, code rendering, or prompt
+    tuning.
+  basis_zh: 按一次可复用的判断或处理结果定价，重点看是否减少查找、判断与重复操作。
+  basis_en: Priced around a reusable decision or processing result, with emphasis
+    on reducing lookup and repeated work.
+  boundary_zh: 适合明确的问题与输入；开放式探索、外部数据和第三方服务成本另行计算。
+  boundary_en: Best for a defined question and input; open-ended exploration, external
+    data, and third-party service costs are separate.
+  maintenance_zh: 随上游数据格式、模型能力和使用反馈复评；小版本更新通常沿用原交付范围。
+  maintenance_en: Review against upstream data formats, model capability, and usage
+    feedback; minor updates usually stay within the original scope.
+  anchor_zh: 一次完成通常可省下约 30 分钟至 3 小时的检索、整理或判断时间。
+  anchor_en: A completed run typically saves roughly 30 minutes to 3 hours of research,
+    organization, or judgment work.
+  confidence: entry
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 3
+    稀缺性与替代难度: 2
+    质量证据与购买信心: 2
+    价值飞轮潜力: 3
+    维护与交付效率: 4
+    复制与渠道可控性: 2
+  weighted_score: 0.53
+  card_path: pricing-cards/image-creator.md
+- id: hanzi-lens
+  version: 0.1.0
+  model: free_entry
+  visibility: public
+  list_price_cny: 0.0
+  launch_price_cny: 0
+  price_range_cny:
+  - 0
+  - 0
+  delivery_unit_zh: 公开 Skill 源码与当前版本说明
+  delivery_unit_en: Public Skill source and current-version notes
+  value_zh: 用证据看懂一个汉字：读音、字形、字书、经典语境与专业信息图。
+  value_en: See one Chinese character through evidence — readings, form, history,
+    classical context, meaning, and a professional visual.
+  basis_zh: 按一次可复用的判断或处理结果定价，重点看是否减少查找、判断与重复操作。
+  basis_en: Priced around a reusable decision or processing result, with emphasis
+    on reducing lookup and repeated work.
+  boundary_zh: 适合明确的问题与输入；开放式探索、外部数据和第三方服务成本另行计算。
+  boundary_en: Best for a defined question and input; open-ended exploration, external
+    data, and third-party service costs are separate.
+  maintenance_zh: 随上游数据格式、模型能力和使用反馈复评；小版本更新通常沿用原交付范围。
+  maintenance_en: Review against upstream data formats, model capability, and usage
+    feedback; minor updates usually stay within the original scope.
+  anchor_zh: 一次完成通常可省下约 30 分钟至 3 小时的检索、整理或判断时间。
+  anchor_en: A completed run typically saves roughly 30 minutes to 3 hours of research,
+    organization, or judgment work.
+  confidence: entry
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 3
+    稀缺性与替代难度: 2
+    质量证据与购买信心: 2
+    价值飞轮潜力: 3
+    维护与交付效率: 4
+    复制与渠道可控性: 2
+  weighted_score: 0.53
+  card_path: pricing-cards/hanzi-lens.md
+- id: fact-check
+  version: 0.1.2
+  model: free_entry
+  visibility: public
+  list_price_cny: 0.0
+  launch_price_cny: 0
+  price_range_cny:
+  - 0
+  - 0
+  delivery_unit_zh: 公开 Skill 源码与当前版本说明
+  delivery_unit_en: Public Skill source and current-version notes
+  value_zh: 用尽调思路确认事实：查一手资料、找反例、标证据等级，给出置信度和下一步。
+  value_en: Verify claims like a careful researcher, with primary sources, counterexamples,
+    confidence, and next steps.
+  basis_zh: 按一次可复用的判断或处理结果定价，重点看是否减少查找、判断与重复操作。
+  basis_en: Priced around a reusable decision or processing result, with emphasis
+    on reducing lookup and repeated work.
+  boundary_zh: 适合明确的问题与输入；开放式探索、外部数据和第三方服务成本另行计算。
+  boundary_en: Best for a defined question and input; open-ended exploration, external
+    data, and third-party service costs are separate.
+  maintenance_zh: 随上游数据格式、模型能力和使用反馈复评；小版本更新通常沿用原交付范围。
+  maintenance_en: Review against upstream data formats, model capability, and usage
+    feedback; minor updates usually stay within the original scope.
+  anchor_zh: 一次完成通常可省下约 30 分钟至 3 小时的检索、整理或判断时间。
+  anchor_en: A completed run typically saves roughly 30 minutes to 3 hours of research,
+    organization, or judgment work.
+  confidence: entry
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 3
+    稀缺性与替代难度: 2
+    质量证据与购买信心: 2
+    价值飞轮潜力: 3
+    维护与交付效率: 4
+    复制与渠道可控性: 2
+  weighted_score: 0.53
+  card_path: pricing-cards/fact-check.md
+- id: numeric-verdict
+  version: 0.1.1
+  model: internal_trial
+  visibility: internal
+  list_price_cny: 0
+  launch_price_cny: 0
+  price_range_cny:
+  - 0
+  - 0
+  delivery_unit_zh: 内部 PoC 评估包，不进入公开目录
+  delivery_unit_en: Internal PoC evaluation package; not listed publicly
+  value_zh: 成对数字判定的 cloud-split 教学 demo — 本地只看到 A/B 符号。
+  value_en: Pairwise numeric verdict — cloud-split demo with symbolic output.
+  basis_zh: 按一次可复用的判断或处理结果定价，重点看是否减少查找、判断与重复操作。
+  basis_en: Priced around a reusable decision or processing result, with emphasis
+    on reducing lookup and repeated work.
+  boundary_zh: 适合明确的问题与输入；开放式探索、外部数据和第三方服务成本另行计算。
+  boundary_en: Best for a defined question and input; open-ended exploration, external
+    data, and third-party service costs are separate.
+  maintenance_zh: 随上游数据格式、模型能力和使用反馈复评；小版本更新通常沿用原交付范围。
+  maintenance_en: Review against upstream data formats, model capability, and usage
+    feedback; minor updates usually stay within the original scope.
+  anchor_zh: 一次完成通常可省下约 30 分钟至 3 小时的检索、整理或判断时间。
+  anchor_en: A completed run typically saves roughly 30 minutes to 3 hours of research,
+    organization, or judgment work.
+  confidence: internal
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 3
+    稀缺性与替代难度: 2
+    质量证据与购买信心: 2
+    价值飞轮潜力: 3
+    维护与交付效率: 4
+    复制与渠道可控性: 2
+  weighted_score: 0.53
+  card_path: pricing-cards/numeric-verdict.md
+- id: threshold-check
+  version: 0.1.1
+  model: internal_trial
+  visibility: internal
+  list_price_cny: 0
+  launch_price_cny: 0
+  price_range_cny:
+  - 0
+  - 0
+  delivery_unit_zh: 内部 PoC 评估包，不进入公开目录
+  delivery_unit_en: Internal PoC evaluation package; not listed publicly
+  value_zh: 可配置阈值的 cloud-split 教学 demo — 本地只看到符号化判定结果。
+  value_en: Configurable threshold check — cloud-split demo with symbolic output.
+  basis_zh: 按一次可复用的判断或处理结果定价，重点看是否减少查找、判断与重复操作。
+  basis_en: Priced around a reusable decision or processing result, with emphasis
+    on reducing lookup and repeated work.
+  boundary_zh: 适合明确的问题与输入；开放式探索、外部数据和第三方服务成本另行计算。
+  boundary_en: Best for a defined question and input; open-ended exploration, external
+    data, and third-party service costs are separate.
+  maintenance_zh: 随上游数据格式、模型能力和使用反馈复评；小版本更新通常沿用原交付范围。
+  maintenance_en: Review against upstream data formats, model capability, and usage
+    feedback; minor updates usually stay within the original scope.
+  anchor_zh: 一次完成通常可省下约 30 分钟至 3 小时的检索、整理或判断时间。
+  anchor_en: A completed run typically saves roughly 30 minutes to 3 hours of research,
+    organization, or judgment work.
+  confidence: internal
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 3
+    稀缺性与替代难度: 2
+    质量证据与购买信心: 2
+    价值飞轮潜力: 3
+    维护与交付效率: 4
+    复制与渠道可控性: 2
+  weighted_score: 0.53
+  card_path: pricing-cards/threshold-check.md
+- id: maintain-partners
+  version: 0.9.1
+  model: free_entry
+  visibility: public
+  list_price_cny: 0.0
+  launch_price_cny: 0
+  price_range_cny:
+  - 0
+  - 0
+  delivery_unit_zh: 公开 Skill 源码与当前版本说明
+  delivery_unit_en: Public Skill source and current-version notes
+  value_zh: 复用 find-logo 收集品牌 logo，标准化处理并接入官网 partners 区块，多语言全覆盖。
+  value_en: Reuse find-logo, normalize assets, and wire partners into the site across
+    4 locales.
+  basis_zh: 按可预览、可导出、可继续编辑的视觉结果定价，价值来自减少反复试稿。
+  basis_en: Priced around a previewable, exportable, and reusable visual result, with
+    value coming from fewer draft iterations.
+  boundary_zh: 结果依赖输入素材、品牌约束和外部模型；复杂定制、素材采购与线下制作另计。
+  boundary_en: Results depend on source assets, brand constraints, and external models;
+    complex customization, asset sourcing, and physical production are separate.
+  maintenance_zh: 随渲染工具、字体、模型和品牌资产变化复评；保持输出结构比追逐单一风格更重要。
+  maintenance_en: Review against rendering tools, fonts, models, and brand assets;
+    output structure matters more than chasing a single style.
+  anchor_zh: 一次结果通常可减少 1–6 小时的试稿、排版或资产整理。
+  anchor_en: A result typically removes 1–6 hours of drafting, layout, or asset organization.
+  confidence: entry
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 4
+    稀缺性与替代难度: 3
+    质量证据与购买信心: 2
+    价值飞轮潜力: 3
+    维护与交付效率: 3
+    复制与渠道可控性: 2
+  weighted_score: 0.61
+  card_path: pricing-cards/maintain-partners.md
+- id: professional-portrait
+  version: 0.1.1
+  model: free_entry
+  visibility: public
+  list_price_cny: 0.0
+  launch_price_cny: 0
+  price_range_cny:
+  - 0
+  - 0
+  delivery_unit_zh: 公开 Skill 源码与当前版本说明
+  delivery_unit_en: Public Skill source and current-version notes
+  value_zh: 把一张普通人像修成干净、自然、仍然像本人的职业形象照。
+  value_en: Turn one photo into a clean, identity-preserving professional portrait.
+  basis_zh: 按可预览、可导出、可继续编辑的视觉结果定价，价值来自减少反复试稿。
+  basis_en: Priced around a previewable, exportable, and reusable visual result, with
+    value coming from fewer draft iterations.
+  boundary_zh: 结果依赖输入素材、品牌约束和外部模型；复杂定制、素材采购与线下制作另计。
+  boundary_en: Results depend on source assets, brand constraints, and external models;
+    complex customization, asset sourcing, and physical production are separate.
+  maintenance_zh: 随渲染工具、字体、模型和品牌资产变化复评；保持输出结构比追逐单一风格更重要。
+  maintenance_en: Review against rendering tools, fonts, models, and brand assets;
+    output structure matters more than chasing a single style.
+  anchor_zh: 一次结果通常可减少 1–6 小时的试稿、排版或资产整理。
+  anchor_en: A result typically removes 1–6 hours of drafting, layout, or asset organization.
+  confidence: entry
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 4
+    稀缺性与替代难度: 3
+    质量证据与购买信心: 2
+    价值飞轮潜力: 3
+    维护与交付效率: 3
+    复制与渠道可控性: 2
+  weighted_score: 0.61
+  card_path: pricing-cards/professional-portrait.md
+- id: fill-form
+  version: 1.1.2
+  model: free_entry
+  visibility: public
+  list_price_cny: 0.0
+  launch_price_cny: 0
+  price_range_cny:
+  - 0
+  - 0
+  delivery_unit_zh: 公开 Skill 源码与当前版本说明
+  delivery_unit_en: Public Skill source and current-version notes
+  value_zh: 自动填写 Word 表单模板，字段识别 + 中英文排版一气呵成。
+  value_en: Fill Word (.docx) form templates automatically, with clean CJK typography.
+  basis_zh: 按一次可发送或可归档的文件结果定价，重点是格式稳定和人工返工减少。
+  basis_en: Priced around a file ready to send or archive, with emphasis on stable
+    formatting and less rework.
+  boundary_zh: 默认处理结构清晰的输入；扫描质量、复杂模板、第三方转换器和批量服务成本另行确认。
+  boundary_en: Designed for clearly structured input; scan quality, complex templates,
+    third-party converters, and batch-service costs are separate.
+  maintenance_zh: 随文档格式、字体、渲染器和导出目标变化复评。
+  maintenance_en: Review when document formats, fonts, renderers, or export targets
+    change.
+  anchor_zh: 一次交付通常可省下 20 分钟至半天的整理、排版和格式返工。
+  anchor_en: A run typically saves 20 minutes to half a day of organization, layout,
+    and format rework.
+  confidence: entry
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 4
+    稀缺性与替代难度: 2
+    质量证据与购买信心: 2
+    价值飞轮潜力: 3
+    维护与交付效率: 4
+    复制与渠道可控性: 2
+  weighted_score: 0.59
+  card_path: pricing-cards/fill-form.md
+- id: fill-web-form
+  version: 1.1.2
+  model: free_entry
+  visibility: public
+  list_price_cny: 0.0
+  launch_price_cny: 0
+  price_range_cny:
+  - 0
+  - 0
+  delivery_unit_zh: 公开 Skill 源码与当前版本说明
+  delivery_unit_en: Public Skill source and current-version notes
+  value_zh: 用你本地的知识库来应答网页表单，一轮检索一轮生成，草稿即交付。
+  value_en: Answer online forms using your own knowledge base as the source of truth.
+  basis_zh: 按一次可发送或可归档的文件结果定价，重点是格式稳定和人工返工减少。
+  basis_en: Priced around a file ready to send or archive, with emphasis on stable
+    formatting and less rework.
+  boundary_zh: 默认处理结构清晰的输入；扫描质量、复杂模板、第三方转换器和批量服务成本另行确认。
+  boundary_en: Designed for clearly structured input; scan quality, complex templates,
+    third-party converters, and batch-service costs are separate.
+  maintenance_zh: 随文档格式、字体、渲染器和导出目标变化复评。
+  maintenance_en: Review when document formats, fonts, renderers, or export targets
+    change.
+  anchor_zh: 一次交付通常可省下 20 分钟至半天的整理、排版和格式返工。
+  anchor_en: A run typically saves 20 minutes to half a day of organization, layout,
+    and format rework.
+  confidence: entry
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 4
+    稀缺性与替代难度: 2
+    质量证据与购买信心: 2
+    价值飞轮潜力: 3
+    维护与交付效率: 4
+    复制与渠道可控性: 2
+  weighted_score: 0.59
+  card_path: pricing-cards/fill-web-form.md
+- id: any2pdf
+  version: 待版本化
+  model: free_entry
+  visibility: public
+  list_price_cny: 0.0
+  launch_price_cny: 0
+  price_range_cny:
+  - 0
+  - 0
+  delivery_unit_zh: 公开 Skill 源码与当前版本说明
+  delivery_unit_en: Public Skill source and current-version notes
+  value_zh: 把 Markdown 排成出版级 PDF，中英混排、代码块、表格全支持，内置 14 套主题。
+  value_en: Typeset Markdown into a publication-quality PDF with 14 built-in themes.
+  basis_zh: 按一次可发送或可归档的文件结果定价，重点是格式稳定和人工返工减少。
+  basis_en: Priced around a file ready to send or archive, with emphasis on stable
+    formatting and less rework.
+  boundary_zh: 默认处理结构清晰的输入；扫描质量、复杂模板、第三方转换器和批量服务成本另行确认。
+  boundary_en: Designed for clearly structured input; scan quality, complex templates,
+    third-party converters, and batch-service costs are separate.
+  maintenance_zh: 随文档格式、字体、渲染器和导出目标变化复评。
+  maintenance_en: Review when document formats, fonts, renderers, or export targets
+    change.
+  anchor_zh: 一次交付通常可省下 20 分钟至半天的整理、排版和格式返工。
+  anchor_en: A run typically saves 20 minutes to half a day of organization, layout,
+    and format rework.
+  confidence: entry
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 4
+    稀缺性与替代难度: 2
+    质量证据与购买信心: 2
+    价值飞轮潜力: 3
+    维护与交付效率: 4
+    复制与渠道可控性: 2
+  weighted_score: 0.59
+  card_path: pricing-cards/any2pdf.md
+- id: any2docx
+  version: 待版本化
+  model: free_entry
+  visibility: public
+  list_price_cny: 0.0
+  launch_price_cny: 0
+  price_range_cny:
+  - 0
+  - 0
+  delivery_unit_zh: 公开 Skill 源码与当前版本说明
+  delivery_unit_en: Public Skill source and current-version notes
+  value_zh: 把 Markdown 转成排版规范的 Word 文档，可以直接发给甲方。
+  value_en: Convert Markdown into a clean, professionally styled Word document.
+  basis_zh: 按一次可发送或可归档的文件结果定价，重点是格式稳定和人工返工减少。
+  basis_en: Priced around a file ready to send or archive, with emphasis on stable
+    formatting and less rework.
+  boundary_zh: 默认处理结构清晰的输入；扫描质量、复杂模板、第三方转换器和批量服务成本另行确认。
+  boundary_en: Designed for clearly structured input; scan quality, complex templates,
+    third-party converters, and batch-service costs are separate.
+  maintenance_zh: 随文档格式、字体、渲染器和导出目标变化复评。
+  maintenance_en: Review when document formats, fonts, renderers, or export targets
+    change.
+  anchor_zh: 一次交付通常可省下 20 分钟至半天的整理、排版和格式返工。
+  anchor_en: A run typically saves 20 minutes to half a day of organization, layout,
+    and format rework.
+  confidence: entry
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 4
+    稀缺性与替代难度: 2
+    质量证据与购买信心: 2
+    价值飞轮潜力: 3
+    维护与交付效率: 4
+    复制与渠道可控性: 2
+  weighted_score: 0.59
+  card_path: pricing-cards/any2docx.md
+- id: any2deck
+  version: 1.0.2
+  model: free_entry
+  visibility: public
+  list_price_cny: 0.0
+  launch_price_cny: 0
+  price_range_cny:
+  - 0
+  - 0
+  delivery_unit_zh: 公开 Skill 源码与当前版本说明
+  delivery_unit_en: Public Skill source and current-version notes
+  value_zh: 把任意内容变成带设计感的幻灯片，16 种风格可选，导出 PPTX / PDF。
+  value_en: Turn any content into a styled slide deck — 16 looks, export to PPTX or
+    PDF.
+  basis_zh: 按一次可发送或可归档的文件结果定价，重点是格式稳定和人工返工减少。
+  basis_en: Priced around a file ready to send or archive, with emphasis on stable
+    formatting and less rework.
+  boundary_zh: 默认处理结构清晰的输入；扫描质量、复杂模板、第三方转换器和批量服务成本另行确认。
+  boundary_en: Designed for clearly structured input; scan quality, complex templates,
+    third-party converters, and batch-service costs are separate.
+  maintenance_zh: 随文档格式、字体、渲染器和导出目标变化复评。
+  maintenance_en: Review when document formats, fonts, renderers, or export targets
+    change.
+  anchor_zh: 一次交付通常可省下 20 分钟至半天的整理、排版和格式返工。
+  anchor_en: A run typically saves 20 minutes to half a day of organization, layout,
+    and format rework.
+  confidence: entry
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 4
+    稀缺性与替代难度: 2
+    质量证据与购买信心: 2
+    价值飞轮潜力: 3
+    维护与交付效率: 4
+    复制与渠道可控性: 2
+  weighted_score: 0.59
+  card_path: pricing-cards/any2deck.md
+- id: rich-export
+  version: 0.1.0
+  model: free_entry
+  visibility: public
+  list_price_cny: 0.0
+  launch_price_cny: 0
+  price_range_cny:
+  - 0
+  - 0
+  delivery_unit_zh: 公开 Skill 源码与当前版本说明
+  delivery_unit_en: Public Skill source and current-version notes
+  value_zh: 一份富媒体内容，同时交付网页、可编辑文档、打印版和归档包。
+  value_en: Export one rich-media source into web, editable document, print, and archive
+    formats.
+  basis_zh: 按一次可发送或可归档的文件结果定价，重点是格式稳定和人工返工减少。
+  basis_en: Priced around a file ready to send or archive, with emphasis on stable
+    formatting and less rework.
+  boundary_zh: 默认处理结构清晰的输入；扫描质量、复杂模板、第三方转换器和批量服务成本另行确认。
+  boundary_en: Designed for clearly structured input; scan quality, complex templates,
+    third-party converters, and batch-service costs are separate.
+  maintenance_zh: 随文档格式、字体、渲染器和导出目标变化复评。
+  maintenance_en: Review when document formats, fonts, renderers, or export targets
+    change.
+  anchor_zh: 一次交付通常可省下 20 分钟至半天的整理、排版和格式返工。
+  anchor_en: A run typically saves 20 minutes to half a day of organization, layout,
+    and format rework.
+  confidence: entry
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 4
+    稀缺性与替代难度: 2
+    质量证据与购买信心: 2
+    价值飞轮潜力: 3
+    维护与交付效率: 4
+    复制与渠道可控性: 2
+  weighted_score: 0.59
+  card_path: pricing-cards/rich-export.md
+- id: pdf2png
+  version: 0.1.2
+  model: free_entry
+  visibility: public
+  list_price_cny: 0.0
+  launch_price_cny: 0
+  price_range_cny:
+  - 0
+  - 0
+  delivery_unit_zh: 公开 Skill 源码与当前版本说明
+  delivery_unit_en: Public Skill source and current-version notes
+  value_zh: 把 PDF 拼成一张长图 PNG，在 macOS 上快到几乎瞬间出图。
+  value_en: Convert a PDF to a single long PNG — fast enough to feel instant on macOS.
+  basis_zh: 按一次可发送或可归档的文件结果定价，重点是格式稳定和人工返工减少。
+  basis_en: Priced around a file ready to send or archive, with emphasis on stable
+    formatting and less rework.
+  boundary_zh: 默认处理结构清晰的输入；扫描质量、复杂模板、第三方转换器和批量服务成本另行确认。
+  boundary_en: Designed for clearly structured input; scan quality, complex templates,
+    third-party converters, and batch-service costs are separate.
+  maintenance_zh: 随文档格式、字体、渲染器和导出目标变化复评。
+  maintenance_en: Review when document formats, fonts, renderers, or export targets
+    change.
+  anchor_zh: 一次交付通常可省下 20 分钟至半天的整理、排版和格式返工。
+  anchor_en: A run typically saves 20 minutes to half a day of organization, layout,
+    and format rework.
+  confidence: entry
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 4
+    稀缺性与替代难度: 2
+    质量证据与购买信心: 2
+    价值飞轮潜力: 3
+    维护与交付效率: 4
+    复制与渠道可控性: 2
+  weighted_score: 0.59
+  card_path: pricing-cards/pdf2png.md
+- id: png2svg
+  version: 1.0.1
+  model: free_entry
+  visibility: public
+  list_price_cny: 0.0
+  launch_price_cny: 0
+  price_range_cny:
+  - 0
+  - 0
+  delivery_unit_zh: 公开 Skill 源码与当前版本说明
+  delivery_unit_en: Public Skill source and current-version notes
+  value_zh: 把 PNG 矢量化为高质量 SVG，自动抠背景、曲线平滑。
+  value_en: Convert a PNG to a crisp SVG, with background removed and curves smoothed.
+  basis_zh: 按一次可发送或可归档的文件结果定价，重点是格式稳定和人工返工减少。
+  basis_en: Priced around a file ready to send or archive, with emphasis on stable
+    formatting and less rework.
+  boundary_zh: 默认处理结构清晰的输入；扫描质量、复杂模板、第三方转换器和批量服务成本另行确认。
+  boundary_en: Designed for clearly structured input; scan quality, complex templates,
+    third-party converters, and batch-service costs are separate.
+  maintenance_zh: 随文档格式、字体、渲染器和导出目标变化复评。
+  maintenance_en: Review when document formats, fonts, renderers, or export targets
+    change.
+  anchor_zh: 一次交付通常可省下 20 分钟至半天的整理、排版和格式返工。
+  anchor_en: A run typically saves 20 minutes to half a day of organization, layout,
+    and format rework.
+  confidence: entry
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 4
+    稀缺性与替代难度: 2
+    质量证据与购买信心: 2
+    价值飞轮潜力: 3
+    维护与交付效率: 4
+    复制与渠道可控性: 2
+  weighted_score: 0.59
+  card_path: pricing-cards/png2svg.md
+- id: bp
+  version: 0.2.0
+  model: free_entry
+  visibility: public
+  list_price_cny: 0.0
+  launch_price_cny: 0
+  price_range_cny:
+  - 0
+  - 0
+  delivery_unit_zh: 公开 Skill 源码与当前版本说明
+  delivery_unit_en: Public Skill source and current-version notes
+  value_zh: 可组合的投资人 BP 工具包：大纲、PPT 制作、审稿润色既能单独使用，也能串成完整流程。
+  value_en: A composable BP skill kit — use outline, deck, and polish alone or run
+    the complete investor workflow.
+  basis_zh: 按可直接进入沟通、评审或执行的商务产物定价，不按提示词长度计价。
+  basis_en: Priced around a business deliverable ready for discussion, review, or
+    execution—not prompt length.
+  boundary_zh: 交付的是结构化初稿与审阅框架；最终法律、财务或商业决策仍需由专业人员确认。
+  boundary_en: The deliverable is a structured draft and review framework; final legal,
+    financial, or business decisions still need professional confirmation.
+  maintenance_zh: 按模板、法规、平台导出格式和真实项目反馈变化复评。
+  maintenance_en: Review when templates, regulations, platform export formats, or
+    project feedback change.
+  anchor_zh: 一次交付可替代数小时至一天的资料整理、初稿编排或逐项审阅。
+  anchor_en: A run can replace several hours to a day of research collation, drafting,
+    or item-by-item review.
+  confidence: entry
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 4
+    稀缺性与替代难度: 4
+    质量证据与购买信心: 3
+    价值飞轮潜力: 3
+    维护与交付效率: 3
+    复制与渠道可控性: 2
+  weighted_score: 0.68
+  card_path: pricing-cards/bp.md
+- id: bp-outline
+  version: 0.1.0
+  model: free_entry
+  visibility: public
+  list_price_cny: 0.0
+  launch_price_cny: 0
+  price_range_cny:
+  - 0
+  - 0
+  delivery_unit_zh: 公开 Skill 源码与当前版本说明
+  delivery_unit_en: Public Skill source and current-version notes
+  value_zh: 先把项目材料变成证据账本和投资人看得懂的 12–15 页大纲，再决定是否制作 PPT。
+  value_en: Turn project evidence into an investor narrative and a source-backed 12–15
+    slide outline before making PPT.
+  basis_zh: 按可直接进入沟通、评审或执行的商务产物定价，不按提示词长度计价。
+  basis_en: Priced around a business deliverable ready for discussion, review, or
+    execution—not prompt length.
+  boundary_zh: 交付的是结构化初稿与审阅框架；最终法律、财务或商业决策仍需由专业人员确认。
+  boundary_en: The deliverable is a structured draft and review framework; final legal,
+    financial, or business decisions still need professional confirmation.
+  maintenance_zh: 按模板、法规、平台导出格式和真实项目反馈变化复评。
+  maintenance_en: Review when templates, regulations, platform export formats, or
+    project feedback change.
+  anchor_zh: 一次交付可替代数小时至一天的资料整理、初稿编排或逐项审阅。
+  anchor_en: A run can replace several hours to a day of research collation, drafting,
+    or item-by-item review.
+  confidence: entry
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 4
+    稀缺性与替代难度: 4
+    质量证据与购买信心: 3
+    价值飞轮潜力: 3
+    维护与交付效率: 3
+    复制与渠道可控性: 2
+  weighted_score: 0.68
+  card_path: pricing-cards/bp-outline.md
+- id: bp-deck
+  version: 0.1.0
+  model: free_entry
+  visibility: public
+  list_price_cny: 0.0
+  launch_price_cny: 0
+  price_range_cny:
+  - 0
+  - 0
+  delivery_unit_zh: 公开 Skill 源码与当前版本说明
+  delivery_unit_en: Public Skill source and current-version notes
+  value_zh: 把已经确认的 BP 大纲做成风格统一、图表专业的 PPTX、PDF 和全稿预览。
+  value_en: Turn an approved BP outline into a professional PPTX, PDF, and full-deck
+    preview with deliberate style selection.
+  basis_zh: 按可直接进入沟通、评审或执行的商务产物定价，不按提示词长度计价。
+  basis_en: Priced around a business deliverable ready for discussion, review, or
+    execution—not prompt length.
+  boundary_zh: 交付的是结构化初稿与审阅框架；最终法律、财务或商业决策仍需由专业人员确认。
+  boundary_en: The deliverable is a structured draft and review framework; final legal,
+    financial, or business decisions still need professional confirmation.
+  maintenance_zh: 按模板、法规、平台导出格式和真实项目反馈变化复评。
+  maintenance_en: Review when templates, regulations, platform export formats, or
+    project feedback change.
+  anchor_zh: 一次交付可替代数小时至一天的资料整理、初稿编排或逐项审阅。
+  anchor_en: A run can replace several hours to a day of research collation, drafting,
+    or item-by-item review.
+  confidence: entry
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 4
+    稀缺性与替代难度: 4
+    质量证据与购买信心: 3
+    价值飞轮潜力: 3
+    维护与交付效率: 3
+    复制与渠道可控性: 2
+  weighted_score: 0.68
+  card_path: pricing-cards/bp-deck.md
+- id: bp-polish
+  version: 0.1.0
+  model: free_entry
+  visibility: public
+  list_price_cny: 0.0
+  launch_price_cny: 0
+  price_range_cny:
+  - 0
+  - 0
+  delivery_unit_zh: 公开 Skill 源码与当前版本说明
+  delivery_unit_en: Public Skill source and current-version notes
+  value_zh: 给已有 BP 做投资逻辑、证据、文字、图表和视觉体检，输出评分报告与逐页修改，不为好看改事实。
+  value_en: Audit and polish an existing BP with a scored report and page-level fixes—without
+    changing the facts.
+  basis_zh: 按可直接进入沟通、评审或执行的商务产物定价，不按提示词长度计价。
+  basis_en: Priced around a business deliverable ready for discussion, review, or
+    execution—not prompt length.
+  boundary_zh: 交付的是结构化初稿与审阅框架；最终法律、财务或商业决策仍需由专业人员确认。
+  boundary_en: The deliverable is a structured draft and review framework; final legal,
+    financial, or business decisions still need professional confirmation.
+  maintenance_zh: 按模板、法规、平台导出格式和真实项目反馈变化复评。
+  maintenance_en: Review when templates, regulations, platform export formats, or
+    project feedback change.
+  anchor_zh: 一次交付可替代数小时至一天的资料整理、初稿编排或逐项审阅。
+  anchor_en: A run can replace several hours to a day of research collation, drafting,
+    or item-by-item review.
+  confidence: entry
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 4
+    稀缺性与替代难度: 4
+    质量证据与购买信心: 3
+    价值飞轮潜力: 3
+    维护与交付效率: 3
+    复制与渠道可控性: 2
+  weighted_score: 0.68
+  card_path: pricing-cards/bp-polish.md
+- id: proposal
+  version: 0.1.2
+  model: one_time
+  visibility: public
+  list_price_cny: 49.9
+  launch_price_cny: 49.9
+  price_range_cny:
+  - 49.9
+  - 99
+  delivery_unit_zh: 单项 Skill 完整交付，含当前版本的安装与使用说明
+  delivery_unit_en: One complete Skill with installation and usage notes for the current
+    version
+  value_zh: 把项目简述一键变成可交付的商业提案，方案、报价、排版全配齐。
+  value_en: Turn a project brief into a complete, client-ready business proposal.
+  basis_zh: 按可直接进入沟通、评审或执行的商务产物定价，不按提示词长度计价。
+  basis_en: Priced around a business deliverable ready for discussion, review, or
+    execution—not prompt length.
+  boundary_zh: 交付的是结构化初稿与审阅框架；最终法律、财务或商业决策仍需由专业人员确认。
+  boundary_en: The deliverable is a structured draft and review framework; final legal,
+    financial, or business decisions still need professional confirmation.
+  maintenance_zh: 按模板、法规、平台导出格式和真实项目反馈变化复评。
+  maintenance_en: Review when templates, regulations, platform export formats, or
+    project feedback change.
+  anchor_zh: 一次交付可替代数小时至一天的资料整理、初稿编排或逐项审阅。
+  anchor_en: A run can replace several hours to a day of research collation, drafting,
+    or item-by-item review.
+  confidence: medium
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 5
+    稀缺性与替代难度: 5
+    质量证据与购买信心: 4
+    价值飞轮潜力: 3
+    维护与交付效率: 3
+    复制与渠道可控性: 3
+  weighted_score: 0.83
+  card_path: pricing-cards/proposal.md
+- id: review-doc
+  version: 1.0.0
+  model: free_entry
+  visibility: public
+  list_price_cny: 0.0
+  launch_price_cny: 0
+  price_range_cny:
+  - 0
+  - 0
+  delivery_unit_zh: 公开 Skill 源码与当前版本说明
+  delivery_unit_en: Public Skill source and current-version notes
+  value_zh: 像资深法务一样审合同，交付逐条批注、红线修订、替代条款和谈判底线。
+  value_en: Review contracts like a senior legal expert — comments, redlines, fallback
+    clauses, and negotiation priorities.
+  basis_zh: 按可直接进入沟通、评审或执行的商务产物定价，不按提示词长度计价。
+  basis_en: Priced around a business deliverable ready for discussion, review, or
+    execution—not prompt length.
+  boundary_zh: 交付的是结构化初稿与审阅框架；最终法律、财务或商业决策仍需由专业人员确认。
+  boundary_en: The deliverable is a structured draft and review framework; final legal,
+    financial, or business decisions still need professional confirmation.
+  maintenance_zh: 按模板、法规、平台导出格式和真实项目反馈变化复评。
+  maintenance_en: Review when templates, regulations, platform export formats, or
+    project feedback change.
+  anchor_zh: 一次交付可替代数小时至一天的资料整理、初稿编排或逐项审阅。
+  anchor_en: A run can replace several hours to a day of research collation, drafting,
+    or item-by-item review.
+  confidence: entry
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 4
+    稀缺性与替代难度: 4
+    质量证据与购买信心: 3
+    价值飞轮潜力: 3
+    维护与交付效率: 3
+    复制与渠道可控性: 2
+  weighted_score: 0.68
+  card_path: pricing-cards/review-doc.md
+- id: contract-review-pro
+  version: 0.1.0
+  model: free_entry
+  visibility: public
+  list_price_cny: 0.0
+  launch_price_cny: 0
+  price_range_cny:
+  - 0
+  - 0
+  delivery_unit_zh: 公开 Skill 源码与当前版本说明
+  delivery_unit_en: Public Skill source and current-version notes
+  value_zh: 专业级合同审阅 — 四层方法论（主体核验 + 基础 + 业务 + 法务），结构化批注含风险等级，附合同摘要、综合意见与业务流程图。
+  value_en: Professional-grade contract review — four-layer methodology, structured
+    comments with risk levels, summary, opinion, and business flowchart.
+  basis_zh: 按可直接进入沟通、评审或执行的商务产物定价，不按提示词长度计价。
+  basis_en: Priced around a business deliverable ready for discussion, review, or
+    execution—not prompt length.
+  boundary_zh: 交付的是结构化初稿与审阅框架；最终法律、财务或商业决策仍需由专业人员确认。
+  boundary_en: The deliverable is a structured draft and review framework; final legal,
+    financial, or business decisions still need professional confirmation.
+  maintenance_zh: 按模板、法规、平台导出格式和真实项目反馈变化复评。
+  maintenance_en: Review when templates, regulations, platform export formats, or
+    project feedback change.
+  anchor_zh: 一次交付可替代数小时至一天的资料整理、初稿编排或逐项审阅。
+  anchor_en: A run can replace several hours to a day of research collation, drafting,
+    or item-by-item review.
+  confidence: entry
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 4
+    稀缺性与替代难度: 4
+    质量证据与购买信心: 3
+    价值飞轮潜力: 3
+    维护与交付效率: 3
+    复制与渠道可控性: 2
+  weighted_score: 0.68
+  card_path: pricing-cards/contract-review-pro.md
+- id: expense-report
+  version: 0.1.1
+  model: free_entry
+  visibility: public
+  list_price_cny: 0.0
+  launch_price_cny: 0
+  price_range_cny:
+  - 0
+  - 0
+  delivery_unit_zh: 公开 Skill 源码与当前版本说明
+  delivery_unit_en: Public Skill source and current-version notes
+  value_zh: 发票图片或文字一键整理成分类报销 Excel，业务招待、差旅、办公自动归类。
+  value_en: Turn a pile of invoices into a categorized Excel expense report.
+  basis_zh: 按可直接进入沟通、评审或执行的商务产物定价，不按提示词长度计价。
+  basis_en: Priced around a business deliverable ready for discussion, review, or
+    execution—not prompt length.
+  boundary_zh: 交付的是结构化初稿与审阅框架；最终法律、财务或商业决策仍需由专业人员确认。
+  boundary_en: The deliverable is a structured draft and review framework; final legal,
+    financial, or business decisions still need professional confirmation.
+  maintenance_zh: 按模板、法规、平台导出格式和真实项目反馈变化复评。
+  maintenance_en: Review when templates, regulations, platform export formats, or
+    project feedback change.
+  anchor_zh: 一次交付可替代数小时至一天的资料整理、初稿编排或逐项审阅。
+  anchor_en: A run can replace several hours to a day of research collation, drafting,
+    or item-by-item review.
+  confidence: entry
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 4
+    稀缺性与替代难度: 4
+    质量证据与购买信心: 3
+    价值飞轮潜力: 3
+    维护与交付效率: 3
+    复制与渠道可控性: 2
+  weighted_score: 0.68
+  card_path: pricing-cards/expense-report.md
+- id: event-poster
+  version: 0.4.0
+  model: one_time
+  visibility: public
+  list_price_cny: 49.9
+  launch_price_cny: 49.9
+  price_range_cny:
+  - 49.9
+  - 99
+  delivery_unit_zh: 单项 Skill 完整交付，含当前版本的安装与使用说明
+  delivery_unit_en: One complete Skill with installation and usage notes for the current
+    version
+  value_zh: 把活动信息一键变成高质感海报，可直接分享或用于线下展览。
+  value_en: Turn an event brief into a polished poster, ready to share or print for
+    exhibitions.
+  basis_zh: 按可预览、可导出、可继续编辑的视觉结果定价，价值来自减少反复试稿。
+  basis_en: Priced around a previewable, exportable, and reusable visual result, with
+    value coming from fewer draft iterations.
+  boundary_zh: 结果依赖输入素材、品牌约束和外部模型；复杂定制、素材采购与线下制作另计。
+  boundary_en: Results depend on source assets, brand constraints, and external models;
+    complex customization, asset sourcing, and physical production are separate.
+  maintenance_zh: 随渲染工具、字体、模型和品牌资产变化复评；保持输出结构比追逐单一风格更重要。
+  maintenance_en: Review against rendering tools, fonts, models, and brand assets;
+    output structure matters more than chasing a single style.
+  anchor_zh: 一次结果通常可减少 1–6 小时的试稿、排版或资产整理。
+  anchor_en: A result typically removes 1–6 hours of drafting, layout, or asset organization.
+  confidence: medium
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 5
+    稀缺性与替代难度: 4
+    质量证据与购买信心: 3
+    价值飞轮潜力: 3
+    维护与交付效率: 3
+    复制与渠道可控性: 3
+  weighted_score: 0.76
+  card_path: pricing-cards/event-poster.md
+- id: professional-infographic
+  version: 0.3.0
+  model: free_entry
+  visibility: public
+  list_price_cny: 0.0
+  launch_price_cny: 0
+  price_range_cny:
+  - 0
+  - 0
+  delivery_unit_zh: 公开 Skill 源码与当前版本说明
+  delivery_unit_en: Public Skill source and current-version notes
+  value_zh: 把复杂材料重构为证据驱动的信息图：顶部说明主题与用途，主视觉呈现证据，建议置于尾部；亦支持结论型管理层 Exhibit。
+  value_en: Turn dense material into an evidence-led infographic whose topic title,
+    visual proof, tail recommendation, and sources form one clear argument.
+  basis_zh: 按可预览、可导出、可继续编辑的视觉结果定价，价值来自减少反复试稿。
+  basis_en: Priced around a previewable, exportable, and reusable visual result, with
+    value coming from fewer draft iterations.
+  boundary_zh: 结果依赖输入素材、品牌约束和外部模型；复杂定制、素材采购与线下制作另计。
+  boundary_en: Results depend on source assets, brand constraints, and external models;
+    complex customization, asset sourcing, and physical production are separate.
+  maintenance_zh: 随渲染工具、字体、模型和品牌资产变化复评；保持输出结构比追逐单一风格更重要。
+  maintenance_en: Review against rendering tools, fonts, models, and brand assets;
+    output structure matters more than chasing a single style.
+  anchor_zh: 一次结果通常可减少 1–6 小时的试稿、排版或资产整理。
+  anchor_en: A result typically removes 1–6 hours of drafting, layout, or asset organization.
+  confidence: entry
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 4
+    稀缺性与替代难度: 3
+    质量证据与购买信心: 2
+    价值飞轮潜力: 3
+    维护与交付效率: 3
+    复制与渠道可控性: 2
+  weighted_score: 0.61
+  card_path: pricing-cards/professional-infographic.md
+- id: oh-my-landingpage
+  version: 0.2.0
+  model: one_time
+  visibility: public
+  list_price_cny: 19.9
+  launch_price_cny: 19.9
+  price_range_cny:
+  - 19.9
+  - 49.9
+  delivery_unit_zh: 单项 Skill 完整交付，含当前版本的安装与使用说明
+  delivery_unit_en: One complete Skill with installation and usage notes for the current
+    version
+  value_zh: 从品牌内核出发，统一重构着陆页的价值主张、内容叙事、文案、界面、媒体与真实转化路径。
+  value_en: Rebuild a landing page as one coherent brand experience, from the promise
+    and story to the interface, media, and conversion path.
+  basis_zh: 按可预览、可导出、可继续编辑的视觉结果定价，价值来自减少反复试稿。
+  basis_en: Priced around a previewable, exportable, and reusable visual result, with
+    value coming from fewer draft iterations.
+  boundary_zh: 结果依赖输入素材、品牌约束和外部模型；复杂定制、素材采购与线下制作另计。
+  boundary_en: Results depend on source assets, brand constraints, and external models;
+    complex customization, asset sourcing, and physical production are separate.
+  maintenance_zh: 随渲染工具、字体、模型和品牌资产变化复评；保持输出结构比追逐单一风格更重要。
+  maintenance_en: Review against rendering tools, fonts, models, and brand assets;
+    output structure matters more than chasing a single style.
+  anchor_zh: 一次结果通常可减少 1–6 小时的试稿、排版或资产整理。
+  anchor_en: A result typically removes 1–6 hours of drafting, layout, or asset organization.
+  confidence: medium
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 5
+    稀缺性与替代难度: 4
+    质量证据与购买信心: 3
+    价值飞轮潜力: 3
+    维护与交付效率: 3
+    复制与渠道可控性: 3
+  weighted_score: 0.76
+  card_path: pricing-cards/oh-my-landingpage.md
+- id: visual-clone
+  version: 待版本化
+  model: one_time
+  visibility: public
+  list_price_cny: 49.9
+  launch_price_cny: 49.9
+  price_range_cny:
+  - 49.9
+  - 99
+  delivery_unit_zh: 单项 Skill 完整交付，含当前版本的安装与使用说明
+  delivery_unit_en: One complete Skill with installation and usage notes for the current
+    version
+  value_zh: 从参考图中提取设计要素，生成可复刻同款风格的指令。
+  value_en: Extract the design DNA of a reference image so you can recreate the look.
+  basis_zh: 按可预览、可导出、可继续编辑的视觉结果定价，价值来自减少反复试稿。
+  basis_en: Priced around a previewable, exportable, and reusable visual result, with
+    value coming from fewer draft iterations.
+  boundary_zh: 结果依赖输入素材、品牌约束和外部模型；复杂定制、素材采购与线下制作另计。
+  boundary_en: Results depend on source assets, brand constraints, and external models;
+    complex customization, asset sourcing, and physical production are separate.
+  maintenance_zh: 随渲染工具、字体、模型和品牌资产变化复评；保持输出结构比追逐单一风格更重要。
+  maintenance_en: Review against rendering tools, fonts, models, and brand assets;
+    output structure matters more than chasing a single style.
+  anchor_zh: 一次结果通常可减少 1–6 小时的试稿、排版或资产整理。
+  anchor_en: A result typically removes 1–6 hours of drafting, layout, or asset organization.
+  confidence: medium
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 5
+    稀缺性与替代难度: 4
+    质量证据与购买信心: 3
+    价值飞轮潜力: 3
+    维护与交付效率: 3
+    复制与渠道可控性: 3
+  weighted_score: 0.76
+  card_path: pricing-cards/visual-clone.md
+- id: find-logo
+  version: 0.2.0
+  model: free_entry
+  visibility: public
+  list_price_cny: 0.0
+  launch_price_cny: 0
+  price_range_cny:
+  - 0
+  - 0
+  delivery_unit_zh: 公开 Skill 源码与当前版本说明
+  delivery_unit_en: Public Skill source and current-version notes
+  value_zh: 按品牌名或网址抓取 logo，自动评分择优（偏好长条形 + 透明底），统一归档到本地，方便网站/PPT/海报罗列。
+  value_en: Collect brand logos from public sources — wide and transparent preferred,
+    archived for website/PPT/poster lineups.
+  basis_zh: 按可预览、可导出、可继续编辑的视觉结果定价，价值来自减少反复试稿。
+  basis_en: Priced around a previewable, exportable, and reusable visual result, with
+    value coming from fewer draft iterations.
+  boundary_zh: 结果依赖输入素材、品牌约束和外部模型；复杂定制、素材采购与线下制作另计。
+  boundary_en: Results depend on source assets, brand constraints, and external models;
+    complex customization, asset sourcing, and physical production are separate.
+  maintenance_zh: 随渲染工具、字体、模型和品牌资产变化复评；保持输出结构比追逐单一风格更重要。
+  maintenance_en: Review against rendering tools, fonts, models, and brand assets;
+    output structure matters more than chasing a single style.
+  anchor_zh: 一次结果通常可减少 1–6 小时的试稿、排版或资产整理。
+  anchor_en: A result typically removes 1–6 hours of drafting, layout, or asset organization.
+  confidence: entry
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 4
+    稀缺性与替代难度: 3
+    质量证据与购买信心: 2
+    价值飞轮潜力: 3
+    维护与交付效率: 3
+    复制与渠道可控性: 2
+  weighted_score: 0.61
+  card_path: pricing-cards/find-logo.md
+- id: business-card
+  version: 0.1.0
+  model: free_entry
+  visibility: public
+  list_price_cny: 0.0
+  launch_price_cny: 0
+  price_range_cny:
+  - 0
+  - 0
+  delivery_unit_zh: 公开 Skill 源码与当前版本说明
+  delivery_unit_en: Public Skill source and current-version notes
+  value_zh: 把任何人的姓名、头衔、金句一键变成精美的编辑式名片，输出高清 PNG 与可点击下载的 HTML。
+  value_en: Turn anyone's name, roles and tagline into a polished editorial business
+    card — high-res PNG plus a click-to-download HTML.
+  basis_zh: 按可预览、可导出、可继续编辑的视觉结果定价，价值来自减少反复试稿。
+  basis_en: Priced around a previewable, exportable, and reusable visual result, with
+    value coming from fewer draft iterations.
+  boundary_zh: 结果依赖输入素材、品牌约束和外部模型；复杂定制、素材采购与线下制作另计。
+  boundary_en: Results depend on source assets, brand constraints, and external models;
+    complex customization, asset sourcing, and physical production are separate.
+  maintenance_zh: 随渲染工具、字体、模型和品牌资产变化复评；保持输出结构比追逐单一风格更重要。
+  maintenance_en: Review against rendering tools, fonts, models, and brand assets;
+    output structure matters more than chasing a single style.
+  anchor_zh: 一次结果通常可减少 1–6 小时的试稿、排版或资产整理。
+  anchor_en: A result typically removes 1–6 hours of drafting, layout, or asset organization.
+  confidence: entry
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 4
+    稀缺性与替代难度: 3
+    质量证据与购买信心: 2
+    价值飞轮潜力: 3
+    维护与交付效率: 3
+    复制与渠道可控性: 2
+  weighted_score: 0.61
+  card_path: pricing-cards/business-card.md
+- id: anti-wechat-ai-check
+  version: 1.0.1
+  model: free_entry
+  visibility: public
+  list_price_cny: 0.0
+  launch_price_cny: 0
+  price_range_cny:
+  - 0
+  - 0
+  delivery_unit_zh: 公开 Skill 源码与当前版本说明
+  delivery_unit_en: Public Skill source and current-version notes
+  value_zh: 检测文章的 AI 味并做人性化润色，帮助稳过微信 3.27 条款的机器判定。
+  value_en: Detect AI fingerprints in an article and rewrite it to read like a human.
+  basis_zh: 按能继续编辑、发布或复用的内容成品定价，重点是流程完整和证据可追溯。
+  basis_en: Priced around content that can be edited, published, or reused, with emphasis
+    on a complete workflow and traceable evidence.
+  boundary_zh: 结果质量取决于素材、事实和品牌约束；平台账号、第三方模型和发布操作按实际条件处理。
+  boundary_en: Quality depends on source material, facts, and brand constraints; platform
+    accounts, third-party models, and publishing operations follow actual conditions.
+  maintenance_zh: 随平台规则、内容格式、模型和素材库变化复评。
+  maintenance_en: Review when platform rules, content formats, models, or asset libraries
+    change.
+  anchor_zh: 一次交付通常可省下 1 小时至一天的研究、编排、配图或发布准备。
+  anchor_en: A run typically saves one hour to a day of research, editing, illustration,
+    or publishing preparation.
+  confidence: entry
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 4
+    稀缺性与替代难度: 3
+    质量证据与购买信心: 2
+    价值飞轮潜力: 3
+    维护与交付效率: 3
+    复制与渠道可控性: 2
+  weighted_score: 0.61
+  card_path: pricing-cards/anti-wechat-ai-check.md
+- id: wechat-article-operator
+  version: 0.1.0
+  model: one_time
+  visibility: public
+  list_price_cny: 9.99
+  launch_price_cny: 9.99
+  price_range_cny:
+  - 9.99
+  - 19.9
+  delivery_unit_zh: 单项 Skill 完整交付，含当前版本的安装与使用说明
+  delivery_unit_en: One complete Skill with installation and usage notes for the current
+    version
+  value_zh: 可靠读取、编辑、保存并重载验收现有公众号文章，支持精确内容修改与封面替换。
+  value_en: Read and edit an existing WeChat article with persisted-state verification,
+    from exact content changes to cover replacement.
+  basis_zh: 按能继续编辑、发布或复用的内容成品定价，重点是流程完整和证据可追溯。
+  basis_en: Priced around content that can be edited, published, or reused, with emphasis
+    on a complete workflow and traceable evidence.
+  boundary_zh: 结果质量取决于素材、事实和品牌约束；平台账号、第三方模型和发布操作按实际条件处理。
+  boundary_en: Quality depends on source material, facts, and brand constraints; platform
+    accounts, third-party models, and publishing operations follow actual conditions.
+  maintenance_zh: 随平台规则、内容格式、模型和素材库变化复评。
+  maintenance_en: Review when platform rules, content formats, models, or asset libraries
+    change.
+  anchor_zh: 一次交付通常可省下 1 小时至一天的研究、编排、配图或发布准备。
+  anchor_en: A run typically saves one hour to a day of research, editing, illustration,
+    or publishing preparation.
+  confidence: medium
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 5
+    稀缺性与替代难度: 4
+    质量证据与购买信心: 3
+    价值飞轮潜力: 3
+    维护与交付效率: 3
+    复制与渠道可控性: 3
+  weighted_score: 0.76
+  card_path: pricing-cards/wechat-article-operator.md
+- id: wechat-article-branding
+  version: 0.1.0
+  model: one_time
+  visibility: public
+  list_price_cny: 9.99
+  launch_price_cny: 9.99
+  price_range_cny:
+  - 9.99
+  - 19.9
+  delivery_unit_zh: 单项 Skill 完整交付，含当前版本的安装与使用说明
+  delivery_unit_en: One complete Skill with installation and usage notes for the current
+    version
+  value_zh: 把现有公众号文章自动加工成结构专业、封面成熟、品牌统一且经过真实页面验收的完整制品。
+  value_en: Turn a WeChat article into one coherent branded edition with stronger
+    structure, cover, editorial polish, and real-page acceptance.
+  basis_zh: 按能继续编辑、发布或复用的内容成品定价，重点是流程完整和证据可追溯。
+  basis_en: Priced around content that can be edited, published, or reused, with emphasis
+    on a complete workflow and traceable evidence.
+  boundary_zh: 结果质量取决于素材、事实和品牌约束；平台账号、第三方模型和发布操作按实际条件处理。
+  boundary_en: Quality depends on source material, facts, and brand constraints; platform
+    accounts, third-party models, and publishing operations follow actual conditions.
+  maintenance_zh: 随平台规则、内容格式、模型和素材库变化复评。
+  maintenance_en: Review when platform rules, content formats, models, or asset libraries
+    change.
+  anchor_zh: 一次交付通常可省下 1 小时至一天的研究、编排、配图或发布准备。
+  anchor_en: A run typically saves one hour to a day of research, editing, illustration,
+    or publishing preparation.
+  confidence: medium
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 5
+    稀缺性与替代难度: 4
+    质量证据与购买信心: 4
+    价值飞轮潜力: 3
+    维护与交付效率: 3
+    复制与渠道可控性: 3
+  weighted_score: 0.79
+  card_path: pricing-cards/wechat-article-branding.md
+- id: document-illustrator
+  version: 0.2.1
+  model: free_entry
+  visibility: public
+  list_price_cny: 0.0
+  launch_price_cny: 0
+  price_range_cny:
+  - 0
+  - 0
+  delivery_unit_zh: 公开 Skill 源码与当前版本说明
+  delivery_unit_en: Public Skill source and current-version notes
+  value_zh: 给长文原地配图，先规划插入点再并行出图，最后自动插回原文。
+  value_en: Illustrate a long document in place — plan, generate, and insert images
+    automatically.
+  basis_zh: 按能继续编辑、发布或复用的内容成品定价，重点是流程完整和证据可追溯。
+  basis_en: Priced around content that can be edited, published, or reused, with emphasis
+    on a complete workflow and traceable evidence.
+  boundary_zh: 结果质量取决于素材、事实和品牌约束；平台账号、第三方模型和发布操作按实际条件处理。
+  boundary_en: Quality depends on source material, facts, and brand constraints; platform
+    accounts, third-party models, and publishing operations follow actual conditions.
+  maintenance_zh: 随平台规则、内容格式、模型和素材库变化复评。
+  maintenance_en: Review when platform rules, content formats, models, or asset libraries
+    change.
+  anchor_zh: 一次交付通常可省下 1 小时至一天的研究、编排、配图或发布准备。
+  anchor_en: A run typically saves one hour to a day of research, editing, illustration,
+    or publishing preparation.
+  confidence: entry
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 4
+    稀缺性与替代难度: 3
+    质量证据与购买信心: 2
+    价值飞轮潜力: 3
+    维护与交付效率: 3
+    复制与渠道可控性: 2
+  weighted_score: 0.61
+  card_path: pricing-cards/document-illustrator.md
+- id: deep-research
+  version: 2.3.1
+  model: free_entry
+  visibility: public
+  list_price_cny: 0.0
+  launch_price_cny: 0
+  price_range_cny:
+  - 0
+  - 0
+  delivery_unit_zh: 公开 Skill 源码与当前版本说明
+  delivery_unit_en: Public Skill source and current-version notes
+  value_zh: 生成带引用追踪、证据留存和主张校验的深度研究报告，并输出 Markdown/HTML/PDF。
+  value_en: Produce citation-tracked research reports with persistent evidence, claim
+    verification, and Markdown/HTML/PDF packaging.
+  basis_zh: 按能继续编辑、发布或复用的内容成品定价，重点是流程完整和证据可追溯。
+  basis_en: Priced around content that can be edited, published, or reused, with emphasis
+    on a complete workflow and traceable evidence.
+  boundary_zh: 结果质量取决于素材、事实和品牌约束；平台账号、第三方模型和发布操作按实际条件处理。
+  boundary_en: Quality depends on source material, facts, and brand constraints; platform
+    accounts, third-party models, and publishing operations follow actual conditions.
+  maintenance_zh: 随平台规则、内容格式、模型和素材库变化复评。
+  maintenance_en: Review when platform rules, content formats, models, or asset libraries
+    change.
+  anchor_zh: 一次交付通常可省下 1 小时至一天的研究、编排、配图或发布准备。
+  anchor_en: A run typically saves one hour to a day of research, editing, illustration,
+    or publishing preparation.
+  confidence: entry
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 4
+    稀缺性与替代难度: 3
+    质量证据与购买信心: 2
+    价值飞轮潜力: 3
+    维护与交付效率: 3
+    复制与渠道可控性: 2
+  weighted_score: 0.61
+  card_path: pricing-cards/deep-research.md
+- id: write-professional-book
+  version: 0.1.4
+  model: one_time
+  visibility: public
+  list_price_cny: 49.9
+  launch_price_cny: 49.9
+  price_range_cny:
+  - 49.9
+  - 99
+  delivery_unit_zh: 单项 Skill 完整交付，含当前版本的安装与使用说明
+  delivery_unit_en: One complete Skill with installation and usage notes for the current
+    version
+  value_zh: 从大纲开始，逐章写出一本完整的书，技术、教程、专著多种风格。
+  value_en: Write a full multi-chapter book — technical, tutorial, or monograph —
+    from an outline.
+  basis_zh: 按能继续编辑、发布或复用的内容成品定价，重点是流程完整和证据可追溯。
+  basis_en: Priced around content that can be edited, published, or reused, with emphasis
+    on a complete workflow and traceable evidence.
+  boundary_zh: 结果质量取决于素材、事实和品牌约束；平台账号、第三方模型和发布操作按实际条件处理。
+  boundary_en: Quality depends on source material, facts, and brand constraints; platform
+    accounts, third-party models, and publishing operations follow actual conditions.
+  maintenance_zh: 随平台规则、内容格式、模型和素材库变化复评。
+  maintenance_en: Review when platform rules, content formats, models, or asset libraries
+    change.
+  anchor_zh: 一次交付通常可省下 1 小时至一天的研究、编排、配图或发布准备。
+  anchor_en: A run typically saves one hour to a day of research, editing, illustration,
+    or publishing preparation.
+  confidence: medium
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 5
+    稀缺性与替代难度: 4
+    质量证据与购买信心: 3
+    价值飞轮潜力: 3
+    维护与交付效率: 3
+    复制与渠道可控性: 3
+  weighted_score: 0.76
+  card_path: pricing-cards/write-professional-book.md
+- id: wxmp-cracker
+  version: 0.1.6
+  model: one_time
+  visibility: public
+  list_price_cny: 49.9
+  launch_price_cny: 49.9
+  price_range_cny:
+  - 49.9
+  - 99
+  delivery_unit_zh: 单项 Skill 完整交付，含当前版本的安装与使用说明
+  delivery_unit_en: One complete Skill with installation and usage notes for the current
+    version
+  value_zh: 把微信公众号的文章批量归档成可再利用的整洁文本。
+  value_en: Archive WeChat Official Account articles into clean, reusable text.
+  basis_zh: 按能继续编辑、发布或复用的内容成品定价，重点是流程完整和证据可追溯。
+  basis_en: Priced around content that can be edited, published, or reused, with emphasis
+    on a complete workflow and traceable evidence.
+  boundary_zh: 结果质量取决于素材、事实和品牌约束；平台账号、第三方模型和发布操作按实际条件处理。
+  boundary_en: Quality depends on source material, facts, and brand constraints; platform
+    accounts, third-party models, and publishing operations follow actual conditions.
+  maintenance_zh: 随平台规则、内容格式、模型和素材库变化复评。
+  maintenance_en: Review when platform rules, content formats, models, or asset libraries
+    change.
+  anchor_zh: 一次交付通常可省下 1 小时至一天的研究、编排、配图或发布准备。
+  anchor_en: A run typically saves one hour to a day of research, editing, illustration,
+    or publishing preparation.
+  confidence: medium
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 5
+    稀缺性与替代难度: 4
+    质量证据与购买信心: 3
+    价值飞轮潜力: 3
+    维护与交付效率: 3
+    复制与渠道可控性: 3
+  weighted_score: 0.76
+  card_path: pricing-cards/wxmp-cracker.md
+- id: event-curator
+  version: 0.1.1
+  model: one_time
+  visibility: public
+  list_price_cny: 49.9
+  launch_price_cny: 49.9
+  price_range_cny:
+  - 49.9
+  - 99
+  delivery_unit_zh: 单项 Skill 完整交付，含当前版本的安装与使用说明
+  delivery_unit_en: One complete Skill with installation and usage notes for the current
+    version
+  value_zh: 从嘉宾履历一键生成可交付的活动策划案 — 主题文案、分钟级 rundown、主持人问题卡、伴手礼。
+  value_en: Turn a guest bio into a ready-to-run event plan — title, rundown, host
+    questions, and gifts.
+  basis_zh: 按可直接进入沟通、评审或执行的商务产物定价，不按提示词长度计价。
+  basis_en: Priced around a business deliverable ready for discussion, review, or
+    execution—not prompt length.
+  boundary_zh: 交付的是结构化初稿与审阅框架；最终法律、财务或商业决策仍需由专业人员确认。
+  boundary_en: The deliverable is a structured draft and review framework; final legal,
+    financial, or business decisions still need professional confirmation.
+  maintenance_zh: 按模板、法规、平台导出格式和真实项目反馈变化复评。
+  maintenance_en: Review when templates, regulations, platform export formats, or
+    project feedback change.
+  anchor_zh: 一次交付可替代数小时至一天的资料整理、初稿编排或逐项审阅。
+  anchor_en: A run can replace several hours to a day of research collation, drafting,
+    or item-by-item review.
+  confidence: medium
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 5
+    稀缺性与替代难度: 5
+    质量证据与购买信心: 4
+    价值飞轮潜力: 3
+    维护与交付效率: 3
+    复制与渠道可控性: 3
+  weighted_score: 0.83
+  card_path: pricing-cards/event-curator.md
+- id: thesis-polish
+  version: 1.0.1
+  model: free_entry
+  visibility: public
+  list_price_cny: 0.0
+  launch_price_cny: 0
+  price_range_cny:
+  - 0
+  - 0
+  delivery_unit_zh: 公开 Skill 源码与当前版本说明
+  delivery_unit_en: Public Skill source and current-version notes
+  value_zh: MBA 论文全维度润色，对标国优标准，打磨语言、结构、论证与创新四个面。
+  value_en: Polish an MBA thesis across language, structure, argument, and originality.
+  basis_zh: 按可核对的论文或译文质量改进定价，重点是逐项证据、结构一致性和返修减少。
+  basis_en: Priced around verifiable improvement to an academic document or translation,
+    with emphasis on evidence, consistency, and fewer revisions.
+  boundary_zh: 提供审校与结构建议，不替代作者署名、学术判断、事实核验或投稿机构要求。
+  boundary_en: Provides review and structure suggestions; it does not replace authorship,
+    academic judgment, fact checking, or venue requirements.
+  maintenance_zh: 随格式规范、术语库、文档解析器和真实返修反馈复评。
+  maintenance_en: Review against style requirements, terminology, document parsers,
+    and revision feedback.
+  anchor_zh: 一次处理通常可省下 1–8 小时的逐段对照、格式修整或返修整理。
+  anchor_en: A run typically saves 1–8 hours of paragraph comparison, formatting,
+    or revision work.
+  confidence: entry
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 4
+    稀缺性与替代难度: 3
+    质量证据与购买信心: 2
+    价值飞轮潜力: 3
+    维护与交付效率: 3
+    复制与渠道可控性: 2
+  weighted_score: 0.61
+  card_path: pricing-cards/thesis-polish.md
+- id: academic-translator
+  version: 0.1.0
+  model: one_time
+  visibility: public
+  list_price_cny: 4.99
+  launch_price_cny: 4.99
+  price_range_cny:
+  - 4.99
+  - 9.99
+  delivery_unit_zh: 单项 Skill 完整交付，含当前版本的安装与使用说明
+  delivery_unit_en: One complete Skill with installation and usage notes for the current
+    version
+  value_zh: 将英文论文译为中文，优先保留图表、公式、页码对应与目录跳转。 — 售价 ¥4.99
+  value_en: Translate English papers into Chinese while preserving figures, equations,
+    pages, and navigation.
+  basis_zh: 按可核对的论文或译文质量改进定价，重点是逐项证据、结构一致性和返修减少。
+  basis_en: Priced around verifiable improvement to an academic document or translation,
+    with emphasis on evidence, consistency, and fewer revisions.
+  boundary_zh: 提供审校与结构建议，不替代作者署名、学术判断、事实核验或投稿机构要求。
+  boundary_en: Provides review and structure suggestions; it does not replace authorship,
+    academic judgment, fact checking, or venue requirements.
+  maintenance_zh: 随格式规范、术语库、文档解析器和真实返修反馈复评。
+  maintenance_en: Review against style requirements, terminology, document parsers,
+    and revision feedback.
+  anchor_zh: 一次处理通常可省下 1–8 小时的逐段对照、格式修整或返修整理。
+  anchor_en: A run typically saves 1–8 hours of paragraph comparison, formatting,
+    or revision work.
+  confidence: medium
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 5
+    稀缺性与替代难度: 4
+    质量证据与购买信心: 3
+    价值飞轮潜力: 3
+    维护与交付效率: 3
+    复制与渠道可控性: 3
+  weighted_score: 0.76
+  card_path: pricing-cards/academic-translator.md
+- id: translation-review
+  version: 1.0.1
+  model: free_entry
+  visibility: public
+  list_price_cny: 0.0
+  launch_price_cny: 0
+  price_range_cny:
+  - 0
+  - 0
+  delivery_unit_zh: 公开 Skill 源码与当前版本说明
+  delivery_unit_en: Public Skill source and current-version notes
+  value_zh: 中译英译文审阅，从六个维度逐条对照原文，找出问题并给出改写建议。
+  value_en: Review a Chinese→English translation against the original across six quality
+    dimensions.
+  basis_zh: 按可核对的论文或译文质量改进定价，重点是逐项证据、结构一致性和返修减少。
+  basis_en: Priced around verifiable improvement to an academic document or translation,
+    with emphasis on evidence, consistency, and fewer revisions.
+  boundary_zh: 提供审校与结构建议，不替代作者署名、学术判断、事实核验或投稿机构要求。
+  boundary_en: Provides review and structure suggestions; it does not replace authorship,
+    academic judgment, fact checking, or venue requirements.
+  maintenance_zh: 随格式规范、术语库、文档解析器和真实返修反馈复评。
+  maintenance_en: Review against style requirements, terminology, document parsers,
+    and revision feedback.
+  anchor_zh: 一次处理通常可省下 1–8 小时的逐段对照、格式修整或返修整理。
+  anchor_en: A run typically saves 1–8 hours of paragraph comparison, formatting,
+    or revision work.
+  confidence: entry
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 4
+    稀缺性与替代难度: 3
+    质量证据与购买信心: 2
+    价值飞轮潜力: 3
+    维护与交付效率: 3
+    复制与渠道可控性: 2
+  weighted_score: 0.61
+  card_path: pricing-cards/translation-review.md
+- id: style-clone
+  version: 0.1.1
+  model: free_entry
+  visibility: public
+  list_price_cny: 0.0
+  launch_price_cny: 0
+  price_range_cny:
+  - 0
+  - 0
+  delivery_unit_zh: 公开 Skill 源码与当前版本说明
+  delivery_unit_en: Public Skill source and current-version notes
+  value_zh: 从样本文章中提取文风画像，再把任意内容改写成该文风。
+  value_en: Extract a writing style profile from sample articles, then rewrite any
+    content in that style.
+  basis_zh: 按能继续编辑、发布或复用的内容成品定价，重点是流程完整和证据可追溯。
+  basis_en: Priced around content that can be edited, published, or reused, with emphasis
+    on a complete workflow and traceable evidence.
+  boundary_zh: 结果质量取决于素材、事实和品牌约束；平台账号、第三方模型和发布操作按实际条件处理。
+  boundary_en: Quality depends on source material, facts, and brand constraints; platform
+    accounts, third-party models, and publishing operations follow actual conditions.
+  maintenance_zh: 随平台规则、内容格式、模型和素材库变化复评。
+  maintenance_en: Review when platform rules, content formats, models, or asset libraries
+    change.
+  anchor_zh: 一次交付通常可省下 1 小时至一天的研究、编排、配图或发布准备。
+  anchor_en: A run typically saves one hour to a day of research, editing, illustration,
+    or publishing preparation.
+  confidence: entry
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 4
+    稀缺性与替代难度: 3
+    质量证据与购买信心: 2
+    价值飞轮潜力: 3
+    维护与交付效率: 3
+    复制与渠道可控性: 2
+  weighted_score: 0.61
+  card_path: pricing-cards/style-clone.md
+- id: video-chapter
+  version: 0.2.0
+  model: free_entry
+  visibility: public
+  list_price_cny: 0.0
+  launch_price_cny: 0
+  price_range_cny:
+  - 0
+  - 0
+  delivery_unit_zh: 公开 Skill 源码与当前版本说明
+  delivery_unit_en: Public Skill source and current-version notes
+  value_zh: 从字幕确定章节，在 React 工作台调整切点与样式，再导出透明章节条、烧录成片或剪辑软件素材包。
+  value_en: Plan chapters, tune the progress bar in React Studio, then export an overlay,
+    final video, or editor package.
+  basis_zh: 按能直接进入剪辑或发布流程的视频资产定价，重点是切点可回读、样式可调整和导出可复用。
+  basis_en: Priced around video assets ready for editing or publishing, with recoverable
+    cuts, adjustable styling, and reusable exports.
+  boundary_zh: 默认处理已有字幕与素材；完整剪辑、配音、版权素材和长时间渲染另行确认。
+  boundary_en: Assumes subtitles and source media already exist; full editing, voiceover,
+    licensed assets, and long renders are separate.
+  maintenance_zh: 随剪辑软件、编码器、字幕格式和工作台版本变化复评。
+  maintenance_en: Review against editing software, encoders, subtitle formats, and
+    studio versions.
+  anchor_zh: 一次处理通常可省下 1–5 小时的章节切分、样式调整和素材导出。
+  anchor_en: A run typically saves 1–5 hours of chaptering, styling, and asset export
+    work.
+  confidence: entry
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 4
+    稀缺性与替代难度: 3
+    质量证据与购买信心: 2
+    价值飞轮潜力: 4
+    维护与交付效率: 3
+    复制与渠道可控性: 2
+  weighted_score: 0.64
+  card_path: pricing-cards/video-chapter.md
+- id: mobile-adapt
+  version: 0.1.0
+  model: free_entry
+  visibility: public
+  list_price_cny: 0.0
+  launch_price_cny: 0
+  price_range_cny:
+  - 0
+  - 0
+  delivery_unit_zh: 公开 Skill 源码与当前版本说明
+  delivery_unit_en: Public Skill source and current-version notes
+  value_zh: 扫描并修复 Web 项目的移动端适配问题——溢出、安全区、视口单位、响应式布局和多级导航。
+  value_en: Scan a web project for mobile issues and fix them — overflow, safe area,
+    viewport units, responsive layouts, and page navigation.
+  basis_zh: 按一次可验证的工程状态改善定价，重点是减少排查往返、回滚风险和重复配置。
+  basis_en: Priced around a verifiable improvement to engineering state, reducing
+    debugging loops, rollback risk, and repeated setup.
+  boundary_zh: 默认在现有项目与工具链上工作；云资源、账号权限、代码审阅和大规模迁移另行确认。
+  boundary_en: Works within the existing project and toolchain; cloud resources, account
+    permissions, code review, and large migrations are separate.
+  maintenance_zh: 随框架、操作系统、CLI、平台 API 和发布流程变化复评。
+  maintenance_en: Review when frameworks, operating systems, CLIs, platform APIs,
+    or release workflows change.
+  anchor_zh: 一次处理通常可省下 30 分钟至半天的排错、配置或发布往返。
+  anchor_en: A run typically saves 30 minutes to half a day of debugging, setup, or
+    release back-and-forth.
+  confidence: entry
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 4
+    稀缺性与替代难度: 3
+    质量证据与购买信心: 2
+    价值飞轮潜力: 4
+    维护与交付效率: 4
+    复制与渠道可控性: 2
+  weighted_score: 0.66
+  card_path: pricing-cards/mobile-adapt.md
+- id: repo2docs
+  version: 0.2.0
+  model: free_entry
+  visibility: public
+  list_price_cny: 0.0
+  launch_price_cny: 0
+  price_range_cny:
+  - 0
+  - 0
+  delivery_unit_zh: 公开 Skill 源码与当前版本说明
+  delivery_unit_en: Public Skill source and current-version notes
+  value_zh: 把任意文件夹（代码、文章、图片）增量编纂成精美的 Fumadocs 文档站，并部署到 {id}.lovstudio.ai/docs。
+  value_en: Turn any folder — code, articles, images — into a polished Fumadocs site,
+    built incrementally and shipped to {id}.lovstudio.ai/docs.
+  basis_zh: 按一次可验证的工程状态改善定价，重点是减少排查往返、回滚风险和重复配置。
+  basis_en: Priced around a verifiable improvement to engineering state, reducing
+    debugging loops, rollback risk, and repeated setup.
+  boundary_zh: 默认在现有项目与工具链上工作；云资源、账号权限、代码审阅和大规模迁移另行确认。
+  boundary_en: Works within the existing project and toolchain; cloud resources, account
+    permissions, code review, and large migrations are separate.
+  maintenance_zh: 随框架、操作系统、CLI、平台 API 和发布流程变化复评。
+  maintenance_en: Review when frameworks, operating systems, CLIs, platform APIs,
+    or release workflows change.
+  anchor_zh: 一次处理通常可省下 30 分钟至半天的排错、配置或发布往返。
+  anchor_en: A run typically saves 30 minutes to half a day of debugging, setup, or
+    release back-and-forth.
+  confidence: entry
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 4
+    稀缺性与替代难度: 3
+    质量证据与购买信心: 2
+    价值飞轮潜力: 4
+    维护与交付效率: 4
+    复制与渠道可控性: 2
+  weighted_score: 0.66
+  card_path: pricing-cards/repo2docs.md
+- id: wdb-cli
+  version: 0.1.1
+  model: one_time
+  visibility: public
+  list_price_cny: 19.9
+  launch_price_cny: 19.9
+  price_range_cny:
+  - 19.9
+  - 49.9
+  delivery_unit_zh: 单项 Skill 完整交付，含当前版本的安装与使用说明
+  delivery_unit_en: One complete Skill with installation and usage notes for the current
+    version
+  value_zh: 自由查看、检索和分析微信数据库中的各类数据，常用内容与新版本结构都能精准定位。
+  value_en: Find and analyze the WeChat data you need, from familiar records to newly
+    added database structures.
+  basis_zh: 按一次可复用的判断或处理结果定价，重点看是否减少查找、判断与重复操作。
+  basis_en: Priced around a reusable decision or processing result, with emphasis
+    on reducing lookup and repeated work.
+  boundary_zh: 适合明确的问题与输入；开放式探索、外部数据和第三方服务成本另行计算。
+  boundary_en: Best for a defined question and input; open-ended exploration, external
+    data, and third-party service costs are separate.
+  maintenance_zh: 随上游数据格式、模型能力和使用反馈复评；小版本更新通常沿用原交付范围。
+  maintenance_en: Review against upstream data formats, model capability, and usage
+    feedback; minor updates usually stay within the original scope.
+  anchor_zh: 一次完成通常可省下约 30 分钟至 3 小时的检索、整理或判断时间。
+  anchor_en: A completed run typically saves roughly 30 minutes to 3 hours of research,
+    organization, or judgment work.
+  confidence: medium
+  review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+  review_trigger_en: Review after a version change, 10 real uses, or a material change
+    in support cost.
+  scores:
+    实际结果价值: 5
+    稀缺性与替代难度: 3
+    质量证据与购买信心: 4
+    价值飞轮潜力: 3
+    维护与交付效率: 4
+    复制与渠道可控性: 3
+  weighted_score: 0.77
+  card_path: pricing-cards/wdb-cli.md

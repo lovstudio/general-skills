@@ -95,6 +95,13 @@ def render_price_suffix(skill: dict, lang: str) -> str:
     price = skill.get("price_cny")
     if price is None:
         return ""
+    existing_tagline = str(
+        skill.get("tagline_zh" if lang == "zh" else "tagline_en")
+        or skill.get("description")
+        or ""
+    )
+    if re.search(r"(?:¥|CNY|售价)\s*\d", existing_tagline, re.IGNORECASE):
+        return ""
     formatted = f"{price:g}" if isinstance(price, (int, float)) else str(price)
     label = f"售价 ¥{formatted}" if lang == "zh" else f"¥{formatted} CNY"
     return f" — {label}"
