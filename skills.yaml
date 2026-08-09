@@ -2202,7 +2202,7 @@ skills:
   tagline_zh: 以用户选定级别为最低难度线生成英语学习字幕，覆盖更高难度表达，并可选生成不剧透的人物艺术卡片。
   distribution:
     workbuddy: review
-    skillpay: review
+    skillpay: planned
 
 
   pricing:
