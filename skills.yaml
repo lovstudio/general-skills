@@ -2187,3 +2187,43 @@ skills:
     review_trigger_en: Review after a version change, 10 real uses, or a material change
       in support cost.
     card_path: pricing-cards/wdb-cli.md
+- name: subtitle-gloss
+  display_name: Subtitle Gloss
+  repo: lovstudio/subtitle-gloss-skill
+  name_zh: 英语学习字幕
+  paid: true
+  price_cny: 0.99
+  category: General
+  version: 0.8.0
+  description: Create learner-friendly English subtitles from video or source subtitles, with profile-aware glosses and optional evidence-based ASS art cards.
+  tagline_en: Make learner subtitles that explain only necessary vocabulary, with optional spoiler-safe ASS character cards.
+  tagline_zh: 从视频或原字幕生成只解释必要词汇的英语学习字幕，并可选生成不剧透的人物艺术卡片。
+  distribution:
+    workbuddy: planned
+    skillpay: planned
+
+
+  pricing:
+    model: one_time
+    visibility: public
+    list_price_cny: 0.99
+    launch_price_cny: 0.99
+    price_range_cny:
+    - 0.99
+    - 19.9
+    delivery_unit_zh: 单项 Skill 完整交付，含当前版本的安装与使用说明
+    delivery_unit_en: One complete Skill with installation and usage notes for the current version
+    value_zh: 只解释真正影响理解的词汇，同时保留原字幕时间轴，并可选生成叙事安全的 ASS 人物卡片。
+    value_en: Explain only vocabulary that blocks comprehension, preserve timing, and optionally add narrative-safe ASS character cards.
+    anchor_zh: 一次电影字幕加工通常可省下 30 分钟至数小时的筛选、查词、校验和排版时间。
+    anchor_en: A run typically saves 30 minutes to several hours of vocabulary selection, lookup, validation, and subtitle styling.
+    basis_zh: 按一次可复用的学习字幕成品定价，重点是减少筛词、定位、证据核对和样式返工。
+    basis_en: Priced around a reusable learner-subtitle result, reducing word selection, evidence checks, and styling rework.
+    boundary_zh: 结果依赖输入字幕、学习者 Profile、影片上下文和可用字体；联网检索与视频证据按实际条件处理。
+    boundary_en: Results depend on source subtitles, learner profile, film context, and available fonts; web research and video evidence follow actual conditions.
+    maintenance_zh: 随字幕格式、播放器兼容性、字体和用户反馈变化复评；小版本更新通常沿用原交付范围。
+    maintenance_en: Review as subtitle formats, renderer compatibility, fonts, and user feedback change; minor updates usually retain the same delivery scope.
+    confidence: medium
+    review_trigger_zh: 版本变化、连续 10 次真实使用或播放器兼容问题明显增加时复评。
+    review_trigger_en: Review after a version change, 10 real uses, or a material increase in renderer-compatibility support.
+    card_path: pricing-cards/subtitle-gloss.md
