@@ -1804,7 +1804,7 @@ cards:
   launch_price_cny: 0.99
   price_range_cny:
   - 0.99
-  - 19.9
+  - 0.99
   delivery_unit_zh: 单项 Skill 完整交付，含当前版本的安装与使用说明
   delivery_unit_en: One complete Skill with installation and usage notes for the current version
   value_zh: 只解释真正影响理解的词汇，同时保留原字幕时间轴，并可选生成叙事安全的 ASS 人物卡片。
