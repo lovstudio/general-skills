@@ -11,6 +11,7 @@ validate() so CI rejects bad states before regenerating outputs.
 """
 from __future__ import annotations
 
+import re
 import sys
 from pathlib import Path
 
@@ -18,6 +19,10 @@ import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
 YAML_PATH = ROOT / "skills.yaml"
+SKILLPAY_PRODUCT_ID_RE = re.compile(r"P\d{16}")
+SKILLPAY_PURCHASE_URL_RE = re.compile(
+    r"https://aipayapi\.alipay\.com/skillpay/ct\?c=[A-Za-z0-9_-]+"
+)
 
 
 def load_skills() -> list[dict]:
@@ -28,9 +33,61 @@ def load_skills() -> list[dict]:
 def validate(skills: list[dict]) -> list[str]:
     errors: list[str] = []
     by_name = {s["name"]: s for s in skills}
+    distribution_channels = {"workbuddy", "skillpay"}
+    distribution_statuses = {"live", "adapted", "review", "rejected", "planned"}
+    skillpay_ids: dict[str, str] = {}
 
     for s in skills:
         name = s["name"]
+        price_cny = s.get("price_cny")
+        if price_cny is not None:
+            if isinstance(price_cny, bool) or not isinstance(price_cny, (int, float)):
+                errors.append(f"{name}.price_cny: must be a number")
+            elif price_cny <= 0:
+                errors.append(f"{name}.price_cny: must be greater than zero")
+            if not s.get("paid"):
+                errors.append(f"{name}.price_cny: requires paid: true")
+
+        distribution = s.get("distribution")
+        if distribution is not None:
+            if not isinstance(distribution, dict):
+                errors.append(f"{name}.distribution: must be a mapping")
+            else:
+                for channel, status in distribution.items():
+                    if channel not in distribution_channels:
+                        errors.append(
+                            f"{name}.distribution: unsupported channel '{channel}'"
+                        )
+                    if status not in distribution_statuses:
+                        errors.append(
+                            f"{name}.distribution.{channel}: unsupported status '{status}'"
+                        )
+
+        product_id = s.get("skillpay_product_id")
+        purchase_url = s.get("skillpay_purchase_url")
+        skillpay_status = distribution.get("skillpay") if isinstance(distribution, dict) else None
+        if product_id is not None:
+            if not isinstance(product_id, str) or not SKILLPAY_PRODUCT_ID_RE.fullmatch(product_id):
+                errors.append(f"{name}.skillpay_product_id: invalid product id")
+            elif product_id in skillpay_ids:
+                errors.append(
+                    f"{name}.skillpay_product_id: duplicates {skillpay_ids[product_id]}"
+                )
+            else:
+                skillpay_ids[product_id] = name
+        if purchase_url is not None:
+            if not isinstance(purchase_url, str) or not SKILLPAY_PURCHASE_URL_RE.fullmatch(purchase_url):
+                errors.append(f"{name}.skillpay_purchase_url: invalid purchase URL")
+            if not product_id:
+                errors.append(f"{name}.skillpay_purchase_url: requires skillpay_product_id")
+        if skillpay_status == "live" and (not product_id or not purchase_url):
+            errors.append(f"{name}.distribution.skillpay: live requires product id and purchase URL")
+        if skillpay_status == "rejected":
+            if not product_id:
+                errors.append(f"{name}.distribution.skillpay: rejected requires product id")
+            if purchase_url:
+                errors.append(f"{name}.distribution.skillpay: rejected must not expose a purchase URL")
+
         for field in ("depends_on", "related"):
             for ref in s.get(field) or []:
                 if ref not in by_name:

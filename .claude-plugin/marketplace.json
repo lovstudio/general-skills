@@ -11,10 +11,12 @@
     {
       "name": "general",
       "source": "./",
-      "description": "General — 2 free skills bundled together.",
+      "description": "General — 3 free skills bundled together.",
       "category": "General",
       "skills": [
         "./skills/image-creator",
+        "./skills/hanzi-lens",
+        "./skills/professional-infographic",
         "./skills/fact-check"
       ],
       "strict": false
@@ -22,12 +24,14 @@
     {
       "name": "design",
       "source": "./",
-      "description": "Design — 3 free + 1 paid (activation required).",
+      "description": "Design — 5 free + 1 paid (activation required).",
       "category": "Design",
       "skills": [
         "./skills/maintain-partners",
         "./skills/find-logo",
+        "./skills/professional-portrait",
         "./skills/event-poster",
+        "./skills/professional-infographic",
         "./skills/business-card"
       ],
       "strict": false
@@ -35,7 +39,7 @@
     {
       "name": "office-automation",
       "source": "./",
-      "description": "Office Automation — 7 free skills bundled together.",
+      "description": "Office Automation — 8 free skills bundled together.",
       "category": "Office Automation",
       "skills": [
         "./skills/fill-form",
@@ -43,6 +47,7 @@
         "./skills/any2pdf",
         "./skills/any2docx",
         "./skills/any2deck",
+        "./skills/rich-export",
         "./skills/pdf2png",
         "./skills/png2svg"
       ],
@@ -51,9 +56,14 @@
     {
       "name": "business",
       "source": "./",
-      "description": "Business — 3 free + 2 paid (activation required).",
+      "description": "Business — 7 free + 2 paid (activation required).",
       "category": "Business",
       "skills": [
+        "./skills/bp",
+        "./skills/bp-outline",
+        "./skills/bp-deck",
+        "./skills/any2deck",
+        "./skills/bp-polish",
         "./skills/proposal",
         "./skills/review-doc",
         "./skills/contract-review-pro",
@@ -86,6 +96,16 @@
       "skills": [
         "./skills/thesis-polish",
         "./skills/translation-review"
+      ],
+      "strict": false
+    },
+    {
+      "name": "video-creation",
+      "source": "./",
+      "description": "Video Creation — 1 free skill bundled together.",
+      "category": "Video Creation",
+      "skills": [
+        "./skills/video-chapter"
       ],
       "strict": false
     },

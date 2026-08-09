@@ -61,6 +61,10 @@ skills:
     tagline_en: "Typeset Markdown …"    # Human-facing English one-liner for README. Hand-maintained.
     tagline_zh: "把 Markdown 排成 …"    # Human-facing Chinese one-liner for README. Hand-maintained.
     skill_path: "skill/lovstudio-xxx"   # OPTIONAL. Use only when SKILL.md is not at repo root.
+    skillpay_product_id: "P0806…"        # OPTIONAL. Stable SkillPay product identifier.
+    skillpay_purchase_url: "https://…"  # OPTIONAL. URL used to build the copyable purchase/install prompt.
+    distribution:
+      skillpay: live                    # live | review | rejected | planned
 ```
 
 ### Field responsibilities
@@ -74,6 +78,9 @@ skills:
   Hand-maintained — CI never overwrites them.
 - **Paid skills**: `tagline_*` must not leak implementation specifics (no library names,
   no auth/token mechanics, no internal endpoints) — they sit in a public index.
+- **SkillPay metadata**: keep `skillpay_product_id`, `skillpay_purchase_url`, and
+  `distribution.skillpay` on the same catalog entry. Historical/downlisted product
+  IDs are not reused for the current entry.
 
 ## Key Conventions
 

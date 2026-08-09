@@ -41,6 +41,7 @@ CATEGORY_LABELS = {
     "Office Automation": ("Office Automation", "办公"),
     "Finance": ("Finance", "财税"),
     "Content Creation": ("Content Creation", "内容创作"),
+    "Video Creation": ("Video Creation", "影视创作"),
     "Dev Tools": ("Dev Tools", "开发工具"),
     "xBTI": ("xBTI", "人格测试"),
 }
@@ -54,6 +55,7 @@ CATEGORY_ORDER_EN = [
     "Office Automation",
     "Finance",
     "Content Creation",
+    "Video Creation",
     "Dev Tools",
     "xBTI",
 ]
@@ -86,6 +88,23 @@ def render_deps_suffix(skill: dict, lang: str) -> str:
         if rels:
             parts.append("related: " + ", ".join(f"`{r}`" for r in rels))
     return " — " + "; ".join(parts) if parts else ""
+
+
+def render_price_suffix(skill: dict, lang: str) -> str:
+    """Append the explicit CNY price for paid skills that publish one."""
+    price = skill.get("price_cny")
+    if price is None:
+        return ""
+    existing_tagline = str(
+        skill.get("tagline_zh" if lang == "zh" else "tagline_en")
+        or skill.get("description")
+        or ""
+    )
+    if re.search(r"(?:¥|CNY|售价)\s*\d", existing_tagline, re.IGNORECASE):
+        return ""
+    formatted = f"{price:g}" if isinstance(price, (int, float)) else str(price)
+    label = f"售价 ¥{formatted}" if lang == "zh" else f"¥{formatted} CNY"
+    return f" — {label}"
 
 
 def gh_sync(skills: list[dict]) -> None:
@@ -143,7 +162,11 @@ def render_table(skills: list[dict], lang: str) -> str:
         for s in sorted(grouped[key], key=lambda x: x["name"]):
             badge = PAID_BADGE if s.get("paid") else FREE_BADGE
             link = f"https://github.com/{s['repo']}"
-            tagline = pick_tagline(s, lang) + render_deps_suffix(s, lang)
+            tagline = (
+                pick_tagline(s, lang)
+                + render_price_suffix(s, lang)
+                + render_deps_suffix(s, lang)
+            )
             if lang == "zh":
                 english_cell = f"[`{s['name']}`]({link})"
                 zh_name = (s.get("name_zh") or s.get("display_name") or s["name"]).strip()
