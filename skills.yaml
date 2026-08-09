@@ -2188,15 +2188,15 @@ skills:
       in support cost.
     card_path: pricing-cards/wdb-cli.md
 - name: subtitle-gloss
-  skillpay_product_id: "P0806000201816980"
-  skillpay_purchase_url: "https://aipayapi.alipay.com/skillpay/ct?c=BHayB9Om2xSC3Q2LuDK1"
-  display_name: Subtitle Gloss
+  skillpay_product_id: "P0806000201818284"
+  skillpay_purchase_url: "https://aipayapi.alipay.com/skillpay/ct?c=BHayB9Om2xSC3Q2LuDnA"
+  display_name: Subtitle Freedom
   repo: lovstudio/subtitle-gloss-skill
   name_zh: 字幕自由
   paid: true
   price_cny: 0.99
   category: General
-  version: 0.9.1
+  version: 0.9.2
   description: Create learner-friendly English subtitles using the selected profile as a minimum difficulty floor, with higher-level glosses and optional evidence-based ASS art cards.
   tagline_en: Make learner subtitles that keep the selected level and harder expressions, with optional spoiler-safe ASS character cards.
   tagline_zh: 以用户选定级别为最低难度线生成英语学习字幕，覆盖更高难度表达，并可选生成不剧透的人物艺术卡片。
