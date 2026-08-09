@@ -1,12 +1,18 @@
-# lovstudio-mobile-adapt
+# sgc-mobile-adapt
 
 ![Version](https://img.shields.io/badge/version-0.1.0-CC785C)
 
 Scan and fix mobile adaptation issues in web projects: viewport, overflow, safe area, responsive layouts, 100vh pitfalls, touch targets, and multi-level page navigation.
 
-Part of [lovstudio dev-skills](https://github.com/lovstudio/dev-skills) — by [lovstudio.ai](https://lovstudio.ai)
+Independent source repository, also distributed through [lovstudio dev-skills](https://github.com/lovstudio/dev-skills) — by [lovstudio.ai](https://lovstudio.ai)
 
 ## Install
+
+```bash
+npx skills add lovstudio/mobile-adapt-skill --all -g
+```
+
+The aggregate bundle remains available:
 
 ```bash
 npx skills add lovstudio/dev-skills --all -g
@@ -16,7 +22,7 @@ Or through Claude Code plugin marketplace:
 
 ```text
 /plugin marketplace add lovstudio/dev-skills
-/plugin install dev-tools@lovstudio-dev
+/plugin install dev-tools@sgc-dev
 ```
 
 Requires: Python 3.8+ (no external dependencies)
@@ -32,7 +38,7 @@ Requires: Python 3.8+ (no external dependencies)
 ## Scanner
 
 ```bash
-python3 ~/.claude/skills/lovstudio-mobile-adapt/scripts/scan_mobile_issues.py /path/to/project
+python3 ~/.claude/skills/sgc-mobile-adapt/scripts/scan_mobile_issues.py /path/to/project
 ```
 
 | Option | Default | Description |
