@@ -2188,6 +2188,8 @@ skills:
       in support cost.
     card_path: pricing-cards/wdb-cli.md
 - name: subtitle-gloss
+  skillpay_product_id: "P0806000201815623"
+  skillpay_purchase_url: "https://aipayapi.alipay.com/skillpay/ct?c=BHayB9Om2xSC3Q2LuCu7"
   display_name: Subtitle Gloss
   repo: lovstudio/subtitle-gloss-skill
   name_zh: 英语学习字幕
@@ -2199,8 +2201,8 @@ skills:
   tagline_en: Make learner subtitles that explain only necessary vocabulary, with optional spoiler-safe ASS character cards.
   tagline_zh: 从视频或原字幕生成只解释必要词汇的英语学习字幕，并可选生成不剧透的人物艺术卡片。
   distribution:
-    workbuddy: planned
-    skillpay: planned
+    workbuddy: review
+    skillpay: review
 
 
   pricing:
