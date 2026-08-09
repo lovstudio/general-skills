@@ -2229,3 +2229,39 @@ skills:
     review_trigger_zh: 版本变化、连续 10 次真实使用或播放器兼容问题明显增加时复评。
     review_trigger_en: Review after a version change, 10 real uses, or a material increase in renderer-compatibility support.
     card_path: pricing-cards/subtitle-freedom.md
+- name: media-fetch
+  display_name: Media Fetch
+  repo: lovstudio/media-fetch-skill
+  name_zh: 媒体抓取
+  paid: false
+  category: General
+  version: 0.2.0
+  description: Find, compare, and download long-form media with edition evidence, capacity preflight, qBittorrent and aria2 failover, and ffprobe verification.
+  tagline_en: Find the right edition, resume through the faster transport, and verify the local media and subtitle status.
+  tagline_zh: 检索并选择合适版本，qBittorrent 与 aria2 续传兜底，最后验收本地媒体与字幕状态。
+
+
+  pricing:
+    model: free_entry
+    visibility: public
+    list_price_cny: 0.0
+    launch_price_cny: 0
+    price_range_cny:
+    - 0
+    - 0
+    delivery_unit_zh: 公开 Skill 源码与当前版本说明
+    delivery_unit_en: Public Skill source and current-version notes
+    value_zh: 检索并选择合适版本，qBittorrent 与 aria2 续传兜底，最后验收本地媒体与字幕状态。
+    value_en: Find the right edition, resume through the faster transport, and verify the local media and subtitle status.
+    anchor_zh: 一次长视频任务通常可省下数十分钟至数小时的版本筛选、容量检查、下载排障和文件验收时间。
+    anchor_en: A long-form media run typically saves tens of minutes to several hours of release selection, storage checks, download recovery, and verification.
+    basis_zh: 按一条可回读的本地媒体交付链路定价，重点是减少错误版本、重复下载、慢源等待和未验收文件。
+    basis_en: Priced around a verifiable local media delivery chain, reducing wrong-edition downloads, duplicate transfers, slow-source waiting, and unverified files.
+    boundary_zh: 覆盖候选检索、版本选择、容量预检、qBittorrent/aria2 编排、媒体验收和字幕状态记录；外部来源、网络可达性与字幕内容本身按实际条件处理。
+    boundary_en: Covers discovery, edition choice, capacity preflight, qBittorrent/aria2 orchestration, media verification, and subtitle-state evidence; external sources, network reachability, and subtitle content follow actual conditions.
+    maintenance_zh: 随 qBittorrent、aria2、FFmpeg、Skill runtime 和字幕格式变化复评。
+    maintenance_en: Review when qBittorrent, aria2, FFmpeg, the Skill runtime, or subtitle formats change.
+    confidence: case-backed
+    review_trigger_zh: 版本变化、连续 10 次真实使用或下载后端与字幕支持成本明显变化时复评。
+    review_trigger_en: Review after a version change, 10 real uses, or a material change in transport or subtitle-support cost.
+    card_path: pricing-cards/media-fetch.md
