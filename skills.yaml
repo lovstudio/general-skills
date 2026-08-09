@@ -1494,10 +1494,10 @@ skills:
   pricing:
     model: one_time
     visibility: public
-    list_price_cny: 9.99
-    launch_price_cny: 9.99
+    list_price_cny: 4.99
+    launch_price_cny: 4.99
     price_range_cny:
-    - 9.99
+    - 4.99
     - 19.9
     delivery_unit_zh: 单项 Skill 完整交付，含当前版本的安装与使用说明
     delivery_unit_en: One complete Skill with installation and usage notes for the current
@@ -2101,6 +2101,42 @@ skills:
     review_trigger_en: Review after a version change, 10 real uses, or a material change
       in support cost.
     card_path: pricing-cards/repo2docs.md
+- name: macos-disk-optimizer
+  display_name: macOS Disk Optimizer
+  repo: lovstudio/macos-disk-optimizer-skill
+  name_zh: Mac 磁盘优化
+  paid: false
+  category: General
+  version: 0.2.0
+  description: Guarded macOS disk cleanup with archive migration, rollback-aware staging, direct rollback-item purging, and real-capacity verification.
+  tagline_en: Clean up Mac storage with guarded planning, archive migration, exact rollback-item purging, and real-capacity verification.
+  tagline_zh: 按目标容量整理 Mac 磁盘，支持归档迁移、精确回收回滚项，并以真实可用空间完成验收。
+
+
+  pricing:
+    model: free_entry
+    visibility: public
+    list_price_cny: 0.0
+    launch_price_cny: 0
+    price_range_cny:
+    - 0
+    - 0
+    delivery_unit_zh: 公开 Skill 源码与当前版本说明
+    delivery_unit_en: Public Skill source and current-version notes
+    value_zh: 按目标容量整理 Mac 磁盘，支持归档迁移、精确回收回滚项，并以真实可用空间完成验收。
+    value_en: Clean up Mac storage with guarded planning, archive migration, exact rollback-item purging, and real-capacity verification.
+    anchor_zh: 一次处理通常可省下 30 分钟至半天的排查、整理和回滚往返。
+    anchor_en: A run typically saves 30 minutes to half a day of storage diagnosis, cleanup, and rollback work.
+    basis_zh: 按一次可验证的磁盘空间改善定价，重点是减少误删风险、排查往返和重复清理。
+    basis_en: Priced around a verifiable improvement in free space, reducing deletion risk, debugging loops, and repeated cleanup.
+    boundary_zh: 默认只处理明确的可重建产物和用户确认的低频资料；照片、消息、邮件、Git 历史及受保护路径不进入自动清理。
+    boundary_en: Handles explicit rebuildable artifacts and user-confirmed cold data; photos, messages, mail, Git history, and protected paths stay out of automatic cleanup.
+    maintenance_zh: 随 macOS、文件系统、归档卷挂载方式和真实使用反馈变化复评。
+    maintenance_en: Review when macOS, filesystem behavior, archive-volume mounting, or real-use feedback changes.
+    confidence: entry
+    review_trigger_zh: 版本变化、连续 10 次真实使用或支持成本明显变化时复评。
+    review_trigger_en: Review after a version change, 10 real uses, or a material change in support cost.
+    card_path: pricing-cards/macos-disk-optimizer.md
 - name: wdb-cli
   skillpay_product_id: "P0806000201803813"
   skillpay_purchase_url: "https://aipayapi.alipay.com/skillpay/ct?c=BHayB9Om2xSC3Q2Lt_Qi"
