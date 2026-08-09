@@ -28,7 +28,7 @@ hanzi-project/
   "character": "翕",
   "scope": "character-only",
   "locale": "both",
-  "dependency": "lovstudio-professional-infographic",
+  "dependency": "sgc-professional-infographic",
   "research": "research.json",
   "source": "source.md",
   "brief": "brief.md",

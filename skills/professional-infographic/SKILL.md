@@ -1,5 +1,5 @@
 ---
-name: lovstudio-professional-infographic
+name: sgc-professional-infographic
 description: >
   Turn the current conversation, a completed answer, Markdown, research, or
   source material into a consulting Exhibit-quality professional infographic
