@@ -2188,8 +2188,8 @@ skills:
       in support cost.
     card_path: pricing-cards/wdb-cli.md
 - name: subtitle-gloss
-  skillpay_product_id: "P0806000201815623"
-  skillpay_purchase_url: "https://aipayapi.alipay.com/skillpay/ct?c=BHayB9Om2xSC3Q2LuCu7"
+  skillpay_product_id: "P0806000201811268"
+  skillpay_purchase_url: "https://aipayapi.alipay.com/skillpay/ct?c=BHayB9Om2xSC3Q2LuBui"
   display_name: Subtitle Gloss
   repo: lovstudio/subtitle-gloss-skill
   name_zh: 英语学习字幕
@@ -2202,7 +2202,7 @@ skills:
   tagline_zh: 以用户选定级别为最低难度线生成英语学习字幕，覆盖更高难度表达，并可选生成不剧透的人物艺术卡片。
   distribution:
     workbuddy: review
-    skillpay: planned
+    skillpay: review
 
 
   pricing:
