@@ -2196,10 +2196,10 @@ skills:
   paid: true
   price_cny: 0.99
   category: General
-  version: 1.0.0
-  description: Create learner-friendly English subtitles using the selected profile as a minimum difficulty floor, with higher-level glosses and optional evidence-based ASS art cards.
-  tagline_en: Make learner subtitles that keep the selected level and harder expressions, with optional spoiler-safe ASS character cards.
-  tagline_zh: 以用户选定级别为最低难度线生成英语学习字幕，覆盖更高难度表达，并可选生成不剧透的人物艺术卡片。
+  version: 1.2.8
+  description: Create learner-friendly English subtitles using the selected profile as a minimum difficulty floor, with higher-level glosses, evidence-based ASS art cards, and optional renderer-compatible ASS/PGS sidecars without re-encoding the video.
+  tagline_en: Make learner subtitles that keep the selected level and harder expressions, with spoiler-safe ASS cards and optional no-burn watermark sidecars.
+  tagline_zh: 以用户选定级别为最低难度线生成英语学习字幕，覆盖更高难度表达，并可选生成不剧透人物卡片与不烧录视频的 ASS/PGS 水印外置字幕。
   distribution:
     workbuddy: review
     skillpay: review
