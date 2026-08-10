@@ -2,7 +2,7 @@
 
 | 项目 | 结论 |
 | --- | --- |
-| 版本 / 交付单元 | 1.0.0 / 单项 Skill 完整交付，含当前版本的安装与使用说明 |
+| 版本 / 交付单元 | 1.2.8 / 单项 Skill 完整交付，含当前版本的安装与使用说明 |
 | 目标买家 | 使用「字幕自由」完成 General 任务的人 |
 | 建议价格 | ¥0.99 / 次购买 |
 | 稳定价格带 | ¥0.99 |
@@ -11,7 +11,7 @@
 
 ## 为什么是这个价格
 
-- 交付价值：从视频或原字幕生成按学习者水平筛选的必要词汇注释，并可选完成证据融合、人物卡片与 ASS 样式输出。
+- 交付价值：从视频或原字幕生成按学习者水平筛选的必要词汇注释，并可选完成证据融合、人物卡片与不烧录视频的 ASS/PGS 样式外置字幕。
 - 价值锚点：一次电影字幕加工通常可省下 30 分钟至数小时的筛选、查词、校验和排版时间。
 - 定价依据：按一次可复用的学习字幕成品定价，重点是减少筛词、定位、证据核对和样式返工。
 - 成本回收：按预计复用次数摊销首版规则、播放器兼容回归与后续格式维护。
@@ -32,7 +32,7 @@
 
 ## 买家得到什么
 
-一个可复用的英语学习字幕 Skill：输入视频或原字幕，把学习者 Profile 作为最低难度线，覆盖该级别及以上必要表达，保留原时间轴；明确开启艺术层后，可生成不剧透的人物艺术卡片、可选品牌水印和播放器兼容的 ASS 字幕。
+一个可复用的英语学习字幕 Skill：输入视频或原字幕，把学习者 Profile 作为最低难度线，覆盖该级别及以上必要表达，保留原时间轴；明确开启艺术层后，可生成不剧透的人物艺术卡片、默认文字加水平线的 ASS 水印，或使用原图 Logo 的 PGS/SUP 外置字幕。视频本身不需要重新烧录。
 
 交付边界：结果依赖输入字幕、学习者 Profile、影片上下文和可用字体；联网检索与视频证据按实际条件处理，复杂压制和第三方服务费用另计。
 
@@ -46,6 +46,6 @@
 
 ## Public Summary
 
-Generate learner-friendly English subtitles that explain only the vocabulary blocking comprehension, preserve original timing, and optionally add spoiler-safe character cards and renderer-compatible ASS watermark styling.
+Generate learner-friendly English subtitles that explain only the vocabulary blocking comprehension, preserve original timing, and optionally add spoiler-safe character cards plus renderer-compatible ASS/PGS watermark sidecars without re-encoding the video.
 
 Priced around a reusable subtitle result that reduces word selection, evidence checks, and styling rework. Quality depends on source subtitles, learner profile, film context, and available fonts.
